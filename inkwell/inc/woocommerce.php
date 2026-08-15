@@ -208,7 +208,8 @@ function inkwell_author_box() {
 	}
 	echo '</section>';
 }
-add_action( 'woocommerce_after_single_product_summary', 'inkwell_author_box', 30 );
+// Place author context after the product tabs and before recommendations.
+add_action( 'woocommerce_after_single_product_summary', 'inkwell_author_box', 12 );
 
 /**
  * Cart fragments: live header count & mobile total.

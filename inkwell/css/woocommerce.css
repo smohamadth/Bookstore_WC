@@ -210,13 +210,15 @@ ul.products li.product-category .cat-tile-title .count { color: var(--ink-faint)
 	align-items: start;
 }
 .woocommerce div.product div.woocommerce-product-gallery {
-	width: 100%; max-width: none; float: none; margin: 0;
+	width: 100%; max-width: 460px; float: none; margin: 0 auto; justify-self: center;
 }
 .woocommerce div.product div.woocommerce-product-gallery img {
 	border-radius: var(--radius); box-shadow: var(--shadow);
 	max-width: 100%; width: 100%; height: auto;
 }
-.woocommerce div.product div.woocommerce-product-gallery--columns-4 .flex-control-thumbs li { width: 25%; }
+.woocommerce div.product div.woocommerce-product-gallery--columns-4 .flex-control-thumbs li {
+	width: calc((100% - 2.1rem) / 4); flex: 0 0 calc((100% - 2.1rem) / 4); min-width: 0;
+}
 .woocommerce div.product div.woocommerce-product-gallery .flex-control-thumbs { display: flex; gap: 0.7rem; margin-top: 0.9rem; }
 .woocommerce div.product div.woocommerce-product-gallery .flex-control-thumbs li { width: 76px; list-style: none; }
 .woocommerce div.product div.woocommerce-product-gallery .flex-control-thumbs img {

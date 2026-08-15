@@ -12,6 +12,8 @@
 - Corrected no-products action handling and WooCommerce template metadata.
 - Fixed responsive author grids, duplicate form/menu IDs, dark-header styling,
   hero background images and mini-cart event/focus behavior.
+- Reduced the single-product gallery proportionally without cropping and moved
+  author context before upsells and related recommendations.
 
 ### Security and privacy
 

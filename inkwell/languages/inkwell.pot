@@ -73,7 +73,7 @@ msgstr ""
 msgid "X (formerly Twitter)"
 msgstr ""
 
-#: footer.php:49, inc/woocommerce.php:347
+#: footer.php:49, inc/woocommerce.php:348
 msgid "Shop"
 msgstr ""
 
@@ -827,15 +827,15 @@ msgstr ""
 msgid "More by this author"
 msgstr ""
 
-#: inc/woocommerce.php:238
+#: inc/woocommerce.php:239
 msgid "Cover coming soon"
 msgstr ""
 
-#: inc/woocommerce.php:279
+#: inc/woocommerce.php:280
 msgid "No books found. Try widening your filters or search again."
 msgstr ""
 
-#: inc/woocommerce.php:349
+#: inc/woocommerce.php:350
 msgid "Bookshop"
 msgstr ""
 

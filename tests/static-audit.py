@@ -57,6 +57,8 @@ check("echo '<ul class=\"products products-row\">';" in text(THEME / "inc/templa
 check('<ul class="products products-row author-products-row">' in text(THEME / "taxonomy-book_author.php"), "Author products are not a responsive list")
 check("add_action( 'woocommerce_no_products_found', 'inkwell_no_products_found', 10 );" in wc, "No-products action is not wired")
 check("woocommerce_quantity_input_args" not in wc, "Theme still overrides product quantity business rules")
+check("max-width: 460px" in wc_css and "justify-self: center" in wc_css, "Single-product gallery size regression")
+check("add_action( 'woocommerce_after_single_product_summary', 'inkwell_author_box', 12 );" in wc, "Author box is not placed before recommendations")
 
 # Search query safety and product UX.
 check('name="post_type" value="product"' in search_form, "Book search is not scoped to products")
