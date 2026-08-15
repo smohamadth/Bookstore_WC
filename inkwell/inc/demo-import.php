@@ -392,11 +392,15 @@ function inkwell_demo_import_catalog( $apply_site_setup = false ) {
 	}
 	$total            = count( $data );
 	$skipped_products = 0;
+	$legacy_import    = (bool) get_option( 'inkwell_demo_imported', false );
 
 	foreach ( $data as $index => $book ) {
 		$sku         = sanitize_text_field( $book['sku'] );
 		$existing_id = (int) wc_get_product_id_by_sku( $sku );
-		$is_demo     = $existing_id && ( get_post_meta( $existing_id, '_inkwell_demo_product', true ) || $book['isbn'] === get_post_meta( $existing_id, '_inkwell_isbn', true ) );
+		$is_demo     = $existing_id && (
+			get_post_meta( $existing_id, '_inkwell_demo_product', true ) ||
+			( $legacy_import && $book['isbn'] === get_post_meta( $existing_id, '_inkwell_isbn', true ) )
+		);
 		if ( $existing_id && ! $is_demo ) {
 			$skipped_products++;
 			continue;
@@ -409,7 +413,7 @@ function inkwell_demo_import_catalog( $apply_site_setup = false ) {
 
 		// Set deterministic dates only on newly created demo products.
 		if ( ! $existing_id ) {
-			$product->set_date_created( gmdate( 'Y-m-d H:i:s', time() - ( $total - 1 - $index ) * 9 * DAY_IN_SECONDS ) );
+			$product->set_date_created( wp_date( 'Y-m-d H:i:s', time() - ( $total - 1 - $index ) * 9 * DAY_IN_SECONDS ) );
 		}
 		$product->set_name( $book['title'] );
 		$product->set_status( 'publish' );
@@ -479,83 +483,83 @@ function inkwell_demo_import_catalog( $apply_site_setup = false ) {
 		}
 	}
 
-	/* Pages */
-	$home    = inkwell_demo_ensure_page( 'front', 'Home', '' );
-	$about   = inkwell_demo_ensure_page( 'about', 'About Inkwell', '<h2>Books, chosen by hand</h2><p>Inkwell started as a single shelf in a small apartment and grew into the shop you see today. We are a small team of readers, and we stock the books we genuinely love — fiction, history, science, children’s stories and everything in between.</p>' );
-	$contact = inkwell_demo_ensure_page( 'contact', 'Contact', '<p>We would love to hear from you — questions about an order, a recommendation request, or just to talk about what you’re reading.</p><p>Email: <a href="mailto:hello@inkwell.example">hello@inkwell.example</a></p><hr /><p><strong>Prefer email newsletters?</strong> Join the reading list:</p>[inkwell_newsletter]<h3>Leave the reading list</h3>[inkwell_newsletter_unsubscribe]' );
-	$journal = inkwell_demo_ensure_page( 'journal', 'The Journal', '' );
-	$privacy = inkwell_demo_ensure_page( 'privacy-policy', 'Privacy Policy', '<p>This is a demo shop. We store only what is needed to fulfil orders and you can request deletion of your account at any time.</p><p>If you join the reading list, the site stores your email address and consent time until you unsubscribe or request erasure through the site owner.</p>' );
+	if ( $apply_site_setup ) {
+		/* Pages and journal content are part of the explicitly requested site setup. */
+		$home    = inkwell_demo_ensure_page( 'front', 'Home', '' );
+		$about   = inkwell_demo_ensure_page( 'about', 'About Inkwell', '<h2>Books, chosen by hand</h2><p>Inkwell started as a single shelf in a small apartment and grew into the shop you see today. We are a small team of readers, and we stock the books we genuinely love — fiction, history, science, children’s stories and everything in between.</p>' );
+		$contact = inkwell_demo_ensure_page( 'contact', 'Contact', '<p>We would love to hear from you — questions about an order, a recommendation request, or just to talk about what you’re reading.</p><p>Email: <a href="mailto:hello@inkwell.example">hello@inkwell.example</a></p><hr /><p><strong>Prefer email newsletters?</strong> Join the reading list:</p>[inkwell_newsletter]<h3>Leave the reading list</h3>[inkwell_newsletter_unsubscribe]' );
+		$journal = inkwell_demo_ensure_page( 'journal', 'The Journal', '' );
+		$privacy = inkwell_demo_ensure_page( 'privacy-policy', 'Privacy Policy', '<p>This is a demo shop. We store only what is needed to fulfil orders and you can request deletion of your account at any time.</p><p>If you join the reading list, the site stores your email address and consent time until you unsubscribe or request erasure through the site owner.</p>' );
 
-	$shop = (int) wc_get_page_id( 'shop' );
-	if ( $shop <= 0 ) {
-		$shop = inkwell_demo_ensure_page( 'shop', 'Shop', '' );
-		update_option( 'woocommerce_shop_page_id', $shop );
-	}
-	foreach ( array( 'cart', 'checkout', 'myaccount' ) as $wc_page ) {
-		if ( (int) wc_get_page_id( $wc_page ) <= 0 ) {
-			$id = inkwell_demo_ensure_page( $wc_page, ucwords( $wc_page ), '' );
-			update_option( 'woocommerce_' . $wc_page . '_page_id', $id );
+		$shop = (int) wc_get_page_id( 'shop' );
+		if ( $shop <= 0 ) {
+			$shop = inkwell_demo_ensure_page( 'shop', 'Shop', '' );
+			update_option( 'woocommerce_shop_page_id', $shop );
 		}
-	}
-
-	// On explicit full setup, initialize only genuinely empty cart/checkout
-	// pages. Existing block or shortcode content is always preserved.
-	$cart_id     = (int) wc_get_page_id( 'cart' );
-	$checkout_id = (int) wc_get_page_id( 'checkout' );
-	if ( $apply_site_setup && $cart_id > 0 && '' === trim( (string) get_post_field( 'post_content', $cart_id ) ) ) {
-		wp_update_post( array( 'ID' => $cart_id, 'post_content' => '<!-- wp:shortcode -->[woocommerce_cart]<!-- /wp:shortcode -->' ) );
-	}
-	if ( $apply_site_setup && $checkout_id > 0 && '' === trim( (string) get_post_field( 'post_content', $checkout_id ) ) ) {
-		wp_update_post( array( 'ID' => $checkout_id, 'post_content' => '<!-- wp:shortcode -->[woocommerce_checkout]<!-- /wp:shortcode -->' ) );
-	}
-
-	$summary[] = __( 'Pages created (Home, Shop, About, Contact, Journal, Privacy)', 'inkwell' );
-
-	/* Journal posts */
-	$post_cats = array( 'reading-lists' => 'Reading Lists', 'behind-the-shelves' => 'Behind the Shelves', 'staff-picks' => 'Staff Picks' );
-	foreach ( $post_cats as $slug => $name ) {
-		if ( ! term_exists( $slug, 'category' ) ) {
-			wp_insert_term( $name, 'category', array( 'slug' => $slug ) );
+		foreach ( array( 'cart', 'checkout', 'myaccount' ) as $wc_page ) {
+			if ( (int) wc_get_page_id( $wc_page ) <= 0 ) {
+				$id = inkwell_demo_ensure_page( $wc_page, ucwords( $wc_page ), '' );
+				update_option( 'woocommerce_' . $wc_page . '_page_id', $id );
+			}
 		}
-	}
-	$posts = array(
-		array(
-			'title'   => 'Autumn reading list: 7 books for long evenings',
-			'cat'     => 'reading-lists',
-			'content' => '<p>The light goes early and the evenings get long — which, let’s be honest, is a gift for readers. Here is what the Inkwell team is reading this season.</p><h3>1. Where the Crawdads Sing — Delia Owens</h3><p>Mystery and marshland. We could not put it down.</p><h3>2. Sapiens — Yuval Noah Harari</h3><p>The big-picture book that starts a hundred conversations.</p><h3>3. Dune — Frank Herbert</h3><p>With the films bringing new readers, now is the time.</p>',
-		),
-		array(
-			'title'   => 'Behind the shelves: how we pick our stock',
-			'cat'     => 'behind-the-shelves',
-			'content' => '<p>People often ask how a small bookshop decides what to stock. The honest answer: slowly, and by committee.</p><p>Every month we each bring one book we loved to the table. We talk about it over terrible coffee. If two of us have read it and one of us can’t stop talking about it, it goes on the shelf. That’s the whole algorithm.</p>',
-		),
-		array(
-			'title'   => 'Staff pick: The Name of the Wind',
-			'cat'     => 'staff-picks',
-			'content' => '<p>Every so often a book arrives that you press into people’s hands. For me, that book is Patrick Rothfuss’s <em>The Name of the Wind</em>.</p><p>It is the story of Kvothe — musician, student, legend — told in his own words, and it does what the very best fantasy does: it makes the world feel real enough to walk into. The prose is beautiful, the magic system is genuinely clever, and the mystery at its heart kept me up for three nights.</p><p>If you like one thing this season, let it be this. — Claire, Inkwell</p>',
-		),
-	);
-	$post_ids = array();
-	foreach ( $posts as $i => $post ) {
-		$existing = get_page_by_path( sanitize_title( $post['title'] ), OBJECT, 'post' );
-		$pid      = $existing ? (int) $existing->ID : (int) wp_insert_post(
+
+		// On explicit full setup, initialize only genuinely empty cart/checkout
+		// pages. Existing block or shortcode content is always preserved.
+		$cart_id     = (int) wc_get_page_id( 'cart' );
+		$checkout_id = (int) wc_get_page_id( 'checkout' );
+		if ( $cart_id > 0 && '' === trim( (string) get_post_field( 'post_content', $cart_id ) ) ) {
+			wp_update_post( array( 'ID' => $cart_id, 'post_content' => '<!-- wp:shortcode -->[woocommerce_cart]<!-- /wp:shortcode -->' ) );
+		}
+		if ( $checkout_id > 0 && '' === trim( (string) get_post_field( 'post_content', $checkout_id ) ) ) {
+			wp_update_post( array( 'ID' => $checkout_id, 'post_content' => '<!-- wp:shortcode -->[woocommerce_checkout]<!-- /wp:shortcode -->' ) );
+		}
+
+		$summary[] = __( 'Pages created (Home, Shop, About, Contact, Journal, Privacy)', 'inkwell' );
+
+		/* Journal posts */
+		$post_cats = array( 'reading-lists' => 'Reading Lists', 'behind-the-shelves' => 'Behind the Shelves', 'staff-picks' => 'Staff Picks' );
+		foreach ( $post_cats as $slug => $name ) {
+			if ( ! term_exists( $slug, 'category' ) ) {
+				wp_insert_term( $name, 'category', array( 'slug' => $slug ) );
+			}
+		}
+		$posts = array(
 			array(
-				'post_type'    => 'post',
-				'post_status'  => 'publish',
-				'post_title'   => $post['title'],
-				'post_name'    => sanitize_title( $post['title'] ),
-				'post_content' => $post['content'],
-				'post_date'    => gmdate( 'Y-m-d H:i:s', time() - ( 3 - $i ) * 4 * DAY_IN_SECONDS ),
-			)
+				'title'   => 'Autumn reading list: 7 books for long evenings',
+				'cat'     => 'reading-lists',
+				'content' => '<p>The light goes early and the evenings get long — which, let’s be honest, is a gift for readers. Here is what the Inkwell team is reading this season.</p><h3>1. Where the Crawdads Sing — Delia Owens</h3><p>Mystery and marshland. We could not put it down.</p><h3>2. Sapiens — Yuval Noah Harari</h3><p>The big-picture book that starts a hundred conversations.</p><h3>3. Dune — Frank Herbert</h3><p>With the films bringing new readers, now is the time.</p>',
+			),
+			array(
+				'title'   => 'Behind the shelves: how we pick our stock',
+				'cat'     => 'behind-the-shelves',
+				'content' => '<p>People often ask how a small bookshop decides what to stock. The honest answer: slowly, and by committee.</p><p>Every month we each bring one book we loved to the table. We talk about it over terrible coffee. If two of us have read it and one of us can’t stop talking about it, it goes on the shelf. That’s the whole algorithm.</p>',
+			),
+			array(
+				'title'   => 'Staff pick: The Name of the Wind',
+				'cat'     => 'staff-picks',
+				'content' => '<p>Every so often a book arrives that you press into people’s hands. For me, that book is Patrick Rothfuss’s <em>The Name of the Wind</em>.</p><p>It is the story of Kvothe — musician, student, legend — told in his own words, and it does what the very best fantasy does: it makes the world feel real enough to walk into. The prose is beautiful, the magic system is genuinely clever, and the mystery at its heart kept me up for three nights.</p><p>If you like one thing this season, let it be this. — Claire, Inkwell</p>',
+			),
 		);
-		wp_set_object_terms( $pid, array( $post['cat'] ), 'category' );
-		$thumb_sku = array( 'hobbit', 'dune', 'name-of-the-wind' )[ $i ];
-		if ( isset( $cover_ids[ $thumb_sku ] ) ) {
-			set_post_thumbnail( $pid, $cover_ids[ $thumb_sku ] );
+		foreach ( $posts as $i => $post ) {
+			$existing = get_page_by_path( sanitize_title( $post['title'] ), OBJECT, 'post' );
+			$pid      = $existing ? (int) $existing->ID : (int) wp_insert_post(
+				array(
+					'post_type'    => 'post',
+					'post_status'  => 'publish',
+					'post_title'   => $post['title'],
+					'post_name'    => sanitize_title( $post['title'] ),
+					'post_content' => $post['content'],
+					'post_date'    => wp_date( 'Y-m-d H:i:s', time() - ( 3 - $i ) * 4 * DAY_IN_SECONDS ),
+				)
+			);
+			wp_set_object_terms( $pid, array( $post['cat'] ), 'category' );
+			$thumb_sku = array( 'hobbit', 'dune', 'name-of-the-wind' )[ $i ];
+			if ( isset( $cover_ids[ $thumb_sku ] ) ) {
+				set_post_thumbnail( $pid, $cover_ids[ $thumb_sku ] );
+			}
 		}
-		$post_ids[] = $pid;
+		$summary[] = __( '3 journal posts with covers', 'inkwell' );
 	}
-	$summary[] = __( '3 journal posts with covers', 'inkwell' );
 
 	/* Reviews */
 	$reviews = array(
@@ -599,7 +603,7 @@ function inkwell_demo_import_catalog( $apply_site_setup = false ) {
 				'comment_content'      => $review['content'],
 				'comment_type'         => 'review',
 				'comment_approved'     => 1,
-				'comment_date'         => gmdate( 'Y-m-d H:i:s', time() - wp_rand( 1, 30 ) * DAY_IN_SECONDS ),
+				'comment_date'         => wp_date( 'Y-m-d H:i:s', time() - wp_rand( 1, 30 ) * DAY_IN_SECONDS ),
 			)
 		);
 		if ( $cid ) {

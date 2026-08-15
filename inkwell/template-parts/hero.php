@@ -83,8 +83,11 @@ $trust_items = array_filter(
 		<?php if ( ! empty( $hero_products ) ) : ?>
 			<div class="hero-covers" aria-hidden="true">
 				<?php
-				foreach ( $hero_products as $i => $hp ) :
-					$img = $hp->get_image( 'inkwell-card', array( 'loading' => 'eager' ) );
+			foreach ( $hero_products as $i => $hp ) :
+				$image_attributes = 0 === $i
+					? array( 'loading' => 'eager', 'fetchpriority' => 'high' )
+					: array( 'loading' => 'lazy' );
+				$img = $hp->get_image( 'inkwell-card', $image_attributes );
 					if ( ! $img ) {
 						continue;
 					}

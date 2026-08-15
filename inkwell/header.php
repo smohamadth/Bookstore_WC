@@ -15,8 +15,8 @@
 </head>
 
 <body <?php body_class(); ?>>
-<script>document.documentElement.classList.add('inkwell-js');</script>
 <?php wp_body_open(); ?>
+<script>document.documentElement.classList.add('inkwell-js');</script>
 
 <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'inkwell' ); ?></a>
 

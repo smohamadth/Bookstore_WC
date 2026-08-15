@@ -54,6 +54,17 @@ function inkwell_newsletter_subscribe( $email, $consent = false ) {
 		return array( true, __( 'You are already subscribed — thank you!', 'inkwell' ) );
 	}
 
+	/**
+	 * Filters the maximum size of the built-in local list. Larger stores should
+	 * connect a dedicated email provider through the subscription action.
+	 *
+	 * @param int $limit Maximum local subscribers.
+	 */
+	$limit = max( 1, (int) apply_filters( 'inkwell_newsletter_local_limit', 1000 ) );
+	if ( count( $subscribers ) >= $limit ) {
+		return array( false, __( 'The local reading list is full. Please contact the store owner.', 'inkwell' ) );
+	}
+
 	$subscribers[ $key ] = array(
 		'email'   => $email,
 		'time'    => current_time( 'mysql', true ),
@@ -96,7 +107,8 @@ function inkwell_newsletter_unsubscribe( $email ) {
 function inkwell_newsletter_ajax() {
 	check_ajax_referer( 'inkwell_newsletter', 'nonce' );
 
-	if ( ! empty( $_POST['website'] ) ) { // Honeypot.
+	$website = isset( $_POST['website'] ) ? sanitize_text_field( wp_unslash( $_POST['website'] ) ) : '';
+	if ( '' !== $website ) { // Honeypot.
 		wp_send_json_success( array( 'message' => __( 'Thank you!', 'inkwell' ) ) );
 	}
 	if ( ! inkwell_newsletter_rate_limit() ) {
@@ -124,8 +136,9 @@ function inkwell_newsletter_form_handler() {
 	}
 	check_admin_referer( 'inkwell_newsletter_form', 'inkwell_nonce' );
 
-	$back = wp_get_referer() ?: home_url( '/' );
-	if ( ! empty( $_POST['website'] ) ) {
+	$back    = wp_get_referer() ?: home_url( '/' );
+	$website = isset( $_POST['website'] ) ? sanitize_text_field( wp_unslash( $_POST['website'] ) ) : '';
+	if ( '' !== $website ) {
 		wp_safe_redirect( add_query_arg( 'newsletter', 'success', $back ) );
 		exit;
 	}
@@ -196,7 +209,7 @@ function inkwell_newsletter_form() {
 
 	ob_start();
 	?>
-	<form class="newsletter-form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" data-inkwell-newsletter novalidate>
+	<form class="newsletter-form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" data-inkwell-newsletter>
 		<input type="hidden" name="action" value="inkwell_newsletter_form" />
 		<?php wp_nonce_field( 'inkwell_newsletter_form', 'inkwell_nonce' ); ?>
 		<span class="hp-field" aria-hidden="true">
@@ -280,7 +293,7 @@ function inkwell_newsletter_admin_page() {
 		<p><?php echo esc_html( sprintf( __( '%d locally stored subscribers.', 'inkwell' ), count( $subscribers ) ) ); ?></p>
 		<p><a class="button" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=inkwell_newsletter_export' ), 'inkwell_newsletter_export' ) ); ?>"><?php esc_html_e( 'Export CSV', 'inkwell' ); ?></a></p>
 		<table class="widefat striped">
-			<thead><tr><th><?php esc_html_e( 'Email address', 'inkwell' ); ?></th><th><?php esc_html_e( 'Subscribed at (UTC)', 'inkwell' ); ?></th><th><?php esc_html_e( 'Consent recorded', 'inkwell' ); ?></th></tr></thead>
+			<thead><tr><th scope="col"><?php esc_html_e( 'Email address', 'inkwell' ); ?></th><th scope="col"><?php esc_html_e( 'Subscribed at (UTC)', 'inkwell' ); ?></th><th scope="col"><?php esc_html_e( 'Consent recorded', 'inkwell' ); ?></th></tr></thead>
 			<tbody>
 			<?php if ( ! $subscribers ) : ?>
 				<tr><td colspan="3"><?php esc_html_e( 'No local subscribers.', 'inkwell' ); ?></td></tr>

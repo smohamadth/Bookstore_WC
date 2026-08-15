@@ -28,12 +28,19 @@ jobs:
         run: composer phpcs
       - name: PHP syntax
         run: find inkwell inkwell-books -type f -name '*.php' -print0 | xargs -0 -n1 php -l
-      - name: JavaScript syntax and formatting
+      - name: JavaScript syntax, formatting and dependency audit
         run: |
           npm run lint:js
           npm run format:check
+          npm audit --audit-level=high
+      - name: Shell and Python syntax
+        run: |
+          bash -n tools/build-release.sh tools/import-demo.sh
+          python3 -m py_compile tools/*.py tests/*.py
       - name: Static regressions
-        run: python3 tests/static-audit.py
+        run: |
+          npm run check:plugin
+          python3 tests/static-audit.py
       - name: Build and verify install archives
         if: matrix.php == '8.4'
         run: tools/build-release.sh

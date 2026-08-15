@@ -109,6 +109,13 @@ function inkwell_scripts() {
 		);
 	}
 
+	if ( is_rtl() ) {
+		$rtl_dependencies = class_exists( 'WooCommerce' )
+			? array( 'inkwell-style', 'inkwell-woocommerce' )
+			: array( 'inkwell-style' );
+		wp_enqueue_style( 'inkwell-rtl', get_template_directory_uri() . '/rtl.css', $rtl_dependencies, $ver );
+	}
+
 	wp_enqueue_script(
 		'inkwell-main',
 		get_template_directory_uri() . '/js/main.js',

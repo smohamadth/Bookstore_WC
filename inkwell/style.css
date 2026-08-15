@@ -11,7 +11,7 @@ Requires PHP: 7.4
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: inkwell
-Tags: e-commerce, blog, custom-colors, custom-logo, custom-menu, featured-images, translation-ready, threaded-comments
+Tags: e-commerce, blog, custom-colors, custom-logo, custom-menu, featured-images, rtl-language-support, translation-ready, threaded-comments
 WC requires at least: 8.0
 WC tested up to: 11.0
 */
@@ -32,7 +32,7 @@ WC tested up to: 11.0
 :root {
 	--ink: #20242c;
 	--ink-soft: #4c5462;
-	--ink-faint: #79808c;
+	--ink-faint: #626b78;
 	--paper: #f6f1e6;
 	--paper-2: #ece3d0;
 	--card: #fffdf8;
@@ -354,6 +354,8 @@ html.inkwell-js [data-reveal].in-view { opacity: 1; transform: none; }
 	border-bottom: 1px solid var(--line); padding: 1.3rem 0;
 }
 .search-panel.is-open { display: block; animation: panelIn 0.2s ease; }
+html:not(.inkwell-js) [data-search-toggle] { display: none; }
+html:not(.inkwell-js) .search-panel { display: block; }
 @keyframes panelIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
 .search-panel form { display: flex; gap: 0.6rem; max-width: 660px; margin-inline: auto; }
 .search-panel input[type="search"] { flex: 1; font-size: 1.05rem; padding: 0.85em 1.2em; }
@@ -452,11 +454,9 @@ html.inkwell-js [data-reveal].in-view { opacity: 1; transform: none; }
    ========================================================================== */
 .value-props { border-bottom: 1px solid var(--line); background: var(--card); }
 .value-props-grid {
-	display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+	display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.5rem;
 	padding: 2.2rem 0;
 }
-.value-props-grid--2 { grid-template-columns: repeat(2, 1fr); }
-.value-props-grid--3 { grid-template-columns: repeat(3, 1fr); }
 .value-prop { display: flex; gap: 1rem; align-items: flex-start; }
 .value-prop .vp-icon {
 	width: 48px; height: 48px; flex-shrink: 0; border-radius: 14px;
@@ -811,6 +811,8 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--accent); ou
 	.hero-ctas, .hero-trust { justify-content: center; }
 	.hero-covers { min-height: 400px; }
 	.menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+	html:not(.inkwell-js) .menu-toggle { display: none; }
+	html:not(.inkwell-js) .mobile-menu { display: block; }
 	.main-navigation { display: none; }
 	.two-col, .two-col--reversed { grid-template-columns: 1fr; }
 	.widget-area { order: 2; }

@@ -99,7 +99,7 @@ li.product .card-media img {
 	transition: transform 0.55s ease;
 }
 li.product:hover .card-media img { transform: scale(1.05); }
-li.product .card-media .cover-link { display: block; width: 100%; height: 100%; }
+li.product .card-media > .woocommerce-loop-product__link { display: block; width: 100%; height: 100%; }
 
 /* Quick-add overlay */
 li.product .card-actions {

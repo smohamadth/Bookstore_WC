@@ -33,10 +33,9 @@ if ( $delivery ) {
 if ( $returns ) {
 	$items[] = array( 'icon' => 'return', 'title' => $returns, 'text' => __( 'See the store policy for full details.', 'inkwell' ) );
 }
-$items = array_slice( $items, 0, 4 );
 ?>
 <section class="value-props" aria-label="<?php esc_attr_e( 'Why shop with us', 'inkwell' ); ?>">
-	<div class="container value-props-grid value-props-grid--<?php echo esc_attr( count( $items ) ); ?>">
+	<div class="container value-props-grid">
 		<?php foreach ( $items as $item ) : ?>
 			<div class="value-prop" data-reveal>
 				<span class="vp-icon"><?php echo inkwell_icon( $item['icon'] ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>

@@ -4,6 +4,10 @@
 (function () {
 	'use strict';
 
+	// Repeat the early header marker so external scripts still enhance the UI
+	// when a strict Content Security Policy blocks the tiny inline marker.
+	document.documentElement.classList.add('inkwell-js');
+
 	document.addEventListener('DOMContentLoaded', function () {
 		initMenu();
 		initSearch();
@@ -293,7 +297,8 @@
 			return;
 		}
 		btn.addEventListener('click', function () {
-			window.scrollTo({ top: 0, behavior: 'smooth' });
+			var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+			window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
 		});
 		var onScroll = function () {
 			btn.classList.toggle('is-visible', window.scrollY > 600);

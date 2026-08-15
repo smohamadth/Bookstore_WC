@@ -115,8 +115,10 @@ Shortcodes:
 [inkwell_newsletter_unsubscribe]
 ```
 
-Local records are stored in the non-autoloaded `inkwell_subscribers` option.
-For a production marketing list, connect a specialist email provider:
+Local records are stored in the non-autoloaded `inkwell_subscribers` option and
+are capped at 1,000 addresses by default. Use the
+`inkwell_newsletter_local_limit` filter only for a deliberately sized local
+list. For a production marketing list, connect a specialist email provider:
 
 ```php
 add_action( 'inkwell_newsletter_subscribed', function ( $email ) {
@@ -149,12 +151,14 @@ Create `inkwell-xx_XX.po`, compile it to `inkwell-xx_XX.mo`, and place both in
 npm ci
 npm test
 npm run lint:js
+python3 tools/sync-plugin-modules.py
 ./tools/build-release.sh
 ```
 
-The build produces and validates `inkwell.zip` and `inkwell-books.zip`.
-GitHub Actions syntax-checks PHP on 7.4, 8.1 and 8.4 and runs the release
-regression suite.
+The build produces deterministic, validated `inkwell.zip` and
+`inkwell-books.zip` archives. The ready-to-install
+`tools/github-quality-workflow.yml` workflow syntax-checks PHP on 7.4, 8.1 and
+8.4 and runs the release regression suite once copied into `.github/workflows/`.
 
 ## 10. Troubleshooting
 

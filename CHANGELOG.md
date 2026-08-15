@@ -25,6 +25,13 @@
 - Added configurable merchant policy, payment and social messages; unverified
   store promises are hidden by default.
 - Added the optional Inkwell Books companion plugin for portable data features.
-- Consolidated twenty duplicate font files into six variable-font subsets.
-- Added licenses, notices, root theme screenshot, generated translations,
-  static regressions, release tooling and a PHP 7.4–8.4 CI matrix.
+- Consolidated twenty duplicate font files into six variable-font subsets and
+  removed an unused legacy hero image.
+- Preserved category-title extension hooks and made homepage product queries
+  request-cached with only the likely LCP cover loaded eagerly.
+- Made pages and journal content part of explicit full demo setup, tightened
+  legacy product ownership detection, and bounded local newsletter storage.
+- Added a matching companion-plugin text domain, plugin translation template,
+  WooCommerce dependency metadata, RTL support, deterministic ZIP metadata,
+  licenses, notices, an optimized root screenshot, static regressions and
+  release tooling.

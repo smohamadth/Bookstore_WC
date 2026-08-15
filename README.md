@@ -20,7 +20,7 @@ WooCommerce shopping flows without a page builder.
 - Privacy-aware reading list with consent, throttling, unsubscribe, exporter and eraser support
 - One-click demo catalog: 33 books, 7 genres, 31 authors and 14 reviews
 - Self-hosted variable fonts with no external font requests
-- Translation-ready and keyboard-friendly
+- Translation-ready, RTL-aware and keyboard-friendly
 
 ## Repository layout
 
@@ -82,8 +82,10 @@ Newsletter shortcodes:
 - `[inkwell_newsletter_unsubscribe]`
 
 A new subscription fires `inkwell_newsletter_subscribed`; an unsubscribe fires
-`inkwell_newsletter_unsubscribed`. For a large or marketing-critical list, hook
-an email service such as Mailchimp or Brevo and use its double-opt-in workflow.
+`inkwell_newsletter_unsubscribed`. Local storage is capped at 1,000 addresses by
+default (filterable with `inkwell_newsletter_local_limit`). For a larger or
+marketing-critical list, hook an email service such as Mailchimp or Brevo and
+use its authenticated double-opt-in/unsubscribe workflow.
 
 ## Development and release
 
@@ -91,16 +93,21 @@ an email service such as Mailchimp or Brevo and use its double-opt-in workflow.
 npm ci
 npm test
 npm run lint:js
+python3 tools/sync-plugin-modules.py
 npm run make-pot
 ./tools/build-release.sh
 ```
 
-The release script regenerates translations, runs static regressions, checks
-JavaScript, verifies that companion-plugin modules match theme fallbacks,
-builds both ZIP files, tests archive integrity and compares every packaged file
+The release script regenerates both translation templates, runs static
+regressions, checks JavaScript, verifies the generated companion-plugin
+modules, builds both ZIP files with normalized metadata, proves a second build
+is byte-identical, tests archive integrity, and compares every packaged file
 byte-for-byte with its source.
 
-GitHub Actions also lints every PHP file on PHP 7.4, 8.1 and 8.4.
+`tools/github-quality-workflow.yml` is a ready-to-install GitHub Actions workflow
+that lints every PHP file on PHP 7.4, 8.1 and 8.4. Copy it to
+`.github/workflows/quality.yml` when the repository's GitHub App has workflow
+write permission.
 
 To regenerate typographic demo covers:
 

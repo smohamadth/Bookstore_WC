@@ -49,7 +49,13 @@ function inkwell_icon( $name ) {
  */
 function inkwell_first_character( $text ) {
 	$text = wp_strip_all_tags( (string) $text );
-	return function_exists( 'mb_substr' ) ? mb_substr( $text, 0, 1 ) : substr( $text, 0, 1 );
+	if ( function_exists( 'mb_substr' ) ) {
+		return mb_substr( $text, 0, 1 );
+	}
+	if ( preg_match( '/^./us', $text, $match ) ) {
+		return $match[0];
+	}
+	return substr( $text, 0, 1 );
 }
 
 /**
@@ -302,6 +308,11 @@ function inkwell_render_products_row( $products, $limit = 8, $ranked = false ) {
  * @return array
  */
 function inkwell_get_bestsellers() {
+	static $products = null;
+	if ( null !== $products ) {
+		return $products;
+	}
+
 	$products = wc_get_products(
 		array(
 			'status'   => 'publish',
@@ -330,12 +341,16 @@ function inkwell_get_bestsellers() {
  * @return array
  */
 function inkwell_get_new_arrivals() {
-	return wc_get_products(
-		array(
-			'status'  => 'publish',
-			'limit'   => 8,
-			'orderby' => 'date',
-			'order'   => 'DESC',
-		)
-	);
+	static $products = null;
+	if ( null === $products ) {
+		$products = wc_get_products(
+			array(
+				'status'  => 'publish',
+				'limit'   => 8,
+				'orderby' => 'date',
+				'order'   => 'DESC',
+			)
+		);
+	}
+	return $products;
 }

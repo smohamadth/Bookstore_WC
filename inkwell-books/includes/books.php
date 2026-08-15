@@ -14,15 +14,15 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function inkwell_register_book_author() {
 	$labels = array(
-		'name'          => __( 'Book Authors', 'inkwell' ),
-		'singular_name' => __( 'Book Author', 'inkwell' ),
-		'search_items'  => __( 'Search Authors', 'inkwell' ),
-		'all_items'     => __( 'All Authors', 'inkwell' ),
-		'edit_item'     => __( 'Edit Author', 'inkwell' ),
-		'update_item'   => __( 'Update Author', 'inkwell' ),
-		'add_new_item'  => __( 'Add New Author', 'inkwell' ),
-		'new_item_name' => __( 'New Author Name', 'inkwell' ),
-		'menu_name'     => __( 'Authors', 'inkwell' ),
+		'name'          => __( 'Book Authors', 'inkwell-books' ),
+		'singular_name' => __( 'Book Author', 'inkwell-books' ),
+		'search_items'  => __( 'Search Authors', 'inkwell-books' ),
+		'all_items'     => __( 'All Authors', 'inkwell-books' ),
+		'edit_item'     => __( 'Edit Author', 'inkwell-books' ),
+		'update_item'   => __( 'Update Author', 'inkwell-books' ),
+		'add_new_item'  => __( 'Add New Author', 'inkwell-books' ),
+		'new_item_name' => __( 'New Author Name', 'inkwell-books' ),
+		'menu_name'     => __( 'Authors', 'inkwell-books' ),
 	);
 
 	register_taxonomy(
@@ -49,35 +49,35 @@ add_action( 'init', 'inkwell_register_book_author' );
 function inkwell_book_meta_fields() {
 	return array(
 		'_inkwell_isbn'     => array(
-			'label' => __( 'ISBN-13', 'inkwell' ),
+			'label' => __( 'ISBN-13', 'inkwell-books' ),
 			'type'  => 'text',
 			'placeholder' => '978-0-00-000000-0',
 		),
 		'_inkwell_publisher' => array(
-			'label' => __( 'Publisher', 'inkwell' ),
+			'label' => __( 'Publisher', 'inkwell-books' ),
 			'type'  => 'text',
 		),
 		'_inkwell_year'     => array(
-			'label' => __( 'Publication Year', 'inkwell' ),
+			'label' => __( 'Publication Year', 'inkwell-books' ),
 			'type'  => 'number',
 		),
 		'_inkwell_pages'    => array(
-			'label' => __( 'Pages', 'inkwell' ),
+			'label' => __( 'Pages', 'inkwell-books' ),
 			'type'  => 'number',
 		),
 		'_inkwell_format'   => array(
-			'label'   => __( 'Format', 'inkwell' ),
+			'label'   => __( 'Format', 'inkwell-books' ),
 			'type'    => 'select',
 			'options' => array(
-				''           => __( '— Select —', 'inkwell' ),
-				'paperback'  => __( 'Paperback', 'inkwell' ),
-				'hardcover'  => __( 'Hardcover', 'inkwell' ),
-				'ebook'      => __( 'Ebook', 'inkwell' ),
-				'audiobook'  => __( 'Audiobook', 'inkwell' ),
+				''           => __( '— Select —', 'inkwell-books' ),
+				'paperback'  => __( 'Paperback', 'inkwell-books' ),
+				'hardcover'  => __( 'Hardcover', 'inkwell-books' ),
+				'ebook'      => __( 'Ebook', 'inkwell-books' ),
+				'audiobook'  => __( 'Audiobook', 'inkwell-books' ),
 			),
 		),
 		'_inkwell_language' => array(
-			'label' => __( 'Language', 'inkwell' ),
+			'label' => __( 'Language', 'inkwell-books' ),
 			'type'  => 'text',
 		),
 	);
@@ -91,7 +91,7 @@ function inkwell_book_meta_fields() {
  */
 function inkwell_product_data_tab( $tabs ) {
 	$tabs['inkwell_book'] = array(
-		'label'    => __( 'Book Details', 'inkwell' ),
+		'label'    => __( 'Book Details', 'inkwell-books' ),
 		'target'   => 'inkwell_book_details',
 		'class'    => array( 'show_if_simple', 'show_if_variable' ),
 		'priority' => 25,
@@ -135,7 +135,7 @@ function inkwell_book_details_panel() {
 			?>
 		</div>
 		<p class="description" style="padding:0 12px 12px;">
-			<?php esc_html_e( 'Bibliographic details shown on the product page and in the Book Details tab. The Author field is managed from the Authors box.', 'inkwell' ); ?>
+			<?php esc_html_e( 'Bibliographic details shown on the product page and in the Book Details tab. The Author field is managed from the Authors box.', 'inkwell-books' ); ?>
 		</p>
 	</div>
 	<?php
@@ -183,8 +183,8 @@ function inkwell_admin_product_columns( $columns ) {
 	foreach ( $columns as $key => $label ) {
 		$new[ $key ] = $label;
 		if ( 'name' === $key ) {
-			$new['inkwell_author'] = __( 'Author', 'inkwell' );
-			$new['inkwell_isbn']   = __( 'ISBN', 'inkwell' );
+			$new['inkwell_author'] = __( 'Author', 'inkwell-books' );
+			$new['inkwell_isbn']   = __( 'ISBN', 'inkwell-books' );
 		}
 	}
 	return $new;

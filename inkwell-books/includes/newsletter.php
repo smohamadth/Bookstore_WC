@@ -38,10 +38,10 @@ function inkwell_newsletter_subscribe( $email, $consent = false ) {
 	$email = sanitize_email( $email );
 
 	if ( ! is_email( $email ) ) {
-		return array( false, __( 'Please enter a valid email address.', 'inkwell' ) );
+		return array( false, __( 'Please enter a valid email address.', 'inkwell-books' ) );
 	}
 	if ( ! $consent ) {
-		return array( false, __( 'Please agree to receive the newsletter.', 'inkwell' ) );
+		return array( false, __( 'Please agree to receive the newsletter.', 'inkwell-books' ) );
 	}
 
 	$subscribers = get_option( 'inkwell_subscribers', array() );
@@ -51,7 +51,18 @@ function inkwell_newsletter_subscribe( $email, $consent = false ) {
 
 	$key = strtolower( $email );
 	if ( isset( $subscribers[ $key ] ) ) {
-		return array( true, __( 'You are already subscribed — thank you!', 'inkwell' ) );
+		return array( true, __( 'You are already subscribed — thank you!', 'inkwell-books' ) );
+	}
+
+	/**
+	 * Filters the maximum size of the built-in local list. Larger stores should
+	 * connect a dedicated email provider through the subscription action.
+	 *
+	 * @param int $limit Maximum local subscribers.
+	 */
+	$limit = max( 1, (int) apply_filters( 'inkwell_newsletter_local_limit', 1000 ) );
+	if ( count( $subscribers ) >= $limit ) {
+		return array( false, __( 'The local reading list is full. Please contact the store owner.', 'inkwell-books' ) );
 	}
 
 	$subscribers[ $key ] = array(
@@ -68,7 +79,7 @@ function inkwell_newsletter_subscribe( $email, $consent = false ) {
 	 */
 	do_action( 'inkwell_newsletter_subscribed', $email );
 
-	return array( true, __( 'Welcome to the reading list!', 'inkwell' ) );
+	return array( true, __( 'Welcome to the reading list!', 'inkwell-books' ) );
 }
 
 /**
@@ -96,11 +107,12 @@ function inkwell_newsletter_unsubscribe( $email ) {
 function inkwell_newsletter_ajax() {
 	check_ajax_referer( 'inkwell_newsletter', 'nonce' );
 
-	if ( ! empty( $_POST['website'] ) ) { // Honeypot.
-		wp_send_json_success( array( 'message' => __( 'Thank you!', 'inkwell' ) ) );
+	$website = isset( $_POST['website'] ) ? sanitize_text_field( wp_unslash( $_POST['website'] ) ) : '';
+	if ( '' !== $website ) { // Honeypot.
+		wp_send_json_success( array( 'message' => __( 'Thank you!', 'inkwell-books' ) ) );
 	}
 	if ( ! inkwell_newsletter_rate_limit() ) {
-		wp_send_json_error( array( 'message' => __( 'Too many attempts. Please try again later.', 'inkwell' ) ), 429 );
+		wp_send_json_error( array( 'message' => __( 'Too many attempts. Please try again later.', 'inkwell-books' ) ), 429 );
 	}
 
 	$email   = isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : '';
@@ -124,8 +136,9 @@ function inkwell_newsletter_form_handler() {
 	}
 	check_admin_referer( 'inkwell_newsletter_form', 'inkwell_nonce' );
 
-	$back = wp_get_referer() ?: home_url( '/' );
-	if ( ! empty( $_POST['website'] ) ) {
+	$back    = wp_get_referer() ?: home_url( '/' );
+	$website = isset( $_POST['website'] ) ? sanitize_text_field( wp_unslash( $_POST['website'] ) ) : '';
+	if ( '' !== $website ) {
 		wp_safe_redirect( add_query_arg( 'newsletter', 'success', $back ) );
 		exit;
 	}
@@ -173,10 +186,10 @@ add_action( 'admin_post_nopriv_inkwell_newsletter_unsubscribe', 'inkwell_newslet
 function inkwell_newsletter_notice() {
 	$status = isset( $_GET['newsletter'] ) ? sanitize_key( wp_unslash( $_GET['newsletter'] ) ) : '';
 	$messages = array(
-		'success'      => __( 'Thank you — you are on the list!', 'inkwell' ),
-		'error'        => __( 'Please check your email and consent, then try again.', 'inkwell' ),
-		'rate-limited' => __( 'Too many attempts. Please try again later.', 'inkwell' ),
-		'removed'      => __( 'If that address was subscribed, it has been removed from the reading list.', 'inkwell' ),
+		'success'      => __( 'Thank you — you are on the list!', 'inkwell-books' ),
+		'error'        => __( 'Please check your email and consent, then try again.', 'inkwell-books' ),
+		'rate-limited' => __( 'Too many attempts. Please try again later.', 'inkwell-books' ),
+		'removed'      => __( 'If that address was subscribed, it has been removed from the reading list.', 'inkwell-books' ),
 	);
 	return isset( $messages[ $status ] ) ? $messages[ $status ] : '';
 }
@@ -196,21 +209,21 @@ function inkwell_newsletter_form() {
 
 	ob_start();
 	?>
-	<form class="newsletter-form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" data-inkwell-newsletter novalidate>
+	<form class="newsletter-form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" data-inkwell-newsletter>
 		<input type="hidden" name="action" value="inkwell_newsletter_form" />
 		<?php wp_nonce_field( 'inkwell_newsletter_form', 'inkwell_nonce' ); ?>
 		<span class="hp-field" aria-hidden="true">
-			<label><?php esc_html_e( 'Leave this field empty', 'inkwell' ); ?><input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+			<label><?php esc_html_e( 'Leave this field empty', 'inkwell-books' ); ?><input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
 		</span>
-		<label class="screen-reader-text" for="<?php echo esc_attr( $id ); ?>"><?php esc_html_e( 'Email address', 'inkwell' ); ?></label>
-		<input type="email" id="<?php echo esc_attr( $id ); ?>" name="email" placeholder="<?php esc_attr_e( 'you@example.com', 'inkwell' ); ?>" autocomplete="email" required />
-		<button type="submit" name="inkwell_newsletter_submit" value="1" class="button button--light"><?php esc_html_e( 'Subscribe', 'inkwell' ); ?></button>
+		<label class="screen-reader-text" for="<?php echo esc_attr( $id ); ?>"><?php esc_html_e( 'Email address', 'inkwell-books' ); ?></label>
+		<input type="email" id="<?php echo esc_attr( $id ); ?>" name="email" placeholder="<?php esc_attr_e( 'you@example.com', 'inkwell-books' ); ?>" autocomplete="email" required />
+		<button type="submit" name="inkwell_newsletter_submit" value="1" class="button button--light"><?php esc_html_e( 'Subscribe', 'inkwell-books' ); ?></button>
 		<label class="newsletter-consent" for="<?php echo esc_attr( $consent ); ?>">
 			<input type="checkbox" id="<?php echo esc_attr( $consent ); ?>" name="consent" value="1" required />
 			<span>
-				<?php esc_html_e( 'I agree to receive the reading-list newsletter and can unsubscribe at any time.', 'inkwell' ); ?>
+				<?php esc_html_e( 'I agree to receive the reading-list newsletter and can unsubscribe at any time.', 'inkwell-books' ); ?>
 				<?php if ( $privacy ) : ?>
-					<a href="<?php echo esc_url( $privacy ); ?>"><?php esc_html_e( 'Privacy policy', 'inkwell' ); ?></a>
+					<a href="<?php echo esc_url( $privacy ); ?>"><?php esc_html_e( 'Privacy policy', 'inkwell-books' ); ?></a>
 				<?php endif; ?>
 			</span>
 		</label>
@@ -231,8 +244,8 @@ function inkwell_newsletter_unsubscribe_form() {
 	<form class="newsletter-unsubscribe-form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
 		<input type="hidden" name="action" value="inkwell_newsletter_unsubscribe" />
 		<?php wp_nonce_field( 'inkwell_newsletter_unsubscribe', 'inkwell_unsubscribe_nonce' ); ?>
-		<label><?php esc_html_e( 'Email address', 'inkwell' ); ?> <input type="email" name="email" required autocomplete="email" /></label>
-		<button type="submit" class="button"><?php esc_html_e( 'Unsubscribe', 'inkwell' ); ?></button>
+		<label><?php esc_html_e( 'Email address', 'inkwell-books' ); ?> <input type="email" name="email" required autocomplete="email" /></label>
+		<button type="submit" class="button"><?php esc_html_e( 'Unsubscribe', 'inkwell-books' ); ?></button>
 		<p class="newsletter-note" role="status" aria-live="polite"><?php echo esc_html( inkwell_newsletter_notice() ); ?></p>
 	</form>
 	<?php
@@ -255,8 +268,8 @@ add_shortcode( 'inkwell_newsletter_unsubscribe', 'inkwell_newsletter_unsubscribe
  */
 function inkwell_newsletter_admin_menu() {
 	add_management_page(
-		__( 'Reading List', 'inkwell' ),
-		__( 'Reading List', 'inkwell' ),
+		__( 'Reading List', 'inkwell-books' ),
+		__( 'Reading List', 'inkwell-books' ),
 		'manage_options',
 		'inkwell-reading-list',
 		'inkwell_newsletter_admin_page'
@@ -276,20 +289,20 @@ function inkwell_newsletter_admin_page() {
 	ksort( $subscribers );
 	?>
 	<div class="wrap">
-		<h1><?php esc_html_e( 'Reading List', 'inkwell' ); ?></h1>
-		<p><?php echo esc_html( sprintf( __( '%d locally stored subscribers.', 'inkwell' ), count( $subscribers ) ) ); ?></p>
-		<p><a class="button" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=inkwell_newsletter_export' ), 'inkwell_newsletter_export' ) ); ?>"><?php esc_html_e( 'Export CSV', 'inkwell' ); ?></a></p>
+		<h1><?php esc_html_e( 'Reading List', 'inkwell-books' ); ?></h1>
+		<p><?php echo esc_html( sprintf( __( '%d locally stored subscribers.', 'inkwell-books' ), count( $subscribers ) ) ); ?></p>
+		<p><a class="button" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=inkwell_newsletter_export' ), 'inkwell_newsletter_export' ) ); ?>"><?php esc_html_e( 'Export CSV', 'inkwell-books' ); ?></a></p>
 		<table class="widefat striped">
-			<thead><tr><th><?php esc_html_e( 'Email address', 'inkwell' ); ?></th><th><?php esc_html_e( 'Subscribed at (UTC)', 'inkwell' ); ?></th><th><?php esc_html_e( 'Consent recorded', 'inkwell' ); ?></th></tr></thead>
+			<thead><tr><th scope="col"><?php esc_html_e( 'Email address', 'inkwell-books' ); ?></th><th scope="col"><?php esc_html_e( 'Subscribed at (UTC)', 'inkwell-books' ); ?></th><th scope="col"><?php esc_html_e( 'Consent recorded', 'inkwell-books' ); ?></th></tr></thead>
 			<tbody>
 			<?php if ( ! $subscribers ) : ?>
-				<tr><td colspan="3"><?php esc_html_e( 'No local subscribers.', 'inkwell' ); ?></td></tr>
+				<tr><td colspan="3"><?php esc_html_e( 'No local subscribers.', 'inkwell-books' ); ?></td></tr>
 			<?php else : ?>
 				<?php foreach ( $subscribers as $record ) : ?>
 					<tr>
 						<td><?php echo esc_html( isset( $record['email'] ) ? $record['email'] : '' ); ?></td>
 						<td><?php echo esc_html( isset( $record['time'] ) ? $record['time'] : '' ); ?></td>
-						<td><?php echo ! empty( $record['consent'] ) ? esc_html__( 'Yes', 'inkwell' ) : esc_html__( 'Legacy record', 'inkwell' ); ?></td>
+						<td><?php echo ! empty( $record['consent'] ) ? esc_html__( 'Yes', 'inkwell-books' ) : esc_html__( 'Legacy record', 'inkwell-books' ); ?></td>
 					</tr>
 				<?php endforeach; ?>
 			<?php endif; ?>
@@ -304,7 +317,7 @@ function inkwell_newsletter_admin_page() {
  */
 function inkwell_newsletter_export() {
 	if ( ! current_user_can( 'manage_options' ) ) {
-		wp_die( esc_html__( 'You are not allowed to export this data.', 'inkwell' ), '', array( 'response' => 403 ) );
+		wp_die( esc_html__( 'You are not allowed to export this data.', 'inkwell-books' ), '', array( 'response' => 403 ) );
 	}
 	check_admin_referer( 'inkwell_newsletter_export' );
 	$subscribers = get_option( 'inkwell_subscribers', array() );
@@ -315,7 +328,7 @@ function inkwell_newsletter_export() {
 	header( 'Content-Disposition: attachment; filename=inkwell-reading-list.csv' );
 	$output = fopen( 'php://output', 'w' );
 	if ( false === $output ) {
-		wp_die( esc_html__( 'Could not create the export.', 'inkwell' ) );
+		wp_die( esc_html__( 'Could not create the export.', 'inkwell-books' ) );
 	}
 	fputcsv( $output, array( 'email', 'subscribed_at_utc', 'consent' ) );
 	foreach ( $subscribers as $record ) {
@@ -347,11 +360,11 @@ function inkwell_newsletter_personal_data_exporter( $email ) {
 		$record = $subscribers[ $key ];
 		$data[] = array(
 			'group_id'    => 'inkwell-newsletter',
-			'group_label' => __( 'Reading-list newsletter', 'inkwell' ),
+			'group_label' => __( 'Reading-list newsletter', 'inkwell-books' ),
 			'item_id'     => 'subscriber-' . hash( 'sha256', $key ),
 			'data'        => array(
-				array( 'name' => __( 'Email address', 'inkwell' ), 'value' => $record['email'] ),
-				array( 'name' => __( 'Subscribed at', 'inkwell' ), 'value' => isset( $record['time'] ) ? $record['time'] : '' ),
+				array( 'name' => __( 'Email address', 'inkwell-books' ), 'value' => $record['email'] ),
+				array( 'name' => __( 'Subscribed at', 'inkwell-books' ), 'value' => isset( $record['time'] ) ? $record['time'] : '' ),
 			),
 		);
 	}
@@ -382,7 +395,7 @@ function inkwell_newsletter_register_privacy_tools() {
 		'wp_privacy_personal_data_exporters',
 		function ( $exporters ) {
 			$exporters['inkwell-newsletter'] = array(
-				'exporter_friendly_name' => __( 'Inkwell newsletter', 'inkwell' ),
+				'exporter_friendly_name' => __( 'Inkwell newsletter', 'inkwell-books' ),
 				'callback'               => 'inkwell_newsletter_personal_data_exporter',
 			);
 			return $exporters;
@@ -392,7 +405,7 @@ function inkwell_newsletter_register_privacy_tools() {
 		'wp_privacy_personal_data_erasers',
 		function ( $erasers ) {
 			$erasers['inkwell-newsletter'] = array(
-				'eraser_friendly_name' => __( 'Inkwell newsletter', 'inkwell' ),
+				'eraser_friendly_name' => __( 'Inkwell newsletter', 'inkwell-books' ),
 				'callback'             => 'inkwell_newsletter_personal_data_eraser',
 			);
 			return $erasers;

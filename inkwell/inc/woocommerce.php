@@ -110,7 +110,7 @@ function inkwell_book_details_tab( $key ) {
 	echo '<h2 class="tab-title">' . esc_html__( 'Book Details', 'inkwell' ) . '</h2>';
 	echo '<table class="book-details-table">';
 	foreach ( $details as $label => $value ) {
-		echo '<tr><th>' . esc_html( $label ) . '</th><td>' . esc_html( $value ) . '</td></tr>';
+		echo '<tr><th scope="row">' . esc_html( $label ) . '</th><td>' . esc_html( $value ) . '</td></tr>';
 	}
 	echo '</table>';
 }
@@ -306,6 +306,7 @@ remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_pr
 // Category cards provide their own styled link. Keep the hooks available to
 // extensions, but remove WooCommerce's wrappers to avoid nested anchors.
 remove_action( 'woocommerce_before_subcategory', 'woocommerce_template_loop_category_link_open', 10 );
+remove_action( 'woocommerce_shop_loop_subcategory_title', 'woocommerce_template_loop_category_title', 10 );
 remove_action( 'woocommerce_after_subcategory', 'woocommerce_template_loop_category_link_close', 10 );
 
 /**

@@ -28,3 +28,14 @@ if ( ! function_exists( 'inkwell_newsletter_form' ) ) {
 require get_template_directory() . '/inc/woocommerce.php';
 require get_template_directory() . '/inc/demo-import.php';
 require get_template_directory() . '/inc/customizer.php';
+
+/**
+ * Ensure author archive rewrites exist immediately after theme activation.
+ */
+function inkwell_flush_rewrites_on_switch() {
+	if ( function_exists( 'inkwell_register_book_author' ) ) {
+		inkwell_register_book_author();
+	}
+	flush_rewrite_rules();
+}
+add_action( 'after_switch_theme', 'inkwell_flush_rewrites_on_switch' );

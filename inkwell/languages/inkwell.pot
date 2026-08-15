@@ -73,32 +73,48 @@ msgstr ""
 msgid "X (formerly Twitter)"
 msgstr ""
 
-#: footer.php:49, inc/woocommerce.php:346
+#: footer.php:49, inc/woocommerce.php:347
 msgid "Shop"
 msgstr ""
 
 #: footer.php:63
+msgid "All books"
+msgstr ""
+
+#: footer.php:64, header.php:101, inc/template-tags.php:96
+msgid "My account"
+msgstr ""
+
+#: footer.php:72
 msgid "Help"
 msgstr ""
 
-#: footer.php:77
+#: footer.php:89
+msgid "Contact"
+msgstr ""
+
+#: footer.php:92, inc/newsletter.php:226
+msgid "Privacy policy"
+msgstr ""
+
+#: footer.php:101
 msgid "The reading list"
 msgstr ""
 
-#: footer.php:78
+#: footer.php:102
 msgid "One thoughtful email a month. New arrivals, staff picks, no spam."
 msgstr ""
 
 #. translators: 1: year, 2: site name.
-#: footer.php:93
+#: footer.php:117
 msgid "© %1$s %2$s. All rights reserved."
 msgstr ""
 
-#: footer.php:105
+#: footer.php:129
 msgid "Accepted payment methods"
 msgstr ""
 
-#: footer.php:115
+#: footer.php:139
 msgid "Back to top"
 msgstr ""
 
@@ -106,7 +122,7 @@ msgstr ""
 msgid "Skip to content"
 msgstr ""
 
-#: header.php:36, inc/setup.php:131
+#: header.php:36, inc/setup.php:138
 msgid "Open menu"
 msgstr ""
 
@@ -124,10 +140,6 @@ msgstr ""
 
 #: header.php:87
 msgid "Mobile"
-msgstr ""
-
-#: header.php:101, inc/template-tags.php:90
-msgid "My account"
 msgstr ""
 
 #: index.php:13, single.php:14
@@ -564,67 +576,67 @@ msgstr ""
 msgid "%d book authors with bios"
 msgstr ""
 
-#: inc/demo-import.php:461
+#: inc/demo-import.php:465
 msgid "%d demo books created or updated"
 msgstr ""
 
-#: inc/demo-import.php:463
+#: inc/demo-import.php:467
 msgid "%d existing products skipped because their SKUs were not marked as demo content"
 msgstr ""
 
-#: inc/demo-import.php:512
+#: inc/demo-import.php:517
 msgid "Pages created (Home, Shop, About, Contact, Journal, Privacy)"
 msgstr ""
 
-#: inc/demo-import.php:558
+#: inc/demo-import.php:561
 msgid "3 journal posts with covers"
 msgstr ""
 
-#: inc/demo-import.php:609
+#: inc/demo-import.php:613
 msgid "14 customer reviews with ratings"
 msgstr ""
 
-#: inc/demo-import.php:716
+#: inc/demo-import.php:720
 msgid "Complete demo-site setup skipped; existing menus, sidebars, currency and front-page settings were preserved"
 msgstr ""
 
-#: inc/demo-import.php:665
+#: inc/demo-import.php:669
 msgid "Dedicated demo navigation menu with genre dropdown assigned"
 msgstr ""
 
-#: inc/demo-import.php:669, template-parts/section-categories.php:50
+#: inc/demo-import.php:673, template-parts/section-categories.php:50
 msgid "Genres"
 msgstr ""
 
-#: inc/demo-import.php:670
+#: inc/demo-import.php:674
 msgid "Filter by price"
 msgstr ""
 
-#: inc/demo-import.php:671
+#: inc/demo-import.php:675
 msgid "Top rated"
 msgstr ""
 
-#: inc/demo-import.php:674
+#: inc/demo-import.php:678
 msgid "Recent posts"
 msgstr ""
 
-#: inc/demo-import.php:675
+#: inc/demo-import.php:679
 msgid "Journal categories"
 msgstr ""
 
-#: inc/demo-import.php:685
+#: inc/demo-import.php:689
 msgid "Empty shop and blog sidebars configured without replacing existing widgets"
 msgstr ""
 
-#: inc/demo-import.php:714
+#: inc/demo-import.php:718
 msgid "Store settings, front page & theme options applied"
 msgstr ""
 
-#: inc/newsletter.php:41, inc/setup.php:129
+#: inc/newsletter.php:41, inc/setup.php:136
 msgid "Please enter a valid email address."
 msgstr ""
 
-#: inc/newsletter.php:44, inc/setup.php:130
+#: inc/newsletter.php:44, inc/setup.php:137
 msgid "Please agree to receive the newsletter."
 msgstr ""
 
@@ -632,107 +644,107 @@ msgstr ""
 msgid "You are already subscribed — thank you!"
 msgstr ""
 
-#: inc/newsletter.php:71
+#: inc/newsletter.php:65
+msgid "The local reading list is full. Please contact the store owner."
+msgstr ""
+
+#: inc/newsletter.php:82
 msgid "Welcome to the reading list!"
 msgstr ""
 
-#: inc/newsletter.php:100
+#: inc/newsletter.php:112
 msgid "Thank you!"
 msgstr ""
 
-#: inc/newsletter.php:103, inc/newsletter.php:178
+#: inc/newsletter.php:115, inc/newsletter.php:191
 msgid "Too many attempts. Please try again later."
 msgstr ""
 
-#: inc/newsletter.php:176, inc/setup.php:127
+#: inc/newsletter.php:189, inc/setup.php:134
 msgid "Thank you — you are on the list!"
 msgstr ""
 
-#: inc/newsletter.php:177
+#: inc/newsletter.php:190
 msgid "Please check your email and consent, then try again."
 msgstr ""
 
-#: inc/newsletter.php:179
+#: inc/newsletter.php:192
 msgid "If that address was subscribed, it has been removed from the reading list."
 msgstr ""
 
-#: inc/newsletter.php:203
+#: inc/newsletter.php:216
 msgid "Leave this field empty"
 msgstr ""
 
-#: inc/newsletter.php:205, inc/newsletter.php:234, inc/newsletter.php:283, inc/newsletter.php:353
+#: inc/newsletter.php:218, inc/newsletter.php:247, inc/newsletter.php:296, inc/newsletter.php:366
 msgid "Email address"
 msgstr ""
 
-#: inc/newsletter.php:206
+#: inc/newsletter.php:219
 msgid "you@example.com"
 msgstr ""
 
-#: inc/newsletter.php:207
+#: inc/newsletter.php:220
 msgid "Subscribe"
 msgstr ""
 
-#: inc/newsletter.php:211
+#: inc/newsletter.php:224
 msgid "I agree to receive the reading-list newsletter and can unsubscribe at any time."
 msgstr ""
 
-#: inc/newsletter.php:213
-msgid "Privacy policy"
-msgstr ""
-
-#: inc/newsletter.php:235
+#: inc/newsletter.php:248
 msgid "Unsubscribe"
 msgstr ""
 
-#: inc/newsletter.php:258, inc/newsletter.php:259, inc/newsletter.php:279
+#: inc/newsletter.php:271, inc/newsletter.php:272, inc/newsletter.php:292
 msgid "Reading List"
 msgstr ""
 
-#: inc/newsletter.php:280
+#: inc/newsletter.php:293
 msgid "%d locally stored subscribers."
 msgstr ""
 
-#: inc/newsletter.php:281
+#: inc/newsletter.php:294
 msgid "Export CSV"
 msgstr ""
 
-#: inc/newsletter.php:283
+#: inc/newsletter.php:296
 msgid "Subscribed at (UTC)"
 msgstr ""
 
-#: inc/newsletter.php:283
+#: inc/newsletter.php:296
 msgid "Consent recorded"
 msgstr ""
 
-#: inc/newsletter.php:292
+#: inc/newsletter.php:305
 msgid "Yes"
 msgstr ""
 
-#: inc/newsletter.php:292
+#: inc/newsletter.php:305
 msgid "Legacy record"
 msgstr ""
 
-#: inc/newsletter.php:286
+#: inc/newsletter.php:299
 msgid "No local subscribers."
 msgstr ""
 
-#: inc/newsletter.php:307
+#: inc/newsletter.php:320
 msgid "You are not allowed to export this data."
 msgstr ""
 
-#: inc/newsletter.php:318
+#: inc/newsletter.php:331
 msgid "Could not create the export."
 msgstr ""
 
-#: inc/newsletter.php:350
+#: inc/newsletter.php:363
 msgid "Reading-list newsletter"
 msgstr ""
 
-#: inc/newsletter.php:354
+#: inc/newsletter.php:367
 msgid "Subscribed at"
 msgstr ""
 
-#: inc/newsletter.php:385, inc/newsletter.php:395
+#: inc/newsletter.php:398, inc/newsletter.php:408
 msgid "Inkwell newsletter"
 msgstr ""
 
@@ -764,30 +776,30 @@ msgstr ""
 msgid "Shown on the journal archive and single posts."
 msgstr ""
 
-#: inc/setup.php:128
+#: inc/setup.php:135
 msgid "Something went wrong. Please try again."
 msgstr ""
 
-#: inc/setup.php:132
+#: inc/setup.php:139
 msgid "Close menu"
 msgstr ""
 
-#: inc/template-tags.php:107
+#: inc/template-tags.php:113
 msgid "View cart"
 msgstr ""
 
 #. translators: %d: number of items in cart.
-#: inc/template-tags.php:126
+#: inc/template-tags.php:132
 msgid "Cart — %d item"
 msgid_plural "Cart — %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/template-tags.php:150
+#: inc/template-tags.php:156
 msgid "View all"
 msgstr ""
 
-#: inc/template-tags.php:219
+#: inc/template-tags.php:225
 msgid "by"
 msgstr ""
 
@@ -823,7 +835,7 @@ msgstr ""
 msgid "No books found. Try widening your filters or search again."
 msgstr ""
 
-#: inc/woocommerce.php:348
+#: inc/woocommerce.php:349
 msgid "Bookshop"
 msgstr ""
 
@@ -859,7 +871,7 @@ msgstr ""
 msgid "Browse genres"
 msgstr ""
 
-#: template-parts/hero.php:94
+#: template-parts/hero.php:97
 msgid "Staff picks"
 msgstr ""
 
@@ -970,7 +982,7 @@ msgstr ""
 msgid "See the store policy for full details."
 msgstr ""
 
-#: template-parts/section-valueprops.php:38
+#: template-parts/section-valueprops.php:37
 msgid "Why shop with us"
 msgstr ""
 
@@ -992,4 +1004,44 @@ msgstr ""
 
 #: woocommerce/single-product/meta.php:40
 msgid "Author:"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Ink"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Paper"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Card"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Emerald"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Dark emerald"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Gold"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Display (Newsreader)"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Body (Inter)"
 msgstr ""

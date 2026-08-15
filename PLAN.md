@@ -47,7 +47,8 @@ humanist sans (Inter). Quiet, premium, readable.
 1. **Classic PHP theme** (not block theme): maximum WooCommerce compatibility,
    works on every host, familiar to customize, no site-editor dependency.
 2. **WooCommerce template overrides** copied from the exact installed WC version
-   (11.0.1) and modified — guarantees zero "outdated template" warnings.
+   (11.0.1) and modified — upstream template versions are retained so future
+   WooCommerce status checks remain meaningful.
 3. **Book domain modeled the WooCommerce way:**
    - `book_author` — custom *taxonomy* → author archive pages with bio (term description).
    - **Book Details** product-data panel — meta fields: ISBN, Publisher, Year, Pages, Format, Language.
@@ -127,7 +128,7 @@ inkwell/                        ← the theme (installable as inkwell.zip)
 ├── taxonomy-book_author.php comments.php 404.php woocommerce.php
 ├── template-parts/             content, hero, 8 front-page sections
 ├── woocommerce/                overrides cloned from WC 11.0.1 + edits
-├── assets/logo.svg, hero.jpg, screenshot.png
+├── screenshot.jpg + assets/fonts/ and cover-fallback.png
 ├── theme.json  languages/inkwell.pot
 ```
 
