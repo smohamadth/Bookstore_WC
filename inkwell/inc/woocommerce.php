@@ -347,8 +347,16 @@ function inkwell_shop_archive_layout() {
 				 * @hooked woocommerce_output_all_notices - 10
 				 * @hooked woocommerce_result_count - 20
 				 * @hooked woocommerce_catalog_ordering - 30
+				 *
+				 * WooCommerce floats the result count and ordering control in its
+				 * legacy stylesheet. Keep them in a flex formatting context so those
+				 * floats cannot interfere with the product grid below.
 				 */
-				do_action( 'woocommerce_before_shop_loop' );
+				?>
+				<div class="woocommerce-before-shop-loop">
+					<?php do_action( 'woocommerce_before_shop_loop' ); ?>
+				</div>
+				<?php
 
 				if ( woocommerce_product_loop() ) {
 					woocommerce_product_loop_start();
