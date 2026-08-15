@@ -1,0 +1,800 @@
+# Copyright (C) 2026 Inkwell Studio
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Inkwell 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/inkwell\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-08-14T09:23:33+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+
+#. Theme Name of the theme
+#: style.css
+msgid "Inkwell"
+msgstr ""
+
+#. Theme URI of the theme
+#: style.css
+msgid "https://example.com/inkwell"
+msgstr ""
+
+#. Description of the theme
+#: style.css
+msgid "A boutique bookstore theme for WooCommerce. Warm paper tones, elegant serif typography, book-specific features: author taxonomy, Book Details (ISBN, publisher, year, pages, format, language), bestseller & new-arrival rows, genre tiles, newsletter. Fully responsive, accessible, translation-ready."
+msgstr ""
+
+#. Author of the theme
+#: style.css
+msgid "Inkwell Studio"
+msgstr ""
+
+#. Author URI of the theme
+#: style.css
+msgid "https://example.com"
+msgstr ""
+
+#: 404.php:11
+msgid "This page has been checked out"
+msgstr ""
+
+#: 404.php:12
+msgid "The page you are looking for has moved, been borrowed, or never existed. Try a search, or start from the shop."
+msgstr ""
+
+#: 404.php:17
+msgid "Back to home"
+msgstr ""
+
+#: 404.php:19
+msgid "Browse the shop"
+msgstr ""
+
+#: archive.php:15
+msgctxt "archive date format"
+msgid "F Y"
+msgstr ""
+
+#. translators: %s: search query.
+#: archive.php:19
+#: search.php:16
+#, php-format
+msgid "Results for “%s”"
+msgstr ""
+
+#: archive.php:21
+msgid "Archive"
+msgstr ""
+
+#: archive.php:27
+#: index.php:12
+msgid "The journal"
+msgstr ""
+
+#. translators: %s: comment count.
+#: comments.php:19
+#, php-format
+msgid "%s comment"
+msgid_plural "%s comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: footer.php:22
+msgid "A hand-picked collection of books for curious minds — fiction, history, science and stories for every shelf."
+msgstr ""
+
+#: footer.php:34
+#: inc/woocommerce.php:268
+msgid "Shop"
+msgstr ""
+
+#: footer.php:48
+msgid "Help"
+msgstr ""
+
+#: footer.php:62
+msgid "The reading list"
+msgstr ""
+
+#: footer.php:63
+msgid "One thoughtful email a month. New arrivals, staff picks, no spam."
+msgstr ""
+
+#. translators: 1: year, 2: site name.
+#: footer.php:78
+#, php-format
+msgid "© %1$s %2$s. All rights reserved."
+msgstr ""
+
+#: footer.php:85
+msgid "Accepted payment methods"
+msgstr ""
+
+#: footer.php:92
+msgid "Back to top"
+msgstr ""
+
+#: header.php:20
+msgid "Skip to content"
+msgstr ""
+
+#: header.php:35
+msgid "Open menu"
+msgstr ""
+
+#: header.php:44
+msgid "Primary"
+msgstr ""
+
+#: header.php:59
+#: search.php:12
+#: searchform.php:13
+msgid "Search"
+msgstr ""
+
+#: header.php:74
+msgid "Mobile"
+msgstr ""
+
+#: header.php:88
+#: inc/template-tags.php:76
+msgid "My account"
+msgstr ""
+
+#: inc/books.php:17
+msgid "Book Authors"
+msgstr ""
+
+#: inc/books.php:18
+msgid "Book Author"
+msgstr ""
+
+#: inc/books.php:19
+msgid "Search Authors"
+msgstr ""
+
+#: inc/books.php:20
+msgid "All Authors"
+msgstr ""
+
+#: inc/books.php:21
+msgid "Edit Author"
+msgstr ""
+
+#: inc/books.php:22
+msgid "Update Author"
+msgstr ""
+
+#: inc/books.php:23
+msgid "Add New Author"
+msgstr ""
+
+#: inc/books.php:24
+msgid "New Author Name"
+msgstr ""
+
+#: inc/books.php:25
+msgid "Authors"
+msgstr ""
+
+#: inc/books.php:52
+msgid "ISBN-13"
+msgstr ""
+
+#: inc/books.php:57
+msgid "Publisher"
+msgstr ""
+
+#: inc/books.php:61
+msgid "Publication Year"
+msgstr ""
+
+#: inc/books.php:65
+msgid "Pages"
+msgstr ""
+
+#: inc/books.php:69
+msgid "Format"
+msgstr ""
+
+#: inc/books.php:72
+msgid "— Select —"
+msgstr ""
+
+#: inc/books.php:73
+msgid "Paperback"
+msgstr ""
+
+#: inc/books.php:74
+msgid "Hardcover"
+msgstr ""
+
+#: inc/books.php:75
+msgid "Ebook"
+msgstr ""
+
+#: inc/books.php:76
+msgid "Audiobook"
+msgstr ""
+
+#: inc/books.php:80
+msgid "Language"
+msgstr ""
+
+#: inc/books.php:94
+#: inc/woocommerce.php:90
+#: inc/woocommerce.php:110
+msgid "Book Details"
+msgstr ""
+
+#: inc/books.php:138
+msgid "Bibliographic details shown on the product page and in the Book Details tab. The Author field is managed from the Authors box."
+msgstr ""
+
+#: inc/books.php:186
+msgid "Author"
+msgstr ""
+
+#: inc/books.php:187
+msgid "ISBN"
+msgstr ""
+
+#: inc/customizer.php:18
+msgid "— None —"
+msgstr ""
+
+#: inc/customizer.php:50
+msgid "Inkwell Colors"
+msgstr ""
+
+#: inc/customizer.php:62
+msgid "Accent color"
+msgstr ""
+
+#: inc/customizer.php:77
+msgid "Accent (hover / dark)"
+msgstr ""
+
+#: inc/customizer.php:90
+msgid "Dark header & announcement bar"
+msgstr ""
+
+#: inc/customizer.php:101
+msgid "Header & Announcement Bar"
+msgstr ""
+
+#: inc/customizer.php:111
+msgid "Announcement bar text"
+msgstr ""
+
+#: inc/customizer.php:112
+msgid "e.g. “Free shipping on orders over €25”. Leave empty to hide the bar."
+msgstr ""
+
+#: inc/customizer.php:123
+msgid "Hero Section"
+msgstr ""
+
+#: inc/customizer.php:127
+msgid "Hide the hero entirely"
+msgstr ""
+
+#: inc/customizer.php:128
+msgid "Eyebrow text"
+msgstr ""
+
+#: inc/customizer.php:129
+msgid "Headline"
+msgstr ""
+
+#: inc/customizer.php:130
+msgid "Subheadline"
+msgstr ""
+
+#: inc/customizer.php:131
+msgid "Primary button label"
+msgstr ""
+
+#: inc/customizer.php:132
+msgid "Primary button URL"
+msgstr ""
+
+#: inc/customizer.php:133
+msgid "Secondary button label"
+msgstr ""
+
+#: inc/customizer.php:134
+msgid "Secondary button URL"
+msgstr ""
+
+#: inc/customizer.php:159
+msgid "Hero background image"
+msgstr ""
+
+#: inc/customizer.php:170
+msgid "Home Page Sections"
+msgstr ""
+
+#: inc/customizer.php:174
+msgid "Hide genre tiles"
+msgstr ""
+
+#: inc/customizer.php:175
+msgid "Hide bestsellers row"
+msgstr ""
+
+#: inc/customizer.php:176
+msgid "Hide new arrivals row"
+msgstr ""
+
+#: inc/customizer.php:177
+msgid "Hide quote band"
+msgstr ""
+
+#: inc/customizer.php:178
+msgid "Quote text"
+msgstr ""
+
+#: inc/customizer.php:179
+msgid "Quote attribution"
+msgstr ""
+
+#: inc/customizer.php:180
+msgid "Hide testimonials"
+msgstr ""
+
+#: inc/customizer.php:181
+msgid "Hide journal preview"
+msgstr ""
+
+#: inc/customizer.php:182
+msgid "Hide newsletter band"
+msgstr ""
+
+#: inc/customizer.php:183
+msgid "Newsletter title"
+msgstr ""
+
+#: inc/customizer.php:184
+msgid "Newsletter text"
+msgstr ""
+
+#. translators: %d: tile number.
+#: inc/customizer.php:209
+#, php-format
+msgid "Genre tile %d (product category)"
+msgstr ""
+
+#: inc/customizer.php:228
+#, php-format
+msgid "Testimonial %d — quote"
+msgstr ""
+
+#: inc/customizer.php:240
+#, php-format
+msgid "Testimonial %d — name"
+msgstr ""
+
+#: inc/customizer.php:252
+msgid "Footer"
+msgstr ""
+
+#: inc/customizer.php:262
+msgid "About text (footer)"
+msgstr ""
+
+#: inc/customizer.php:275
+msgid "Copyright line"
+msgstr ""
+
+#: inc/newsletter.php:22
+msgid "Please enter a valid email address."
+msgstr ""
+
+#: inc/newsletter.php:32
+msgid "You are already subscribed — thank you!"
+msgstr ""
+
+#: inc/newsletter.php:48
+msgid "Welcome to the reading list! Check your inbox to confirm."
+msgstr ""
+
+#: inc/newsletter.php:58
+msgid "Thank you!"
+msgstr ""
+
+#: inc/newsletter.php:102
+#: inc/setup.php:134
+msgid "Thank you — you are on the list!"
+msgstr ""
+
+#: inc/newsletter.php:110
+msgid "Email address"
+msgstr ""
+
+#: inc/newsletter.php:111
+msgid "you@example.com"
+msgstr ""
+
+#: inc/newsletter.php:112
+msgid "Subscribe"
+msgstr ""
+
+#: inc/setup.php:49
+msgid "Primary Menu"
+msgstr ""
+
+#: inc/setup.php:50
+msgid "Footer — Shop"
+msgstr ""
+
+#: inc/setup.php:51
+msgid "Footer — Help"
+msgstr ""
+
+#: inc/setup.php:70
+msgid "Shop Sidebar"
+msgstr ""
+
+#: inc/setup.php:72
+msgid "Shown on the shop and product-category pages. Perfect for the Product Categories, Price Filter and On Sale widgets."
+msgstr ""
+
+#: inc/setup.php:82
+msgid "Blog Sidebar"
+msgstr ""
+
+#: inc/setup.php:84
+msgid "Shown on the journal archive and single posts."
+msgstr ""
+
+#: inc/setup.php:135
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#: inc/template-tags.php:94
+msgid "View cart"
+msgstr ""
+
+#. translators: %d: number of items in cart.
+#: inc/template-tags.php:113
+#, php-format
+msgid "Cart — %d item"
+msgid_plural "Cart — %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/template-tags.php:127
+msgid "View all"
+msgstr ""
+
+#: inc/template-tags.php:193
+msgid "by"
+msgstr ""
+
+#: inc/woocommerce.php:48
+msgid "Sale"
+msgstr ""
+
+#: inc/woocommerce.php:66
+msgid "Breadcrumb"
+msgstr ""
+
+#: inc/woocommerce.php:69
+msgid "Home"
+msgstr ""
+
+#: inc/woocommerce.php:134
+msgid "About the author"
+msgstr ""
+
+#: inc/woocommerce.php:139
+msgid "Browse all books by this author"
+msgstr ""
+
+#. translators: 1: item count, 2: cart subtotal.
+#: inc/woocommerce.php:161
+#, php-format
+msgid "Cart — %1$d · %2$s"
+msgstr ""
+
+#: inc/woocommerce.php:175
+msgid "Cover coming soon"
+msgstr ""
+
+#: inc/woocommerce.php:184
+msgid "Free shipping on orders over €25"
+msgstr ""
+
+#: inc/woocommerce.php:185
+#: template-parts/section-valueprops.php:20
+msgid "Secure checkout"
+msgstr ""
+
+#: inc/woocommerce.php:186
+#: template-parts/section-valueprops.php:24
+msgid "30-day returns"
+msgstr ""
+
+#: inc/woocommerce.php:195
+msgid "Your payment details are processed securely. 30-day returns on every order."
+msgstr ""
+
+#: inc/woocommerce.php:218
+msgid "No books found. Try widening your filters or search again."
+msgstr ""
+
+#: inc/woocommerce.php:270
+msgid "Bookshop"
+msgstr ""
+
+#: index.php:13
+#: single.php:14
+msgid "Journal"
+msgstr ""
+
+#: index.php:14
+msgid "Reading lists, behind-the-shelves stories and bookish notes."
+msgstr ""
+
+#: page.php:25
+#: single.php:29
+msgid "Pages:"
+msgstr ""
+
+#: searchform.php:10
+msgid "Search for:"
+msgstr ""
+
+#: searchform.php:11
+msgid "Search books, authors…"
+msgstr ""
+
+#: sidebar.php:12
+msgid "Sidebar"
+msgstr ""
+
+#: taxonomy-book_author.php:13
+msgid "Book author"
+msgstr ""
+
+#: taxonomy-book_author.php:39
+msgid "No books found for this author yet."
+msgstr ""
+
+#: template-parts/content-none.php:9
+msgid "Nothing found"
+msgstr ""
+
+#: template-parts/content-none.php:10
+msgid "There is no content here yet — check back soon, or try a different search."
+msgstr ""
+
+#: template-parts/content.php:18
+msgid "Read more"
+msgstr ""
+
+#: template-parts/hero.php:21
+msgid "A bookstore for every shelf"
+msgstr ""
+
+#: template-parts/hero.php:22
+msgid "Find your next favourite book"
+msgstr ""
+
+#: template-parts/hero.php:23
+msgid "Hand-picked fiction, history, science and children’s books — delivered to your door with care."
+msgstr ""
+
+#: template-parts/hero.php:24
+msgid "Shop bestsellers"
+msgstr ""
+
+#: template-parts/hero.php:26
+msgid "Browse genres"
+msgstr ""
+
+#: template-parts/section-bestsellers.php:20
+msgid "Reader favourites"
+msgstr ""
+
+#: template-parts/section-bestsellers.php:21
+msgid "Bestsellers"
+msgstr ""
+
+#: template-parts/section-bestsellers.php:23
+#: template-parts/section-categories.php:53
+#: template-parts/section-new.php:23
+msgid "Shop all"
+msgstr ""
+
+#: template-parts/section-blog.php:26
+msgid "From the journal"
+msgstr ""
+
+#: template-parts/section-blog.php:27
+msgid "Notes from the shelves"
+msgstr ""
+
+#: template-parts/section-blog.php:29
+msgid "All journal posts"
+msgstr ""
+
+#: template-parts/section-categories.php:50
+msgid "Genres"
+msgstr ""
+
+#: template-parts/section-categories.php:51
+msgid "Browse by genre"
+msgstr ""
+
+#. translators: %d: number of books.
+#: template-parts/section-categories.php:75
+#, php-format
+msgid "%d book"
+msgid_plural "%d books"
+msgstr[0] ""
+msgstr[1] ""
+
+#: template-parts/section-new.php:20
+msgid "Fresh off the press"
+msgstr ""
+
+#: template-parts/section-new.php:21
+msgid "New arrivals"
+msgstr ""
+
+#: template-parts/section-newsletter.php:14
+msgid "Join the reading list"
+msgstr ""
+
+#: template-parts/section-newsletter.php:17
+msgid "One thoughtful email a month: new arrivals, staff picks and member-only offers. No spam, unsubscribe anytime."
+msgstr ""
+
+#: template-parts/section-newsletter.php:22
+msgid "Newsletter"
+msgstr ""
+
+#: template-parts/section-quote.php:14
+msgid "A reader lives a thousand lives before he dies. The man who never reads lives only one."
+msgstr ""
+
+#: template-parts/section-quote.php:15
+msgid "George R.R. Martin"
+msgstr ""
+
+#: template-parts/section-testimonials.php:25
+msgid "Word of mouth"
+msgstr ""
+
+#: template-parts/section-testimonials.php:25
+msgid "What readers say"
+msgstr ""
+
+#: template-parts/section-testimonials.php:29
+msgid "Rated 5 out of 5"
+msgstr ""
+
+#: template-parts/section-testimonials.php:34
+msgid "Verified reader"
+msgstr ""
+
+#: template-parts/section-valueprops.php:8
+msgid "Why shop with us"
+msgstr ""
+
+#: template-parts/section-valueprops.php:12
+msgid "Free shipping over €25"
+msgstr ""
+
+#: template-parts/section-valueprops.php:12
+msgid "On every order across the store."
+msgstr ""
+
+#: template-parts/section-valueprops.php:16
+msgid "Hand-picked selection"
+msgstr ""
+
+#: template-parts/section-valueprops.php:16
+msgid "Curated titles, honest reviews."
+msgstr ""
+
+#: template-parts/section-valueprops.php:20
+msgid "Encrypted payments, always."
+msgstr ""
+
+#: template-parts/section-valueprops.php:24
+msgid "Changed your mind? No problem."
+msgstr ""
+
+#. translators: %s: Quantity.
+#: woocommerce/global/quantity-input.php:13
+#, php-format
+msgid "%s quantity"
+msgstr ""
+
+#. translators: %s: Quantity.
+#: woocommerce/global/quantity-input.php:13
+msgid "Quantity"
+msgstr ""
+
+#: woocommerce/global/quantity-input.php:17
+msgid "Decrease quantity"
+msgstr ""
+
+#: woocommerce/global/quantity-input.php:34
+msgid "Product quantity"
+msgstr ""
+
+#: woocommerce/global/quantity-input.php:57
+msgid "Increase quantity"
+msgstr ""
+
+#: woocommerce/single-product/meta.php:21
+msgid "SKU:"
+msgstr ""
+
+#: woocommerce/single-product/meta.php:21
+msgid "N/A"
+msgstr ""
+
+#: woocommerce/single-product/meta.php:42
+msgid "Author:"
+msgstr ""
+
+#: woocommerce/single-product/meta.php:45
+msgid "Category:"
+msgid_plural "Categories:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: woocommerce/single-product/meta.php:47
+msgid "Tag:"
+msgid_plural "Tags:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Ink"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Paper"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Card"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Accent"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Accent dark"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Gold"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Display (Fraunces)"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Body (Inter)"
+msgstr ""
