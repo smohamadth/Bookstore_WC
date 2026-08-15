@@ -289,11 +289,6 @@ html.inkwell-js [data-reveal].in-view { opacity: 1; transform: none; }
 .main-navigation li:focus-within > .sub-menu { opacity: 1; visibility: visible; transform: none; }
 .main-navigation .sub-menu a { display: block; padding: 0.55em 0.9em; }
 .main-navigation .sub-menu a::after { display: none; }
-.main-navigation .menu-item-has-children > a::after {
-	content: ""; display: inline-block; width: 7px; height: 7px;
-	border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
-	transform: rotate(45deg) translateY(-2px); margin-left: 0.5em; opacity: 0.6;
-}
 
 .header-actions { display: flex; align-items: center; gap: 0.4rem; flex-shrink: 0; }
 .header-action {
