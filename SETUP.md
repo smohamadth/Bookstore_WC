@@ -4,7 +4,7 @@
 
 | Component | Requirement |
 |---|---|
-| WordPress | 6.0+ (theme metadata tested through 7.0) |
+| WordPress | 6.0+ (theme metadata tested through 6.8) |
 | WooCommerce | 8.0+ (theme metadata tested through 11.0) |
 | PHP | 7.4+ |
 | Browser | Current evergreen browser; JavaScript enhances but is not required for core forms |

@@ -7,7 +7,7 @@ WooCommerce shopping flows without a page builder.
 
 - **Theme version:** 2.0.5
 - **Requires:** WordPress 6.0+, WooCommerce 8.0+, PHP 7.4+
-- **Tested metadata:** WordPress 7.0, WooCommerce 11.0
+- **Tested metadata:** WordPress 6.8, WooCommerce 11.0
 - **License:** GPL-2.0-or-later · **Text domain:** `inkwell`
 
 ## Highlights
