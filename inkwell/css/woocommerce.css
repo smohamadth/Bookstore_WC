@@ -59,8 +59,8 @@ ul.products.inkwell-shop-grid {
 }
 /* WooCommerce's legacy clearfix pseudo-elements become real grid items and
  * consume the first/last cells unless they are explicitly removed. */
-.woocommerce ul.products::before,
-.woocommerce ul.products::after {
+.inkwell-shop-grid::before,
+.inkwell-shop-grid::after {
 	content: none !important;
 	display: none !important;
 }
