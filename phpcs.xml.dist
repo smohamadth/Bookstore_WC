@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<ruleset name="Inkwell security and compatibility">
+	<description>Release-blocking WordPress security and PHP compatibility checks.</description>
+	<file>inkwell</file>
+	<file>inkwell-books</file>
+	<exclude-pattern>*/languages/*</exclude-pattern>
+	<arg name="extensions" value="php" />
+	<arg name="parallel" value="8" />
+	<config name="testVersion" value="7.4-" />
+
+	<rule ref="PHPCompatibilityWP" />
+	<rule ref="WordPress.Security.EscapeOutput" />
+	<rule ref="WordPress.Security.NonceVerification" />
+	<rule ref="WordPress.Security.ValidatedSanitizedInput" />
+	<rule ref="WordPress.DB.PreparedSQL" />
+</ruleset>

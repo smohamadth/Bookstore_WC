@@ -1,0 +1,135 @@
+#!/usr/bin/env python3
+"""Fast dependency-free release regressions for the Inkwell theme."""
+from __future__ import annotations
+
+import hashlib
+import json
+import re
+import sys
+from pathlib import Path
+from zipfile import ZipFile
+
+ROOT = Path(__file__).resolve().parents[1]
+THEME = ROOT / "inkwell"
+PLUGIN = ROOT / "inkwell-books"
+
+
+def text(path: Path) -> str:
+    return path.read_text(encoding="utf-8")
+
+
+def check(condition: bool, message: str) -> None:
+    if not condition:
+        raise AssertionError(message)
+
+
+style = text(THEME / "style.css")
+wc_css = text(THEME / "css/woocommerce.css")
+functions = text(THEME / "functions.php")
+wc = text(THEME / "inc/woocommerce.php")
+books = text(THEME / "inc/books.php")
+newsletter = text(THEME / "inc/newsletter.php")
+product = text(THEME / "woocommerce/content-product.php")
+category = text(THEME / "woocommerce/content-product-cat.php")
+search_form = text(THEME / "searchform.php")
+search_template = text(THEME / "search.php")
+importer = text(THEME / "inc/demo-import.php")
+js = text(THEME / "js/main.js")
+theme_json = json.loads(text(THEME / "theme.json"))
+
+# Release and original grid/menu regressions.
+check(re.search(r"^Version:\s*2\.0\.5\s*$", style, re.M) is not None, "Theme header version mismatch")
+check("define( 'INKWELL_VERSION', '2.0.5' );" in functions, "Runtime version mismatch")
+check(re.search(r"\.inkwell-shop-grid::before,\s*\.inkwell-shop-grid::after\s*\{[^}]*content\s*:\s*none\s*!important;[^}]*display\s*:\s*none", wc_css, re.S) is not None, "Grid clearfix regression")
+check(".main-navigation .menu-item-has-children > a::after" not in style, "Genres square regression")
+
+# WooCommerce markup and hooks.
+check("do_action( 'woocommerce_before_shop_loop_item' );" in product, "Missing product extension hook")
+check("woocommerce_template_loop_product_link_open();\n\t\twoocommerce_template_loop_product_title();\n\t\twoocommerce_template_loop_product_link_close();" in product, "Product title is not linked")
+check("remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );" in wc, "Default unlinked title remains hooked")
+check("remove_action( 'woocommerce_before_subcategory', 'woocommerce_template_loop_category_link_open', 10 );" in wc, "Nested category-link opener remains")
+check("remove_action( 'woocommerce_after_subcategory', 'woocommerce_template_loop_category_link_close', 10 );" in wc, "Nested category-link closer remains")
+check("echo '<ul class=\"products products-row\">';" in text(THEME / "inc/template-tags.php"), "Front-page products are not a list")
+check('<ul class="products products-row author-products-row">' in text(THEME / "taxonomy-book_author.php"), "Author products are not a responsive list")
+check("add_action( 'woocommerce_no_products_found', 'inkwell_no_products_found', 10 );" in wc, "No-products action is not wired")
+check("woocommerce_quantity_input_args" not in wc, "Theme still overrides product quantity business rules")
+
+# Search query safety and product UX.
+check('name="post_type" value="product"' in search_form, "Book search is not scoped to products")
+check("OR ' . $author_clause" in books and "preg_replace( '/^AND\\s+/i'" in books, "Author search is not safely grouped")
+check("woocommerce_product_loop_start" in search_template, "Product search does not use product cards")
+
+# Configuration and merchant claims.
+check("#2e6b52" in text(THEME / "inc/setup.php"), "Runtime accent is not emerald")
+check(theme_json["settings"]["typography"]["fontFamilies"][0]["name"] == "Display (Newsreader)", "theme.json font is stale")
+check(theme_json["settings"]["color"]["palette"][3]["color"] == "#2e6b52", "theme.json palette is stale")
+check("hero-background" in text(THEME / "template-parts/hero.php"), "Hero image control is unused")
+check(".header-dark .site-header" in style, "Dark-header control has no CSS")
+for production_file in [THEME / "inc/woocommerce.php", THEME / "template-parts/hero.php", THEME / "template-parts/section-valueprops.php", THEME / "footer.php"]:
+    source = text(production_file)
+    for claim in ("€25", "30-day returns", "ships within 24 hours", "Apple&nbsp;Pay"):
+        check(claim not in source, f"Hard-coded merchant claim remains in {production_file}: {claim}")
+
+# Newsletter safety and accessibility.
+check("inkwell_newsletter_rate_limit" in newsletter, "Newsletter rate limiting missing")
+check("inkwell_newsletter_unsubscribe" in newsletter, "Newsletter unsubscribe missing")
+check("wp_privacy_personal_data_exporters" in newsletter and "wp_privacy_personal_data_erasers" in newsletter, "Newsletter privacy hooks missing")
+check("static $instance = 0" in newsletter, "Newsletter form IDs are not unique")
+check("data.append('consent', '1')" in js, "AJAX consent is not submitted")
+check("window.jQuery(document.body).on('added_to_cart'" in js, "WooCommerce add-to-cart event is not handled")
+check("aria-controls=\"inkwell-mini-cart\"" in text(THEME / "inc/template-tags.php"), "Mini-cart disclosure ARIA missing")
+
+# Import safety.
+check("if ( ! class_exists( 'WooCommerce' ) )" in importer, "Importer lacks WooCommerce guard")
+check("Inkwell Demo Menu" in importer and "wp_get_nav_menu_object( 'Main Menu' )" not in importer, "Importer can overwrite Main Menu")
+check("wp_delete_post( $item->ID, true )" not in importer, "Importer still deletes existing menu items")
+check("_inkwell_demo_product" in importer and "_inkwell_demo_asset" in importer, "Importer lacks ownership markers")
+check("'' === trim( (string) get_post_field( 'post_content'" in importer, "Importer can overwrite cart/checkout content")
+check("if ( $apply_site_setup )" in importer, "Destructive site setup is not opt-in")
+check("wc_get_page_id( 'shop' )" in importer and "<= 0" in importer, "Missing WooCommerce page IDs are not handled")
+
+# Packaging, licensing, fonts, metadata and repository hygiene.
+check((THEME / "screenshot.png").is_file(), "Theme screenshot is not at theme root")
+check(not (THEME / "assets/screenshot.png").exists(), "Duplicate misplaced screenshot remains")
+check((ROOT / "LICENSE").stat().st_size > 10000 and (THEME / "LICENSE").is_file(), "GPL license missing")
+check((THEME / "assets/fonts/OFL-Inter.txt").is_file() and (THEME / "assets/fonts/OFL-Newsreader.txt").is_file(), "Font licenses missing")
+fonts = sorted((THEME / "assets/fonts").glob("*.woff2"))
+check(len(fonts) == 6, f"Expected 6 variable-font subsets, found {len(fonts)}")
+check(len({hashlib.sha256(path.read_bytes()).digest() for path in fonts}) == 6, "Duplicate font binaries remain")
+for junk in (ROOT / ".wp-cli", ROOT / ".sudo_as_admin_successful", ROOT / "uploads", ROOT / "demo-content"):
+    check(not junk.exists(), f"Repository junk/duplicate remains: {junk.name}")
+
+versions = {
+    "single-product.php": "1.6.4",
+    "taxonomy-product-attribute.php": "7.3.0",
+    "taxonomy-product-cat.php": "4.7.0",
+}
+for relative, expected in versions.items():
+    check(f"@version {expected} (adapted)" in text(THEME / "woocommerce" / relative), f"Incorrect upstream version for {relative}")
+
+# Companion plugin remains independently installable and synchronized.
+check("Plugin Name: Inkwell Books" in text(PLUGIN / "inkwell-books.php"), "Companion plugin header missing")
+check((THEME / "inc/books.php").read_bytes() == (PLUGIN / "includes/books.php").read_bytes(), "Plugin books module drift")
+check((THEME / "inc/newsletter.php").read_bytes() == (PLUGIN / "includes/newsletter.php").read_bytes(), "Plugin newsletter module drift")
+
+# Gross structural checks.
+json.loads(text(THEME / "demo/books.json"))
+check(style.count("{") == style.count("}"), "Unbalanced theme CSS braces")
+check(wc_css.count("{") == wc_css.count("}"), "Unbalanced WooCommerce CSS braces")
+
+if "--archives" in sys.argv:
+    for directory, archive_name in ((THEME, "inkwell.zip"), (PLUGIN, "inkwell-books.zip")):
+        expected = {
+            path.relative_to(ROOT).as_posix(): path.read_bytes()
+            for path in directory.rglob("*")
+            if path.is_file()
+        }
+        with ZipFile(ROOT / archive_name) as archive:
+            actual = {
+                info.filename: archive.read(info.filename)
+                for info in archive.infolist()
+                if not info.is_dir()
+            }
+        check(actual == expected, f"{archive_name} does not exactly match its source directory")
+
+print("PASS: Inkwell static audit")

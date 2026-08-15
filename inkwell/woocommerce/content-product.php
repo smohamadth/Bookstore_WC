@@ -21,6 +21,13 @@ $inkwell_is_new = strtotime( (string) $product->get_date_created() ) > ( time() 
 $inkwell_rank   = isset( $GLOBALS['inkwell_loop_rank'] ) ? (int) $GLOBALS['inkwell_loop_rank'] : 0;
 ?>
 <li <?php wc_product_class( '', $product ); ?>>
+	<?php
+	/**
+	 * Preserve the standard extension point after removing only
+	 * WooCommerce's default full-card link wrapper.
+	 */
+	do_action( 'woocommerce_before_shop_loop_item' );
+	?>
 
 	<div class="card-media">
 		<?php
@@ -50,10 +57,12 @@ $inkwell_rank   = isset( $GLOBALS['inkwell_loop_rank'] ) ? (int) $GLOBALS['inkwe
 	<div class="card-body">
 		<?php
 		/**
-		 * Hook: woocommerce_shop_loop_item_title.
-		 *
-		 * @hooked woocommerce_template_loop_product_title - 10
+		 * Render the linked core title, then preserve the title hook for
+		 * extension content outside the anchor.
 		 */
+		woocommerce_template_loop_product_link_open();
+		woocommerce_template_loop_product_title();
+		woocommerce_template_loop_product_link_close();
 		do_action( 'woocommerce_shop_loop_item_title' );
 
 		inkwell_product_authors();

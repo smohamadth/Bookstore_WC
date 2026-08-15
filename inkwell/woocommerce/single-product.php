@@ -4,7 +4,7 @@
  *
  * @see https://woocommerce.com/document/template-structure/
  * @package Inkwell
- * @version 4.4.0 (adapted)
+ * @version 1.6.4 (adapted)
  */
 
 defined( 'ABSPATH' ) || exit;

@@ -32,8 +32,8 @@
 	<header id="masthead" class="site-header" data-header>
 		<div class="container header-inner">
 
-			<button class="menu-toggle" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu">
-				<span class="screen-reader-text"><?php esc_html_e( 'Open menu', 'inkwell' ); ?></span>
+				<button class="menu-toggle" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu">
+					<span class="screen-reader-text" data-menu-label><?php esc_html_e( 'Open menu', 'inkwell' ); ?></span>
 				<span data-icon-open><?php echo inkwell_icon( 'menu' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
 				<span data-icon-close style="display:none"><?php echo inkwell_icon( 'close' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
 			</button>

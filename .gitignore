@@ -1,0 +1,27 @@
+# Local WordPress/WP-CLI state
+.wp-cli/
+wordpress/
+wp-config.php
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Local uploads, logs, caches and test output
+uploads/
+*.log
+.cache/
+coverage/
+__pycache__/
+*.py[cod]
+.phpunit.result.cache
+
+# Dependency directories
+vendor/
+node_modules/
+
+# Temporary release staging
+.release/

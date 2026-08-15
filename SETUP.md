@@ -1,148 +1,169 @@
-# 🔧 Inkwell — Setup Guide
-
-Complete walkthrough: install, demo import, configuration, translation and troubleshooting.
-
----
+# 🔧 Inkwell Setup Guide
 
 ## 1. Requirements
 
-| Thing | Version |
+| Component | Requirement |
 |---|---|
-| WordPress | ≥ 6.0 (tested 6.8) |
-| WooCommerce | ≥ 8.0 (tested **11.0.1**) |
-| PHP | ≥ 7.4 (tested 8.4) |
-| Extensions | standard — no PHP extensions beyond WP/WC defaults |
+| WordPress | 6.0+ (theme metadata tested through 7.0) |
+| WooCommerce | 8.0+ (theme metadata tested through 11.0) |
+| PHP | 7.4+ |
+| Browser | Current evergreen browser; JavaScript enhances but is not required for core forms |
 
-## 2. Install the theme
+No PHP extension beyond normal WordPress/WooCommerce hosting is required.
 
-1. In wp-admin go to **Appearance → Themes → Add New → Upload Theme**.
-2. Choose `inkwell.zip` → **Install Now** → **Activate**.
-3. WooCommerce will be detected automatically. If you activate WooCommerce
-   *after* the theme, just re-save **Settings → Permalinks** once.
+## 2. Install
 
-## 3. Import the demo content (recommended — one click, no WP-CLI)
+1. Install and activate WooCommerce.
+2. Go to **Appearance → Themes → Add New → Upload Theme**.
+3. Upload `inkwell.zip`, install and activate it.
+4. Recommended: go to **Plugins → Add New → Upload Plugin**, upload
+   `inkwell-books.zip`, and activate it. This companion plugin keeps author,
+   bibliographic and newsletter data interfaces available if themes change.
 
-After activating the theme:
+The theme retains compatible fallback modules, so activating the plugin later
+does not interrupt an existing Inkwell site.
 
-1. Open **Appearance → Import Demo Content** in wp-admin (or click the
-   **"Import demo content"** button in the dashboard notice that appears while
-   your shop is empty).
-2. Click **"Import demo content now"** and wait ~5 seconds.
-3. Done — visit **Shop** to see the catalog.
+## 3. Demo content
 
-The importer is bundled *inside the theme* (`inkwell/demo/`), so it works on any
-host without extra tools. It is **idempotent** — safe to re-run, it updates by
-SKU instead of duplicating.
+Open **Appearance → Import Demo Content**.
 
-**What it creates:**
+The catalog contains:
 
-- **7 genres** (Fiction, Sci-Fi & Fantasy, Mystery & Thriller, Non-Fiction, History & Biography, Children's Books, Poetry)
-- **33 books** with real bibliographic data, sale prices, featured flags, typographic covers (staggered publication dates so "New arrivals" and "New" chips look natural)
-- **19 authors** (the `book_author` taxonomy) with bios → beautiful author archive pages
-- **Pages:** Home, Shop, About, Contact, Privacy Policy, The Journal
-- **Menus:** main menu (with genre dropdown), footer Shop & Help menus
-- **Journal:** 3 sample posts with images and categories
-- **Reviews:** 14 product reviews with star ratings
-- **Widgets:** shop sidebar (Genres, Price filter, Top rated) + blog sidebar
-- **Settings:** front page, EUR currency, pretty permalinks, announcement bar, genre tiles, quote & testimonials
+- 33 books with typographic covers and bibliographic data
+- 7 product genres
+- 31 authors with bios
+- 14 approved sample reviews
+- 3 sample journal posts
+- Optional pages, menu, sidebars and theme settings
 
-> **WP-CLI alternative:** `WP_CLI="php wp-cli.phar" WP_SITE=/path/to/your/wordpress ./tools/import-demo.sh`
+### Safe behavior
 
-### Currency
-The importer sets EUR. To change it: **WooCommerce → Settings → General → Currency**.
+The catalog importer:
 
-### Cart & Checkout — classic vs blocks
-WooCommerce 11 ships **block-based** cart/checkout pages. This theme is built on
-the classic templates, so the importer pins the Cart & Checkout pages to the
-classic shortcodes (`[woocommerce_cart]`, `[woocommerce_checkout]`) — this keeps
-every theme feature (trust badges, quantity steppers, styling) fully active.
-If you *prefer* the block versions, edit the Cart/Checkout pages in the block
-editor and replace the shortcode with the Cart/Checkout blocks — the theme
-ships fallback styles for the blocks too.
+- marks every demo product and media attachment it owns;
+- reuses marked products and media on reruns;
+- skips an unrelated product that happens to have a demo SKU;
+- creates a dedicated **Inkwell Demo Menu**, never deleting a menu named “Main Menu”;
+- fills only empty theme sidebars without replacing existing widgets;
+- initializes cart/checkout shortcodes only when those pages are genuinely empty;
+- preserves existing block-based cart and checkout content.
 
-## 4. Configure (Appearance → Customize)
+The **Also apply the complete demo-site setup** option is unchecked by default.
+Enable it only for a new/demo site when you want EUR currency, the demo front
+page, demo menu and empty sidebars assigned automatically.
 
-### Colors
-- **Accent color** — buttons, links, badges (live preview; defaults `#b4532a`)
-- **Accent (hover)** — dark variant
-- **Dark header** — swaps the header for a dark style
+## 4. Customize
 
-### Header & Announcement Bar
-- **Announcement bar text** — e.g. `Free shipping on orders over €25 — every book, everywhere.` Leave empty to hide.
+### Inkwell Colors
 
-### Hero Section
-- Eyebrow, headline, subheadline, two buttons (label + URL), background image.
-- Empty fields fall back to built-in defaults, so the hero always looks complete.
+- Accent color (default emerald `#2e6b52`)
+- Darker hover color
+- Optional dark header
+
+### Header
+
+- Announcement bar text; leave blank to hide it
+
+### Store Benefits & Policies
+
+- Shipping benefit
+- Fulfillment promise
+- Returns summary
+- Accepted payment labels
+
+These values are blank on a normal installation. Add only claims that match the
+store’s WooCommerce configuration and legal policies.
+
+### Hero
+
+- Hide/show the hero
+- Eyebrow, headline and subheadline
+- Two button labels and URLs
+- Optional background image
 
 ### Home Page Sections
-- Show/hide: genre tiles, bestsellers, new arrivals, quote, testimonials, journal, newsletter.
-- **Genre tile 1–4**: pick which categories appear as tiles.
-- **Quote / testimonials**: your own text.
-- **Newsletter**: title + text.
+
+- Hide/show the benefits, genre, bestseller, new-arrival, quote, testimonial,
+  journal and newsletter sections
+- Select four featured genres
+- Configure quote, testimonials and newsletter copy
 
 ### Footer
-- About text, copyright line. (Menus: **Appearance → Menus → Manage Locations**.)
 
-## 5. Daily operations
+- About and copyright text
+- Facebook, Instagram and X/Twitter URLs
 
-| Task | How |
-|---|---|
-| Add a book | Products → Add New → title, description, cover (product image), price → **Book Details** tab → ISBN/publisher/year/pages/format/language → **Authors** box → assign author |
-| Mark a bestseller | Products → edit → **Product data → General → Featured** (star icon) |
-| Reviews | WooCommerce → Settings → Products → enable “Enable reviews”; customers rate books on the product page |
-| Newsletter subscribers | Theme option `inkwell_subscribers` (see §7 for Mailchimp) |
+Blank social URLs and payment labels are not rendered.
 
-## 6. Translation
+## 5. Book management
 
-1. Generate/refresh the template: `wp i18n make-pot inkwell languages/inkwell.pot --domain=inkwell`
-2. Create `inkwell-xx_XX.po` (e.g. with [Poedit](https://poedit.net)) from the pot.
-3. Compile to `inkwell-xx_XX.mo` and place both in `inkwell/languages/`.
-4. Set the site language under **Settings → General**.
+1. Open **Products → Add New**.
+2. Add title, description, cover and WooCommerce price/stock information.
+3. Use **Product data → Book Details** for ISBN, publisher, year, pages, format and language.
+4. Assign one or more terms in the **Authors** box.
+5. Mark a product Featured to include it in the bestseller row.
 
-## 7. Connecting a real newsletter service (Mailchimp / Brevo / Kit)
+## 6. Reading list and privacy
 
-The theme stores subscribers locally and fires an action you can hook:
+The built-in form requires explicit consent and provides request throttling,
+local unsubscribe, WordPress personal-data export, and erasure integration.
+
+Shortcodes:
+
+```text
+[inkwell_newsletter]
+[inkwell_newsletter_unsubscribe]
+```
+
+Local records are stored in the non-autoloaded `inkwell_subscribers` option.
+For a production marketing list, connect a specialist email provider:
 
 ```php
 add_action( 'inkwell_newsletter_subscribed', function ( $email ) {
-    // POST $email to your ESP's API…
+    // Send the address to the provider's double-opt-in API.
 } );
 ```
 
-Drop that in a small must-use plugin (`wp-content/mu-plugins/esp-bridge.php`) so
-it survives theme updates.
+Document the provider in the privacy policy. The bundled demo privacy page is a
+placeholder and must be replaced with the merchant’s real policy.
 
-## 8. Troubleshooting
+## 7. Classic and block cart/checkout
 
-| Symptom | Fix |
+The theme has detailed classic-template styling and baseline block styling.
+The importer does not replace existing Cart or Checkout blocks. A fresh empty
+page can be initialized with the classic shortcodes during complete demo setup.
+
+## 8. Translation
+
+```bash
+npm ci
+npm run make-pot
+```
+
+Create `inkwell-xx_XX.po`, compile it to `inkwell-xx_XX.mo`, and place both in
+`inkwell/languages/`.
+
+## 9. Development and releases
+
+```bash
+npm ci
+npm test
+npm run lint:js
+./tools/build-release.sh
+```
+
+The build produces and validates `inkwell.zip` and `inkwell-books.zip`.
+GitHub Actions syntax-checks PHP on 7.4, 8.1 and 8.4 and runs the release
+regression suite.
+
+## 10. Troubleshooting
+
+| Symptom | Resolution |
 |---|---|
-| Shop grid looks unstyled | Re-save **Settings → Permalinks** once (rewrite flush) |
-| No cart counter update | Ensure `jquery` is loaded (default) — the counter uses WC cart fragments |
-| Gallery has no zoom/slider | Theme declares gallery support; check a product has multiple images |
-| “Outdated WooCommerce templates” in Status | Should never appear (scanned clean vs WC 11.0.1); if a future WC bumps a version, copy the new file from the plugin into `inkwell/woocommerce/` |
-| Front page redirects to `/home/` | The static front page slug must not be `home` — rename it |
-| Want the block cart/checkout | Swap the shortcodes for the blocks on those pages (see §3) |
-
-## 9. Development
-
-```
-inkwell/
-├── style.css              theme header + core styles
-├── css/woocommerce.css    shop/product/cart/checkout styles
-├── js/main.js             vanilla JS behaviors
-├── functions.php          bootstrap
-├── inc/
-│   ├── setup.php          supports, menus, images, widgets
-│   ├── customizer.php     all theme options
-│   ├── template-tags.php  icons, logo, cart, product rows
-│   ├── books.php          book_author taxonomy + Book Details meta
-│   ├── woocommerce.php    WC hooks, layout, badges, tabs, author box
-│   └── newsletter.php     shortcode + AJAX endpoint
-├── woocommerce/           WC template overrides (WC 11.0.1 compatible)
-├── template-parts/        hero + 8 front-page sections + cards
-├── assets/                logo, hero, screenshot
-├── theme.json  languages/
-```
-
-Demo data: `demo-content/books.json` is the single source of truth —
-edit it, re-run `python3 tools/make-covers.py` and the importer, done.
+| Import page says WooCommerce is required | Install and activate WooCommerce first |
+| Shop sidebar is empty | Add WooCommerce widgets, or run complete demo setup on an empty sidebar |
+| No store-benefit messages appear | Configure truthful messages under Store Benefits & Policies |
+| Mini-cart does not update | Confirm WooCommerce frontend scripts are not disabled by an optimization plugin |
+| Gallery lacks zoom/slider | Add more than one product image and ensure gallery scripts are enabled |
+| Author fields disappear after changing themes | Install and activate the Inkwell Books companion plugin |
+| Need block cart/checkout | Keep the existing blocks; the importer will not overwrite them |

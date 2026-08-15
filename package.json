@@ -1,0 +1,15 @@
+{
+  "name": "inkwell-woocommerce-theme",
+  "private": true,
+  "version": "2.0.5",
+  "scripts": {
+    "make-pot": "node tools/make-pot.js",
+    "lint:js": "node --check inkwell/js/main.js",
+    "test": "python3 tests/static-audit.py",
+    "format:check": "prettier --check inkwell/js/main.js tools/make-pot.js"
+  },
+  "devDependencies": {
+    "prettier": "3.6.2",
+    "wp-pot": "1.10.2"
+  }
+}

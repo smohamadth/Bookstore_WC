@@ -77,7 +77,7 @@ function inkwell_demo_import_notice() {
 	<div class="notice notice-info is-dismissible">
 		<p>
 			<strong><?php esc_html_e( 'Inkwell: your shop is empty.', 'inkwell' ); ?></strong>
-			<?php esc_html_e( 'Seed it with the bundled sample catalog (33 books, 7 genres, 19 authors, reviews, menus and pages) in one click.', 'inkwell' ); ?>
+			<?php esc_html_e( 'Seed it with the bundled sample catalog (33 books, 7 genres, 31 authors, reviews, menus and pages) in one click.', 'inkwell' ); ?>
 			<a class="button button-primary" style="margin-left: 0.6em; vertical-align: middle;" href="<?php echo esc_url( admin_url( 'themes.php?page=inkwell-demo-import' ) ); ?>">
 				<?php esc_html_e( 'Import demo content', 'inkwell' ); ?>
 			</a>
@@ -94,16 +94,27 @@ function inkwell_demo_import_page() {
 	if ( ! current_user_can( 'manage_options' ) ) {
 		return;
 	}
+	if ( ! class_exists( 'WooCommerce' ) ) {
+		?>
+		<div class="wrap"><h1><?php esc_html_e( 'Inkwell — Import Demo Content', 'inkwell' ); ?></h1>
+			<div class="notice notice-error"><p><?php esc_html_e( 'WooCommerce must be installed and active before demo content can be imported.', 'inkwell' ); ?></p></div>
+		</div>
+		<?php
+		return;
+	}
 
 	$result = null;
 	if ( isset( $_POST['inkwell_demo_import'] ) && check_admin_referer( 'inkwell_demo_import', 'inkwell_demo_nonce' ) ) {
-		$result = inkwell_demo_import_catalog();
+		$apply_site_setup = isset( $_POST['inkwell_demo_apply_site_setup'] ) && '1' === sanitize_text_field( wp_unslash( $_POST['inkwell_demo_apply_site_setup'] ) );
+		$result           = inkwell_demo_import_catalog( $apply_site_setup );
 	}
 	?>
 	<div class="wrap">
 		<h1><?php esc_html_e( 'Inkwell — Import Demo Content', 'inkwell' ); ?></h1>
 
-		<?php if ( $result ) : ?>
+		<?php if ( is_wp_error( $result ) ) : ?>
+			<div class="notice notice-error"><p><?php echo esc_html( $result->get_error_message() ); ?></p></div>
+		<?php elseif ( $result ) : ?>
 			<div class="notice notice-success is-dismissible">
 				<p><strong><?php esc_html_e( 'Demo content imported successfully!', 'inkwell' ); ?></strong></p>
 				<ul style="list-style: disc; padding-left: 1.4em; margin: 0.4em 0;">
@@ -121,16 +132,23 @@ function inkwell_demo_import_page() {
 			<ul style="list-style: disc; padding-left: 1.4em;">
 				<li><strong>33 books</strong> <?php esc_html_e( 'with covers, real bibliographic data, sale prices and featured flags', 'inkwell' ); ?></li>
 				<li><strong>7 genres</strong> <?php esc_html_e( '(Fiction, Sci-Fi & Fantasy, Mystery & Thriller, Non-Fiction, History & Biography, Children’s Books, Poetry)', 'inkwell' ); ?></li>
-				<li><strong>19 authors</strong> <?php esc_html_e( 'with bios → author archive pages', 'inkwell' ); ?></li>
+				<li><strong>31 authors</strong> <?php esc_html_e( 'with bios → author archive pages', 'inkwell' ); ?></li>
 				<li><strong>14 reviews</strong>, <?php esc_html_e( '3 journal posts, menus, widgets, pages &amp; default settings', 'inkwell' ); ?></li>
 			</ul>
 			<p style="color: #666;">
-				<?php esc_html_e( 'The import is safe to run again — it updates by SKU instead of duplicating. It won’t touch your existing products (unless they share a SKU with the demo).', 'inkwell' ); ?>
+				<?php esc_html_e( 'The catalog import is safe to run again: marked demo products and media are reused, while an unrelated product that happens to share a demo SKU is skipped.', 'inkwell' ); ?>
 			</p>
 
-			<?php if ( ! $result ) : ?>
+			<?php if ( ! $result || is_wp_error( $result ) ) : ?>
 				<form method="post" style="margin-top: 0.6em;">
 					<?php wp_nonce_field( 'inkwell_demo_import', 'inkwell_demo_nonce' ); ?>
+					<p>
+						<label>
+							<input type="checkbox" name="inkwell_demo_apply_site_setup" value="1" />
+							<strong><?php esc_html_e( 'Also apply the complete demo-site setup', 'inkwell' ); ?></strong>
+						</label><br />
+						<span class="description"><?php esc_html_e( 'Optional: assigns a demo menu and sidebars, sets EUR currency, and selects the demo front page. Leave unchecked on an existing site.', 'inkwell' ); ?></span>
+					</p>
 					<button type="submit" name="inkwell_demo_import" class="button button-primary button-hero">
 						<?php esc_html_e( 'Import demo content now', 'inkwell' ); ?>
 					</button>
@@ -153,13 +171,37 @@ function inkwell_demo_import_page() {
 /**
  * Media helper: attach a bundled image to the library.
  *
- * @param string $file    Absolute path.
- * @param int    $post_id Attach to post.
+ * @param string $file       Absolute path.
+ * @param int    $post_id    Attach to post.
+ * @param string $source_key Stable demo asset key used for safe reruns.
  * @return int|WP_Error
  */
-function inkwell_demo_import_image( $file, $post_id = 0 ) {
+function inkwell_demo_import_image( $file, $post_id = 0, $source_key = '' ) {
+	if ( $source_key ) {
+		$existing = get_posts(
+			array(
+				'post_type'      => 'attachment',
+				'post_status'    => 'inherit',
+				'posts_per_page' => 1,
+				'fields'         => 'ids',
+				'meta_key'       => '_inkwell_demo_asset', // phpcs:ignore WordPress.DB.SlowDBQuery
+				'meta_value'     => $source_key, // phpcs:ignore WordPress.DB.SlowDBQuery
+			)
+		);
+		if ( $existing && get_attached_file( $existing[0] ) && file_exists( get_attached_file( $existing[0] ) ) ) {
+			return (int) $existing[0];
+		}
+	}
+
+	if ( ! is_readable( $file ) ) {
+		return new WP_Error( 'missing_image', 'Could not read ' . $file );
+	}
 	$uploads = wp_upload_dir();
-	$dest    = $uploads['path'] . '/' . basename( $file );
+	if ( ! empty( $uploads['error'] ) ) {
+		return new WP_Error( 'uploads', $uploads['error'] );
+	}
+	$filename = wp_unique_filename( $uploads['path'], basename( $file ) );
+	$dest     = trailingslashit( $uploads['path'] ) . $filename;
 	if ( ! copy( $file, $dest ) ) {
 		return new WP_Error( 'copy', 'Could not copy ' . $file );
 	}
@@ -178,6 +220,9 @@ function inkwell_demo_import_image( $file, $post_id = 0 ) {
 	require_once ABSPATH . 'wp-admin/includes/image.php';
 	$meta = wp_generate_attachment_metadata( $attach_id, $dest );
 	wp_update_attachment_metadata( $attach_id, $meta );
+	if ( $source_key ) {
+		update_post_meta( $attach_id, '_inkwell_demo_asset', sanitize_key( $source_key ) );
+	}
 	return (int) $attach_id;
 }
 
@@ -209,19 +254,54 @@ function inkwell_demo_ensure_page( $slug, $title, $content ) {
 }
 
 /**
- * Run the import. Returns a summary array of "key => label" lines.
+ * Create or reuse a widget instance owned by the demo importer.
  *
- * @return array
+ * @param string $option_name Widget option name.
+ * @param string $id_base     Widget ID base.
+ * @param array  $settings    Widget settings.
+ * @return string Widget instance ID.
  */
-function inkwell_demo_import_catalog() {
-	$dir  = inkwell_demo_dir();
-	$data = json_decode( file_get_contents( $dir . '/books.json' ), true );
-	if ( ! is_array( $data ) ) {
-		return array( __( 'Could not read demo data. The theme files may be incomplete.', 'inkwell' ) );
+function inkwell_demo_ensure_widget( $option_name, $id_base, $settings ) {
+	$instances = get_option( $option_name, array() );
+	if ( ! is_array( $instances ) ) {
+		$instances = array();
+	}
+	foreach ( $instances as $number => $instance ) {
+		if ( is_numeric( $number ) && is_array( $instance ) && ! empty( $instance['_inkwell_demo'] ) ) {
+			return $id_base . '-' . $number;
+		}
+	}
+	$numbers = array_filter( array_keys( $instances ), 'is_numeric' );
+	$number  = $numbers ? max( array_map( 'intval', $numbers ) ) + 1 : 1;
+	$settings['_inkwell_demo'] = 1;
+	$instances[ $number ]      = $settings;
+	$instances['_multiwidget'] = 1;
+	update_option( $option_name, $instances );
+	return $id_base . '-' . $number;
+}
+
+/**
+ * Run the import. Returns summary lines or a WP_Error.
+ *
+ * @param bool $apply_site_setup Whether to apply menus, widgets and store settings.
+ * @return array|WP_Error
+ */
+function inkwell_demo_import_catalog( $apply_site_setup = false ) {
+	if ( ! class_exists( 'WooCommerce' ) ) {
+		return new WP_Error( 'woocommerce_required', __( 'WooCommerce must be active before importing demo content.', 'inkwell' ) );
 	}
 
-	// Pretty permalinks FIRST so menu custom URLs are stored cleanly.
-	update_option( 'permalink_structure', '/%postname%/' );
+	$dir      = inkwell_demo_dir();
+	$json     = is_readable( $dir . '/books.json' ) ? file_get_contents( $dir . '/books.json' ) : false;
+	$data     = false !== $json ? json_decode( $json, true ) : null;
+	if ( ! is_array( $data ) ) {
+		return new WP_Error( 'demo_data_missing', __( 'Could not read demo data. The theme files may be incomplete.', 'inkwell' ) );
+	}
+
+	// Only opt a fresh site into pretty permalinks when full setup was requested.
+	if ( $apply_site_setup && ! get_option( 'permalink_structure' ) ) {
+		update_option( 'permalink_structure', '/%postname%/' );
+	}
 
 	$summary = array();
 
@@ -240,6 +320,9 @@ function inkwell_demo_import_catalog() {
 		$term = term_exists( $slug, 'product_cat' );
 		if ( ! $term ) {
 			$term = wp_insert_term( $cdata[0], 'product_cat', array( 'slug' => $slug, 'description' => $cdata[1] ) );
+		}
+		if ( is_wp_error( $term ) ) {
+			return $term;
 		}
 		$cat_ids[ $slug ] = is_array( $term ) ? (int) $term['term_id'] : (int) $term;
 	}
@@ -281,13 +364,22 @@ function inkwell_demo_import_catalog() {
 	);
 	$author_ids = array();
 	foreach ( array_keys( $bios ) as $name ) {
-		$term = term_exists( $name, 'book_author' );
+		$term       = term_exists( $name, 'book_author' );
+		$is_new_term = false;
 		if ( ! $term ) {
-			$term = wp_insert_term( $name, 'book_author' );
+			$term        = wp_insert_term( $name, 'book_author' );
+			$is_new_term = true;
+		}
+		if ( is_wp_error( $term ) ) {
+			continue;
 		}
 		if ( is_array( $term ) ) {
-			wp_update_term( $term['term_id'], 'book_author', array( 'description' => $bios[ $name ] ) );
-			$author_ids[ $name ] = (int) $term['term_id'];
+			$term_id = (int) $term['term_id'];
+			if ( $is_new_term || get_term_meta( $term_id, '_inkwell_demo_term', true ) ) {
+				wp_update_term( $term_id, 'book_author', array( 'description' => $bios[ $name ] ) );
+				update_term_meta( $term_id, '_inkwell_demo_term', 1 );
+			}
+			$author_ids[ $name ] = $term_id;
 		}
 	}
 	$summary[] = sprintf( __( '%d book authors with bios', 'inkwell' ), count( $author_ids ) );
@@ -298,14 +390,27 @@ function inkwell_demo_import_catalog() {
 	foreach ( $cats as $slug => $cdata ) {
 		$cat_by_name[ $cdata[0] ] = $slug;
 	}
-	$total = count( $data );
+	$total            = count( $data );
+	$skipped_products = 0;
 
 	foreach ( $data as $index => $book ) {
-		$sku     = $book['sku'];
-		$product = wc_get_product_id_by_sku( $sku ) ? wc_get_product( wc_get_product_id_by_sku( $sku ) ) : new WC_Product_Simple();
+		$sku         = sanitize_text_field( $book['sku'] );
+		$existing_id = (int) wc_get_product_id_by_sku( $sku );
+		$is_demo     = $existing_id && ( get_post_meta( $existing_id, '_inkwell_demo_product', true ) || $book['isbn'] === get_post_meta( $existing_id, '_inkwell_isbn', true ) );
+		if ( $existing_id && ! $is_demo ) {
+			$skipped_products++;
+			continue;
+		}
+		$product = $existing_id ? wc_get_product( $existing_id ) : new WC_Product_Simple();
+		if ( ! $product ) {
+			$skipped_products++;
+			continue;
+		}
 
-		// Deterministic staggered dates: newest books at the end of the list.
-		$product->set_date_created( gmdate( 'Y-m-d H:i:s', time() - ( $total - 1 - $index ) * 9 * DAY_IN_SECONDS ) );
+		// Set deterministic dates only on newly created demo products.
+		if ( ! $existing_id ) {
+			$product->set_date_created( gmdate( 'Y-m-d H:i:s', time() - ( $total - 1 - $index ) * 9 * DAY_IN_SECONDS ) );
+		}
 		$product->set_name( $book['title'] );
 		$product->set_status( 'publish' );
 		$product->set_catalog_visibility( 'visible' );
@@ -313,6 +418,8 @@ function inkwell_demo_import_catalog() {
 		$product->set_regular_price( $book['price'] );
 		if ( ! empty( $book['sale'] ) ) {
 			$product->set_sale_price( $book['sale'] );
+		} else {
+			$product->set_sale_price( '' );
 		}
 		$product->set_featured( (bool) $book['featured'] );
 		$product->set_short_description( $book['desc'] );
@@ -327,6 +434,7 @@ function inkwell_demo_import_catalog() {
 		$product->update_meta_data( '_inkwell_pages', (int) $book['pages'] );
 		$product->update_meta_data( '_inkwell_format', $book['format'] );
 		$product->update_meta_data( '_inkwell_language', $book['language'] );
+		$product->update_meta_data( '_inkwell_demo_product', 1 );
 
 		$product_id = $product->save();
 
@@ -335,10 +443,13 @@ function inkwell_demo_import_catalog() {
 		}
 
 		$cover = $dir . '/covers/' . $sku . '.png';
-		if ( ! isset( $cover_ids[ $sku ] ) && file_exists( $cover ) ) {
-			$img = inkwell_demo_import_image( $cover, $product_id );
+		if ( $product->get_image_id() ) {
+			$cover_ids[ $sku ] = $product->get_image_id();
+			update_post_meta( $product->get_image_id(), '_inkwell_demo_asset', 'cover-' . sanitize_key( $sku ) );
+		} elseif ( file_exists( $cover ) ) {
+			$img = inkwell_demo_import_image( $cover, $product_id, 'cover-' . $sku );
 			if ( is_wp_error( $img ) ) {
-				$img = inkwell_demo_import_image( get_template_directory() . '/assets/cover-fallback.png', $product_id );
+				$img = inkwell_demo_import_image( get_template_directory() . '/assets/cover-fallback.png', $product_id, 'cover-fallback' );
 			}
 			if ( ! is_wp_error( $img ) ) {
 				$cover_ids[ $sku ] = $img;
@@ -347,7 +458,10 @@ function inkwell_demo_import_catalog() {
 			}
 		}
 	}
-	$summary[] = sprintf( __( '%d books with covers, prices & book details', 'inkwell' ), count( $data ) );
+	$summary[] = sprintf( __( '%d demo books created or updated', 'inkwell' ), count( $data ) - $skipped_products );
+	if ( $skipped_products ) {
+		$summary[] = sprintf( __( '%d existing products skipped because their SKUs were not marked as demo content', 'inkwell' ), $skipped_products );
+	}
 
 	/* Category thumbnails */
 	$cat_covers = array(
@@ -368,35 +482,31 @@ function inkwell_demo_import_catalog() {
 	/* Pages */
 	$home    = inkwell_demo_ensure_page( 'front', 'Home', '' );
 	$about   = inkwell_demo_ensure_page( 'about', 'About Inkwell', '<h2>Books, chosen by hand</h2><p>Inkwell started as a single shelf in a small apartment and grew into the shop you see today. We are a small team of readers, and we stock the books we genuinely love — fiction, history, science, children’s stories and everything in between.</p>' );
-	$contact = inkwell_demo_ensure_page( 'contact', 'Contact', '<p>We would love to hear from you — questions about an order, a recommendation request, or just to talk about what you’re reading.</p><p>Email: <a href="mailto:hello@inkwell.example">hello@inkwell.example</a></p><hr /><p><strong>Prefer email newsletters?</strong> Join the reading list:</p>[inkwell_newsletter]' );
+	$contact = inkwell_demo_ensure_page( 'contact', 'Contact', '<p>We would love to hear from you — questions about an order, a recommendation request, or just to talk about what you’re reading.</p><p>Email: <a href="mailto:hello@inkwell.example">hello@inkwell.example</a></p><hr /><p><strong>Prefer email newsletters?</strong> Join the reading list:</p>[inkwell_newsletter]<h3>Leave the reading list</h3>[inkwell_newsletter_unsubscribe]' );
 	$journal = inkwell_demo_ensure_page( 'journal', 'The Journal', '' );
-	$privacy = inkwell_demo_ensure_page( 'privacy-policy', 'Privacy Policy', '<p>This is a demo shop. We store only what is needed to fulfil orders and you can request deletion of your account at any time.</p>' );
+	$privacy = inkwell_demo_ensure_page( 'privacy-policy', 'Privacy Policy', '<p>This is a demo shop. We store only what is needed to fulfil orders and you can request deletion of your account at any time.</p><p>If you join the reading list, the site stores your email address and consent time until you unsubscribe or request erasure through the site owner.</p>' );
 
-	$shop = wc_get_page_id( 'shop' );
-	if ( ! $shop ) {
+	$shop = (int) wc_get_page_id( 'shop' );
+	if ( $shop <= 0 ) {
 		$shop = inkwell_demo_ensure_page( 'shop', 'Shop', '' );
 		update_option( 'woocommerce_shop_page_id', $shop );
 	}
 	foreach ( array( 'cart', 'checkout', 'myaccount' ) as $wc_page ) {
-		if ( ! wc_get_page_id( $wc_page ) ) {
+		if ( (int) wc_get_page_id( $wc_page ) <= 0 ) {
 			$id = inkwell_demo_ensure_page( $wc_page, ucwords( $wc_page ), '' );
 			update_option( 'woocommerce_' . $wc_page . '_page_id', $id );
 		}
 	}
 
-	// Pin cart & checkout to the classic shortcodes (theme is classic-first).
-	$cart_id     = wc_get_page_id( 'cart' );
-	$checkout_id = wc_get_page_id( 'checkout' );
-	if ( $cart_id && false === strpos( (string) get_post( $cart_id )->post_content, '[woocommerce_cart]' ) ) {
+	// On explicit full setup, initialize only genuinely empty cart/checkout
+	// pages. Existing block or shortcode content is always preserved.
+	$cart_id     = (int) wc_get_page_id( 'cart' );
+	$checkout_id = (int) wc_get_page_id( 'checkout' );
+	if ( $apply_site_setup && $cart_id > 0 && '' === trim( (string) get_post_field( 'post_content', $cart_id ) ) ) {
 		wp_update_post( array( 'ID' => $cart_id, 'post_content' => '<!-- wp:shortcode -->[woocommerce_cart]<!-- /wp:shortcode -->' ) );
 	}
-	if ( $checkout_id && false === strpos( (string) get_post( $checkout_id )->post_content, '[woocommerce_checkout]' ) ) {
+	if ( $apply_site_setup && $checkout_id > 0 && '' === trim( (string) get_post_field( 'post_content', $checkout_id ) ) ) {
 		wp_update_post( array( 'ID' => $checkout_id, 'post_content' => '<!-- wp:shortcode -->[woocommerce_checkout]<!-- /wp:shortcode -->' ) );
-	}
-
-	$sample = get_page_by_path( 'sample-page' );
-	if ( $sample ) {
-		wp_delete_post( $sample->ID, true );
 	}
 
 	$summary[] = __( 'Pages created (Home, Shop, About, Contact, Journal, Privacy)', 'inkwell' );
@@ -466,7 +576,7 @@ function inkwell_demo_import_catalog() {
 	);
 	foreach ( $reviews as $review ) {
 		$pid = wc_get_product_id_by_sku( $review['sku'] );
-		if ( ! $pid ) {
+		if ( ! $pid || ! get_post_meta( $pid, '_inkwell_demo_product', true ) ) {
 			continue;
 		}
 		$exists = get_comments(
@@ -498,110 +608,113 @@ function inkwell_demo_import_catalog() {
 	}
 	$summary[] = __( '14 customer reviews with ratings', 'inkwell' );
 
-	/* Menus */
-	$menu_id = 0;
-	$menu    = wp_get_nav_menu_object( 'Main Menu' );
-	if ( $menu ) {
-		$menu_id = (int) $menu->term_id;
-	} else {
-		$menu_id = (int) wp_create_nav_menu( 'Main Menu' );
-	}
-	if ( $menu_id ) {
-		foreach ( (array) wp_get_nav_menu_items( $menu_id ) as $item ) {
-			wp_delete_post( $item->ID, true );
+	/* Optional complete site setup. */
+	if ( $apply_site_setup ) {
+		/* Menus: use a dedicated demo menu so an existing "Main Menu" is never touched. */
+		$menu_id = 0;
+		$menu    = wp_get_nav_menu_object( 'Inkwell Demo Menu' );
+		if ( $menu ) {
+			$menu_id = (int) $menu->term_id;
+		} else {
+			$menu_id = (int) wp_create_nav_menu( 'Inkwell Demo Menu' );
 		}
-		$items = array(
-			array( 'Home', 'post_type', $home ),
-			array( 'Shop', 'post_type', $shop ),
-			array( 'Genres', 'custom', $shop ),
-			array( 'Journal', 'post_type', $journal ),
-			array( 'About', 'post_type', $about ),
-			array( 'Contact', 'post_type', $contact ),
-		);
-		$genre_parent = 0;
-		foreach ( $items as $item ) {
-			$args = array( 'menu-item-title' => $item[0], 'menu-item-status' => 'publish', 'menu-item-type' => $item[1] );
-			if ( 'post_type' === $item[1] ) {
-				$args['menu-item-object']    = 'page';
-				$args['menu-item-object-id'] = $item[2];
-			} else {
-				$args['menu-item-url'] = get_permalink( $item[2] );
-			}
-			$new_id = wp_update_nav_menu_item( $menu_id, 0, $args );
-			if ( 'Genres' === $item[0] ) {
-				$genre_parent = $new_id;
-			}
-		}
-		foreach ( $cats as $slug => $cdata ) {
-			wp_update_nav_menu_item(
-				$menu_id,
-				0,
-				array(
-					'menu-item-title'     => $cdata[0],
-					'menu-item-status'    => 'publish',
-					'menu-item-type'      => 'taxonomy',
-					'menu-item-object'    => 'product_cat',
-					'menu-item-object-id' => $cat_ids[ $slug ],
-					'menu-item-parent-id' => $genre_parent,
-				)
+		if ( $menu_id ) {
+			$existing_menu_items = (array) wp_get_nav_menu_items( $menu_id );
+			if ( ! $existing_menu_items ) {
+				$items = array(
+				array( 'Home', 'post_type', $home ),
+				array( 'Shop', 'post_type', $shop ),
+				array( 'Genres', 'custom', $shop ),
+				array( 'Journal', 'post_type', $journal ),
+				array( 'About', 'post_type', $about ),
+				array( 'Contact', 'post_type', $contact ),
 			);
+			$genre_parent = 0;
+			foreach ( $items as $item ) {
+				$args = array( 'menu-item-title' => $item[0], 'menu-item-status' => 'publish', 'menu-item-type' => $item[1] );
+				if ( 'post_type' === $item[1] ) {
+					$args['menu-item-object']    = 'page';
+					$args['menu-item-object-id'] = $item[2];
+				} else {
+					$args['menu-item-url'] = get_permalink( $item[2] );
+				}
+				$new_id = wp_update_nav_menu_item( $menu_id, 0, $args );
+				if ( 'Genres' === $item[0] ) {
+					$genre_parent = $new_id;
+				}
+			}
+				foreach ( $cats as $slug => $cdata ) {
+					wp_update_nav_menu_item(
+						$menu_id,
+						0,
+						array(
+							'menu-item-title'     => $cdata[0],
+							'menu-item-status'    => 'publish',
+							'menu-item-type'      => 'taxonomy',
+							'menu-item-object'    => 'product_cat',
+							'menu-item-object-id' => $cat_ids[ $slug ],
+							'menu-item-parent-id' => $genre_parent,
+						)
+					);
+				}
+			}
+			$locations            = get_theme_mod( 'nav_menu_locations', array() );
+			$locations['primary'] = $menu_id;
+			set_theme_mod( 'nav_menu_locations', $locations );
 		}
-		$locations              = get_theme_mod( 'nav_menu_locations', array() );
-		$locations['primary']   = $menu_id;
-		set_theme_mod( 'nav_menu_locations', $locations );
+		$summary[] = __( 'Dedicated demo navigation menu with genre dropdown assigned', 'inkwell' );
+
+		/* Widgets: preserve every existing instance and only fill empty sidebars. */
+		$shop_widgets = array(
+			inkwell_demo_ensure_widget( 'widget_woocommerce_product_categories', 'woocommerce_product_categories', array( 'title' => __( 'Genres', 'inkwell' ), 'count' => 1, 'hierarchical' => 1, 'dropdown' => 0 ) ),
+			inkwell_demo_ensure_widget( 'widget_woocommerce_price_filter', 'woocommerce_price_filter', array( 'title' => __( 'Filter by price', 'inkwell' ) ) ),
+			inkwell_demo_ensure_widget( 'widget_woocommerce_top_rated_products', 'woocommerce_top_rated_products', array( 'title' => __( 'Top rated', 'inkwell' ), 'number' => 3 ) ),
+		);
+		$blog_widgets = array(
+			inkwell_demo_ensure_widget( 'widget_recent-posts', 'recent-posts', array( 'title' => __( 'Recent posts', 'inkwell' ), 'number' => 4, 'show_date' => 0 ) ),
+			inkwell_demo_ensure_widget( 'widget_categories', 'categories', array( 'title' => __( 'Journal categories', 'inkwell' ), 'count' => 1, 'dropdown' => 0, 'hierarchical' => 0 ) ),
+		);
+		$sidebars = get_option( 'sidebars_widgets', array() );
+		if ( empty( $sidebars['sidebar-shop'] ) ) {
+			$sidebars['sidebar-shop'] = $shop_widgets;
+		}
+		if ( empty( $sidebars['sidebar-blog'] ) ) {
+			$sidebars['sidebar-blog'] = $blog_widgets;
+		}
+		update_option( 'sidebars_widgets', $sidebars );
+		$summary[] = __( 'Empty shop and blog sidebars configured without replacing existing widgets', 'inkwell' );
+
+		/* Settings. */
+		update_option( 'woocommerce_currency', 'EUR' );
+		update_option( 'woocommerce_coming_soon', 'no' );
+		update_option( 'woocommerce_store_pages_only', 'no' );
+		update_option( 'show_on_front', 'page' );
+		update_option( 'page_on_front', $home );
+		update_option( 'page_for_posts', $journal );
+		update_option( 'woocommerce_terms_page_id', $privacy );
+
+		set_theme_mod( 'inkwell_announcement', 'Free shipping on orders over €25 — every book, everywhere.' );
+		set_theme_mod( 'inkwell_home_cat_1', $cat_ids['fiction'] );
+		set_theme_mod( 'inkwell_home_cat_2', $cat_ids['science-fiction-fantasy'] );
+		set_theme_mod( 'inkwell_home_cat_3', $cat_ids['mystery-thriller'] );
+		set_theme_mod( 'inkwell_home_cat_4', $cat_ids['poetry'] );
+		set_theme_mod( 'inkwell_home_quote', 'There is no friend as loyal as a book.' );
+		set_theme_mod( 'inkwell_home_quote_attr', 'Ernest Hemingway' );
+		set_theme_mod( 'inkwell_home_testimonial_1_text', 'Ordered on Monday, reading on Wednesday. Beautifully packed and the recommendation note was a lovely touch.' );
+		set_theme_mod( 'inkwell_home_testimonial_1_name', 'Marie D. — Paris' );
+		set_theme_mod( 'inkwell_home_testimonial_2_text', 'Inkwell found me a long-out-of-print edition I had hunted for years. Customers for life.' );
+		set_theme_mod( 'inkwell_home_testimonial_2_name', 'Tom R. — London' );
+		set_theme_mod( 'inkwell_home_testimonial_3_text', 'The genre tiles make browsing a joy, and the staff picks never miss. My book budget is not okay.' );
+		set_theme_mod( 'inkwell_home_testimonial_3_name', 'Sofia K. — Berlin' );
+		set_theme_mod( 'inkwell_footer_about', 'A hand-picked collection of books for curious minds — fiction, history, science and stories for every shelf. Independent, reader-owned, shipping worldwide.' );
+		set_theme_mod( 'inkwell_shipping_message', 'Free shipping over €25' );
+		set_theme_mod( 'inkwell_fulfillment_message', 'In stock — usually ships within 24 hours' );
+		set_theme_mod( 'inkwell_returns_message', '30-day returns' );
+		set_theme_mod( 'inkwell_payment_methods', 'Visa, Mastercard, PayPal' );
+		$summary[] = __( 'Store settings, front page & theme options applied', 'inkwell' );
+	} else {
+		$summary[] = __( 'Complete demo-site setup skipped; existing menus, sidebars, currency and front-page settings were preserved', 'inkwell' );
 	}
-	$summary[] = __( 'Navigation menus (main + genre dropdown + footer)', 'inkwell' );
-
-	/* Widgets */
-	update_option(
-		'widget_woocommerce_product_categories',
-		array( 1 => array( 'title' => 'Genres', 'count' => 1, 'hierarchical' => 1, 'dropdown' => 0 ), '_multiwidget' => 1 )
-	);
-	update_option(
-		'widget_woocommerce_price_filter',
-		array( 1 => array( 'title' => 'Filter by price' ), '_multiwidget' => 1 )
-	);
-	update_option(
-		'widget_woocommerce_top_rated_products',
-		array( 1 => array( 'title' => 'Top rated', 'number' => 3 ), '_multiwidget' => 1 )
-	);
-	update_option(
-		'widget_recent-posts',
-		array( 1 => array( 'title' => 'Recent posts', 'number' => 4, 'show_date' => 0 ), '_multiwidget' => 1 )
-	);
-	update_option(
-		'widget_categories',
-		array( 1 => array( 'title' => 'Journal categories', 'count' => 1, 'dropdown' => 0, 'hierarchical' => 0 ), '_multiwidget' => 1 )
-	);
-	$sidebars                     = get_option( 'sidebars_widgets' );
-	$sidebars['sidebar-shop']     = array( 'woocommerce_product_categories-1', 'woocommerce_price_filter-1', 'woocommerce_top_rated_products-1' );
-	$sidebars['sidebar-blog']     = array( 'recent-posts-1', 'categories-1' );
-	update_option( 'sidebars_widgets', $sidebars );
-	$summary[] = __( 'Shop & blog sidebars configured', 'inkwell' );
-
-	/* Settings */
-	update_option( 'woocommerce_currency', 'EUR' );
-	update_option( 'woocommerce_coming_soon', 'no' );
-	update_option( 'woocommerce_store_pages_only', 'no' );
-	update_option( 'show_on_front', 'page' );
-	update_option( 'page_on_front', $home );
-	update_option( 'page_for_posts', $journal );
-	update_option( 'woocommerce_terms_page_id', $privacy );
-
-	set_theme_mod( 'inkwell_announcement', 'Free shipping on orders over €25 — every book, everywhere.' );
-	set_theme_mod( 'inkwell_home_cat_1', $cat_ids['fiction'] );
-	set_theme_mod( 'inkwell_home_cat_2', $cat_ids['science-fiction-fantasy'] );
-	set_theme_mod( 'inkwell_home_cat_3', $cat_ids['mystery-thriller'] );
-	set_theme_mod( 'inkwell_home_cat_4', $cat_ids['poetry'] );
-	set_theme_mod( 'inkwell_home_quote', 'There is no friend as loyal as a book.' );
-	set_theme_mod( 'inkwell_home_quote_attr', 'Ernest Hemingway' );
-	set_theme_mod( 'inkwell_home_testimonial_1_text', 'Ordered on Monday, reading on Wednesday. Beautifully packed and the recommendation note was a lovely touch.' );
-	set_theme_mod( 'inkwell_home_testimonial_1_name', 'Marie D. — Paris' );
-	set_theme_mod( 'inkwell_home_testimonial_2_text', 'Inkwell found me a long-out-of-print edition I had hunted for years. Customers for life.' );
-	set_theme_mod( 'inkwell_home_testimonial_2_name', 'Tom R. — London' );
-	set_theme_mod( 'inkwell_home_testimonial_3_text', 'The genre tiles make browsing a joy, and the staff picks never miss. My book budget is not okay.' );
-	set_theme_mod( 'inkwell_home_testimonial_3_name', 'Sofia K. — Berlin' );
-	set_theme_mod( 'inkwell_footer_about', 'A hand-picked collection of books for curious minds — fiction, history, science and stories for every shelf. Independent, reader-owned, shipping worldwide.' );
 
 	/* Refresh WC lookup tables so sorting & ratings are correct. */
 	if ( function_exists( 'wc_update_product_lookup_tables' ) ) {
@@ -609,12 +722,10 @@ function inkwell_demo_import_catalog() {
 	}
 	foreach ( $data as $book ) {
 		$pid = wc_get_product_id_by_sku( $book['sku'] );
-		if ( $pid && class_exists( 'WC_Comments' ) ) {
+		if ( $pid && get_post_meta( $pid, '_inkwell_demo_product', true ) && class_exists( 'WC_Comments' ) ) {
 			WC_Comments::clear_transients( $pid );
 		}
 	}
-
-	$summary[] = __( 'Store settings, front page & theme options applied', 'inkwell' );
 
 	flush_rewrite_rules();
 	update_option( 'inkwell_demo_imported', 1 );

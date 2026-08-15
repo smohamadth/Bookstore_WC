@@ -14,7 +14,7 @@ $label = ! empty( $args['product_name'] ) ? sprintf( esc_html__( '%s quantity', 
 
 ?>
 <div class="quantity" data-inkwell-qty>
-	<button type="button" class="qty-btn qty-btn--minus" data-qty-step="-1" aria-label="<?php esc_attr_e( 'Decrease quantity', 'inkwell' ); ?>">−</button>
+	<button type="button" class="qty-btn qty-btn--minus" data-qty-step="-1" aria-label="<?php esc_attr_e( 'Decrease quantity', 'inkwell' ); ?>" <?php disabled( $readonly ); ?>>−</button>
 	<?php
 	/**
 	 * Hook to output something before the quantity input field.
@@ -54,5 +54,5 @@ $label = ! empty( $args['product_name'] ) ? sprintf( esc_html__( '%s quantity', 
 	 */
 	do_action( 'woocommerce_after_quantity_input_field' );
 	?>
-	<button type="button" class="qty-btn qty-btn--plus" data-qty-step="1" aria-label="<?php esc_attr_e( 'Increase quantity', 'inkwell' ); ?>">+</button>
+	<button type="button" class="qty-btn qty-btn--plus" data-qty-step="1" aria-label="<?php esc_attr_e( 'Increase quantity', 'inkwell' ); ?>" <?php disabled( $readonly ); ?>>+</button>
 </div>

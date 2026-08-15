@@ -1,18 +1,14 @@
 #!/usr/bin/env bash
 #
-# Inkwell — one-command demo import.
+# Inkwell — one-command demo import through the active theme's safe importer.
 #
 # Usage:
 #   WP_CLI="php /path/to/wp-cli.phar" WP_SITE=/path/to/wordpress tools/import-demo.sh
-#
-# Defaults assume `wp` on PATH and the current directory contains wp-config.php.
 #
 set -euo pipefail
 
 WP_CLI_BIN="${WP_CLI:-wp}"
 WP_SITE_DIR="${WP_SITE:-$(pwd)}"
-HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-ROOT="$(dirname "$HERE")"
 
 run_wp() {
   if [ "$WP_SITE_DIR" = "$(pwd)" ]; then
@@ -23,10 +19,18 @@ run_wp() {
 }
 
 echo "→ Importing demo content into: $WP_SITE_DIR"
-run_wp eval-file "$ROOT/demo-content/import-products.php"
-
-echo "→ Flushing rewrite rules"
-run_wp rewrite flush --hard
+run_wp eval '
+if ( ! function_exists( "inkwell_demo_import_catalog" ) ) {
+    WP_CLI::error( "Activate the Inkwell theme before importing demo content." );
+}
+$result = inkwell_demo_import_catalog( true );
+if ( is_wp_error( $result ) ) {
+    WP_CLI::error( $result->get_error_message() );
+}
+foreach ( $result as $line ) {
+    WP_CLI::log( $line );
+}
+'
 
 echo "→ Verifying"
 run_wp option get blogname

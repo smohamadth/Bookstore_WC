@@ -1,77 +1,121 @@
 # 📖 Inkwell — Boutique Bookstore Theme for WooCommerce
 
-A complete, self-contained bookstore experience on top of WooCommerce.
-Install the theme, import the demo content, and you have a real shop with
-book-specific features — no page builder, no paid plugins, no bloat.
+Inkwell is a classic WordPress theme for a curated online bookshop. It adds an
+editorial Newsreader + Inter design, book-cover product cards, author browsing,
+bibliographic product fields, curated home-page sections, and styled classic
+WooCommerce shopping flows without a page builder.
 
-**Version 2 — "modern library" redesign:** editorial Newsreader serif + emerald
-palette, dark split hero with floating book covers, book-spine product cards
-with quick-add, ranked bestsellers, mini-cart dropdown, sticky product summary,
-"More by this author" strips, dark quote band, two-column checkout.
+- **Theme version:** 2.0.5
+- **Requires:** WordPress 6.0+, WooCommerce 8.0+, PHP 7.4+
+- **Tested metadata:** WordPress 7.0, WooCommerce 11.0
+- **License:** GPL-2.0-or-later · **Text domain:** `inkwell`
 
-**Tested against:** WordPress 6.x · WooCommerce **11.0.1** · PHP 8.4 (PHP 7.4+ required)
-**License:** GPL-2.0-or-later · **Text domain:** `inkwell`
+## Highlights
 
----
+- Responsive shop, product, author, blog, cart, checkout and account layouts
+- `book_author` taxonomy and book details: ISBN, publisher, year, pages, format and language
+- Linked product cards with AJAX quick-add, live cart count and accessible mini-cart disclosure
+- Author-aware product search
+- Configurable store benefits, fulfillment/returns messages, payment labels and social URLs
+- Privacy-aware reading list with consent, throttling, unsubscribe, exporter and eraser support
+- One-click demo catalog: 33 books, 7 genres, 31 authors and 14 reviews
+- Self-hosted variable fonts with no external font requests
+- Translation-ready and keyboard-friendly
 
-## ✨ Highlights
+## Repository layout
 
-| Area | What you get |
-|---|---|
-| 🏠 **Front page** | **Dark split hero** with floating cover collage + staff-picks badge, value props, genre tiles, **ranked Bestsellers (01–08)**, **New arrivals** with "New" chips, dark quote band, testimonials, journal preview, newsletter band — every section toggleable in the Customizer |
-| 📚 **Book domain** | `book_author` taxonomy with **author archive pages** & bios · **Book Details** (ISBN-13, publisher, year, pages, format, language) on every product · **"More by this author"** cover strips |
-| 🛍️ **Shop** | Sidebar (genres, price filter, top rated), 3-up book grid, book-**spine** covers, −% sale badges, author lines, **quick-add overlay** with AJAX + live header **mini-cart dropdown** |
-| 📄 **Product page** | Gallery with zoom/lightbox, **sticky summary**, in-stock chip, trust chips, **Book Details tab**, author box, related books, styled reviews |
-| 🛒 **Checkout** | Styled classic cart (2-column) & **two-column checkout** with sticky order review, trust badges, styled account area |
-| 📝 **Journal** | Blog with category chips, cards, sidebar, pagination, comments |
-| 🎨 **Design** | **"Modern library" v2**: Newsreader + Inter, parchment/ink/emerald/gold palette, book-spine cards, hover micro-interactions, fully responsive, accessible (skip links, ARIA, focus states, reduced-motion support) |
-| 🌍 **i18n** | `inkwell.pot` included, all strings translatable |
-| ⚡ **Performance** | Vanilla JS (no jQuery dependency), lazy images, no frameworks — fonts are **self-hosted** (zero external requests, works fully offline) |
-
-## 📦 What's in the box
-
-```
-inkwell/            ← the theme (also packaged as inkwell.zip)
-demo-content/       ← books.json, generated covers, one-command importer
-tools/              ← cover generator + import script
-docs/ PLAN.md       ← the build plan (architecture & decisions)
+```text
+inkwell/              Installable theme source
+inkwell-books/        Optional companion plugin for portable book/newsletter data
+inkwell.zip           Built theme archive
+inkwell-books.zip     Built companion-plugin archive
+tools/                Release, POT, cover and WP-CLI import tools
+tests/                Dependency-free release regressions
 ```
 
-## 🚀 Quick start
+`inkwell/demo/books.json` and `inkwell/demo/covers/` are the single source of
+truth for bundled demo data.
 
-1. **WordPress + WooCommerce** installed (any host).
-2. **Appearance → Themes → Add New → Upload Theme** → upload `inkwell.zip` → Activate.
-3. **Import the sample catalog in one click** — *no WP-CLI needed*:
-   - An **"Import Demo Content"** page appears under **Appearance** in wp-admin, and
-   - when your shop is empty you'll see a **"your shop is empty" notice** on the dashboard with an import button.
-   
-   Click it and in ~5 seconds you have **33 books** (covers, prices, book details),
-   **7 genres**, **19 authors** with bios, **14 reviews**, menus, pages, widgets and
-   default settings. Safe to re-run — it updates by SKU, never duplicates.
+## Installation
 
-   > Prefer WP-CLI? `WP_CLI="php wp-cli.phar" WP_SITE=/path/to/wordpress ./tools/import-demo.sh`
+1. Install and activate WooCommerce.
+2. Upload `inkwell.zip` under **Appearance → Themes → Add New → Upload Theme**.
+3. Optionally upload and activate `inkwell-books.zip` under **Plugins → Add New**.
+   The theme includes backward-compatible fallbacks, but the plugin keeps author,
+   book-detail and reading-list interfaces available when changing themes.
+4. Open **Appearance → Import Demo Content** if you want the sample catalog.
 
-4. Done — browse your shop.
+The importer always reuses content it owns and skips unrelated products with a
+matching SKU. The optional **complete demo-site setup** checkbox is deliberately
+unchecked by default; enable it only when you want the importer to assign its
+own menu/empty sidebars, EUR currency and demo front page. Existing cart or
+checkout block content is never replaced.
 
-## 🎨 Customize (Appearance → Customize)
+## Configuration
 
-- **Inkwell Colors** — accent color, hover accent, dark header
-- **Header & Announcement Bar** — announcement text
-- **Hero Section** — headline, subheadline, buttons, background image
-- **Home Page Sections** — show/hide every section, pick the 4 genre tiles, set the quote & testimonials
-- **Footer** — about text, copyright line
+Under **Appearance → Customize**:
 
-## 🛠️ Extending
+- **Inkwell Colors:** emerald accent and optional dark header
+- **Header & Announcement Bar:** announcement content
+- **Store Benefits & Policies:** shipping, fulfillment, returns and payment labels
+- **Hero Section:** copy, buttons, background image and visibility
+- **Home Page Sections:** visibility, genres, quote, testimonials and newsletter copy
+- **Footer:** about/copyright text and social URLs
 
-- Hooks: `inkwell_newsletter_subscribed` (fires on new subscribers — plug in Mailchimp/Brevo here)
-- Shortcode: `[inkwell_newsletter]` for the newsletter form anywhere
-- Template overrides live in `woocommerce/` (cloned from WC 11.0.1, zero outdated-template warnings)
-- Book meta keys: `_inkwell_isbn`, `_inkwell_publisher`, `_inkwell_year`, `_inkwell_pages`, `_inkwell_format`, `_inkwell_language`
+Merchant promises are blank by default. Configure only shipping, return,
+fulfillment and payment claims the store actually offers.
 
-## 🧪 Test results (this build)
+## Book and newsletter data
 
-- ✅ Every route (home, shop, genres, product, author, cart, checkout, account, journal, post, search, 404) renders with **zero PHP warnings/notices** (`WP_DEBUG` on)
-- ✅ End-to-end purchase: AJAX add-to-cart → cart → checkout → **order placed & stored**
-- ✅ WooCommerce template scan: **no outdated templates**
-- ✅ Author search: “austen” finds *Pride and Prejudice* via the author taxonomy
-- ✅ Newsletter AJAX works; invalid nonces rejected (403)
+Book product metadata keys:
+
+- `_inkwell_isbn`
+- `_inkwell_publisher`
+- `_inkwell_year`
+- `_inkwell_pages`
+- `_inkwell_format`
+- `_inkwell_language`
+
+Newsletter shortcodes:
+
+- `[inkwell_newsletter]`
+- `[inkwell_newsletter_unsubscribe]`
+
+A new subscription fires `inkwell_newsletter_subscribed`; an unsubscribe fires
+`inkwell_newsletter_unsubscribed`. For a large or marketing-critical list, hook
+an email service such as Mailchimp or Brevo and use its double-opt-in workflow.
+
+## Development and release
+
+```bash
+npm ci
+npm test
+npm run lint:js
+npm run make-pot
+./tools/build-release.sh
+```
+
+The release script regenerates translations, runs static regressions, checks
+JavaScript, verifies that companion-plugin modules match theme fallbacks,
+builds both ZIP files, tests archive integrity and compares every packaged file
+byte-for-byte with its source.
+
+GitHub Actions also lints every PHP file on PHP 7.4, 8.1 and 8.4.
+
+To regenerate typographic demo covers:
+
+```bash
+python3 tools/make-covers.py
+```
+
+To run the safe importer through WP-CLI with the theme active:
+
+```bash
+WP_CLI="php /path/to/wp-cli.phar" WP_SITE=/path/to/wordpress ./tools/import-demo.sh
+```
+
+## Third-party assets
+
+Inter and Newsreader are licensed under the SIL Open Font License 1.1. Their
+license texts and attribution are bundled under `inkwell/assets/fonts/` and
+`inkwell/THIRD-PARTY-NOTICES.md`.

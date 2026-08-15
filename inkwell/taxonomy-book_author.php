@@ -12,7 +12,7 @@ $inkwell_term = get_queried_object();
 	<header class="page-header author-archive-head">
 		<span class="eyebrow"><?php esc_html_e( 'Book author', 'inkwell' ); ?></span>
 		<div class="author-head-inner">
-			<div class="author-monogram"><?php echo esc_html( mb_substr( $inkwell_term->name, 0, 1 ) ); ?></div>
+			<div class="author-monogram"><?php echo esc_html( inkwell_first_character( $inkwell_term->name ) ); ?></div>
 			<div>
 				<h1><?php echo esc_html( $inkwell_term->name ); ?></h1>
 				<?php
@@ -26,15 +26,15 @@ $inkwell_term = get_queried_object();
 	</header>
 
 	<?php if ( have_posts() ) : ?>
-		<div class="products-row" style="grid-template-columns:repeat(4,1fr);">
+			<ul class="products products-row author-products-row">
 			<?php
 			while ( have_posts() ) {
 				the_post();
 				wc_get_template_part( 'content', 'product' );
 			}
 			?>
-		</div>
-		<?php inkwell_pagination(); ?>
+			</ul>
+			<?php inkwell_pagination(); ?>
 	<?php else : ?>
 		<p><?php esc_html_e( 'No books found for this author yet.', 'inkwell' ); ?></p>
 	<?php endif; ?>

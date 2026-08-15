@@ -35,7 +35,7 @@ if ( empty( $items ) ) {
 					</span>
 					<blockquote><?php echo esc_html( $item['text'] ); ?></blockquote>
 					<figcaption class="cite-wrap">
-						<span class="avatar-initials" aria-hidden="true"><?php echo esc_html( mb_substr( trim( (string) $item['name'] ), 0, 1 ) ); ?></span>
+						<span class="avatar-initials" aria-hidden="true"><?php echo esc_html( inkwell_first_character( trim( (string) $item['name'] ) ) ); ?></span>
 						<cite>
 							<?php echo esc_html( $item['name'] ); ?>
 							<span><?php esc_html_e( 'Verified reader', 'inkwell' ); ?></span>

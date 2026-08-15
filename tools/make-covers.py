@@ -2,8 +2,8 @@
 """
 Inkwell demo — typographic book cover generator (v2).
 
-Reads demo-content/books.json and renders one 600x900 PNG cover per book
-into demo-content/covers/. Two layouts:
+Reads inkwell/demo/books.json and renders one 600x900 PNG cover per book
+into inkwell/demo/covers/. Two layouts:
   * "classic" (default) — centered title, author top, imprint band
   * "band" — cream band across the middle holding the title
 Uses DejaVu Serif — no copyrighted imagery involved.
@@ -112,10 +112,10 @@ def draw_cover(book, out_path):
 
 
 def main():
-    with open(os.path.join(ROOT, "demo-content", "books.json"), encoding="utf-8") as fh:
+    with open(os.path.join(ROOT, "inkwell", "demo", "books.json"), encoding="utf-8") as fh:
         books = json.load(fh)
 
-    out_dir = os.path.join(ROOT, "demo-content", "covers")
+    out_dir = os.path.join(ROOT, "inkwell", "demo", "covers")
     os.makedirs(out_dir, exist_ok=True)
 
     for book in books:

@@ -38,8 +38,19 @@ if ( class_exists( 'WooCommerce' ) ) {
 	}
 	$hero_products = array_slice( $hero_products, 0, 3 );
 }
+
+$trust_items = array_filter(
+	array(
+		'truck'  => inkwell_mod( 'inkwell_shipping_message', '' ),
+		'check'  => inkwell_mod( 'inkwell_fulfillment_message', '' ),
+		'return' => inkwell_mod( 'inkwell_returns_message', '' ),
+	)
+);
 ?>
-<section class="hero" data-reveal>
+<section class="hero<?php echo $image ? ' has-custom-background' : ''; ?>" data-reveal>
+	<?php if ( $image ) : ?>
+		<div class="hero-background" style="<?php echo esc_attr( "background-image: url('" . esc_url_raw( $image ) . "');" ); ?>" aria-hidden="true"></div>
+	<?php endif; ?>
 	<div class="container hero-inner">
 
 		<div class="hero-copy">
@@ -60,11 +71,13 @@ if ( class_exists( 'WooCommerce' ) ) {
 					<?php endif; ?>
 				</div>
 			<?php endif; ?>
-			<div class="hero-trust">
-				<span><?php echo inkwell_icon( 'truck' ); // phpcs:ignore WordPress.Security.EscapeOutput ?><?php esc_html_e( 'Free shipping over €25', 'inkwell' ); ?></span>
-				<span><?php echo inkwell_icon( 'return' ); // phpcs:ignore WordPress.Security.EscapeOutput ?><?php esc_html_e( '30-day returns', 'inkwell' ); ?></span>
-				<span><?php echo inkwell_icon( 'shield' ); // phpcs:ignore WordPress.Security.EscapeOutput ?><?php esc_html_e( 'Secure checkout', 'inkwell' ); ?></span>
-			</div>
+			<?php if ( $trust_items ) : ?>
+				<div class="hero-trust">
+					<?php foreach ( $trust_items as $icon => $message ) : ?>
+						<span><?php echo inkwell_icon( $icon ); // phpcs:ignore WordPress.Security.EscapeOutput ?><?php echo esc_html( $message ); ?></span>
+					<?php endforeach; ?>
+				</div>
+			<?php endif; ?>
 		</div>
 
 		<?php if ( ! empty( $hero_products ) ) : ?>

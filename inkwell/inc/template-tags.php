@@ -42,6 +42,17 @@ function inkwell_icon( $name ) {
 }
 
 /**
+ * Return the first character without requiring the optional mbstring extension.
+ *
+ * @param string $text Input text.
+ * @return string
+ */
+function inkwell_first_character( $text ) {
+	$text = wp_strip_all_tags( (string) $text );
+	return function_exists( 'mb_substr' ) ? mb_substr( $text, 0, 1 ) : substr( $text, 0, 1 );
+}
+
+/**
  * Site logo: custom logo if set, else the inline wordmark.
  */
 function inkwell_logo() {
@@ -51,12 +62,12 @@ function inkwell_logo() {
 	}
 	?>
 	<a class="site-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
-		<svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-			<path d="M10 6h22a4 4 0 014 4v30H14a4 4 0 01-4-4z" fill="#b4532a" opacity="0.16"/>
-			<path d="M10 6h22a4 4 0 014 4v30H14a4 4 0 01-4-4z" stroke="#b4532a" stroke-width="2.4" stroke-linejoin="round"/>
-			<path d="M10 40a4 4 0 014-4h26" stroke="#b4532a" stroke-width="2.4" stroke-linecap="round"/>
-			<path d="M18 14h12M18 20h12M18 26h7" stroke="#23272f" stroke-width="2.4" stroke-linecap="round"/>
-		</svg>
+			<svg class="site-logo-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+				<path d="M10 6h22a4 4 0 014 4v30H14a4 4 0 01-4-4z" fill="currentColor" opacity="0.16"/>
+				<path d="M10 6h22a4 4 0 014 4v30H14a4 4 0 01-4-4z" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+				<path d="M10 40a4 4 0 014-4h26" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+				<path class="site-logo-lines" d="M18 14h12M18 20h12M18 26h7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+			</svg>
 		<span class="site-title">
 			<?php bloginfo( 'name' ); ?>
 			<small><?php echo esc_html( get_bloginfo( 'description' ) ); ?></small>
@@ -89,10 +100,9 @@ function inkwell_cart_link() {
 		return;
 	}
 	$count = WC()->cart ? WC()->cart->get_cart_contents_count() : 0;
-	$total = WC()->cart ? WC()->cart->get_cart_subtotal() : '';
 
 	printf(
-		'<a class="header-action" href="%s" aria-label="%s">%s<span class="cart-count inkwell-cart-count">%d</span></a>',
+		'<a class="header-action" href="%s" aria-label="%s" aria-controls="inkwell-mini-cart" aria-expanded="false">%s<span class="cart-count inkwell-cart-count">%d</span></a>',
 		esc_url( wc_get_cart_url() ),
 		esc_attr__( 'View cart', 'inkwell' ),
 		inkwell_icon( 'cart' ), // phpcs:ignore WordPress.Security.EscapeOutput
@@ -101,20 +111,30 @@ function inkwell_cart_link() {
 }
 
 /**
+ * Mobile cart link markup. The element is always present so WooCommerce cart
+ * fragments can replace it when the first item is added.
+ *
+ * @return string
+ */
+function inkwell_mobile_cart_link_html() {
+	if ( ! function_exists( 'WC' ) || ! WC()->cart ) {
+		return '';
+	}
+	$count = WC()->cart->get_cart_contents_count();
+	$label = sprintf(
+		/* translators: %d: number of items in cart. */
+		_n( 'Cart — %d item', 'Cart — %d items', $count, 'inkwell' ),
+		$count
+	);
+
+	return '<a class="button inkwell-mobile-total" href="' . esc_url( wc_get_cart_url() ) . '">' . esc_html( $label ) . '</a>';
+}
+
+/**
  * Mini "cart total" chip shown in the mobile menu.
  */
 function inkwell_cart_total() {
-	if ( ! function_exists( 'WC' ) || ! WC()->cart ) {
-		return;
-	}
-	$count = WC()->cart->get_cart_contents_count();
-	if ( 0 === $count ) {
-		return;
-	}
-	echo '<a class="button" href="' . esc_url( wc_get_cart_url() ) . '">' . esc_html(
-		/* translators: %d: number of items in cart. */
-		sprintf( _n( 'Cart — %d item', 'Cart — %d items', $count, 'inkwell' ), $count )
-	) . '</a>';
+	echo inkwell_mobile_cart_link_html(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
 
 /**
@@ -214,7 +234,10 @@ function inkwell_mod( $key, $default = '' ) {
  * Menu fallback when no menu is assigned.
  */
 function inkwell_menu_fallback() {
-	echo '<ul id="primary-menu" class="menu">';
+	static $instance = 0;
+	$instance++;
+	$id = 1 === $instance ? 'primary-menu-fallback' : 'mobile-menu-fallback';
+	echo '<ul id="' . esc_attr( $id ) . '" class="menu">';
 	wp_list_pages(
 		array(
 			'title_li' => '',
@@ -242,7 +265,7 @@ function inkwell_render_products_row( $products, $limit = 8, $ranked = false ) {
 		return;
 	}
 
-	echo '<div class="products-row">';
+	echo '<ul class="products products-row">';
 
 	$old_post = $GLOBALS['post'] ?? null;
 	$old      = $GLOBALS['product'] ?? null;
@@ -270,7 +293,7 @@ function inkwell_render_products_row( $products, $limit = 8, $ranked = false ) {
 	unset( $GLOBALS['inkwell_loop_rank'] );
 	woocommerce_reset_loop();
 
-	echo '</div>';
+	echo '</ul>';
 }
 
 /**

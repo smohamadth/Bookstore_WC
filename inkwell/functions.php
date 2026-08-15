@@ -15,8 +15,16 @@ define( 'INKWELL_VERSION', '2.0.5' );
 
 require get_template_directory() . '/inc/setup.php';
 require get_template_directory() . '/inc/template-tags.php';
-require get_template_directory() . '/inc/books.php';
+
+// Backward-compatible fallbacks: the companion Inkwell Books plugin loads
+// these persistent data features first when it is active.
+if ( ! function_exists( 'inkwell_register_book_author' ) ) {
+	require get_template_directory() . '/inc/books.php';
+}
+if ( ! function_exists( 'inkwell_newsletter_form' ) ) {
+	require get_template_directory() . '/inc/newsletter.php';
+}
+
 require get_template_directory() . '/inc/woocommerce.php';
-require get_template_directory() . '/inc/newsletter.php';
 require get_template_directory() . '/inc/demo-import.php';
 require get_template_directory() . '/inc/customizer.php';
