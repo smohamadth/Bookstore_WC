@@ -145,9 +145,10 @@ Bundled RTL interface packs:
 
 Open **Appearance → Inkwell Languages** to install either WordPress core pack
 and activate a site-wide language. WordPress will load the bundled translations,
-RTL stylesheet and available WooCommerce language pack. The public header
-switcher is enabled by default; hide it under **Customize → Header &
-Announcement Bar** if needed.
+RTL stylesheet and available WooCommerce language pack. Persian uses Estedad
+headings with Vazirmatn text; Sorani uses Noto Kufi Arabic headings with
+Vazirmatn text. The accessible dropdown selector is enabled by default; hide it
+under **Customize → Header & Announcement Bar** if needed.
 
 Without a multilingual plugin, the switcher changes theme strings and known
 imported menu/widget/policy/genre labels per visitor using the essential

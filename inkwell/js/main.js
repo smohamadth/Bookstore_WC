@@ -10,6 +10,7 @@
 
 	document.addEventListener('DOMContentLoaded', function () {
 		initMenu();
+		initLanguageSelectors();
 		initSearch();
 		initMiniCart();
 		initStickyHeader();
@@ -111,6 +112,84 @@
 		document.addEventListener('click', function (e) {
 			if (menu.classList.contains('is-open') && !menu.contains(e.target) && !toggle.contains(e.target)) {
 				setOpen(false);
+			}
+		});
+	}
+
+	/* ------------------------------------------------------------------ *
+	 * Language selectors
+	 * ------------------------------------------------------------------ */
+	function initLanguageSelectors() {
+		var selectors = Array.prototype.slice.call(document.querySelectorAll('[data-language-selector]'));
+		if (!selectors.length) {
+			return;
+		}
+
+		function setOpen(selector, open, restoreFocus) {
+			var toggle = selector.querySelector('[data-language-toggle]');
+			selector.classList.toggle('is-open', open);
+			if (toggle) {
+				toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+				if (open) {
+					var current = selector.querySelector('.language-selector__option.is-current');
+					var first = selector.querySelector('.language-selector__option');
+					setTimeout(function () {
+						(current || first || toggle).focus();
+					}, 20);
+				} else if (restoreFocus) {
+					toggle.focus();
+				}
+			}
+		}
+
+		function closeOthers(active) {
+			selectors.forEach(function (selector) {
+				if (selector !== active) {
+					setOpen(selector, false, false);
+				}
+			});
+		}
+
+		selectors.forEach(function (selector) {
+			var toggle = selector.querySelector('[data-language-toggle]');
+			if (!toggle) {
+				return;
+			}
+			toggle.addEventListener('click', function (event) {
+				event.stopPropagation();
+				var open = !selector.classList.contains('is-open');
+				closeOthers(selector);
+				setOpen(selector, open, false);
+			});
+		});
+
+		document.addEventListener('click', function (event) {
+			selectors.forEach(function (selector) {
+				if (selector.classList.contains('is-open') && !selector.contains(event.target)) {
+					setOpen(selector, false, false);
+				}
+			});
+		});
+
+		document.addEventListener('keydown', function (event) {
+			var activeSelector = event.target.closest ? event.target.closest('[data-language-selector]') : null;
+			if (activeSelector && (event.key === 'ArrowDown' || event.key === 'ArrowUp')) {
+				var options = Array.prototype.slice.call(activeSelector.querySelectorAll('.language-selector__option'));
+				var index = options.indexOf(document.activeElement);
+				if (options.length) {
+					event.preventDefault();
+					index =
+						event.key === 'ArrowDown' ? (index + 1) % options.length : (index - 1 + options.length) % options.length;
+					options[index].focus();
+				}
+				return;
+			}
+			if (event.key === 'Escape') {
+				selectors.forEach(function (selector) {
+					if (selector.classList.contains('is-open')) {
+						setOpen(selector, false, true);
+					}
+				});
 			}
 		});
 	}

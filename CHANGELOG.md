@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.0.6 — 2026-08-17
+
+### Changed
+
+- Upgraded Persian typography to Estedad headings with Vazirmatn body text.
+- Upgraded Sorani typography to Noto Kufi Arabic headings with Vazirmatn body text.
+- Replaced the compact language pills with a professional dropdown showing
+  native names, language codes, active state and a clear globe affordance.
+- Added keyboard focus, arrow-key navigation, Escape/outside-click handling,
+  mobile presentation and a no-JavaScript language-list fallback.
+- Centralized the theme/runtime/package/translation release version at 2.0.6.
+
 ## 2.0.5 — 2026-08-15
 
 ### Fixed

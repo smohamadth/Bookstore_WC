@@ -18,10 +18,16 @@ Copyright 2015 The Vazirmatn Project Authors.
 Licensed under the SIL Open Font License 1.1. See `assets/fonts/OFL-Vazirmatn.txt`.
 Source: https://github.com/rastikerdar/vazirmatn
 
-## Noto Naskh Arabic
+## Estedad
 
-Copyright 2016 The Noto Project Authors.
-Licensed under the SIL Open Font License 1.1. See `assets/fonts/OFL-NotoNaskhArabic.txt`.
+Copyright 2022 The Estedad Project Authors.
+Licensed under the SIL Open Font License 1.1. See `assets/fonts/OFL-Estedad.txt`.
+Source: https://github.com/aminabedi68/Estedad
+
+## Noto Kufi Arabic
+
+Copyright 2022 The Noto Project Authors.
+Licensed under the SIL Open Font License 1.1. See `assets/fonts/OFL-NotoKufiArabic.txt`.
 Source: https://github.com/notofonts/arabic
 
 ## Demo covers

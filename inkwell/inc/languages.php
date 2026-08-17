@@ -134,53 +134,109 @@ function inkwell_clean_language_url() {
 }
 
 /**
- * Render a visitor language switcher. Polylang and WPML provide content-aware
- * links when available; otherwise Inkwell switches interface strings only.
+ * Normalize built-in or multilingual-plugin languages for the selector.
+ *
+ * @return array
+ */
+function inkwell_language_options() {
+	$options = array();
+
+	if ( function_exists( 'pll_the_languages' ) ) {
+		$languages = pll_the_languages( array( 'raw' => 1, 'hide_if_empty' => 0 ) );
+		foreach ( (array) $languages as $language ) {
+			$code      = isset( $language['slug'] ) ? $language['slug'] : '';
+			$options[] = array(
+				'locale'  => isset( $language['locale'] ) ? $language['locale'] : $code,
+				'code'    => strtoupper( $code ),
+				'name'    => isset( $language['name'] ) ? $language['name'] : $code,
+				'native'  => isset( $language['name'] ) ? $language['name'] : $code,
+				'url'     => isset( $language['url'] ) ? $language['url'] : home_url( '/' ),
+				'current' => ! empty( $language['current_lang'] ),
+				'rel'     => '',
+			);
+		}
+		return $options;
+	}
+
+	if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
+		$languages = apply_filters( 'wpml_active_languages', null, array( 'skip_missing' => 0 ) );
+		foreach ( (array) $languages as $language ) {
+			$code      = isset( $language['language_code'] ) ? $language['language_code'] : '';
+			$options[] = array(
+				'locale'  => $code,
+				'code'    => strtoupper( $code ),
+				'name'    => isset( $language['translated_name'] ) ? $language['translated_name'] : $code,
+				'native'  => isset( $language['native_name'] ) ? $language['native_name'] : $code,
+				'url'     => isset( $language['url'] ) ? $language['url'] : home_url( '/' ),
+				'current' => ! empty( $language['active'] ),
+				'rel'     => '',
+			);
+		}
+		return $options;
+	}
+
+	$current = inkwell_get_interface_locale();
+	foreach ( inkwell_supported_languages() as $locale => $language ) {
+		$options[] = array(
+			'locale'  => $locale,
+			'code'    => 'en_US' === $locale ? 'EN' : ( 'fa_IR' === $locale ? 'FA' : 'CKB' ),
+			'name'    => $language['name'],
+			'native'  => $language['native'],
+			'url'     => add_query_arg( 'inkwell_lang', $locale ),
+			'current' => $locale === $current,
+			'rel'     => 'nofollow',
+		);
+	}
+	return $options;
+}
+
+/**
+ * Render an accessible, content-aware language selector.
  */
 function inkwell_language_switcher() {
 	if ( get_theme_mod( 'inkwell_language_switcher_hide', false ) ) {
 		return;
 	}
 
-	if ( function_exists( 'pll_the_languages' ) ) {
-		echo '<nav class="language-switcher" aria-label="' . esc_attr__( 'Language', 'inkwell' ) . '"><ul>';
-		pll_the_languages(
-			array(
-				'display_names_as' => 'slug',
-				'show_flags'       => 0,
-				'show_names'       => 1,
-			)
-		);
-		echo '</ul></nav>';
+	static $instance = 0;
+	$instance++;
+	$options = inkwell_language_options();
+	if ( ! $options ) {
 		return;
 	}
-
-	if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
-		$languages = apply_filters( 'wpml_active_languages', null, array( 'skip_missing' => 0 ) );
-		if ( $languages ) {
-			echo '<nav class="language-switcher" aria-label="' . esc_attr__( 'Language', 'inkwell' ) . '"><ul>';
-			foreach ( $languages as $language ) {
-				$current = ! empty( $language['active'] );
-				echo '<li><a href="' . esc_url( $language['url'] ) . '" lang="' . esc_attr( $language['language_code'] ) . '"' . ( $current ? ' aria-current="page"' : '' ) . '>' . esc_html( strtoupper( $language['language_code'] ) ) . '</a></li>';
-			}
-			echo '</ul></nav>';
+	$current = $options[0];
+	foreach ( $options as $option ) {
+		if ( $option['current'] ) {
+			$current = $option;
+			break;
 		}
-		return;
 	}
-
-	$current = inkwell_get_interface_locale();
+	$menu_id = 'inkwell-language-menu-' . $instance;
 	?>
-	<nav class="language-switcher" aria-label="<?php esc_attr_e( 'Language', 'inkwell' ); ?>">
-		<ul>
-			<?php foreach ( inkwell_supported_languages() as $locale => $language ) : ?>
-				<li>
-					<a href="<?php echo esc_url( add_query_arg( 'inkwell_lang', $locale ) ); ?>" lang="<?php echo esc_attr( str_replace( '_', '-', $locale ) ); ?>" rel="nofollow"<?php echo $locale === $current ? ' aria-current="page"' : ''; ?>>
-						<span aria-hidden="true"><?php echo esc_html( $language['short'] ); ?></span>
-						<span class="screen-reader-text"><?php echo esc_html( $language['name'] ); ?></span>
-					</a>
-				</li>
-			<?php endforeach; ?>
-		</ul>
+	<nav class="language-selector" data-language-selector aria-label="<?php esc_attr_e( 'Language', 'inkwell' ); ?>">
+		<button class="language-selector__toggle" type="button" data-language-toggle aria-haspopup="true" aria-expanded="false" aria-controls="<?php echo esc_attr( $menu_id ); ?>">
+			<?php echo inkwell_icon( 'globe' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+			<span class="language-selector__current" dir="auto"><?php echo esc_html( $current['native'] ); ?></span>
+			<span class="language-selector__chevron"><?php echo inkwell_icon( 'chevron-down' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
+		</button>
+		<div id="<?php echo esc_attr( $menu_id ); ?>" class="language-selector__menu" data-language-menu>
+			<ul>
+				<?php foreach ( $options as $option ) : ?>
+					<?php $rtl = in_array( $option['locale'], array( 'fa_IR', 'fa', 'ckb' ), true ); ?>
+					<li>
+						<a class="language-selector__option<?php echo $option['current'] ? ' is-current' : ''; ?>" href="<?php echo esc_url( $option['url'] ); ?>" lang="<?php echo esc_attr( str_replace( '_', '-', $option['locale'] ) ); ?>" dir="<?php echo $rtl ? 'rtl' : 'ltr'; ?>"<?php echo $option['current'] ? ' aria-current="page"' : ''; ?><?php echo $option['rel'] ? ' rel="' . esc_attr( $option['rel'] ) . '"' : ''; ?>>
+							<span class="language-selector__names">
+								<strong><?php echo esc_html( $option['native'] ); ?></strong>
+								<small><?php echo esc_html( $option['name'] . ' · ' . $option['code'] ); ?></small>
+							</span>
+							<?php if ( $option['current'] ) : ?>
+								<span class="language-selector__check"><?php echo inkwell_icon( 'check' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
+							<?php endif; ?>
+						</a>
+					</li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
 	</nav>
 	<?php
 }

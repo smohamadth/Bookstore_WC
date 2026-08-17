@@ -3,7 +3,7 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Inkwell 2.0.5\n"
+"Project-Id-Version: Inkwell 2.0.6\n"
 "Report-Msgid-Bugs-To: https://github.com/smohamadth/Bookstore_WC/issues\n"
 "POT-Creation-Date: 2026-08-17 00:00+0000\n"
 "PO-Revision-Date: 2026-08-17 00:00+0000\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Inkwell translation build\n"
-"X-Inkwell-Template-SHA256: b3b2b077b0d73d01af2a34d0e2a5af54c2553e8dad0d2b3f03d72c61512e8fe0\n"
+"X-Inkwell-Template-SHA256: cb65240fb5cc3ac9192157ef87305e2564f97f4be07fbead940b1e94b3fe48b2\n"
 
 #: 404.php:11
 msgid "This page has been checked out"
@@ -90,7 +90,7 @@ msgstr "فروشگاه"
 msgid "All books"
 msgstr "همه کتاب‌ها"
 
-#: footer.php:64, header.php:103, inc/template-tags.php:96
+#: footer.php:64, header.php:103, inc/template-tags.php:98
 msgid "My account"
 msgstr "حساب کاربری من"
 
@@ -293,8 +293,7 @@ msgstr "کتاب الکترونیکی"
 msgid "Audiobook"
 msgstr "کتاب صوتی"
 
-#: inc/books.php:80, inc/languages.php:146, inc/languages.php:161,
-#: inc/languages.php:173, inc/languages.php:246
+#: inc/books.php:80, inc/languages.php:216, inc/languages.php:302
 msgid "Language"
 msgstr "زبان"
 
@@ -873,22 +872,22 @@ msgstr "مشکلی پیش آمد. لطفاً دوباره تلاش کنید."
 msgid "Close menu"
 msgstr "بستن فهرست"
 
-#: inc/template-tags.php:113
+#: inc/template-tags.php:115
 msgid "View cart"
 msgstr "مشاهده سبد خرید"
 
 #. translators: %d: number of items in cart.
-#: inc/template-tags.php:132
+#: inc/template-tags.php:134
 msgid "Cart — %d item"
 msgid_plural "Cart — %d items"
 msgstr[0] "سبد خرید — %d مورد"
 msgstr[1] "سبد خرید — %d مورد"
 
-#: inc/template-tags.php:156
+#: inc/template-tags.php:158
 msgid "View all"
 msgstr "مشاهده همه"
 
-#: inc/template-tags.php:225
+#: inc/template-tags.php:227
 msgid "by"
 msgstr "نوشتهٔ"
 
@@ -1153,11 +1152,11 @@ msgstr "متن (Inter)"
 msgid "Hide storefront language switcher"
 msgstr "پنهان کردن انتخابگر زبان فروشگاه"
 
-#: inc/languages.php:193, inc/languages.php:194, inc/languages.php:236
+#: inc/languages.php:249, inc/languages.php:250, inc/languages.php:292
 msgid "Inkwell Languages"
 msgstr "زبان‌های اینک‌ول"
 
-#: inc/languages.php:237
+#: inc/languages.php:293
 msgid ""
 "Install the matching WordPress core pack, then activate a site-wide language"
 " or use the storefront switcher."
@@ -1165,7 +1164,7 @@ msgstr ""
 "بسته زبان هسته وردپرس مربوط را نصب کنید، سپس زبان سراسری سایت را فعال کنید "
 "یا از انتخابگر زبان فروشگاه استفاده کنید."
 
-#: inc/languages.php:243
+#: inc/languages.php:299
 msgid ""
 "The WordPress language pack could not be installed. Check filesystem "
 "permissions and outbound connections."
@@ -1173,51 +1172,51 @@ msgstr ""
 "بسته زبان وردپرس نصب نشد. دسترسی‌های سامانه پرونده و اتصال‌های خروجی را "
 "بررسی کنید."
 
-#: inc/languages.php:241
+#: inc/languages.php:297
 msgid "Site language activated."
 msgstr "زبان سایت فعال شد."
 
-#: inc/languages.php:239
+#: inc/languages.php:295
 msgid "Language pack installed."
 msgstr "بسته زبان نصب شد."
 
-#: inc/languages.php:246
+#: inc/languages.php:302
 msgid "Theme interface"
 msgstr "رابط پوسته"
 
-#: inc/languages.php:246
+#: inc/languages.php:302
 msgid "WordPress core pack"
 msgstr "بسته هسته وردپرس"
 
-#: inc/languages.php:246
+#: inc/languages.php:302
 msgid "Actions"
 msgstr "عملیات"
 
-#: inc/languages.php:252
+#: inc/languages.php:308
 msgid "Bundled"
 msgstr "همراه"
 
-#: inc/languages.php:253
+#: inc/languages.php:309
 msgid "Installed"
 msgstr "نصب‌شده"
 
-#: inc/languages.php:253
+#: inc/languages.php:309
 msgid "Not installed"
 msgstr "نصب‌نشده"
 
-#: inc/languages.php:263
+#: inc/languages.php:319
 msgid "Use as site language"
 msgstr "استفاده به‌عنوان زبان سایت"
 
-#: inc/languages.php:256
+#: inc/languages.php:312
 msgid "Active"
 msgstr "فعال"
 
-#: inc/languages.php:272
+#: inc/languages.php:328
 msgid "Install core language"
 msgstr "نصب زبان هسته"
 
-#: inc/languages.php:280
+#: inc/languages.php:336
 msgid ""
 "For translated products and pages with language-specific URLs, install "
 "Polylang, WPML, or TranslatePress."
@@ -1225,7 +1224,7 @@ msgstr ""
 "برای محصولات و صفحه‌های ترجمه‌شده با نشانی‌های ویژه هر زبان، Polylang، WPML "
 "یا TranslatePress را نصب کنید."
 
-#: inc/languages.php:290
+#: inc/languages.php:346
 msgid "You are not allowed to install languages."
 msgstr "اجازه نصب زبان‌ها را ندارید."
 
@@ -1366,11 +1365,11 @@ msgid_plural "Tags:"
 msgstr[0] "برچسب:"
 msgstr[1] "برچسب‌ها:"
 
-#: inc/languages.php:216
+#: inc/languages.php:272
 msgid "Inkwell language setup:"
 msgstr "راه‌اندازی زبان اینک‌ول:"
 
-#: inc/languages.php:217
+#: inc/languages.php:273
 msgid ""
 "Install the Persian and Sorani WordPress packs to translate core and "
 "WooCommerce strings as well as the theme."
@@ -1378,6 +1377,6 @@ msgstr ""
 "برای ترجمه متن‌های هسته و ووکامرس همراه پوسته، بسته‌های وردپرس فارسی و "
 "سورانی را نصب کنید."
 
-#: inc/languages.php:218
+#: inc/languages.php:274
 msgid "Manage languages"
 msgstr "مدیریت زبان‌ها"

@@ -4,7 +4,7 @@ Theme URI: https://github.com/smohamadth/Bookstore_WC
 Author: Inkwell Studio
 Author URI: https://github.com/smohamadth
 Description: A boutique bookstore theme for WooCommerce — v2 "modern library" design. Parchment paper, deep ink and emerald; editorial Newsreader serif; book-spine product cards, ranked bestsellers, mini-cart, Book Details (ISBN, publisher, year, pages, format, language), author taxonomy, newsletter. Responsive, accessible, translation-ready.
-Version: 2.0.5
+Version: 2.0.6
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -289,23 +289,60 @@ html.inkwell-js [data-reveal].in-view { opacity: 1; transform: none; }
 .main-navigation .sub-menu a::after { display: none; }
 
 .header-actions { display: flex; align-items: center; gap: 0.4rem; flex-shrink: 0; }
-.language-switcher { flex-shrink: 0; }
-.language-switcher ul {
-	list-style: none; display: flex; align-items: center; gap: 0.2rem;
-	margin: 0; padding: 0;
-}
-.language-switcher a {
-	display: inline-flex; align-items: center; justify-content: center;
-	min-width: 34px; height: 34px; padding: 0 0.5rem;
+.language-selector { position: relative; flex-shrink: 0; }
+.language-selector__toggle {
+	display: inline-flex; align-items: center; gap: 0.45rem;
+	height: 42px; min-width: 92px; padding: 0 0.75rem;
 	border: 1px solid var(--line); border-radius: 999px;
-	color: var(--ink-soft); background: transparent; font-size: 0.75rem; font-weight: 700;
+	background: rgba(255, 253, 248, 0.72); color: var(--ink);
+	font-size: 0.8rem; font-weight: 700; cursor: pointer;
+	box-shadow: 0 2px 8px rgba(23, 27, 34, 0.04);
+	transition: border-color 0.16s ease, background 0.16s ease, box-shadow 0.16s ease;
 }
-.language-switcher a:hover, .language-switcher a[aria-current="page"] {
-	background: var(--accent); border-color: var(--accent); color: #fff;
+.language-selector__toggle:hover,
+.language-selector.is-open .language-selector__toggle {
+	border-color: var(--accent); background: var(--card); box-shadow: 0 6px 18px rgba(23, 27, 34, 0.1);
 }
-.header-dark .language-switcher a { border-color: rgba(255, 255, 255, 0.2); color: #f3efe4; }
-.header-dark .language-switcher a:hover,
-.header-dark .language-switcher a[aria-current="page"] { border-color: var(--accent); color: #fff; }
+.language-selector__toggle > svg { width: 18px; height: 18px; color: var(--accent); }
+.language-selector__current { flex: 1; white-space: nowrap; }
+.language-selector__chevron { display: inline-flex; transition: transform 0.18s ease; }
+.language-selector__chevron svg { width: 13px; height: 13px; }
+.language-selector.is-open .language-selector__chevron { transform: rotate(180deg); }
+.language-selector__menu {
+	position: absolute; top: calc(100% + 10px); inset-inline-end: 0; z-index: 450;
+	width: 236px; padding: 0.45rem;
+	background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+	box-shadow: var(--shadow-lg); opacity: 0; visibility: hidden;
+	transform: translateY(7px) scale(0.98); transform-origin: top right;
+	transition: opacity 0.16s ease, visibility 0.16s ease, transform 0.16s ease;
+}
+.language-selector.is-open .language-selector__menu { opacity: 1; visibility: visible; transform: none; }
+.language-selector__menu ul { list-style: none; margin: 0; padding: 0; }
+.language-selector__menu li { margin: 0; padding: 0; }
+.language-selector__option {
+	display: flex; align-items: center; gap: 0.8rem; min-height: 54px;
+	padding: 0.55rem 0.7rem; border-radius: 10px; color: var(--ink);
+}
+.language-selector__option:hover { background: var(--accent-soft); color: var(--accent-dark); }
+.language-selector__option.is-current { background: var(--paper-2); }
+.language-selector__names { display: flex; flex: 1; flex-direction: column; line-height: 1.25; text-align: start; }
+.language-selector__names strong { font-family: var(--font-body); font-size: 0.92rem; }
+.language-selector__names small { margin-top: 0.2rem; color: var(--ink-faint); font-size: 0.7rem; font-weight: 500; }
+.language-selector__check { display: inline-flex; color: var(--accent); }
+.language-selector__check svg { width: 17px; height: 17px; }
+.header-dark .language-selector__toggle {
+	border-color: rgba(255, 255, 255, 0.18); background: rgba(255, 255, 255, 0.06); color: #f3efe4;
+}
+.header-dark .language-selector__toggle:hover,
+.header-dark .language-selector.is-open .language-selector__toggle { border-color: var(--accent); background: rgba(255, 255, 255, 0.1); }
+html:not(.inkwell-js) .language-selector__toggle { display: none; }
+html:not(.inkwell-js) .language-selector__menu {
+	position: static; width: auto; padding: 0; border: 0; box-shadow: none;
+	opacity: 1; visibility: visible; transform: none; background: transparent;
+}
+html:not(.inkwell-js) .language-selector__menu ul { display: flex; gap: 0.25rem; }
+html:not(.inkwell-js) .language-selector__option { min-height: 36px; padding: 0.35rem 0.55rem; border: 1px solid var(--line); }
+html:not(.inkwell-js) .language-selector__names small { display: none; }
 .header-action {
 	display: inline-flex; align-items: center; justify-content: center;
 	width: 44px; height: 44px; border-radius: 50%; color: var(--ink);
@@ -396,9 +433,15 @@ html:not(.inkwell-js) .search-panel { display: block; }
 	color: var(--ink); font-weight: 500;
 }
 .mobile-menu .sub-menu a { padding-left: 1.6em; font-size: 0.92rem; color: var(--ink-soft); }
-.mobile-language-switcher { display: none; padding: 0.7rem 1rem 0; }
-.mobile-menu .language-switcher ul { padding: 0; }
-.mobile-menu .language-switcher a { display: inline-flex; padding: 0 0.7rem; border: 1px solid var(--line); }
+.mobile-language-switcher { display: none; padding: 0.8rem 1rem 0; }
+.mobile-language-switcher .language-selector,
+.mobile-language-switcher .language-selector__toggle { width: 100%; }
+.mobile-language-switcher .language-selector__menu {
+	position: static; width: 100%; margin-top: 0.45rem; transform: translateY(-4px);
+}
+.mobile-language-switcher .language-selector.is-open .language-selector__menu { transform: none; }
+.mobile-menu .language-selector__menu ul { padding: 0; }
+.mobile-menu .language-selector__option { display: flex; padding: 0.55rem 0.7rem; border-bottom: 0; }
 .mobile-menu-actions { display: none; gap: 0.6rem; padding: 1rem; }
 .mobile-menu-actions .button { flex: 1; }
 
@@ -850,7 +893,7 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--accent); ou
 	.hero-covers { min-height: 320px; }
 	.hero-cover { width: min(150px, 38vw); }
 	.site-title small { display: none; }
-	.header-actions > .language-switcher { display: none; }
+	.header-actions > .language-selector { display: none; }
 	.mobile-language-switcher { display: block; }
 	.mobile-menu-actions { display: flex; }
 	.mini-cart-panel { position: fixed; top: var(--header-h); right: 10px; left: 10px; width: auto; }

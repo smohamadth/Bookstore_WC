@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'INKWELL_VERSION', '2.0.5' );
+define( 'INKWELL_VERSION', '2.0.6' );
 
 require get_template_directory() . '/inc/setup.php';
 require get_template_directory() . '/inc/languages.php';

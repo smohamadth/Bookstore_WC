@@ -6,19 +6,29 @@
 	src: url("assets/fonts/vazirmatn-arabic.woff2") format("woff2");
 }
 @font-face {
-	font-family: "Noto Naskh Arabic"; font-style: normal; font-weight: 400 700; font-display: swap;
-	src: url("assets/fonts/noto-naskh-arabic.woff2") format("woff2");
+	font-family: "Estedad"; font-style: normal; font-weight: 100 900; font-display: swap;
+	src: url("assets/fonts/estedad-persian.woff2") format("woff2");
 }
-html:lang(fa), html:lang(ckb) {
-	--font-display: "Noto Naskh Arabic", "Vazirmatn", Tahoma, sans-serif;
+@font-face {
+	font-family: "Noto Kufi Arabic"; font-style: normal; font-weight: 100 900; font-display: swap;
+	src: url("assets/fonts/noto-kufi-sorani.woff2") format("woff2");
+}
+html:lang(fa) {
+	--font-display: "Estedad", "Vazirmatn", Tahoma, sans-serif;
+	--font-body: "Vazirmatn", Tahoma, Arial, sans-serif;
+}
+html:lang(ckb) {
+	--font-display: "Noto Kufi Arabic", "Vazirmatn", Tahoma, sans-serif;
 	--font-body: "Vazirmatn", Tahoma, Arial, sans-serif;
 }
 html:lang(fa) body, html:lang(ckb) body { line-height: 1.8; }
 html:lang(fa) h1, html:lang(fa) h2, html:lang(fa) h3,
-html:lang(fa) h4, html:lang(fa) h5, html:lang(fa) h6,
+html:lang(fa) h4, html:lang(fa) h5, html:lang(fa) h6 {
+	line-height: 1.4; letter-spacing: 0;
+}
 html:lang(ckb) h1, html:lang(ckb) h2, html:lang(ckb) h3,
 html:lang(ckb) h4, html:lang(ckb) h5, html:lang(ckb) h6 {
-	line-height: 1.35; letter-spacing: 0;
+	line-height: 1.5; letter-spacing: 0;
 }
 html:lang(fa) :is(.eyebrow, .site-title small, .hero-badge, .card-cat, .quote-band cite, .footer-col h4, .widget-title, .chip-new),
 html:lang(ckb) :is(.eyebrow, .site-title small, .hero-badge, .card-cat, .quote-band cite, .footer-col h4, .widget-title, .chip-new) {
@@ -46,6 +56,7 @@ th, td { text-align: right; }
 .main-navigation .sub-menu { left: auto; right: 0; }
 .cart-count { right: auto; left: 0; }
 .mini-cart-panel { right: auto; left: 0; transform-origin: top left; }
+.language-selector__menu { transform-origin: top left; }
 .mini-cart-panel a.remove { right: auto; left: 0; }
 .mobile-menu .sub-menu a { padding-left: 0.4em; padding-right: 1.6em; }
 .post-card:hover .card-link svg { transform: translateX(-3px); }

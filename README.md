@@ -5,7 +5,7 @@ editorial Newsreader + Inter design, book-cover product cards, author browsing,
 bibliographic product fields, curated home-page sections, and styled classic
 WooCommerce shopping flows without a page builder.
 
-- **Theme version:** 2.0.5
+- **Theme version:** 2.0.6
 - **Requires:** WordPress 6.0+, WooCommerce 8.0+, PHP 7.4+
 - **Tested metadata:** WordPress 6.8, WooCommerce 11.0
 - **License:** GPL-2.0-or-later · **Text domain:** `inkwell`
@@ -21,7 +21,9 @@ WooCommerce shopping flows without a page builder.
 - One-click demo catalog: 33 books, 7 genres, 31 authors and 14 reviews
 - Self-hosted variable fonts with no external font requests
 - Complete Persian (`fa_IR`) and Sorani Kurdish (`ckb`) theme translations
-- Bundled Vazirmatn/Noto Naskh Arabic typography, bidi-safe commerce UI and RTL layout
+- Persian typography: Estedad headings with Vazirmatn interface/body text
+- Sorani typography: Noto Kufi Arabic headings with Vazirmatn interface/body text
+- Bidi-safe commerce UI and complete RTL layout
 - RTL-aware and keyboard-friendly
 
 ## Repository layout
@@ -97,8 +99,9 @@ The theme and companion plugin include compiled interface translations for:
 - کوردی (سۆرانی) — Sorani Kurdish (`ckb`)
 
 Open **Appearance → Inkwell Languages** to install the Persian/Sorani WordPress
-core packs and activate a site-wide language. The public header switcher is
-visible by default and can be hidden in **Customize → Header & Announcement
+core packs and activate a site-wide language. The accessible header selector
+shows native language names, codes and active state on desktop and mobile. It
+is visible by default and can be hidden in **Customize → Header & Announcement
 Bar**.
 
 Without a multilingual plugin, the switcher remembers each visitor’s interface
