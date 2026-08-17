@@ -128,7 +128,7 @@ inkwell/                        ← the theme (installable as inkwell.zip)
 ├── taxonomy-book_author.php comments.php 404.php woocommerce.php
 ├── template-parts/             content, hero, 8 front-page sections
 ├── woocommerce/                overrides cloned from WC 11.0.1 + edits
-├── screenshot.jpg + assets/fonts/ and cover-fallback.png
+├── screenshot.png + assets/fonts/ and cover-fallback.png
 ├── theme.json  languages/inkwell.pot
 ```
 

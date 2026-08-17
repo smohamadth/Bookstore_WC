@@ -16,6 +16,8 @@
   author context before upsells and related recommendations.
 - Created a functional My Account shortcode page, enabled demo customer
   registration, and added a one-time repair for earlier admin and WP-CLI demo imports.
+- Restored an optimized root-level `screenshot.png` so WordPress reliably shows
+  the theme preview card in Appearance → Themes.
 
 ### Security and privacy
 

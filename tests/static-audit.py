@@ -111,9 +111,9 @@ check("inkwell_demo_imported" in importer and "inkwell_account_repaired_205" in 
 check("inkwell_demo_catalog_detected" in importer and "pride-prejudice" in importer, "Legacy WP-CLI demo sites are not detected for account repair")
 
 # Packaging, licensing, fonts, metadata and repository hygiene.
-check((THEME / "screenshot.jpg").is_file(), "Optimized theme screenshot is not at theme root")
-check((THEME / "screenshot.jpg").stat().st_size < 300_000, "Theme screenshot is too large")
-check(not (THEME / "screenshot.png").exists() and not (THEME / "assets/screenshot.png").exists(), "Duplicate screenshot remains")
+check((THEME / "screenshot.png").is_file(), "Theme screenshot.png is not at theme root")
+check((THEME / "screenshot.png").stat().st_size < 600_000, "Theme screenshot is too large")
+check(not (THEME / "screenshot.jpg").exists() and not (THEME / "assets/screenshot.png").exists(), "Duplicate screenshot remains")
 check(not (THEME / "assets/hero.jpg").exists(), "Unused legacy hero image remains")
 check((ROOT / "LICENSE").stat().st_size > 10000 and (THEME / "LICENSE").is_file(), "GPL license missing")
 check((THEME / "assets/fonts/OFL-Inter.txt").is_file() and (THEME / "assets/fonts/OFL-Newsreader.txt").is_file(), "Font licenses missing")
