@@ -26,6 +26,14 @@
 - Made the demo importer opt-in for site-wide settings, ownership-aware,
   media-idempotent and non-destructive to existing menus, widgets and blocks.
 
+### Localization
+
+- Added complete Persian (`fa_IR`) and Sorani Kurdish (`ckb`) theme and
+  companion-plugin language packs, including compiled MO catalogs.
+- Added RTL typography fallbacks for Persian and Sorani, removed Latin-style
+  capitalization/letter spacing, and documented single-language and
+  multilingual WooCommerce setup.
+
 ### Changed
 
 - Added configurable merchant policy, payment and social messages; unverified

@@ -136,15 +136,35 @@ The theme has detailed classic-template styling and baseline block styling.
 The importer does not replace existing Cart or Checkout blocks. A fresh empty
 page can be initialized with the classic shortcodes during complete demo setup.
 
-## 8. Translation
+## 8. Persian, Sorani Kurdish and other translations
+
+Bundled RTL interface packs:
+
+- **فارسی (Persian):** theme `fa_IR.po` / `fa_IR.mo`; plugin `inkwell-books-fa_IR.po` / `inkwell-books-fa_IR.mo`
+- **کوردی (سۆرانی):** theme `ckb.po` / `ckb.mo`; plugin `inkwell-books-ckb.po` / `inkwell-books-ckb.mo`
+
+For a single-language site, choose the installed core language under
+**Settings → General → Site Language**. WordPress will load these files and the
+RTL stylesheet automatically. WooCommerce core messages use WooCommerce’s own
+language pack, which WordPress downloads for the selected locale.
+
+To offer English, Persian and Sorani simultaneously, install a
+WooCommerce-compatible multilingual plugin such as Polylang for WooCommerce,
+WPML/WooCommerce Multilingual, or TranslatePress. Translate products,
+categories, author terms, menus, pages, checkout policies and email content in
+that plugin. Bundled demo catalog content remains English until translated by
+the store owner.
+
+To refresh translation templates after changing source strings:
 
 ```bash
 npm ci
 npm run make-pot
 ```
 
-Create `inkwell-xx_XX.po`, compile it to `inkwell-xx_XX.mo`, and place both in
-`inkwell/languages/`.
+Theme translation files use the locale-only WordPress naming convention
+(`<locale>.po` / `<locale>.mo`). Companion-plugin files use
+`inkwell-books-<locale>.po` / `.mo`.
 
 ## 9. Development and releases
 

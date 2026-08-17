@@ -20,7 +20,8 @@ WooCommerce shopping flows without a page builder.
 - Privacy-aware reading list with consent, throttling, unsubscribe, exporter and eraser support
 - One-click demo catalog: 33 books, 7 genres, 31 authors and 14 reviews
 - Self-hosted variable fonts with no external font requests
-- Translation-ready, RTL-aware and keyboard-friendly
+- Complete Persian (`fa_IR`) and Sorani Kurdish (`ckb`) interface translations
+- RTL-aware and keyboard-friendly
 
 ## Repository layout
 
@@ -86,6 +87,24 @@ A new subscription fires `inkwell_newsletter_subscribed`; an unsubscribe fires
 default (filterable with `inkwell_newsletter_local_limit`). For a larger or
 marketing-critical list, hook an email service such as Mailchimp or Brevo and
 use its authenticated double-opt-in/unsubscribe workflow.
+
+## Persian and Sorani Kurdish
+
+The theme and companion plugin include compiled interface translations for:
+
+- فارسی — Persian (`fa_IR`)
+- کوردی (سۆرانی) — Sorani Kurdish (`ckb`)
+
+For a single-language store, install the corresponding WordPress core language
+under **Settings → General → Site Language**. WordPress then loads the bundled
+theme/plugin translations and RTL layout automatically.
+
+For a store that switches between English, Persian and Sorani, use a
+WooCommerce-compatible multilingual plugin such as Polylang for WooCommerce,
+WPML/WooCommerce Multilingual, or TranslatePress. Product titles, descriptions,
+categories, authors, policies and demo content are store content and must be
+translated through that multilingual workflow; the bundled files translate the
+theme and companion-plugin interface.
 
 ## Development and release
 

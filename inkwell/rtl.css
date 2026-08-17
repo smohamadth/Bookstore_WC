@@ -1,6 +1,20 @@
 /*
  * Inkwell right-to-left layout adjustments.
  */
+html:lang(fa), html:lang(ckb) {
+	--font-display: "Noto Naskh Arabic", "Vazirmatn", Tahoma, Arial, sans-serif;
+	--font-body: "Noto Sans Arabic", "Vazirmatn", Tahoma, Arial, sans-serif;
+}
+html:lang(fa) h1, html:lang(fa) h2, html:lang(fa) h3,
+html:lang(fa) h4, html:lang(fa) h5, html:lang(fa) h6,
+html:lang(ckb) h1, html:lang(ckb) h2, html:lang(ckb) h3,
+html:lang(ckb) h4, html:lang(ckb) h5, html:lang(ckb) h6 {
+	line-height: 1.35; letter-spacing: 0;
+}
+html:lang(fa) :is(.eyebrow, .site-title small, .hero-badge, .card-cat, .quote-band cite, .footer-col h4, .widget-title, .chip-new),
+html:lang(ckb) :is(.eyebrow, .site-title small, .hero-badge, .card-cat, .quote-band cite, .footer-col h4, .widget-title, .chip-new) {
+	letter-spacing: 0; text-transform: none;
+}
 ul, ol { padding-left: 0; padding-right: 1.4em; }
 blockquote { border-left: 0; border-right: 3px solid var(--accent); padding-left: 0; padding-right: 1.4em; }
 th, td { text-align: right; }

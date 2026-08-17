@@ -2,6 +2,7 @@
 """Fast dependency-free release regressions for the Inkwell theme."""
 from __future__ import annotations
 
+import gettext
 import hashlib
 import json
 import re
@@ -79,7 +80,9 @@ header = text(THEME / "header.php")
 check(header.index("wp_body_open();") < header.index("inkwell-js"), "wp_body_open is not the first body hook")
 check("html:not(.inkwell-js) .mobile-menu { display: block; }" in style, "Mobile navigation has no no-JS fallback")
 check("html:not(.inkwell-js) .search-panel { display: block; }" in style, "Search has no no-JS fallback")
+rtl_css = text(THEME / "rtl.css")
 check((THEME / "rtl.css").is_file() and "inkwell-rtl" in text(THEME / "inc/setup.php"), "RTL support is missing")
+check("html:lang(fa)" in rtl_css and "html:lang(ckb)" in rtl_css, "Persian/Sorani typography support is missing")
 for production_file in [THEME / "inc/woocommerce.php", THEME / "template-parts/hero.php", THEME / "template-parts/section-valueprops.php", THEME / "footer.php"]:
     source = text(production_file)
     for claim in ("€25", "30-day returns", "ships within 24 hours", "Apple&nbsp;Pay"):
@@ -143,10 +146,46 @@ for module in ("books.php", "newsletter.php"):
     check(theme_module == plugin_module, f"Plugin {module} module drift")
 check((PLUGIN / "languages/inkwell-books.pot").is_file(), "Companion plugin POT is missing")
 
+# Bundled Persian and Sorani translations must be complete, compiled and safe.
+placeholder_pattern = re.compile(r"%(?:\d+\$)?[sd]")
+for locale in ("fa_IR", "ckb"):
+    for directory, filename_prefix, pot_path in (
+        (THEME / "languages", "", THEME / "languages/inkwell.pot"),
+        (PLUGIN / "languages", "inkwell-books-", PLUGIN / "languages/inkwell-books.pot"),
+    ):
+        pot_source = text(pot_path)
+        expected_entries = sum(line.startswith("msgid ") for line in pot_source.splitlines()) - 1
+        plural_entries = sum(line.startswith("msgid_plural ") for line in pot_source.splitlines())
+        po_path = directory / f"{filename_prefix}{locale}.po"
+        mo_path = directory / f"{filename_prefix}{locale}.mo"
+        check(po_path.is_file() and mo_path.is_file(), f"Missing {locale} language files in {directory}")
+        with mo_path.open("rb") as stream:
+            translations = gettext.GNUTranslations(stream)
+        catalog = translations._catalog
+        info = translations.info()
+        check(info.get("language") == locale, f"Wrong locale metadata in {mo_path.name}")
+        check(info.get("x-inkwell-template-sha256") == hashlib.sha256(pot_path.read_bytes()).hexdigest(), f"Stale translations in {mo_path.name}")
+        check(len(catalog) == 1 + expected_entries + plural_entries, f"Incomplete catalog in {mo_path.name}")
+        if directory == THEME / "languages":
+            expected_shop = "فروشگاه" if locale == "fa_IR" else "فرۆشگا"
+            check(translations.gettext("Shop") == expected_shop, f"Core storefront translation failed in {mo_path.name}")
+            check(translations.ngettext("%d book", "%d books", 2) != "%d books", f"Plural translation failed in {mo_path.name}")
+        for source_key, translated in catalog.items():
+            if source_key == "":
+                continue
+            source = source_key[0] if isinstance(source_key, tuple) else source_key
+            source = source.split("\x04", 1)[-1]
+            check(bool(translated), f"Empty translation for {source!r} in {mo_path.name}")
+            check(placeholder_pattern.findall(source) == placeholder_pattern.findall(translated), f"Placeholder mismatch for {source!r} in {mo_path.name}")
+        keeping = catalog.get("Books worth <em>keeping</em>")
+        if keeping:
+            check("<em>" in keeping and "</em>" in keeping, f"Hero markup missing in {mo_path.name}")
+
 # Gross structural checks.
 json.loads(text(THEME / "demo/books.json"))
 check(style.count("{") == style.count("}"), "Unbalanced theme CSS braces")
 check(wc_css.count("{") == wc_css.count("}"), "Unbalanced WooCommerce CSS braces")
+check(rtl_css.count("{") == rtl_css.count("}"), "Unbalanced RTL CSS braces")
 
 if "--archives" in sys.argv:
     for directory, archive_name in ((THEME, "inkwell.zip"), (PLUGIN, "inkwell-books.zip")):

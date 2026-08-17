@@ -21,6 +21,8 @@ The Inkwell theme includes backward-compatible fallbacks, so activating this
 plugin does not interrupt an existing store. Install and activate the plugin
 before changing themes to keep the data interfaces available.
 
+Persian (fa_IR) and Sorani Kurdish (ckb) interface translations are bundled.
+
 Shortcodes:
 
 * [inkwell_newsletter]
