@@ -48,8 +48,8 @@ truth for bundled demo data.
 The importer always reuses content it owns and skips unrelated products with a
 matching SKU. The optional **complete demo-site setup** checkbox is deliberately
 unchecked by default; enable it only when you want the importer to assign its
-own menu/empty sidebars, EUR currency and demo front page. Existing cart or
-checkout block content is never replaced.
+own menu/empty sidebars, EUR currency, demo front page, and customer account
+registration. Existing cart or checkout block content is never replaced.
 
 ## Configuration
 

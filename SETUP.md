@@ -46,6 +46,7 @@ The catalog importer:
 - creates a dedicated **Inkwell Demo Menu**, never deleting a menu named “Main Menu”;
 - fills only empty theme sidebars without replacing existing widgets;
 - initializes cart/checkout shortcodes only when those pages are genuinely empty;
+- creates a working My Account shortcode page and enables customer registration during complete demo setup;
 - preserves existing block-based cart and checkout content.
 
 The **Also apply the complete demo-site setup** option is unchecked by default.
@@ -170,4 +171,5 @@ The build produces deterministic, validated `inkwell.zip` and
 | Mini-cart does not update | Confirm WooCommerce frontend scripts are not disabled by an optimization plugin |
 | Gallery lacks zoom/slider | Add more than one product image and ensure gallery scripts are enabled |
 | Author fields disappear after changing themes | Install and activate the Inkwell Books companion plugin |
+| My Account shows login but no registration form | Enable “Allow customers to create an account on the My account page” under WooCommerce → Settings → Accounts & Privacy; complete demo setup enables it automatically |
 | Need block cart/checkout | Keep the existing blocks; the importer will not overwrite them |

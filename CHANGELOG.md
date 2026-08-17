@@ -14,6 +14,8 @@
   hero background images and mini-cart event/focus behavior.
 - Reduced the single-product gallery proportionally without cropping and moved
   author context before upsells and related recommendations.
+- Created a functional My Account shortcode page, enabled demo customer
+  registration, and added a one-time repair for earlier admin and WP-CLI demo imports.
 
 ### Security and privacy
 

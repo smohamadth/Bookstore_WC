@@ -254,6 +254,73 @@ function inkwell_demo_ensure_page( $slug, $title, $content ) {
 }
 
 /**
+ * Ensure WooCommerce has a functional My Account page.
+ * Existing non-empty page content is never replaced.
+ *
+ * @return int My Account page ID, or zero on failure.
+ */
+function inkwell_demo_ensure_myaccount_page() {
+	$page_id = (int) wc_get_page_id( 'myaccount' );
+	if ( $page_id <= 0 ) {
+		$page_id = inkwell_demo_ensure_page( 'my-account', __( 'My Account', 'inkwell' ), '' );
+		if ( $page_id > 0 ) {
+			update_option( 'woocommerce_myaccount_page_id', $page_id );
+		}
+	}
+	if ( $page_id > 0 && '' === trim( (string) get_post_field( 'post_content', $page_id ) ) ) {
+		wp_update_post(
+			array(
+				'ID'           => $page_id,
+				'post_content' => '<!-- wp:shortcode -->[woocommerce_my_account]<!-- /wp:shortcode -->',
+			)
+		);
+	}
+	return max( 0, $page_id );
+}
+
+/**
+ * Detect catalogs made by either the admin importer or its legacy WP-CLI tool.
+ *
+ * @return bool
+ */
+function inkwell_demo_catalog_detected() {
+	if ( get_option( 'inkwell_demo_imported', false ) ) {
+		return true;
+	}
+	$signatures = array(
+		'pride-prejudice' => '9780141439518',
+		'dune'            => '9780441172719',
+		'sapiens'         => '9780062316097',
+	);
+	$matches = 0;
+	foreach ( $signatures as $sku => $isbn ) {
+		$product_id = (int) wc_get_product_id_by_sku( $sku );
+		if ( $product_id > 0 && $isbn === get_post_meta( $product_id, '_inkwell_isbn', true ) ) {
+			$matches++;
+		}
+	}
+	return $matches >= 2;
+}
+
+/**
+ * Repair account registration for sites created by an earlier demo importer.
+ * This is deliberately limited to recognized demo sites and runs only once.
+ */
+function inkwell_demo_repair_account_registration() {
+	if ( ! class_exists( 'WooCommerce' ) || get_option( 'inkwell_account_repaired_205', false ) ) {
+		return;
+	}
+	if ( ! inkwell_demo_catalog_detected() ) {
+		update_option( 'inkwell_account_repaired_205', 'not-demo', false );
+		return;
+	}
+	inkwell_demo_ensure_myaccount_page();
+	update_option( 'woocommerce_enable_myaccount_registration', 'yes' );
+	update_option( 'inkwell_account_repaired_205', 1, false );
+}
+add_action( 'init', 'inkwell_demo_repair_account_registration', 30 );
+
+/**
  * Create or reuse a widget instance owned by the demo importer.
  *
  * @param string $option_name Widget option name.
@@ -496,12 +563,13 @@ function inkwell_demo_import_catalog( $apply_site_setup = false ) {
 			$shop = inkwell_demo_ensure_page( 'shop', 'Shop', '' );
 			update_option( 'woocommerce_shop_page_id', $shop );
 		}
-		foreach ( array( 'cart', 'checkout', 'myaccount' ) as $wc_page ) {
+		foreach ( array( 'cart', 'checkout' ) as $wc_page ) {
 			if ( (int) wc_get_page_id( $wc_page ) <= 0 ) {
 				$id = inkwell_demo_ensure_page( $wc_page, ucwords( $wc_page ), '' );
 				update_option( 'woocommerce_' . $wc_page . '_page_id', $id );
 			}
 		}
+		inkwell_demo_ensure_myaccount_page();
 
 		// On explicit full setup, initialize only genuinely empty cart/checkout
 		// pages. Existing block or shortcode content is always preserved.
@@ -514,7 +582,7 @@ function inkwell_demo_import_catalog( $apply_site_setup = false ) {
 			wp_update_post( array( 'ID' => $checkout_id, 'post_content' => '<!-- wp:shortcode -->[woocommerce_checkout]<!-- /wp:shortcode -->' ) );
 		}
 
-		$summary[] = __( 'Pages created (Home, Shop, About, Contact, Journal, Privacy)', 'inkwell' );
+		$summary[] = __( 'Pages created (Home, Shop, My Account, About, Contact, Journal, Privacy)', 'inkwell' );
 
 		/* Journal posts */
 		$post_cats = array( 'reading-lists' => 'Reading Lists', 'behind-the-shelves' => 'Behind the Shelves', 'staff-picks' => 'Staff Picks' );
@@ -692,6 +760,7 @@ function inkwell_demo_import_catalog( $apply_site_setup = false ) {
 		update_option( 'woocommerce_currency', 'EUR' );
 		update_option( 'woocommerce_coming_soon', 'no' );
 		update_option( 'woocommerce_store_pages_only', 'no' );
+		update_option( 'woocommerce_enable_myaccount_registration', 'yes' );
 		update_option( 'show_on_front', 'page' );
 		update_option( 'page_on_front', $home );
 		update_option( 'page_for_posts', $journal );

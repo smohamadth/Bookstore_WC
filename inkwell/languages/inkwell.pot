@@ -560,75 +560,79 @@ msgstr ""
 msgid "Import demo content now"
 msgstr ""
 
-#: inc/demo-import.php:291
+#: inc/demo-import.php:265
+msgid "My Account"
+msgstr ""
+
+#: inc/demo-import.php:358
 msgid "WooCommerce must be active before importing demo content."
 msgstr ""
 
-#: inc/demo-import.php:298
+#: inc/demo-import.php:365
 msgid "Could not read demo data. The theme files may be incomplete."
 msgstr ""
 
-#: inc/demo-import.php:329
+#: inc/demo-import.php:396
 msgid "%d product categories created/updated"
 msgstr ""
 
-#: inc/demo-import.php:385
+#: inc/demo-import.php:452
 msgid "%d book authors with bios"
 msgstr ""
 
-#: inc/demo-import.php:465
+#: inc/demo-import.php:532
 msgid "%d demo books created or updated"
 msgstr ""
 
-#: inc/demo-import.php:467
+#: inc/demo-import.php:534
 msgid "%d existing products skipped because their SKUs were not marked as demo content"
 msgstr ""
 
-#: inc/demo-import.php:517
-msgid "Pages created (Home, Shop, About, Contact, Journal, Privacy)"
+#: inc/demo-import.php:585
+msgid "Pages created (Home, Shop, My Account, About, Contact, Journal, Privacy)"
 msgstr ""
 
-#: inc/demo-import.php:561
+#: inc/demo-import.php:629
 msgid "3 journal posts with covers"
 msgstr ""
 
-#: inc/demo-import.php:613
+#: inc/demo-import.php:681
 msgid "14 customer reviews with ratings"
 msgstr ""
 
-#: inc/demo-import.php:720
+#: inc/demo-import.php:789
 msgid "Complete demo-site setup skipped; existing menus, sidebars, currency and front-page settings were preserved"
 msgstr ""
 
-#: inc/demo-import.php:669
+#: inc/demo-import.php:737
 msgid "Dedicated demo navigation menu with genre dropdown assigned"
 msgstr ""
 
-#: inc/demo-import.php:673, template-parts/section-categories.php:50
+#: inc/demo-import.php:741, template-parts/section-categories.php:50
 msgid "Genres"
 msgstr ""
 
-#: inc/demo-import.php:674
+#: inc/demo-import.php:742
 msgid "Filter by price"
 msgstr ""
 
-#: inc/demo-import.php:675
+#: inc/demo-import.php:743
 msgid "Top rated"
 msgstr ""
 
-#: inc/demo-import.php:678
+#: inc/demo-import.php:746
 msgid "Recent posts"
 msgstr ""
 
-#: inc/demo-import.php:679
+#: inc/demo-import.php:747
 msgid "Journal categories"
 msgstr ""
 
-#: inc/demo-import.php:689
+#: inc/demo-import.php:757
 msgid "Empty shop and blog sidebars configured without replacing existing widgets"
 msgstr ""
 
-#: inc/demo-import.php:718
+#: inc/demo-import.php:787
 msgid "Store settings, front page & theme options applied"
 msgstr ""
 

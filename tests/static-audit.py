@@ -105,6 +105,10 @@ check("'' === trim( (string) get_post_field( 'post_content'" in importer, "Impor
 check(importer.count("if ( $apply_site_setup )") >= 2, "Pages and site settings are not both opt-in")
 check("$legacy_import && $book['isbn']" in importer, "Legacy demo detection can claim unrelated products")
 check("wc_get_page_id( 'shop' )" in importer and "<= 0" in importer, "Missing WooCommerce page IDs are not handled")
+check("[woocommerce_my_account]" in importer, "My Account page is missing its shortcode")
+check("woocommerce_enable_myaccount_registration', 'yes'" in importer, "Demo customer registration is not enabled")
+check("inkwell_demo_imported" in importer and "inkwell_account_repaired_205" in importer, "Existing demo account pages are not repaired safely")
+check("inkwell_demo_catalog_detected" in importer and "pride-prejudice" in importer, "Legacy WP-CLI demo sites are not detected for account repair")
 
 # Packaging, licensing, fonts, metadata and repository hygiene.
 check((THEME / "screenshot.jpg").is_file(), "Optimized theme screenshot is not at theme root")
