@@ -149,9 +149,12 @@ RTL stylesheet and available WooCommerce language pack. The public header
 switcher is enabled by default; hide it under **Customize → Header &
 Announcement Bar** if needed.
 
-Without a multilingual plugin, the switcher changes interface strings per
-visitor using the essential `inkwell_language` cookie. Configure full-page
-caches to vary by that cookie. Products and pages are not duplicated.
+Without a multilingual plugin, the switcher changes theme strings and known
+imported menu/widget/policy/genre labels per visitor using the essential
+`inkwell_language` cookie. The bundled catalog provides a fallback before core
+packs are installed; install the core packs to translate WordPress and
+WooCommerce too. Configure full-page caches to vary by the language cookie.
+Products and pages are not duplicated.
 
 For translated content and language-specific URLs, install Polylang for
 WooCommerce, WPML/WooCommerce Multilingual, or TranslatePress. Inkwell detects

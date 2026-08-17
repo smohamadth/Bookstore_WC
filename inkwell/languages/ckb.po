@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Inkwell translation build\n"
-"X-Inkwell-Template-SHA256: 8d1cfe189d1620d61a0d3d83d28bf0d7a25daec223bda8630c8c2de0e643781b\n"
+"X-Inkwell-Template-SHA256: b3b2b077b0d73d01af2a34d0e2a5af54c2553e8dad0d2b3f03d72c61512e8fe0\n"
 
 #: 404.php:11
 msgid "This page has been checked out"
@@ -62,7 +62,7 @@ msgid_plural "%s comments"
 msgstr[0] "%s بۆچوون"
 msgstr[1] "%s بۆچوون"
 
-#: footer.php:22
+#: footer.php:22, inc/demo-localization.php:54
 msgid ""
 "A hand-picked collection of books for curious minds — fiction, history, "
 "science and stories for every shelf."
@@ -82,7 +82,7 @@ msgstr "ئینستاگرام"
 msgid "X (formerly Twitter)"
 msgstr "ئێکس (تویتەری پێشوو)"
 
-#: footer.php:49, inc/woocommerce.php:348
+#: footer.php:49, inc/demo-localization.php:40, inc/woocommerce.php:348
 msgid "Shop"
 msgstr "فرۆشگا"
 
@@ -98,7 +98,7 @@ msgstr "هەژماری من"
 msgid "Help"
 msgstr "یارمەتی"
 
-#: footer.php:89
+#: footer.php:89, inc/demo-localization.php:44
 msgid "Contact"
 msgstr "پەیوەندی"
 
@@ -151,7 +151,7 @@ msgstr "سەبەتەی کڕین"
 msgid "Mobile"
 msgstr "مۆبایل"
 
-#: index.php:13, single.php:14
+#: index.php:13, single.php:14, inc/demo-localization.php:42
 msgid "Journal"
 msgstr "گۆڤار"
 
@@ -293,8 +293,8 @@ msgstr "کتێبی ئەلیکترۆنی"
 msgid "Audiobook"
 msgstr "کتێبی دەنگی"
 
-#: inc/books.php:80, inc/languages.php:90, inc/languages.php:105,
-#: inc/languages.php:117, inc/languages.php:168
+#: inc/books.php:80, inc/languages.php:146, inc/languages.php:161,
+#: inc/languages.php:173, inc/languages.php:246
 msgid "Language"
 msgstr "زمان"
 
@@ -681,23 +681,24 @@ msgstr ""
 msgid "Dedicated demo navigation menu with genre dropdown assigned"
 msgstr "پێڕستی ڕێنیشاندانی نموونەیی لەگەڵ لیستی ژێرەوەی ژانر دیاری کرا"
 
-#: inc/demo-import.php:741, template-parts/section-categories.php:50
+#: inc/demo-import.php:741, inc/demo-localization.php:41,
+#: template-parts/section-categories.php:50
 msgid "Genres"
 msgstr "ژانرەکان"
 
-#: inc/demo-import.php:742
+#: inc/demo-import.php:742, inc/demo-localization.php:45
 msgid "Filter by price"
 msgstr "پاڵاوتن بە پێی نرخ"
 
-#: inc/demo-import.php:743
+#: inc/demo-import.php:743, inc/demo-localization.php:46
 msgid "Top rated"
 msgstr "بەرزترین نمرە"
 
-#: inc/demo-import.php:746
+#: inc/demo-import.php:746, inc/demo-localization.php:47
 msgid "Recent posts"
 msgstr "بابەتە تازەکان"
 
-#: inc/demo-import.php:747
+#: inc/demo-import.php:747, inc/demo-localization.php:48
 msgid "Journal categories"
 msgstr "هاوپۆلەکانی گۆڤار"
 
@@ -900,7 +901,7 @@ msgstr "داشکاندن"
 msgid "Breadcrumb"
 msgstr "ڕێچکە"
 
-#: inc/woocommerce.php:69
+#: inc/demo-localization.php:39, inc/woocommerce.php:69
 msgid "Home"
 msgstr "ماڵەوە"
 
@@ -1153,11 +1154,11 @@ msgstr "دەقی (Inter)"
 msgid "Hide storefront language switcher"
 msgstr "شاردنەوەی هەڵبژێری زمانی فرۆشگا"
 
-#: inc/languages.php:137, inc/languages.php:138, inc/languages.php:158
+#: inc/languages.php:193, inc/languages.php:194, inc/languages.php:236
 msgid "Inkwell Languages"
 msgstr "زمانەکانی ئینکوێڵ"
 
-#: inc/languages.php:159
+#: inc/languages.php:237
 msgid ""
 "Install the matching WordPress core pack, then activate a site-wide language"
 " or use the storefront switcher."
@@ -1165,7 +1166,7 @@ msgstr ""
 "پاکێجی زمانی گونجاوی ناوکی وۆردپرێس دابمەزرێنە، پاشان زمانێکی گشتی ماڵپەڕ "
 "چالاک بکە یان هەڵبژێری زمانی فرۆشگا بەکاربهێنە."
 
-#: inc/languages.php:165
+#: inc/languages.php:243
 msgid ""
 "The WordPress language pack could not be installed. Check filesystem "
 "permissions and outbound connections."
@@ -1173,51 +1174,51 @@ msgstr ""
 "پاکێجی زمانی وۆردپرێس دانەمەزرا. مۆڵەتەکانی سیستەمی فایل و پەیوەندییە "
 "دەرەکییەکان بپشکنە."
 
-#: inc/languages.php:163
+#: inc/languages.php:241
 msgid "Site language activated."
 msgstr "زمانی ماڵپەڕ چالاک کرا."
 
-#: inc/languages.php:161
+#: inc/languages.php:239
 msgid "Language pack installed."
 msgstr "پاکێجی زمان دامەزرا."
 
-#: inc/languages.php:168
+#: inc/languages.php:246
 msgid "Theme interface"
 msgstr "ڕووکاری بەکارهێنەری ڕووکار"
 
-#: inc/languages.php:168
+#: inc/languages.php:246
 msgid "WordPress core pack"
 msgstr "پاکێجی ناوکی وۆردپرێس"
 
-#: inc/languages.php:168
+#: inc/languages.php:246
 msgid "Actions"
 msgstr "کردارەکان"
 
-#: inc/languages.php:174
+#: inc/languages.php:252
 msgid "Bundled"
 msgstr "هاوپێچکراو"
 
-#: inc/languages.php:175
+#: inc/languages.php:253
 msgid "Installed"
 msgstr "دامەزراو"
 
-#: inc/languages.php:175
+#: inc/languages.php:253
 msgid "Not installed"
 msgstr "دانەمەزراو"
 
-#: inc/languages.php:185
+#: inc/languages.php:263
 msgid "Use as site language"
 msgstr "وەک زمانی ماڵپەڕ بەکاری بهێنە"
 
-#: inc/languages.php:178
+#: inc/languages.php:256
 msgid "Active"
 msgstr "چالاک"
 
-#: inc/languages.php:194
+#: inc/languages.php:272
 msgid "Install core language"
 msgstr "دامەزراندنی زمانی ناوک"
 
-#: inc/languages.php:202
+#: inc/languages.php:280
 msgid ""
 "For translated products and pages with language-specific URLs, install "
 "Polylang, WPML, or TranslatePress."
@@ -1225,6 +1226,161 @@ msgstr ""
 "بۆ بەرهەم و پەڕە وەرگێڕدراوەکان بە بەستەری تایبەت بە هەر زمانێک، Polylang، "
 "WPML یان TranslatePress دابمەزرێنە."
 
-#: inc/languages.php:212
+#: inc/languages.php:290
 msgid "You are not allowed to install languages."
 msgstr "ڕێگەت پێنەدراوە زمان دابمەزرێنیت."
+
+#: inc/demo-localization.php:43
+msgid "About"
+msgstr "دەربارەی ئێمە"
+
+#: inc/demo-localization.php:49
+msgid "Free shipping on orders over €25 — every book, everywhere."
+msgstr ""
+"گەیاندنی بەخۆڕایی بۆ داواکارییەکانی سەرووی ٢٥ یۆرۆ — هەر کتێبێک، بۆ هەر "
+"شوێنێک."
+
+#: inc/demo-localization.php:50
+msgid "There is no friend as loyal as a book."
+msgstr "هیچ هاوڕێیەک بە ئەندازەی کتێب دڵسۆز نییە."
+
+#: inc/demo-localization.php:51
+msgid ""
+"Ordered on Monday, reading on Wednesday. Beautifully packed and the "
+"recommendation note was a lovely touch."
+msgstr ""
+"دووشەممە داوام کرد و چوارشەممە دەستم بە خوێندنەوە کرد. پاکەتەکە جوان بوو و "
+"تێبینی پێشنیاری کتێبەکە زۆر خۆش بوو."
+
+#: inc/demo-localization.php:52
+msgid ""
+"Inkwell found me a long-out-of-print edition I had hunted for years. "
+"Customers for life."
+msgstr ""
+"ئینکوێڵ وەشانێکی دەگمەنی بۆ دۆزیمەوە کە ساڵانێک بەدوایدا دەگەڕام. لەمەودوا "
+"کڕیاری هەمیشەییم."
+
+#: inc/demo-localization.php:53
+msgid ""
+"The genre tiles make browsing a joy, and the staff picks never miss. My book"
+" budget is not okay."
+msgstr ""
+"کاشییەکانی ژانر گەڕان بە کتێبەکاندا خۆش دەکەن و هەڵبژاردەکانی ستاف هەمیشە "
+"لەجێی خۆیانن؛ بەڵام بودجەی کتێبەکانم چیتر باش نییە!"
+
+#: inc/demo-localization.php:55
+msgid "Free shipping over €25"
+msgstr "گەیاندنی بەخۆڕایی بۆ کڕینی سەرووی ٢٥ یۆرۆ"
+
+#: inc/demo-localization.php:56
+msgid "In stock — usually ships within 24 hours"
+msgstr "بەردەستە — زۆرجار لە ماوەی ٢٤ کاتژمێردا دەنێردرێت"
+
+#: inc/demo-localization.php:57
+msgid "30-day returns"
+msgstr "گەڕاندنەوە تا ٣٠ ڕۆژ"
+
+#: inc/demo-localization.php:111
+msgid "Fiction"
+msgstr "چیرۆک"
+
+#: inc/demo-localization.php:111
+msgid "Novels, classics and contemporary literary fiction."
+msgstr "ڕۆمان، بەرهەمە کلاسیکەکان و ئەدەبی چیرۆکی هاوچەرخ."
+
+#: inc/demo-localization.php:112
+msgid "Science Fiction & Fantasy"
+msgstr "زانستی-خەیاڵی و فانتازیا"
+
+#: inc/demo-localization.php:112
+msgid "Other worlds, far futures and impossible magic."
+msgstr "جیهانی تر، داهاتووی دوور و جادوی ناممکن."
+
+#: inc/demo-localization.php:113
+msgid "Mystery & Thriller"
+msgstr "نهێنی و هەستبزوێن"
+
+#: inc/demo-localization.php:113
+msgid "Whodunits, suspense and page-turning thrillers."
+msgstr "نهێنییە تاوانکارییەکان، پەرۆشی و چیرۆکی هەستبزوێنی ڕاکێشەر."
+
+#: inc/demo-localization.php:114
+msgid "Non-Fiction"
+msgstr "ناچیرۆکی"
+
+#: inc/demo-localization.php:114
+msgid "Ideas, science, business and big questions."
+msgstr "بیرۆکە، زانست، بازرگانی و پرسیارە گەورەکان."
+
+#: inc/demo-localization.php:115
+msgid "History & Biography"
+msgstr "مێژوو و ژیاننامە"
+
+#: inc/demo-localization.php:115
+msgid "True stories and the lives behind them."
+msgstr "چیرۆکی ڕاستەقینە و ژیانی ئەو کەسانەی لە پشتیانەوەن."
+
+#: inc/demo-localization.php:116
+msgid "Children’s Books"
+msgstr "کتێبی منداڵان"
+
+#: inc/demo-localization.php:116
+msgid "Picture books and first reads for young bookworms."
+msgstr "کتێبی وێنەدار و یەکەم خوێندنەوەکان بۆ منداڵانی کتێبخۆش."
+
+#: inc/demo-localization.php:117
+msgid "Poetry"
+msgstr "شیعر"
+
+#: inc/demo-localization.php:117
+msgid "Verse, collections and poems to savour slowly."
+msgstr "دێڕە شیعرییەکان، کۆمەڵەکان و هۆنراوەکان بۆ خوێندنەوەی هێواش."
+
+#. translators: %s: Quantity.
+#: woocommerce/global/quantity-input.php:13
+msgid "%s quantity"
+msgstr "بڕی %s"
+
+#: woocommerce/global/quantity-input.php:13
+msgid "Quantity"
+msgstr "بڕ"
+
+#: woocommerce/global/quantity-input.php:34
+msgid "Product quantity"
+msgstr "بڕی بەرهەم"
+
+#: woocommerce/single-product/meta.php:19
+msgid "SKU:"
+msgstr "کۆدی بەرهەم:"
+
+#: woocommerce/single-product/meta.php:19
+msgid "N/A"
+msgstr "بەردەست نییە"
+
+#: woocommerce/single-product/meta.php:43
+msgid "Category:"
+msgid_plural "Categories:"
+msgstr[0] "هاوپۆل:"
+msgstr[1] "هاوپۆلەکان:"
+
+#: woocommerce/single-product/meta.php:45
+msgid "Tag:"
+msgid_plural "Tags:"
+msgstr[0] "نیشانە:"
+msgstr[1] "نیشانەکان:"
+
+#: inc/languages.php:216
+msgid "Inkwell language setup:"
+msgstr "ڕێکخستنی زمانی ئینکوێڵ:"
+
+#: inc/languages.php:217
+msgid ""
+"Install the Persian and Sorani WordPress packs to translate core and "
+"WooCommerce strings as well as the theme."
+msgstr ""
+"بۆ وەرگێڕانی دەقەکانی ناوک و وۆکامێرس لەگەڵ ڕووکار، پاکێجەکانی فارسی و "
+"کوردیی سۆرانیی وۆردپرێس دابمەزرێنە."
+
+#: inc/languages.php:218
+msgid "Manage languages"
+msgstr "بەڕێوەبردنی زمانەکان"

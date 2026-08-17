@@ -63,10 +63,66 @@ function inkwell_apply_visitor_language() {
 	}
 
 	if ( isset( $supported[ $locale ] ) && get_locale() !== $locale ) {
-		switch_to_locale( $locale );
+		$GLOBALS['inkwell_interface_locale'] = $locale;
+		if ( ! switch_to_locale( $locale ) ) {
+			global $wp_locale, $text_direction;
+			if ( is_object( $wp_locale ) ) {
+				$wp_locale->text_direction = 'rtl';
+			}
+			$text_direction = 'rtl';
+			add_action( 'after_setup_theme', 'inkwell_load_bundled_interface_translation', 3 );
+			add_filter( 'language_attributes', 'inkwell_interface_language_attributes', 20 );
+		}
 	}
 }
 add_action( 'after_setup_theme', 'inkwell_apply_visitor_language', 1 );
+
+/**
+ * Load the theme catalog even when the matching WordPress core pack has not yet
+ * been installed. Core and WooCommerce strings still require their own packs.
+ */
+function inkwell_load_bundled_interface_translation() {
+	$locale = isset( $GLOBALS['inkwell_interface_locale'] ) ? $GLOBALS['inkwell_interface_locale'] : '';
+	$mofile = get_template_directory() . '/languages/' . $locale . '.mo';
+	if ( $locale && file_exists( $mofile ) ) {
+		load_theme_textdomain( 'inkwell', get_template_directory() . '/languages' );
+		unload_textdomain( 'inkwell' );
+		load_textdomain( 'inkwell', $mofile );
+	}
+}
+
+/**
+ * Current visitor-facing interface locale.
+ *
+ * @return string
+ */
+function inkwell_get_interface_locale() {
+	return isset( $GLOBALS['inkwell_interface_locale'] ) ? $GLOBALS['inkwell_interface_locale'] : get_locale();
+}
+
+/**
+ * Whether the selected Inkwell interface language is right-to-left.
+ *
+ * @return bool
+ */
+function inkwell_interface_is_rtl() {
+	return in_array( inkwell_get_interface_locale(), array( 'fa_IR', 'ckb' ), true );
+}
+
+/**
+ * Correct document language/direction when only the bundled theme catalog is
+ * available and WordPress cannot perform a full locale switch yet.
+ *
+ * @param string $output Existing language attributes.
+ * @return string
+ */
+function inkwell_interface_language_attributes( $output ) {
+	$locale = inkwell_get_interface_locale();
+	if ( ! in_array( $locale, array( 'fa_IR', 'ckb' ), true ) ) {
+		return $output;
+	}
+	return 'dir="rtl" lang="' . esc_attr( str_replace( '_', '-', $locale ) ) . '"';
+}
 
 /**
  * Remove the language action parameter after its preference cookie is saved.
@@ -112,7 +168,7 @@ function inkwell_language_switcher() {
 		return;
 	}
 
-	$current = get_locale();
+	$current = inkwell_get_interface_locale();
 	?>
 	<nav class="language-switcher" aria-label="<?php esc_attr_e( 'Language', 'inkwell' ); ?>">
 		<ul>
@@ -142,6 +198,28 @@ function inkwell_languages_admin_menu() {
 	);
 }
 add_action( 'admin_menu', 'inkwell_languages_admin_menu' );
+
+/**
+ * Point administrators to the core-pack installer while bundled packs are
+ * missing. The notice does not change the site's active language.
+ */
+function inkwell_languages_admin_notice() {
+	if ( ! current_user_can( 'install_languages' ) ) {
+		return;
+	}
+	$installed = get_available_languages();
+	if ( in_array( 'fa_IR', $installed, true ) && in_array( 'ckb', $installed, true ) ) {
+		return;
+	}
+	?>
+	<div class="notice notice-info"><p>
+		<strong><?php esc_html_e( 'Inkwell language setup:', 'inkwell' ); ?></strong>
+		<?php esc_html_e( 'Install the Persian and Sorani WordPress packs to translate core and WooCommerce strings as well as the theme.', 'inkwell' ); ?>
+		<a class="button button-secondary" href="<?php echo esc_url( admin_url( 'themes.php?page=inkwell-languages' ) ); ?>"><?php esc_html_e( 'Manage languages', 'inkwell' ); ?></a>
+	</p></div>
+	<?php
+}
+add_action( 'admin_notices', 'inkwell_languages_admin_notice' );
 
 /**
  * Render language installation and activation controls.

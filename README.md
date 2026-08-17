@@ -20,7 +20,8 @@ WooCommerce shopping flows without a page builder.
 - Privacy-aware reading list with consent, throttling, unsubscribe, exporter and eraser support
 - One-click demo catalog: 33 books, 7 genres, 31 authors and 14 reviews
 - Self-hosted variable fonts with no external font requests
-- Complete Persian (`fa_IR`) and Sorani Kurdish (`ckb`) interface translations
+- Complete Persian (`fa_IR`) and Sorani Kurdish (`ckb`) theme translations
+- Bundled Vazirmatn/Noto Naskh Arabic typography, bidi-safe commerce UI and RTL layout
 - RTL-aware and keyboard-friendly
 
 ## Repository layout
@@ -101,9 +102,11 @@ visible by default and can be hidden in **Customize → Header & Announcement
 Bar**.
 
 Without a multilingual plugin, the switcher remembers each visitor’s interface
-language in the essential `inkwell_language` cookie. It translates the theme,
-companion plugin, WordPress and available WooCommerce strings, but it does not
-duplicate products or pages.
+language in the essential `inkwell_language` cookie. The bundled theme catalog
+loads even before a core pack is installed; installing the matching WordPress
+pack completes core and WooCommerce translation. Imported menu, widget, policy
+and genre labels are localized at display time. Products and pages are not
+duplicated.
 
 For translated content and language-specific URLs, use a WooCommerce-compatible
 multilingual plugin such as Polylang for WooCommerce, WPML/WooCommerce

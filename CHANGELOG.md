@@ -30,11 +30,13 @@
 
 - Added complete Persian (`fa_IR`) and Sorani Kurdish (`ckb`) theme and
   companion-plugin language packs, including compiled MO catalogs.
-- Added **Appearance → Inkwell Languages** for installing/activating WordPress
-  core packs and a visible visitor language switcher with Polylang/WPML support.
-- Added RTL typography fallbacks for Persian and Sorani, removed Latin-style
-  capitalization/letter spacing, and documented interface-only and full
-  multilingual WooCommerce setup.
+- Added **Appearance → Inkwell Languages**, an administrator setup notice, and
+  a visible visitor language switcher with Polylang/WPML support.
+- Added a bundled-catalog fallback when core packs are unavailable and localized
+  importer-owned menus, widgets, policy text and product-category chrome.
+- Bundled Vazirmatn and Noto Naskh Arabic variable fonts, improved mixed LTR/RTL
+  commerce values and icons, removed Latin-style capitalization/letter spacing,
+  and documented interface-only and full multilingual WooCommerce setup.
 
 ### Changed
 

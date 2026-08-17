@@ -16,7 +16,7 @@ global $product;
 	<?php do_action( 'woocommerce_product_meta_start' ); ?>
 
 	<?php if ( wc_product_sku_enabled() && ( $product->get_sku() || 'variable' === $product->get_type() ) ) : ?>
-		<span class="sku_wrapper"><?php esc_html_e( 'SKU:', 'woocommerce' ); ?> <span class="sku"><?php echo ( $sku = $product->get_sku() ) ? esc_html( $sku ) : esc_html__( 'N/A', 'woocommerce' ); ?></span></span>
+		<span class="sku_wrapper"><?php esc_html_e( 'SKU:', 'inkwell' ); ?> <span class="sku"><?php echo ( $sku = $product->get_sku() ) ? esc_html( $sku ) : esc_html__( 'N/A', 'inkwell' ); ?></span></span>
 	<?php endif; ?>
 
 	<?php
@@ -40,9 +40,9 @@ global $product;
 		<span class="posted_by"><?php echo esc_html__( 'Author:', 'inkwell' ) . ' ' . implode( ', ', $inkwell_links ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
 	<?php endif; ?>
 
-	<?php echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( 'Category:', 'Categories:', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</span>' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+	<?php echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( 'Category:', 'Categories:', count( $product->get_category_ids() ), 'inkwell' ) . ' ', '</span>' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 
-	<?php echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</span>' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+	<?php echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'inkwell' ) . ' ', '</span>' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 
 	<?php do_action( 'woocommerce_product_meta_end' ); ?>
 

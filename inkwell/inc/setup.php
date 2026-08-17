@@ -109,7 +109,7 @@ function inkwell_scripts() {
 		);
 	}
 
-	if ( is_rtl() ) {
+	if ( is_rtl() || ( function_exists( 'inkwell_interface_is_rtl' ) && inkwell_interface_is_rtl() ) ) {
 		$rtl_dependencies = class_exists( 'WooCommerce' )
 			? array( 'inkwell-style', 'inkwell-woocommerce' )
 			: array( 'inkwell-style' );

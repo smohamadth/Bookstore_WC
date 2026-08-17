@@ -1,10 +1,19 @@
 /*
  * Inkwell right-to-left layout adjustments.
  */
-html:lang(fa), html:lang(ckb) {
-	--font-display: "Noto Naskh Arabic", "Vazirmatn", Tahoma, Arial, sans-serif;
-	--font-body: "Noto Sans Arabic", "Vazirmatn", Tahoma, Arial, sans-serif;
+@font-face {
+	font-family: "Vazirmatn"; font-style: normal; font-weight: 100 900; font-display: swap;
+	src: url("assets/fonts/vazirmatn-arabic.woff2") format("woff2");
 }
+@font-face {
+	font-family: "Noto Naskh Arabic"; font-style: normal; font-weight: 400 700; font-display: swap;
+	src: url("assets/fonts/noto-naskh-arabic.woff2") format("woff2");
+}
+html:lang(fa), html:lang(ckb) {
+	--font-display: "Noto Naskh Arabic", "Vazirmatn", Tahoma, sans-serif;
+	--font-body: "Vazirmatn", Tahoma, Arial, sans-serif;
+}
+html:lang(fa) body, html:lang(ckb) body { line-height: 1.8; }
 html:lang(fa) h1, html:lang(fa) h2, html:lang(fa) h3,
 html:lang(fa) h4, html:lang(fa) h5, html:lang(fa) h6,
 html:lang(ckb) h1, html:lang(ckb) h2, html:lang(ckb) h3,
@@ -15,6 +24,18 @@ html:lang(fa) :is(.eyebrow, .site-title small, .hero-badge, .card-cat, .quote-ba
 html:lang(ckb) :is(.eyebrow, .site-title small, .hero-badge, .card-cat, .quote-band cite, .footer-col h4, .widget-title, .chip-new) {
 	letter-spacing: 0; text-transform: none;
 }
+html:lang(fa) :is(input[type="email"], input[type="url"], input[type="tel"], .sku, .isbn, .price .amount, .woocommerce-Price-amount, .star-rating),
+html:lang(ckb) :is(input[type="email"], input[type="url"], input[type="tel"], .sku, .isbn, .price .amount, .woocommerce-Price-amount, .star-rating) {
+	direction: ltr; unicode-bidi: isolate;
+}
+html:lang(fa) :is(.product_title, .woocommerce-loop-product__title, .product-authors, .woocommerce-product-details__short-description, .entry-content, .post-card h3),
+html:lang(ckb) :is(.product_title, .woocommerce-loop-product__title, .product-authors, .woocommerce-product-details__short-description, .entry-content, .post-card h3) {
+	unicode-bidi: plaintext;
+}
+html:lang(fa) :is(.section-link, .card-link) svg,
+html:lang(ckb) :is(.section-link, .card-link) svg { transform: scaleX(-1); }
+html:lang(fa) .post-card:hover .card-link svg,
+html:lang(ckb) .post-card:hover .card-link svg { transform: scaleX(-1) translateX(3px); }
 ul, ol { padding-left: 0; padding-right: 1.4em; }
 blockquote { border-left: 0; border-right: 3px solid var(--accent); padding-left: 0; padding-right: 1.4em; }
 th, td { text-align: right; }
