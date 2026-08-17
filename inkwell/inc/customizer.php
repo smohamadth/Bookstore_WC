@@ -112,6 +112,19 @@ function inkwell_customize_register( $wp_customize ) {
 		)
 	);
 
+	$wp_customize->add_setting(
+		'inkwell_language_switcher_hide',
+		array( 'default' => false, 'sanitize_callback' => 'inkwell_sanitize_checkbox' )
+	);
+	$wp_customize->add_control(
+		'inkwell_language_switcher_hide',
+		array(
+			'label'   => __( 'Hide storefront language switcher', 'inkwell' ),
+			'type'    => 'checkbox',
+			'section' => 'inkwell_header',
+		)
+	);
+
 	/* ------------------------------------------------------------------ *
 	 * Store policies
 	 * ------------------------------------------------------------------ */

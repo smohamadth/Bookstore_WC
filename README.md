@@ -95,16 +95,23 @@ The theme and companion plugin include compiled interface translations for:
 - فارسی — Persian (`fa_IR`)
 - کوردی (سۆرانی) — Sorani Kurdish (`ckb`)
 
-For a single-language store, install the corresponding WordPress core language
-under **Settings → General → Site Language**. WordPress then loads the bundled
-theme/plugin translations and RTL layout automatically.
+Open **Appearance → Inkwell Languages** to install the Persian/Sorani WordPress
+core packs and activate a site-wide language. The public header switcher is
+visible by default and can be hidden in **Customize → Header & Announcement
+Bar**.
 
-For a store that switches between English, Persian and Sorani, use a
-WooCommerce-compatible multilingual plugin such as Polylang for WooCommerce,
-WPML/WooCommerce Multilingual, or TranslatePress. Product titles, descriptions,
-categories, authors, policies and demo content are store content and must be
-translated through that multilingual workflow; the bundled files translate the
-theme and companion-plugin interface.
+Without a multilingual plugin, the switcher remembers each visitor’s interface
+language in the essential `inkwell_language` cookie. It translates the theme,
+companion plugin, WordPress and available WooCommerce strings, but it does not
+duplicate products or pages.
+
+For translated content and language-specific URLs, use a WooCommerce-compatible
+multilingual plugin such as Polylang for WooCommerce, WPML/WooCommerce
+Multilingual, or TranslatePress. Inkwell automatically uses Polylang/WPML’s
+content-aware language links instead of its cookie links. Product titles,
+descriptions, categories, authors, policies and demo content must be translated
+through that workflow. Configure page caching to vary by the language cookie or
+use the multilingual plugin’s cache integration.
 
 ## Development and release
 

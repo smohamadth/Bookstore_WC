@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Inkwell translation build\n"
-"X-Inkwell-Template-SHA256: ba3f303259d6446be358677c5f9645275d29410381ba9cdeb7fdbb2bda03ec5c\n"
+"X-Inkwell-Template-SHA256: 8d1cfe189d1620d61a0d3d83d28bf0d7a25daec223bda8630c8c2de0e643781b\n"
 
 #: 404.php:11
 msgid "This page has been checked out"
@@ -90,7 +90,7 @@ msgstr "فرۆشگا"
 msgid "All books"
 msgstr "هەموو کتێبەکان"
 
-#: footer.php:64, header.php:101, inc/template-tags.php:96
+#: footer.php:64, header.php:103, inc/template-tags.php:96
 msgid "My account"
 msgstr "هەژماری من"
 
@@ -139,15 +139,15 @@ msgstr "کردنەوەی پێڕست"
 msgid "Primary"
 msgstr "سەرەکی"
 
-#: header.php:60, search.php:14, searchform.php:16
+#: header.php:61, search.php:14, searchform.php:16
 msgid "Search"
 msgstr "گەڕان"
 
-#: header.php:68
+#: header.php:69
 msgid "Shopping cart"
 msgstr "سەبەتەی کڕین"
 
-#: header.php:87
+#: header.php:88
 msgid "Mobile"
 msgstr "مۆبایل"
 
@@ -293,7 +293,8 @@ msgstr "کتێبی ئەلیکترۆنی"
 msgid "Audiobook"
 msgstr "کتێبی دەنگی"
 
-#: inc/books.php:80
+#: inc/books.php:80, inc/languages.php:90, inc/languages.php:105,
+#: inc/languages.php:117, inc/languages.php:168
 msgid "Language"
 msgstr "زمان"
 
@@ -351,27 +352,27 @@ msgstr ""
 "بۆ نموونە: «گەیاندنی بەخۆڕایی بۆ داواکارییەکانی سەرووی ٢٥ یۆرۆ». بۆ "
 "شاردنەوەی نوارەکە بە بەتاڵی بهێڵەوە."
 
-#: inc/customizer.php:120
+#: inc/customizer.php:133
 msgid "Store Benefits & Policies"
 msgstr "سوود و سیاسەتەکانی فرۆشگا"
 
-#: inc/customizer.php:124
+#: inc/customizer.php:137
 msgid "Shipping benefit"
 msgstr "سوودی گەیاندن"
 
-#: inc/customizer.php:125
+#: inc/customizer.php:138
 msgid "Fulfillment promise"
 msgstr "بەڵێنی ئامادەکردنی داواکاری"
 
-#: inc/customizer.php:126
+#: inc/customizer.php:139
 msgid "Returns policy summary"
 msgstr "پوختەی سیاسەتی گەڕاندنەوە"
 
-#: inc/customizer.php:127
+#: inc/customizer.php:140
 msgid "Accepted payment methods (comma-separated)"
 msgstr "شێوازەکانی پارەدانی پەسەندکراو (بە کۆما جیابکەرەوە)"
 
-#: inc/customizer.php:135
+#: inc/customizer.php:148
 msgid ""
 "Leave blank to hide this claim. Only publish terms your store actually "
 "offers."
@@ -379,132 +380,132 @@ msgstr ""
 "بۆ شاردنەوەی ئەم بانگەشەیە بە بەتاڵی بهێڵەوە. تەنها ئەو مەرجانە بڵاو بکەرەوە"
 " کە فرۆشگاکەت بەڕاستی پێشکەشیان دەکات."
 
-#: inc/customizer.php:147
+#: inc/customizer.php:160
 msgid "Hero Section"
 msgstr "بەشی سەرەکی"
 
-#: inc/customizer.php:151
+#: inc/customizer.php:164
 msgid "Hide the hero entirely"
 msgstr "شاردنەوەی تەواوی بەشی سەرەکی"
 
-#: inc/customizer.php:152
+#: inc/customizer.php:165
 msgid "Eyebrow text"
 msgstr "دەقی سەرەوەی ناونیشان"
 
-#: inc/customizer.php:153
+#: inc/customizer.php:166
 msgid "Headline"
 msgstr "ناونیشانی سەرەکی"
 
-#: inc/customizer.php:154
+#: inc/customizer.php:167
 msgid "Subheadline"
 msgstr "ژێرناونیشان"
 
-#: inc/customizer.php:155
+#: inc/customizer.php:168
 msgid "Primary button label"
 msgstr "ناوی دوگمەی سەرەکی"
 
-#: inc/customizer.php:156
+#: inc/customizer.php:169
 msgid "Primary button URL"
 msgstr "بەستەری دوگمەی سەرەکی"
 
-#: inc/customizer.php:157
+#: inc/customizer.php:170
 msgid "Secondary button label"
 msgstr "ناوی دوگمەی دووەم"
 
-#: inc/customizer.php:158
+#: inc/customizer.php:171
 msgid "Secondary button URL"
 msgstr "بەستەری دوگمەی دووەم"
 
-#: inc/customizer.php:188
+#: inc/customizer.php:201
 msgid "Hero background image"
 msgstr "وێنەی پاشبنەمای بەشی سەرەکی"
 
-#: inc/customizer.php:199
+#: inc/customizer.php:212
 msgid "Home Page Sections"
 msgstr "بەشەکانی پەڕەی ماڵەوە"
 
-#: inc/customizer.php:203
+#: inc/customizer.php:216
 msgid "Hide the store benefits strip"
 msgstr "شاردنەوەی نواری سوودەکانی فرۆشگا"
 
-#: inc/customizer.php:204
+#: inc/customizer.php:217
 msgid "Hide genre tiles"
 msgstr "شاردنەوەی کاشییەکانی ژانر"
 
-#: inc/customizer.php:205
+#: inc/customizer.php:218
 msgid "Hide bestsellers row"
 msgstr "شاردنەوەی ڕیزی پڕفرۆشەکان"
 
-#: inc/customizer.php:206
+#: inc/customizer.php:219
 msgid "Hide new arrivals row"
 msgstr "شاردنەوەی ڕیزی تازەهاتووەکان"
 
-#: inc/customizer.php:207
+#: inc/customizer.php:220
 msgid "Hide quote band"
 msgstr "شاردنەوەی نواری وتە"
 
-#: inc/customizer.php:208
+#: inc/customizer.php:221
 msgid "Quote text"
 msgstr "دەقی وتە"
 
-#: inc/customizer.php:209
+#: inc/customizer.php:222
 msgid "Quote attribution"
 msgstr "خاوەنی وتە"
 
-#: inc/customizer.php:210
+#: inc/customizer.php:223
 msgid "Hide testimonials"
 msgstr "شاردنەوەی بۆچوونی کڕیاران"
 
-#: inc/customizer.php:211
+#: inc/customizer.php:224
 msgid "Hide journal preview"
 msgstr "شاردنەوەی پێشبینینی گۆڤار"
 
-#: inc/customizer.php:212
+#: inc/customizer.php:225
 msgid "Hide newsletter band"
 msgstr "شاردنەوەی نواری هەواڵنامە"
 
-#: inc/customizer.php:213
+#: inc/customizer.php:226
 msgid "Newsletter title"
 msgstr "ناونیشانی هەواڵنامە"
 
-#: inc/customizer.php:214
+#: inc/customizer.php:227
 msgid "Newsletter text"
 msgstr "دەقی هەواڵنامە"
 
 #. translators: %d: tile number.
-#: inc/customizer.php:240
+#: inc/customizer.php:253
 msgid "Genre tile %d (product category)"
 msgstr "کاشی ژانری %d (هاوپۆلی بەرهەم)"
 
-#: inc/customizer.php:259
+#: inc/customizer.php:272
 msgid "Testimonial %d — quote"
 msgstr "بۆچوونی کڕیار %d — دەق"
 
-#: inc/customizer.php:271
+#: inc/customizer.php:284
 msgid "Testimonial %d — name"
 msgstr "بۆچوونی کڕیار %d — ناو"
 
-#: inc/customizer.php:283
+#: inc/customizer.php:296
 msgid "Footer"
 msgstr "پێپەڕە"
 
-#: inc/customizer.php:293
+#: inc/customizer.php:306
 msgid "About text (footer)"
 msgstr "دەقی دەربارە (پێپەڕە)"
 
-#: inc/customizer.php:306
+#: inc/customizer.php:319
 msgid "Copyright line"
 msgstr "هێڵی مافی لەبەرگرتنەوە"
 
-#: inc/customizer.php:313
+#: inc/customizer.php:326
 msgid "Facebook URL"
 msgstr "بەستەری فەیسبووک"
 
-#: inc/customizer.php:314
+#: inc/customizer.php:327
 msgid "Instagram URL"
 msgstr "بەستەری ئینستاگرام"
 
-#: inc/customizer.php:315
+#: inc/customizer.php:328
 msgid "X / Twitter URL"
 msgstr "بەستەری ئێکس / تویتەر"
 
@@ -1147,3 +1148,83 @@ msgstr "پیشاندانی (Newsreader)"
 msgctxt "Font family name"
 msgid "Body (Inter)"
 msgstr "دەقی (Inter)"
+
+#: inc/customizer.php:122
+msgid "Hide storefront language switcher"
+msgstr "شاردنەوەی هەڵبژێری زمانی فرۆشگا"
+
+#: inc/languages.php:137, inc/languages.php:138, inc/languages.php:158
+msgid "Inkwell Languages"
+msgstr "زمانەکانی ئینکوێڵ"
+
+#: inc/languages.php:159
+msgid ""
+"Install the matching WordPress core pack, then activate a site-wide language"
+" or use the storefront switcher."
+msgstr ""
+"پاکێجی زمانی گونجاوی ناوکی وۆردپرێس دابمەزرێنە، پاشان زمانێکی گشتی ماڵپەڕ "
+"چالاک بکە یان هەڵبژێری زمانی فرۆشگا بەکاربهێنە."
+
+#: inc/languages.php:165
+msgid ""
+"The WordPress language pack could not be installed. Check filesystem "
+"permissions and outbound connections."
+msgstr ""
+"پاکێجی زمانی وۆردپرێس دانەمەزرا. مۆڵەتەکانی سیستەمی فایل و پەیوەندییە "
+"دەرەکییەکان بپشکنە."
+
+#: inc/languages.php:163
+msgid "Site language activated."
+msgstr "زمانی ماڵپەڕ چالاک کرا."
+
+#: inc/languages.php:161
+msgid "Language pack installed."
+msgstr "پاکێجی زمان دامەزرا."
+
+#: inc/languages.php:168
+msgid "Theme interface"
+msgstr "ڕووکاری بەکارهێنەری ڕووکار"
+
+#: inc/languages.php:168
+msgid "WordPress core pack"
+msgstr "پاکێجی ناوکی وۆردپرێس"
+
+#: inc/languages.php:168
+msgid "Actions"
+msgstr "کردارەکان"
+
+#: inc/languages.php:174
+msgid "Bundled"
+msgstr "هاوپێچکراو"
+
+#: inc/languages.php:175
+msgid "Installed"
+msgstr "دامەزراو"
+
+#: inc/languages.php:175
+msgid "Not installed"
+msgstr "دانەمەزراو"
+
+#: inc/languages.php:185
+msgid "Use as site language"
+msgstr "وەک زمانی ماڵپەڕ بەکاری بهێنە"
+
+#: inc/languages.php:178
+msgid "Active"
+msgstr "چالاک"
+
+#: inc/languages.php:194
+msgid "Install core language"
+msgstr "دامەزراندنی زمانی ناوک"
+
+#: inc/languages.php:202
+msgid ""
+"For translated products and pages with language-specific URLs, install "
+"Polylang, WPML, or TranslatePress."
+msgstr ""
+"بۆ بەرهەم و پەڕە وەرگێڕدراوەکان بە بەستەری تایبەت بە هەر زمانێک، Polylang، "
+"WPML یان TranslatePress دابمەزرێنە."
+
+#: inc/languages.php:212
+msgid "You are not allowed to install languages."
+msgstr "ڕێگەت پێنەدراوە زمان دابمەزرێنیت."

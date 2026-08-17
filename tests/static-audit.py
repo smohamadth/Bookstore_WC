@@ -30,6 +30,7 @@ functions = text(THEME / "functions.php")
 wc = text(THEME / "inc/woocommerce.php")
 books = text(THEME / "inc/books.php")
 newsletter = text(THEME / "inc/newsletter.php")
+languages = text(THEME / "inc/languages.php")
 product = text(THEME / "woocommerce/content-product.php")
 category = text(THEME / "woocommerce/content-product-cat.php")
 search_form = text(THEME / "searchform.php")
@@ -145,6 +146,15 @@ for module in ("books.php", "newsletter.php"):
     plugin_module = text(PLUGIN / "includes" / module).replace("'inkwell-books'", "'inkwell'")
     check(theme_module == plugin_module, f"Plugin {module} module drift")
 check((PLUGIN / "languages/inkwell-books.pot").is_file(), "Companion plugin POT is missing")
+
+# Bundled Persian and Sorani translations must be visible and operational.
+check("/inc/languages.php" in functions, "Language module is not loaded")
+check(header.count("inkwell_language_switcher();") == 2, "Desktop/mobile language switchers are not both rendered")
+check("inkwell_languages_admin_page" in languages and "wp_download_language_pack" in languages, "Dashboard language installer is missing")
+check("switch_to_locale" in languages and "inkwell_language" in languages, "Visitor language preference is not applied")
+check(".language-switcher" in style and ".mobile-language-switcher" in style, "Language switcher styling is missing")
+check("sanitize_key( wp_unslash( $_GET['inkwell_lang']" not in languages, "Locale case would be destroyed by sanitize_key")
+check("id=\"inkwell-mini-cart\"" in header, "Mini-cart ARIA target is missing")
 
 # Bundled Persian and Sorani translations must be complete, compiled and safe.
 placeholder_pattern = re.compile(r"%(?:\d+\$)?[sd]")

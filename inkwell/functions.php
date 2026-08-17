@@ -14,6 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'INKWELL_VERSION', '2.0.5' );
 
 require get_template_directory() . '/inc/setup.php';
+require get_template_directory() . '/inc/languages.php';
 require get_template_directory() . '/inc/template-tags.php';
 
 // Backward-compatible fallbacks: the companion Inkwell Books plugin loads

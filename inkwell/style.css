@@ -289,6 +289,23 @@ html.inkwell-js [data-reveal].in-view { opacity: 1; transform: none; }
 .main-navigation .sub-menu a::after { display: none; }
 
 .header-actions { display: flex; align-items: center; gap: 0.4rem; flex-shrink: 0; }
+.language-switcher { flex-shrink: 0; }
+.language-switcher ul {
+	list-style: none; display: flex; align-items: center; gap: 0.2rem;
+	margin: 0; padding: 0;
+}
+.language-switcher a {
+	display: inline-flex; align-items: center; justify-content: center;
+	min-width: 34px; height: 34px; padding: 0 0.5rem;
+	border: 1px solid var(--line); border-radius: 999px;
+	color: var(--ink-soft); background: transparent; font-size: 0.75rem; font-weight: 700;
+}
+.language-switcher a:hover, .language-switcher a[aria-current="page"] {
+	background: var(--accent); border-color: var(--accent); color: #fff;
+}
+.header-dark .language-switcher a { border-color: rgba(255, 255, 255, 0.2); color: #f3efe4; }
+.header-dark .language-switcher a:hover,
+.header-dark .language-switcher a[aria-current="page"] { border-color: var(--accent); color: #fff; }
 .header-action {
 	display: inline-flex; align-items: center; justify-content: center;
 	width: 44px; height: 44px; border-radius: 50%; color: var(--ink);
@@ -379,6 +396,9 @@ html:not(.inkwell-js) .search-panel { display: block; }
 	color: var(--ink); font-weight: 500;
 }
 .mobile-menu .sub-menu a { padding-left: 1.6em; font-size: 0.92rem; color: var(--ink-soft); }
+.mobile-language-switcher { display: none; padding: 0.7rem 1rem 0; }
+.mobile-menu .language-switcher ul { padding: 0; }
+.mobile-menu .language-switcher a { display: inline-flex; padding: 0 0.7rem; border: 1px solid var(--line); }
 .mobile-menu-actions { display: none; gap: 0.6rem; padding: 1rem; }
 .mobile-menu-actions .button { flex: 1; }
 
@@ -830,6 +850,8 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--accent); ou
 	.hero-covers { min-height: 320px; }
 	.hero-cover { width: min(150px, 38vw); }
 	.site-title small { display: none; }
+	.header-actions > .language-switcher { display: none; }
+	.mobile-language-switcher { display: block; }
 	.mobile-menu-actions { display: flex; }
 	.mini-cart-panel { position: fixed; top: var(--header-h); right: 10px; left: 10px; width: auto; }
 }

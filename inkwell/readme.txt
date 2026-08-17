@@ -19,8 +19,8 @@ layouts. Merchant policy claims are hidden until configured.
 The optional Inkwell Books companion plugin keeps author, book-detail and
 reading-list interfaces available when changing themes.
 
-Complete Persian (fa_IR) and Sorani Kurdish (ckb) interface translations and
-RTL layout support are bundled with the theme.
+Complete Persian (fa_IR) and Sorani Kurdish (ckb) interface translations, RTL
+layout support, a language-pack installer, and a public switcher are bundled.
 
 == Installation ==
 

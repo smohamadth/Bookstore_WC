@@ -143,16 +143,21 @@ Bundled RTL interface packs:
 - **فارسی (Persian):** theme `fa_IR.po` / `fa_IR.mo`; plugin `inkwell-books-fa_IR.po` / `inkwell-books-fa_IR.mo`
 - **کوردی (سۆرانی):** theme `ckb.po` / `ckb.mo`; plugin `inkwell-books-ckb.po` / `inkwell-books-ckb.mo`
 
-For a single-language site, choose the installed core language under
-**Settings → General → Site Language**. WordPress will load these files and the
-RTL stylesheet automatically. WooCommerce core messages use WooCommerce’s own
-language pack, which WordPress downloads for the selected locale.
+Open **Appearance → Inkwell Languages** to install either WordPress core pack
+and activate a site-wide language. WordPress will load the bundled translations,
+RTL stylesheet and available WooCommerce language pack. The public header
+switcher is enabled by default; hide it under **Customize → Header &
+Announcement Bar** if needed.
 
-To offer English, Persian and Sorani simultaneously, install a
-WooCommerce-compatible multilingual plugin such as Polylang for WooCommerce,
-WPML/WooCommerce Multilingual, or TranslatePress. Translate products,
+Without a multilingual plugin, the switcher changes interface strings per
+visitor using the essential `inkwell_language` cookie. Configure full-page
+caches to vary by that cookie. Products and pages are not duplicated.
+
+For translated content and language-specific URLs, install Polylang for
+WooCommerce, WPML/WooCommerce Multilingual, or TranslatePress. Inkwell detects
+Polylang/WPML and uses its content-aware language links. Translate products,
 categories, author terms, menus, pages, checkout policies and email content in
-that plugin. Bundled demo catalog content remains English until translated by
+the plugin. Bundled demo catalog content remains English until translated by
 the store owner.
 
 To refresh translation templates after changing source strings:
