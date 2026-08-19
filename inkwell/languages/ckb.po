@@ -3,7 +3,7 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Inkwell 2.0.6\n"
+"Project-Id-Version: Inkwell 2.0.7\n"
 "Report-Msgid-Bugs-To: https://github.com/smohamadth/Bookstore_WC/issues\n"
 "POT-Creation-Date: 2026-08-17 00:00+0000\n"
 "PO-Revision-Date: 2026-08-17 00:00+0000\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Inkwell translation build\n"
-"X-Inkwell-Template-SHA256: cb65240fb5cc3ac9192157ef87305e2564f97f4be07fbead940b1e94b3fe48b2\n"
+"X-Inkwell-Template-SHA256: 8ae18b62767c582fba9702838259ff85403c5b613ab9a38ea498b69e1cd6b7e5\n"
 
 #: 404.php:11
 msgid "This page has been checked out"
@@ -82,15 +82,15 @@ msgstr "ئینستاگرام"
 msgid "X (formerly Twitter)"
 msgstr "ئێکس (تویتەری پێشوو)"
 
-#: footer.php:49, inc/demo-localization.php:40, inc/woocommerce.php:348
+#: footer.php:49, inc/demo-localization.php:40, inc/woocommerce.php:357
 msgid "Shop"
 msgstr "فرۆشگا"
 
-#: footer.php:63
+#: footer.php:63, inc/woocommerce.php:376
 msgid "All books"
 msgstr "هەموو کتێبەکان"
 
-#: footer.php:64, header.php:103, inc/template-tags.php:98
+#: footer.php:64, header.php:103, inc/template-tags.php:99
 msgid "My account"
 msgstr "هەژماری من"
 
@@ -139,7 +139,7 @@ msgstr "کردنەوەی پێڕست"
 msgid "Primary"
 msgstr "سەرەکی"
 
-#: header.php:61, search.php:14, searchform.php:16
+#: header.php:61, search.php:14, searchform.php:16, template-parts/hero.php:69
 msgid "Search"
 msgstr "گەڕان"
 
@@ -873,22 +873,22 @@ msgstr "هەڵەیەک ڕوویدا. تکایە دووبارە هەوڵ بدە."
 msgid "Close menu"
 msgstr "داخستنی پێڕست"
 
-#: inc/template-tags.php:115
+#: inc/template-tags.php:116
 msgid "View cart"
 msgstr "سەیری سەبەتەی کڕین بکە"
 
 #. translators: %d: number of items in cart.
-#: inc/template-tags.php:134
+#: inc/template-tags.php:135
 msgid "Cart — %d item"
 msgid_plural "Cart — %d items"
 msgstr[0] "سەبەتە — %d دانە"
 msgstr[1] "سەبەتە — %d دانە"
 
-#: inc/template-tags.php:158
+#: inc/template-tags.php:159
 msgid "View all"
 msgstr "هەمووی ببینە"
 
-#: inc/template-tags.php:227
+#: inc/template-tags.php:230
 msgid "by"
 msgstr "لە لایەن"
 
@@ -924,7 +924,7 @@ msgstr "بەرگ بەزوویی زیاد دەکرێت"
 msgid "No books found. Try widening your filters or search again."
 msgstr "هیچ کتێبێک نەدۆزرایەوە. پاڵاوتنەکان فراوانتر بکە یان دووبارە بگەڕێ."
 
-#: inc/woocommerce.php:350
+#: inc/woocommerce.php:359
 msgid "Bookshop"
 msgstr "کتێبفرۆشی"
 
@@ -961,11 +961,11 @@ msgstr ""
 msgid "Shop bestsellers"
 msgstr "کڕینی پڕفرۆشەکان"
 
-#: template-parts/hero.php:26
+#: inc/woocommerce.php:375, template-parts/hero.php:26
 msgid "Browse genres"
 msgstr "گەڕان بە ژانرەکاندا"
 
-#: template-parts/hero.php:97
+#: template-parts/hero.php:105
 msgid "Staff picks"
 msgstr "هەڵبژاردەکانی ستاف"
 
@@ -999,7 +999,7 @@ msgid "Browse by genre"
 msgstr "گەڕان بە پێی ژانر"
 
 #. translators: %d: number of books.
-#: template-parts/section-categories.php:75
+#: template-parts/section-categories.php:78
 msgid "%d book"
 msgid_plural "%d books"
 msgstr[0] "%d کتێب"
@@ -1383,3 +1383,35 @@ msgstr ""
 #: inc/languages.php:274
 msgid "Manage languages"
 msgstr "بەڕێوەبردنی زمانەکان"
+
+#: sidebar.php:16
+msgid "Refine your shelf"
+msgstr "هەڵبژاردنت وردتر بکە"
+
+#: sidebar.php:17
+msgid "Close filters"
+msgstr "داخستنی پاڵاوتنەکان"
+
+#: inc/woocommerce.php:365
+msgid ""
+"Explore thoughtful books, timeless classics and your next unexpected "
+"favourite."
+msgstr ""
+"کتێبی بیرمەندانە، کلاسیکی هەمیشەیی و دڵخوازی داهاتووی چاوەڕواننەکراوت "
+"بدۆزەوە."
+
+#: inc/woocommerce.php:369
+msgid "Find a book"
+msgstr "کتێبێک بدۆزەوە"
+
+#: inc/woocommerce.php:402
+msgid "Filters"
+msgstr "پاڵاوتنەکان"
+
+#: template-parts/hero.php:67
+msgid "Search the collection"
+msgstr "گەڕان لە کۆمەڵەکەدا"
+
+#: template-parts/hero.php:68
+msgid "Search by title or author…"
+msgstr "گەڕان بە ناونیشان یان نووسەر…"

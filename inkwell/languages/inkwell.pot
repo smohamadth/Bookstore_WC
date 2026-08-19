@@ -2,7 +2,7 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Inkwell 2.0.6\n"
+"Project-Id-Version: Inkwell 2.0.7\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -73,15 +73,15 @@ msgstr ""
 msgid "X (formerly Twitter)"
 msgstr ""
 
-#: footer.php:49, inc/demo-localization.php:40, inc/woocommerce.php:348
+#: footer.php:49, inc/demo-localization.php:40, inc/woocommerce.php:357
 msgid "Shop"
 msgstr ""
 
-#: footer.php:63
+#: footer.php:63, inc/woocommerce.php:376
 msgid "All books"
 msgstr ""
 
-#: footer.php:64, header.php:103, inc/template-tags.php:98
+#: footer.php:64, header.php:103, inc/template-tags.php:99
 msgid "My account"
 msgstr ""
 
@@ -130,7 +130,7 @@ msgstr ""
 msgid "Primary"
 msgstr ""
 
-#: header.php:61, search.php:14, searchform.php:16
+#: header.php:61, search.php:14, searchform.php:16, template-parts/hero.php:69
 msgid "Search"
 msgstr ""
 
@@ -168,6 +168,14 @@ msgstr ""
 
 #: sidebar.php:13
 msgid "Sidebar"
+msgstr ""
+
+#: sidebar.php:16
+msgid "Refine your shelf"
+msgstr ""
+
+#: sidebar.php:17
+msgid "Close filters"
 msgstr ""
 
 #: style.css:2
@@ -964,22 +972,22 @@ msgstr ""
 msgid "Close menu"
 msgstr ""
 
-#: inc/template-tags.php:115
+#: inc/template-tags.php:116
 msgid "View cart"
 msgstr ""
 
 #. translators: %d: number of items in cart.
-#: inc/template-tags.php:134
+#: inc/template-tags.php:135
 msgid "Cart — %d item"
 msgid_plural "Cart — %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/template-tags.php:158
+#: inc/template-tags.php:159
 msgid "View all"
 msgstr ""
 
-#: inc/template-tags.php:227
+#: inc/template-tags.php:230
 msgid "by"
 msgstr ""
 
@@ -1011,8 +1019,24 @@ msgstr ""
 msgid "No books found. Try widening your filters or search again."
 msgstr ""
 
-#: inc/woocommerce.php:350
+#: inc/woocommerce.php:359
 msgid "Bookshop"
+msgstr ""
+
+#: inc/woocommerce.php:365
+msgid "Explore thoughtful books, timeless classics and your next unexpected favourite."
+msgstr ""
+
+#: inc/woocommerce.php:369
+msgid "Find a book"
+msgstr ""
+
+#: inc/woocommerce.php:375, template-parts/hero.php:26
+msgid "Browse genres"
+msgstr ""
+
+#: inc/woocommerce.php:402
+msgid "Filters"
 msgstr ""
 
 #: template-parts/content-none.php:9
@@ -1043,11 +1067,15 @@ msgstr ""
 msgid "Shop bestsellers"
 msgstr ""
 
-#: template-parts/hero.php:26
-msgid "Browse genres"
+#: template-parts/hero.php:67
+msgid "Search the collection"
 msgstr ""
 
-#: template-parts/hero.php:97
+#: template-parts/hero.php:68
+msgid "Search by title or author…"
+msgstr ""
+
+#: template-parts/hero.php:105
 msgid "Staff picks"
 msgstr ""
 
@@ -1080,7 +1108,7 @@ msgid "Browse by genre"
 msgstr ""
 
 #. translators: %d: number of books.
-#: template-parts/section-categories.php:75
+#: template-parts/section-categories.php:78
 msgid "%d book"
 msgid_plural "%d books"
 msgstr[0] ""

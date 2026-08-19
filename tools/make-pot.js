@@ -6,7 +6,7 @@ const wpPot = require('wp-pot');
 wpPot({
 	destFile: 'inkwell/languages/inkwell.pot',
 	domain: 'inkwell',
-	package: 'Inkwell 2.0.6',
+	package: 'Inkwell 2.0.7',
 	src: ['inkwell/**/*.php', 'inkwell/style.css'],
 	metadataFile: 'style.css',
 	relativeTo: 'inkwell',

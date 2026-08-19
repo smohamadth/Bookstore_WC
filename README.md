@@ -5,7 +5,7 @@ editorial Newsreader + Inter design, book-cover product cards, author browsing,
 bibliographic product fields, curated home-page sections, and styled classic
 WooCommerce shopping flows without a page builder.
 
-- **Theme version:** 2.0.6
+- **Theme version:** 2.0.7
 - **Requires:** WordPress 6.0+, WooCommerce 8.0+, PHP 7.4+
 - **Tested metadata:** WordPress 6.8, WooCommerce 11.0
 - **License:** GPL-2.0-or-later · **Text domain:** `inkwell`
@@ -15,7 +15,8 @@ WooCommerce shopping flows without a page builder.
 - Responsive shop, product, author, blog, cart, checkout and account layouts
 - `book_author` taxonomy and book details: ISBN, publisher, year, pages, format and language
 - Linked product cards with AJAX quick-add, live cart count and accessible mini-cart disclosure
-- Author-aware product search
+- Author-aware product search in the home hero and shop discovery header
+- Editorial shop header, genre shortcuts and accessible mobile filter drawer
 - Configurable store benefits, fulfillment/returns messages, payment labels and social URLs
 - Privacy-aware reading list with consent, throttling, unsubscribe, exporter and eraser support
 - One-click demo catalog: 33 books, 7 genres, 31 authors and 14 reviews

@@ -326,9 +326,10 @@ add_filter( 'single_product_archive_thumbnail_size', 'inkwell_archive_thumbnail_
  * taxonomy-product-attribute.php.)
  */
 function inkwell_shop_archive_layout() {
-	$is_tax    = is_product_taxonomy();
-	$term      = $is_tax ? get_queried_object() : null;
-	$subtitle  = '';
+	$is_tax      = is_product_taxonomy();
+	$is_category = is_product_category();
+	$term        = $is_tax ? get_queried_object() : null;
+	$subtitle    = '';
 
 	if ( $term && ! is_wp_error( $term ) ) {
 		$title    = $term->name;
@@ -337,24 +338,50 @@ function inkwell_shop_archive_layout() {
 		$title = woocommerce_page_title( false );
 	}
 
-	$shop_url = wc_get_page_permalink( 'shop' );
+	$shop_url   = wc_get_page_permalink( 'shop' );
+	$shop_terms = get_terms(
+		array(
+			'taxonomy'   => 'product_cat',
+			'hide_empty' => true,
+			'parent'     => 0,
+			'number'     => 8,
+			'orderby'    => 'count',
+			'order'      => 'DESC',
+		)
+	);
 	?>
 	<div class="container">
+		<header class="shop-archive-header">
+			<div class="shop-archive-header__copy">
+				<?php if ( $is_tax && $shop_url ) : ?>
+					<a class="eyebrow" href="<?php echo esc_url( $shop_url ); ?>"><?php esc_html_e( 'Shop', 'inkwell' ); ?></a>
+				<?php else : ?>
+					<span class="eyebrow"><?php esc_html_e( 'Bookshop', 'inkwell' ); ?></span>
+				<?php endif; ?>
+				<h1><?php echo esc_html( $title ); ?></h1>
+				<?php if ( $subtitle ) : ?>
+					<div class="page-sub"><?php echo wp_kses_post( wpautop( $subtitle ) ); ?></div>
+				<?php else : ?>
+					<p class="page-sub"><?php esc_html_e( 'Explore thoughtful books, timeless classics and your next unexpected favourite.', 'inkwell' ); ?></p>
+				<?php endif; ?>
+			</div>
+			<div class="shop-archive-header__search">
+				<span class="eyebrow"><?php esc_html_e( 'Find a book', 'inkwell' ); ?></span>
+				<?php get_search_form(); ?>
+			</div>
+		</header>
+
+		<?php if ( ! is_wp_error( $shop_terms ) && $shop_terms ) : ?>
+			<nav class="shop-category-chips" aria-label="<?php esc_attr_e( 'Browse genres', 'inkwell' ); ?>">
+				<a class="shop-category-chip<?php echo $is_tax ? '' : ' is-active'; ?>" href="<?php echo esc_url( $shop_url ); ?>"><?php esc_html_e( 'All books', 'inkwell' ); ?></a>
+				<?php foreach ( $shop_terms as $shop_term ) : ?>
+					<a class="shop-category-chip<?php echo $is_category && $term && (int) $term->term_id === (int) $shop_term->term_id ? ' is-active' : ''; ?>" href="<?php echo esc_url( get_term_link( $shop_term ) ); ?>"><?php echo esc_html( $shop_term->name ); ?><span><?php echo esc_html( number_format_i18n( $shop_term->count ) ); ?></span></a>
+				<?php endforeach; ?>
+			</nav>
+		<?php endif; ?>
+
 		<div class="two-col shop-layout">
 			<div class="shop-main">
-
-				<header class="page-header">
-					<?php if ( $is_tax && $shop_url ) : ?>
-						<a class="eyebrow" href="<?php echo esc_url( $shop_url ); ?>"><?php esc_html_e( 'Shop', 'inkwell' ); ?></a>
-					<?php else : ?>
-						<span class="eyebrow"><?php esc_html_e( 'Bookshop', 'inkwell' ); ?></span>
-					<?php endif; ?>
-					<h1><?php echo esc_html( $title ); ?></h1>
-					<?php if ( $subtitle ) : ?>
-						<div class="page-sub"><?php echo wp_kses_post( wpautop( $subtitle ) ); ?></div>
-					<?php endif; ?>
-				</header>
-
 				<?php
 				/**
 				 * Hook: woocommerce_before_shop_loop.
@@ -369,6 +396,12 @@ function inkwell_shop_archive_layout() {
 				 */
 				?>
 				<div class="woocommerce-before-shop-loop">
+					<?php if ( is_active_sidebar( 'sidebar-shop' ) ) : ?>
+						<button class="shop-filter-toggle" type="button" data-shop-filter-toggle aria-expanded="false" aria-controls="secondary">
+							<?php echo inkwell_icon( 'filter' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+							<span><?php esc_html_e( 'Filters', 'inkwell' ); ?></span>
+						</button>
+					<?php endif; ?>
 					<?php do_action( 'woocommerce_before_shop_loop' ); ?>
 				</div>
 				<?php
@@ -403,6 +436,9 @@ function inkwell_shop_archive_layout() {
 			</div>
 
 			<?php get_sidebar(); ?>
+			<?php if ( is_active_sidebar( 'sidebar-shop' ) ) : ?>
+				<button class="shop-filter-backdrop" type="button" data-shop-filter-close tabindex="-1" aria-hidden="true"></button>
+			<?php endif; ?>
 		</div>
 	</div>
 	<?php

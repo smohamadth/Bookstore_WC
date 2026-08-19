@@ -11,6 +11,7 @@
 	document.addEventListener('DOMContentLoaded', function () {
 		initMenu();
 		initLanguageSelectors();
+		initShopFilters();
 		initSearch();
 		initMiniCart();
 		initStickyHeader();
@@ -190,6 +191,71 @@
 						setOpen(selector, false, true);
 					}
 				});
+			}
+		});
+	}
+
+	/* ------------------------------------------------------------------ *
+	 * Mobile shop filter drawer
+	 * ------------------------------------------------------------------ */
+	function initShopFilters() {
+		var toggle = document.querySelector('[data-shop-filter-toggle]');
+		var sidebar = document.querySelector('.shop-layout #secondary');
+		var closeButtons = document.querySelectorAll('[data-shop-filter-close]');
+		if (!toggle || !sidebar) {
+			return;
+		}
+
+		function setOpen(open, restoreFocus) {
+			document.body.classList.toggle('shop-filters-open', open);
+			sidebar.classList.toggle('is-open', open);
+			toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+			if (open) {
+				var close = sidebar.querySelector('[data-shop-filter-close]');
+				if (close) {
+					setTimeout(function () {
+						close.focus();
+					}, 30);
+				}
+			} else if (restoreFocus) {
+				toggle.focus();
+			}
+		}
+
+		toggle.addEventListener('click', function () {
+			setOpen(true, false);
+		});
+		Array.prototype.forEach.call(closeButtons, function (button) {
+			button.addEventListener('click', function () {
+				setOpen(false, true);
+			});
+		});
+		document.addEventListener('keydown', function (event) {
+			if (event.key === 'Escape' && sidebar.classList.contains('is-open')) {
+				setOpen(false, true);
+				return;
+			}
+			if (event.key === 'Tab' && sidebar.classList.contains('is-open')) {
+				var focusable = Array.prototype.slice.call(
+					sidebar.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled])'),
+				);
+				if (!focusable.length) {
+					return;
+				}
+				var first = focusable[0];
+				var last = focusable[focusable.length - 1];
+				if (event.shiftKey && document.activeElement === first) {
+					event.preventDefault();
+					last.focus();
+				} else if (!event.shiftKey && document.activeElement === last) {
+					event.preventDefault();
+					first.focus();
+				}
+			}
+		});
+		window.addEventListener('resize', function () {
+			if (window.innerWidth > 900 && sidebar.classList.contains('is-open')) {
+				setOpen(false, false);
 			}
 		});
 	}

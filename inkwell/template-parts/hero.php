@@ -61,6 +61,14 @@ $trust_items = array_filter(
 			<?php if ( $sub ) : ?>
 				<p class="hero-sub"><?php echo esc_html( $sub ); ?></p>
 			<?php endif; ?>
+			<?php if ( class_exists( 'WooCommerce' ) ) : ?>
+				<form class="hero-search" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+					<input type="hidden" name="post_type" value="product" />
+					<label class="screen-reader-text" for="inkwell-hero-search"><?php esc_html_e( 'Search the collection', 'inkwell' ); ?></label>
+					<input id="inkwell-hero-search" type="search" name="s" placeholder="<?php esc_attr_e( 'Search by title or author…', 'inkwell' ); ?>" autocomplete="off" />
+					<button type="submit" aria-label="<?php esc_attr_e( 'Search', 'inkwell' ); ?>"><?php echo inkwell_icon( 'search' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></button>
+				</form>
+			<?php endif; ?>
 			<?php if ( $btn1 || $btn2 ) : ?>
 				<div class="hero-ctas">
 					<?php if ( $btn1 && $url1 ) : ?>

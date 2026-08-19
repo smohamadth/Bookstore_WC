@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.0.7 — 2026-08-17
+
+### Changed
+
+- Added a prominent catalog search to the home hero and refined section-heading hierarchy.
+- Redesigned the shop with an editorial discovery header, product search and scrollable genre chips.
+- Added an accessible mobile filter drawer with focus management, Escape handling and RTL motion.
+- Refined product-card alignment, hover treatment, shop toolbar and genre-tile details.
+- Updated all runtime, package and translation release metadata to 2.0.7.
+
 ## 2.0.6 — 2026-08-17
 
 ### Changed

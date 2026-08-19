@@ -41,7 +41,7 @@ js = text(THEME / "js/main.js")
 theme_json = json.loads(text(THEME / "theme.json"))
 
 # Release and original grid/menu regressions.
-release_version = "2.0.6"
+release_version = "2.0.7"
 check(re.search(rf"^Version:\s*{re.escape(release_version)}\s*$", style, re.M) is not None, "Theme header version mismatch")
 check(f"define( 'INKWELL_VERSION', '{release_version}' );" in functions, "Runtime version mismatch")
 check(json.loads(text(ROOT / "package.json"))["version"] == release_version, "Package version mismatch")
@@ -63,8 +63,15 @@ check("remove_action( 'woocommerce_shop_loop_subcategory_title', 'woocommerce_te
 check("do_action( 'woocommerce_shop_loop_subcategory_title', $category );" in category, "Category title extension hook is missing")
 check("echo '<ul class=\"products products-row\">';" in text(THEME / "inc/template-tags.php"), "Front-page products are not a list")
 check('<ul class="products products-row author-products-row">' in text(THEME / "taxonomy-book_author.php"), "Author products are not a responsive list")
+check("genre-tile__number" in text(THEME / "template-parts/section-categories.php"), "Home genre tile details are missing")
 check("add_action( 'woocommerce_no_products_found', 'inkwell_no_products_found', 10 );" in wc, "No-products action is not wired")
 check("woocommerce_quantity_input_args" not in wc, "Theme still overrides product quantity business rules")
+check("hero-search" in text(THEME / "template-parts/hero.php"), "Home hero catalog search is missing")
+check("section-head__copy" in text(THEME / "inc/template-tags.php"), "Home section hierarchy regression")
+check("shop-archive-header" in wc and "shop-category-chips" in wc, "Shop discovery header is missing")
+check("data-shop-filter-toggle" in wc and "data-shop-filter-close" in text(THEME / "sidebar.php"), "Shop filter drawer controls are missing")
+check("initShopFilters" in js and "shop-filters-open" in js, "Shop filter drawer behavior is missing")
+check("shop-filter-backdrop" in wc_css and "shop-archive-header" in wc_css, "Shop redesign styles are missing")
 check("'woocommerce'" not in text(THEME / "woocommerce/global/quantity-input.php"), "Quantity override bypasses bundled translations")
 check("'woocommerce'" not in text(THEME / "woocommerce/single-product/meta.php"), "Product meta override bypasses bundled translations")
 check("max-width: 460px" in wc_css and "justify-self: center" in wc_css, "Single-product gallery size regression")

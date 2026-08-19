@@ -31,6 +31,7 @@ function inkwell_icon( $name ) {
 		'check' => '<path d="M4 12.5l5 5L20 6.5"/>',
 		'globe' => '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/>',
 		'chevron-down' => '<path d="M6 9l6 6 6-6"/>',
+		'filter' => '<path d="M4 6h16M7 12h10M10 18h4"/>',
 		'quote' => '<path d="M9 6c-3 1-5 3.5-5 7v5h6v-6H6.5C6.5 9.5 8 8 10 7.5zM20 6c-3 1-5 3.5-5 7v5h6v-6h-3.5c0-2.5 1.5-4 3.5-4.5z"/>',
 		'star'  => '<path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z"/>',
 		'facebook' => '<path d="M14 8h2.5V4.8H14c-2.2 0-3.6 1.5-3.6 3.8V11H8v3.2h2.4V21h3.2v-6.8h2.6l.4-3.2h-3v-1.7c0-.9.2-1.3 1.4-1.3z" fill="currentColor" stroke="none"/>',
@@ -158,10 +159,12 @@ function inkwell_section_header( $eyebrow, $title, $link = '', $link_label = '' 
 		$link_label = __( 'View all', 'inkwell' );
 	}
 	echo '<div class="section-head" data-reveal>';
+	echo '<div class="section-head__copy">';
 	if ( $eyebrow ) {
 		echo '<span class="eyebrow">' . esc_html( $eyebrow ) . '</span>';
 	}
 	echo '<h2>' . esc_html( $title ) . '</h2>';
+	echo '</div>';
 	if ( $link ) {
 		echo '<a class="section-link" href="' . esc_url( $link ) . '">' . esc_html( $link_label ) . ' ' . inkwell_icon( 'arrow' ) . '</a>'; // phpcs:ignore WordPress.Security.EscapeOutput
 	}

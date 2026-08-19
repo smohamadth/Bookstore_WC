@@ -4,7 +4,7 @@ Theme URI: https://github.com/smohamadth/Bookstore_WC
 Author: Inkwell Studio
 Author URI: https://github.com/smohamadth
 Description: A boutique bookstore theme for WooCommerce — v2 "modern library" design. Parchment paper, deep ink and emerald; editorial Newsreader serif; book-spine product cards, ranked bestsellers, mini-cart, Book Details (ISBN, publisher, year, pages, format, language), author taxonomy, newsletter. Responsive, accessible, translation-ready.
-Version: 2.0.6
+Version: 2.0.7
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -175,8 +175,10 @@ input, select, textarea, button { font-family: inherit; font-size: 1rem; color: 
 
 .section-head {
 	display: flex; align-items: flex-end; justify-content: space-between;
-	gap: 1.2em; margin-bottom: 2.4em; flex-wrap: wrap;
+	gap: 1.5rem; margin-bottom: 2.4rem; padding-bottom: 1rem; flex-wrap: wrap;
+	border-bottom: 1px solid var(--line);
 }
+.section-head__copy { display: flex; flex-direction: column; align-items: flex-start; }
 .section-head .eyebrow {
 	display: block; font-size: 0.76rem; font-weight: 700;
 	letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent);
@@ -480,7 +482,25 @@ html:not(.inkwell-js) .search-panel { display: block; }
 	line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 0.4em;
 }
 .hero-copy h1 em { font-style: italic; color: var(--gold); }
-.hero-copy .hero-sub { font-size: 1.12rem; color: rgba(243, 239, 228, 0.72); margin-bottom: 1.9em; max-width: 46ch; }
+.hero-copy .hero-sub { font-size: 1.12rem; color: rgba(243, 239, 228, 0.72); margin-bottom: 1.4em; max-width: 46ch; }
+.hero-search {
+	display: flex; align-items: center; max-width: 560px; margin-bottom: 1.35rem;
+	padding: 0.35rem; border: 1px solid rgba(243, 239, 228, 0.2); border-radius: 999px;
+	background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(8px);
+	box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
+}
+.hero-search input[type="search"] {
+	flex: 1; min-width: 0; border: 0; outline: 0; box-shadow: none;
+	background: transparent; color: #f3efe4; padding: 0.72rem 1rem;
+}
+.hero-search input[type="search"]::placeholder { color: rgba(243, 239, 228, 0.58); }
+.hero-search button {
+	width: 44px; height: 44px; flex: 0 0 auto; border: 0; border-radius: 50%;
+	background: var(--gold); color: var(--ink) !important; cursor: pointer; padding: 0;
+	display: inline-flex; align-items: center; justify-content: center;
+}
+.hero-search button:hover { background: #e1ad43; transform: none; box-shadow: none; }
+.hero-search button svg { width: 19px; height: 19px; }
 .hero-ctas { display: flex; gap: 0.9rem; flex-wrap: wrap; }
 .hero-trust {
 	display: flex; gap: 1.4rem; flex-wrap: wrap; margin-top: 2.2rem;
@@ -540,6 +560,14 @@ html:not(.inkwell-js) .search-panel { display: block; }
 	box-shadow: var(--shadow); transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .genre-tile:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+.genre-tile__number {
+	position: absolute; top: 0.85rem; inset-inline-start: 0.85rem; z-index: 3;
+	width: 34px; height: 34px; border-radius: 50%;
+	display: inline-flex; align-items: center; justify-content: center;
+	background: rgba(23, 27, 34, 0.72); color: #fff;
+	font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em;
+	backdrop-filter: blur(6px);
+}
 .genre-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
 .genre-tile:hover img { transform: scale(1.06); }
 .genre-tile .tile-label {
@@ -871,6 +899,7 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--accent); ou
 @media (max-width: 960px) {
 	.hero-inner { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; padding: 3.5rem 0; }
 	.hero-copy .hero-sub { margin-inline: auto; }
+	.hero-search { margin-inline: auto; }
 	.hero-ctas, .hero-trust { justify-content: center; }
 	.hero-covers { min-height: 400px; }
 	.menu-toggle { display: inline-flex; align-items: center; justify-content: center; }

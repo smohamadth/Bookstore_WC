@@ -90,6 +90,12 @@ li.product .price del, .woocommerce div.product p.price del { margin-right: 0; m
 .woocommerce a.button.added::after,
 .woocommerce button.button.added::after { margin-left: 0; margin-right: 0.5em; }
 
+@media (max-width: 900px) {
+	html.inkwell-js .shop-layout .widget-area {
+		transform: translateX(105%); box-shadow: -20px 0 60px rgba(0, 0, 0, 0.22);
+	}
+	html.inkwell-js .shop-layout .widget-area.is-open { transform: translateX(0); }
+}
 @media (max-width: 640px) {
 	.mini-cart-panel { right: 10px; left: 10px; }
 }
