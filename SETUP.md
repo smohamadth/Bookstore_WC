@@ -29,10 +29,10 @@ Open **Appearance → Import Demo Content**.
 
 The catalog contains:
 
-- 33 books with typographic covers and bibliographic data
-- 7 product genres
-- 31 authors with bios
-- 14 approved sample reviews
+- 33 entirely fictional Sorani Kurdish books with original typographic covers and demo metadata
+- 7 Kurdish product genres
+- 27 fictional Kurdish authors with original bios
+- 14 clearly fictional Kurdish sample reviews
 - 3 sample journal posts
 - Optional pages, menu, sidebars and theme settings
 

@@ -1,7 +1,7 @@
 {
   "name": "inkwell-woocommerce-theme",
   "private": true,
-  "version": "2.0.7",
+  "version": "2.0.8",
   "scripts": {
     "make-pot": "node tools/make-pot.js",
     "lint:js": "node --check inkwell/js/main.js",

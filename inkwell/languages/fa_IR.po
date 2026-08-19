@@ -3,7 +3,7 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Inkwell 2.0.7\n"
+"Project-Id-Version: Inkwell 2.0.8\n"
 "Report-Msgid-Bugs-To: https://github.com/smohamadth/Bookstore_WC/issues\n"
 "POT-Creation-Date: 2026-08-17 00:00+0000\n"
 "PO-Revision-Date: 2026-08-17 00:00+0000\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Inkwell translation build\n"
-"X-Inkwell-Template-SHA256: 8ae18b62767c582fba9702838259ff85403c5b613ab9a38ea498b69e1cd6b7e5\n"
+"X-Inkwell-Template-SHA256: a1472ca984e6f376018f5a4d248ae830f060c54a06e75223bb2983e37192a599\n"
 
 #: 404.php:11
 msgid "This page has been checked out"
@@ -525,37 +525,29 @@ msgstr ""
 "نسخه ووکامرس شما %s است — این پوسته به نسخه ۸٫۰ یا جدیدتر نیاز دارد. برای "
 "کارکرد درست صفحه‌های فروشگاه و محصول، ووکامرس را به‌روزرسانی کنید."
 
-#: inc/demo-import.php:79
+#: inc/demo-import.php:93
 msgid "Inkwell: your shop is empty."
 msgstr "اینک‌ول: فروشگاه شما خالی است."
 
-#: inc/demo-import.php:80
-msgid ""
-"Seed it with the bundled sample catalog (33 books, 7 genres, 31 authors, "
-"reviews, menus and pages) in one click."
-msgstr ""
-"با یک کلیک فروشگاه را با کاتالوگ نمونه همراه (۳۳ کتاب، ۷ ژانر، ۳۱ نویسنده، "
-"نقدها، فهرست‌ها و صفحه‌ها) پر کنید."
-
-#: inc/demo-import.php:82
+#: inc/demo-import.php:96
 msgid "Import demo content"
 msgstr "درون‌ریزی محتوای نمایشی"
 
-#: inc/demo-import.php:99, inc/demo-import.php:113
+#: inc/demo-import.php:113, inc/demo-import.php:127
 msgid "Inkwell — Import Demo Content"
 msgstr "اینک‌ول — درون‌ریزی محتوای نمایشی"
 
-#: inc/demo-import.php:100
+#: inc/demo-import.php:114
 msgid ""
 "WooCommerce must be installed and active before demo content can be "
 "imported."
 msgstr "پیش از درون‌ریزی محتوای نمایشی باید ووکامرس نصب و فعال باشد."
 
-#: inc/demo-import.php:119
+#: inc/demo-import.php:133
 msgid "Demo content imported successfully!"
 msgstr "محتوای نمایشی با موفقیت درون‌ریزی شد!"
 
-#: inc/demo-import.php:130
+#: inc/demo-import.php:144
 msgid ""
 "This imports the bundled sample store into your site — perfect for testing "
 "the theme before adding your own books:"
@@ -563,28 +555,15 @@ msgstr ""
 "این کار فروشگاه نمونه همراه را به سایت شما می‌افزاید و برای آزمایش پوسته پیش"
 " از افزودن کتاب‌های خودتان مناسب است:"
 
-#: inc/demo-import.php:133
-msgid "with covers, real bibliographic data, sale prices and featured flags"
-msgstr ""
-"همراه با جلد، داده‌های واقعی کتاب‌شناختی، قیمت فروش ویژه و نشان‌های برگزیده"
-
-#: inc/demo-import.php:134
-msgid ""
-"(Fiction, Sci-Fi & Fantasy, Mystery & Thriller, Non-Fiction, History & "
-"Biography, Children’s Books, Poetry)"
-msgstr ""
-"(داستان، علمی‌تخیلی و فانتزی، معمایی و دلهره‌آور، غیرداستانی، تاریخ و "
-"زندگی‌نامه، کتاب کودک، شعر)"
-
-#: inc/demo-import.php:135
+#: inc/demo-import.php:149
 msgid "with bios → author archive pages"
 msgstr "همراه با زندگی‌نامه ← صفحه‌های بایگانی نویسندگان"
 
-#: inc/demo-import.php:136
+#: inc/demo-import.php:150
 msgid "3 journal posts, menus, widgets, pages &amp; default settings"
 msgstr "۳ نوشته مجله، فهرست‌ها، ابزارک‌ها، صفحه‌ها و تنظیمات پیش‌فرض"
 
-#: inc/demo-import.php:139
+#: inc/demo-import.php:153
 msgid ""
 "The catalog import is safe to run again: marked demo products and media are "
 "reused, while an unrelated product that happens to share a demo SKU is "
@@ -594,19 +573,19 @@ msgstr ""
 "علامت‌گذاری‌شده دوباره استفاده می‌شوند و محصول نامرتبطی که شناسه SKU یکسان "
 "داشته باشد نادیده گرفته می‌شود."
 
-#: inc/demo-import.php:159
+#: inc/demo-import.php:173
 msgid "View the shop"
 msgstr "مشاهده فروشگاه"
 
-#: inc/demo-import.php:162
+#: inc/demo-import.php:176
 msgid "Import again"
 msgstr "درون‌ریزی دوباره"
 
-#: inc/demo-import.php:148
+#: inc/demo-import.php:162
 msgid "Also apply the complete demo-site setup"
 msgstr "راه‌اندازی کامل سایت نمایشی نیز اعمال شود"
 
-#: inc/demo-import.php:150
+#: inc/demo-import.php:164
 msgid ""
 "Optional: assigns a demo menu and sidebars, sets EUR currency, and selects "
 "the demo front page. Leave unchecked on an existing site."
@@ -615,35 +594,31 @@ msgstr ""
 "می‌گذارد و صفحه نخست نمایشی را انتخاب می‌کند. در سایت موجود این گزینه را "
 "علامت نزنید."
 
-#: inc/demo-import.php:153
+#: inc/demo-import.php:167
 msgid "Import demo content now"
 msgstr "همین حالا محتوای نمایشی را درون‌ریزی کنید"
 
-#: inc/demo-import.php:265
+#: inc/demo-import.php:279
 msgid "My Account"
 msgstr "حساب کاربری من"
 
-#: inc/demo-import.php:358
+#: inc/demo-import.php:429
 msgid "WooCommerce must be active before importing demo content."
 msgstr "پیش از درون‌ریزی محتوای نمایشی باید ووکامرس فعال باشد."
 
-#: inc/demo-import.php:365
+#: inc/demo-import.php:436
 msgid "Could not read demo data. The theme files may be incomplete."
 msgstr "خواندن داده‌های نمایشی ممکن نشد. شاید فایل‌های پوسته ناقص باشند."
 
-#: inc/demo-import.php:396
+#: inc/demo-import.php:486
 msgid "%d product categories created/updated"
 msgstr "%d دسته محصول ایجاد/به‌روزرسانی شد"
 
-#: inc/demo-import.php:452
-msgid "%d book authors with bios"
-msgstr "%d نویسنده کتاب همراه با زندگی‌نامه"
-
-#: inc/demo-import.php:532
+#: inc/demo-import.php:614
 msgid "%d demo books created or updated"
 msgstr "%d کتاب نمایشی ایجاد یا به‌روزرسانی شد"
 
-#: inc/demo-import.php:534
+#: inc/demo-import.php:616
 msgid ""
 "%d existing products skipped because their SKUs were not marked as demo "
 "content"
@@ -651,22 +626,18 @@ msgstr ""
 "%d محصول موجود به‌دلیل علامت‌گذاری نشدن SKU آن‌ها به‌عنوان محتوای نمایشی "
 "نادیده گرفته شد"
 
-#: inc/demo-import.php:585
+#: inc/demo-import.php:667
 msgid ""
 "Pages created (Home, Shop, My Account, About, Contact, Journal, Privacy)"
 msgstr ""
 "صفحه‌ها ایجاد شدند (خانه، فروشگاه، حساب کاربری من، درباره ما، تماس، مجله، "
 "حریم خصوصی)"
 
-#: inc/demo-import.php:629
+#: inc/demo-import.php:739
 msgid "3 journal posts with covers"
 msgstr "۳ نوشته مجله همراه با تصویر جلد"
 
-#: inc/demo-import.php:681
-msgid "14 customer reviews with ratings"
-msgstr "۱۴ نقد مشتری همراه با امتیاز"
-
-#: inc/demo-import.php:789
+#: inc/demo-import.php:900
 msgid ""
 "Complete demo-site setup skipped; existing menus, sidebars, currency and "
 "front-page settings were preserved"
@@ -674,39 +645,39 @@ msgstr ""
 "راه‌اندازی کامل سایت نمایشی انجام نشد؛ فهرست‌ها، نوارهای کناری، واحد پول و "
 "تنظیمات صفحه نخست موجود حفظ شدند"
 
-#: inc/demo-import.php:737
+#: inc/demo-import.php:848
 msgid "Dedicated demo navigation menu with genre dropdown assigned"
 msgstr "فهرست ناوبری ویژه نسخه نمایشی همراه با زیرمنوی ژانر اختصاص یافت"
 
-#: inc/demo-import.php:741, inc/demo-localization.php:41,
+#: inc/demo-import.php:852, inc/demo-localization.php:41,
 #: template-parts/section-categories.php:50
 msgid "Genres"
 msgstr "ژانرها"
 
-#: inc/demo-import.php:742, inc/demo-localization.php:45
+#: inc/demo-import.php:853, inc/demo-localization.php:45
 msgid "Filter by price"
 msgstr "فیلتر بر اساس قیمت"
 
-#: inc/demo-import.php:743, inc/demo-localization.php:46
+#: inc/demo-import.php:854, inc/demo-localization.php:46
 msgid "Top rated"
 msgstr "بالاترین امتیاز"
 
-#: inc/demo-import.php:746, inc/demo-localization.php:47
+#: inc/demo-import.php:857, inc/demo-localization.php:47
 msgid "Recent posts"
 msgstr "نوشته‌های تازه"
 
-#: inc/demo-import.php:747, inc/demo-localization.php:48
+#: inc/demo-import.php:858, inc/demo-localization.php:48
 msgid "Journal categories"
 msgstr "دسته‌های مجله"
 
-#: inc/demo-import.php:757
+#: inc/demo-import.php:868
 msgid ""
 "Empty shop and blog sidebars configured without replacing existing widgets"
 msgstr ""
 "نوارهای کناری خالی فروشگاه و وبلاگ بدون جایگزینی ابزارک‌های موجود پیکربندی "
 "شدند"
 
-#: inc/demo-import.php:787
+#: inc/demo-import.php:898
 msgid "Store settings, front page & theme options applied"
 msgstr "تنظیمات فروشگاه، صفحه نخست و گزینه‌های پوسته اعمال شدند"
 
@@ -1412,3 +1383,59 @@ msgstr "جستجو در مجموعه"
 #: template-parts/hero.php:68
 msgid "Search by title or author…"
 msgstr "جستجو بر اساس عنوان یا نویسنده…"
+
+#: inc/demo-import.php:94
+msgid ""
+"Seed it with the bundled fictional Kurdish catalog (33 books, 7 genres, 27 "
+"authors, reviews, menus and pages) in one click."
+msgstr ""
+"با یک کلیک فروشگاه را با کاتالوگ ساختگی کردی همراه (۳۳ کتاب، ۷ ژانر، ۲۷ "
+"نویسنده، نقدها، فهرست‌ها و صفحه‌ها) پر کنید."
+
+#: inc/demo-import.php:147
+msgid ""
+"fictional Sorani books with original covers, demo metadata, sale prices and "
+"featured flags"
+msgstr ""
+"کتاب‌های ساختگی سورانی با جلدهای اصیل، فراداده نمایشی، قیمت فروش ویژه و "
+"نشان‌های برگزیده"
+
+#: inc/demo-import.php:148
+msgid ""
+"(Kurdish fiction, science fiction and fantasy, mystery, non-fiction, "
+"history, children’s books and poetry)"
+msgstr ""
+"(داستان کردی، علمی‌تخیلی و فانتزی، معمایی، غیرداستانی، تاریخ، کتاب کودک و "
+"شعر)"
+
+#: inc/demo-import.php:454
+msgid "%d retired demo products replaced with fictional Kurdish books"
+msgstr "%d محصول نمایشی قدیمی با کتاب‌های ساختگی کردی جایگزین شد"
+
+#: inc/demo-import.php:533
+msgid "%d fictional Kurdish authors with bios"
+msgstr "%d نویسنده ساختگی کردی همراه با زندگی‌نامه"
+
+#: inc/demo-import.php:792
+msgid "14 fictional Kurdish demo reviews with ratings"
+msgstr "۱۴ نقد نمایشی ساختگی کردی همراه با امتیاز"
+
+#: inc/demo-import.php:442
+msgid "The fictional Kurdish catalog is incomplete and was not imported."
+msgstr "کاتالوگ ساختگی کردی ناقص است و درون‌ریزی نشد."
+
+#: inc/demo-import.php:78
+msgid "Inkwell: retired demo catalog detected."
+msgstr "اینک‌ول: کاتالوگ نمایشی قدیمی شناسایی شد."
+
+#: inc/demo-import.php:79
+msgid ""
+"Run the importer again to safely replace only the old demo products with "
+"fictional Kurdish books."
+msgstr ""
+"درون‌ریز را دوباره اجرا کنید تا فقط محصولات نمایشی قدیمی با کتاب‌های ساختگی "
+"کردی جایگزین شوند."
+
+#: inc/demo-import.php:80
+msgid "Replace demo catalog"
+msgstr "جایگزینی کاتالوگ نمایشی"

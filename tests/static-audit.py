@@ -41,7 +41,7 @@ js = text(THEME / "js/main.js")
 theme_json = json.loads(text(THEME / "theme.json"))
 
 # Release and original grid/menu regressions.
-release_version = "2.0.7"
+release_version = "2.0.8"
 check(re.search(rf"^Version:\s*{re.escape(release_version)}\s*$", style, re.M) is not None, "Theme header version mismatch")
 check(f"define( 'INKWELL_VERSION', '{release_version}' );" in functions, "Runtime version mismatch")
 check(json.loads(text(ROOT / "package.json"))["version"] == release_version, "Package version mismatch")
@@ -124,7 +124,7 @@ check("wp_delete_post( $item->ID, true )" not in importer, "Importer still delet
 check("_inkwell_demo_product" in importer and "_inkwell_demo_asset" in importer, "Importer lacks ownership markers")
 check("'' === trim( (string) get_post_field( 'post_content'" in importer, "Importer can overwrite cart/checkout content")
 check(importer.count("if ( $apply_site_setup )") >= 2, "Pages and site settings are not both opt-in")
-check("$legacy_import && $book['isbn']" in importer, "Legacy demo detection can claim unrelated products")
+check("$is_owned || $is_match" in importer and "_inkwell_demo_product" in importer, "Legacy demo replacement is not ownership guarded")
 check("wc_get_page_id( 'shop' )" in importer and "<= 0" in importer, "Missing WooCommerce page IDs are not handled")
 check("[woocommerce_my_account]" in importer, "My Account page is missing its shortcode")
 check("woocommerce_enable_myaccount_registration', 'yes'" in importer, "Demo customer registration is not enabled")
@@ -216,8 +216,23 @@ for locale in ("fa_IR", "ckb"):
         if keeping:
             check("<em>" in keeping and "</em>" in keeping, f"Hero markup missing in {mo_path.name}")
 
-# Gross structural checks.
-json.loads(text(THEME / "demo/books.json"))
+# Fictional Kurdish demo catalog and generated covers.
+demo_books = json.loads(text(THEME / "demo/books.json"))
+check(len(demo_books) == 33 and len({book["sku"] for book in demo_books}) == 33, "Demo catalog must contain 33 unique books")
+check(len({book["author"] for book in demo_books}) == 27, "Demo catalog author count mismatch")
+check(all(book.get("language") == "کوردی (سۆرانی)" and book.get("author_bio") for book in demo_books), "Demo books are not complete Sorani fiction records")
+check(all(re.search(r"[\u0600-\u06ff]", book["title"]) for book in demo_books), "Non-Kurdish demo title found")
+check(not {"pride-prejudice", "dune", "sapiens"} & {book["sku"] for book in demo_books}, "Retired real-book products remain in demo data")
+retired_names = ("Pride and Prejudice", "George Orwell", "Agatha Christie", "Roald Dahl", "Where the Crawdads Sing")
+check(not any(name in text(THEME / "demo/books.json") for name in retired_names), "Real book or author remains in demo catalog")
+check(not any(name in importer for name in retired_names), "Real book or author remains in importer content")
+cover_names = {path.stem for path in (THEME / "demo/covers").glob("*.png")}
+check(cover_names == {book["sku"] for book in demo_books}, "Demo covers do not exactly match the Kurdish catalog")
+check("inkwell_demo_remove_legacy_products" in importer and "_inkwell_demo_catalog_version" in importer, "Legacy demo migration is missing")
+check("retired demo catalog detected" in importer and "Replace demo catalog" in importer, "Legacy catalog replacement notice is missing")
+check("fictional Kurdish demo reviews" in importer, "Demo reviews are not clearly fictional Kurdish content")
+check((ROOT / "tools/fonts/Vazirmatn.ttf").is_file() and (ROOT / "tools/fonts/NotoKufiArabic.ttf").is_file(), "Kurdish cover-generation fonts are missing")
+check((ROOT / "tools/requirements.txt").is_file() and "arabic-reshaper" in text(ROOT / "tools/requirements.txt"), "Kurdish cover shaping dependencies are missing")
 check(style.count("{") == style.count("}"), "Unbalanced theme CSS braces")
 check(wc_css.count("{") == wc_css.count("}"), "Unbalanced WooCommerce CSS braces")
 check(rtl_css.count("{") == rtl_css.count("}"), "Unbalanced RTL CSS braces")

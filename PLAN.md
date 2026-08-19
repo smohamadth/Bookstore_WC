@@ -170,7 +170,7 @@ Executed 2026-08-14:
 - **Single product:** sticky summary, in-stock chip, trust chips, "More by this author"
   strip (same-taxonomy query).
 - **Checkout:** two-column layout via CSS (billing | order review), cart 2-col grid.
-- **Catalog:** 17 → **33 books**, new **Poetry** genre, 31 authors, 14 reviews;
+- **Catalog:** 17 → **33 books**, new **Poetry** genre, 27 fictional Kurdish authors, 14 reviews;
   staggered post dates (9-day gaps, newest last); band-style covers for variety;
   reviews dedupe + deterministic dates → importer fully idempotent.
 

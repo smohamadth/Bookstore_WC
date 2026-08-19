@@ -3,7 +3,7 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Inkwell 2.0.7\n"
+"Project-Id-Version: Inkwell 2.0.8\n"
 "Report-Msgid-Bugs-To: https://github.com/smohamadth/Bookstore_WC/issues\n"
 "POT-Creation-Date: 2026-08-17 00:00+0000\n"
 "PO-Revision-Date: 2026-08-17 00:00+0000\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Inkwell translation build\n"
-"X-Inkwell-Template-SHA256: 8ae18b62767c582fba9702838259ff85403c5b613ab9a38ea498b69e1cd6b7e5\n"
+"X-Inkwell-Template-SHA256: a1472ca984e6f376018f5a4d248ae830f060c54a06e75223bb2983e37192a599\n"
 
 #: 404.php:11
 msgid "This page has been checked out"
@@ -525,38 +525,30 @@ msgstr ""
 "تۆ وۆکامێرس %s بەکاردەهێنیت — ڕووکارەکە پێویستی بە وەشانی ٨.٠ یان نوێتر "
 "هەیە. بۆ کارکردنی دروستی پەڕەکانی فرۆشگا و بەرهەم، وۆکامێرس نوێ بکەرەوە."
 
-#: inc/demo-import.php:79
+#: inc/demo-import.php:93
 msgid "Inkwell: your shop is empty."
 msgstr "ئینکوێڵ: فرۆشگاکەت بەتاڵە."
 
-#: inc/demo-import.php:80
-msgid ""
-"Seed it with the bundled sample catalog (33 books, 7 genres, 31 authors, "
-"reviews, menus and pages) in one click."
-msgstr ""
-"بە یەک کرتە کەتەلۆگی نموونەیی هاوپێچ (٣٣ کتێب، ٧ ژانر، ٣١ نووسەر، "
-"هەڵسەنگاندن، پێڕست و پەڕەکان) زیاد بکە."
-
-#: inc/demo-import.php:82
+#: inc/demo-import.php:96
 msgid "Import demo content"
 msgstr "هاوردەکردنی ناوەڕۆکی نموونەیی"
 
-#: inc/demo-import.php:99, inc/demo-import.php:113
+#: inc/demo-import.php:113, inc/demo-import.php:127
 msgid "Inkwell — Import Demo Content"
 msgstr "ئینکوێڵ — هاوردەکردنی ناوەڕۆکی نموونەیی"
 
-#: inc/demo-import.php:100
+#: inc/demo-import.php:114
 msgid ""
 "WooCommerce must be installed and active before demo content can be "
 "imported."
 msgstr ""
 "پێش هاوردەکردنی ناوەڕۆکی نموونەیی دەبێت وۆکامێرس دامەزرابێت و چالاک بێت."
 
-#: inc/demo-import.php:119
+#: inc/demo-import.php:133
 msgid "Demo content imported successfully!"
 msgstr "ناوەڕۆکی نموونەیی بە سەرکەوتوویی هاوردە کرا!"
 
-#: inc/demo-import.php:130
+#: inc/demo-import.php:144
 msgid ""
 "This imports the bundled sample store into your site — perfect for testing "
 "the theme before adding your own books:"
@@ -564,28 +556,15 @@ msgstr ""
 "ئەمە فرۆشگای نموونەیی هاوپێچ بۆ ماڵپەڕەکەت هاوردە دەکات — بۆ تاقیکردنەوەی "
 "ڕووکار پێش زیادکردنی کتێبەکانی خۆت گونجاوە:"
 
-#: inc/demo-import.php:133
-msgid "with covers, real bibliographic data, sale prices and featured flags"
-msgstr ""
-"لەگەڵ بەرگ، زانیاری ڕاستەقینەی کتێبناسی، نرخی داشکاندن و نیشانی تایبەت"
-
-#: inc/demo-import.php:134
-msgid ""
-"(Fiction, Sci-Fi & Fantasy, Mystery & Thriller, Non-Fiction, History & "
-"Biography, Children’s Books, Poetry)"
-msgstr ""
-"(چیرۆک، زانستی-خەیاڵی و فانتازیا، نهێنی و هەستبزوێن، ناچیرۆکی، مێژوو و "
-"ژیاننامە، کتێبی منداڵان، شیعر)"
-
-#: inc/demo-import.php:135
+#: inc/demo-import.php:149
 msgid "with bios → author archive pages"
 msgstr "لەگەڵ ژیاننامە ← پەڕەکانی ئەرشیفی نووسەر"
 
-#: inc/demo-import.php:136
+#: inc/demo-import.php:150
 msgid "3 journal posts, menus, widgets, pages &amp; default settings"
 msgstr "٣ بابەتی گۆڤار، پێڕست، ویجێت، پەڕە و ڕێکخستنە بنەڕەتییەکان"
 
-#: inc/demo-import.php:139
+#: inc/demo-import.php:153
 msgid ""
 "The catalog import is safe to run again: marked demo products and media are "
 "reused, while an unrelated product that happens to share a demo SKU is "
@@ -595,19 +574,19 @@ msgstr ""
 "نیشانکراو دووبارە بەکاردەهێنرێن و بەرهەمی ناپەیوەندیدار کە SKUی هاوبەش هەبێت"
 " پشتگوێ دەخرێت."
 
-#: inc/demo-import.php:159
+#: inc/demo-import.php:173
 msgid "View the shop"
 msgstr "سەیری فرۆشگا بکە"
 
-#: inc/demo-import.php:162
+#: inc/demo-import.php:176
 msgid "Import again"
 msgstr "دووبارە هاوردە بکە"
 
-#: inc/demo-import.php:148
+#: inc/demo-import.php:162
 msgid "Also apply the complete demo-site setup"
 msgstr "ڕێکخستنی تەواوی ماڵپەڕی نموونەیی جێبەجێ بکە"
 
-#: inc/demo-import.php:150
+#: inc/demo-import.php:164
 msgid ""
 "Optional: assigns a demo menu and sidebars, sets EUR currency, and selects "
 "the demo front page. Leave unchecked on an existing site."
@@ -616,36 +595,32 @@ msgstr ""
 "یۆرۆ و پەڕەی سەرەکی نموونەیی هەڵدەبژێرێت. لە ماڵپەڕێکی بەکارهاتوودا نیشانەی "
 "مەدە."
 
-#: inc/demo-import.php:153
+#: inc/demo-import.php:167
 msgid "Import demo content now"
 msgstr "ئێستا ناوەڕۆکی نموونەیی هاوردە بکە"
 
-#: inc/demo-import.php:265
+#: inc/demo-import.php:279
 msgid "My Account"
 msgstr "هەژماری من"
 
-#: inc/demo-import.php:358
+#: inc/demo-import.php:429
 msgid "WooCommerce must be active before importing demo content."
 msgstr "پێش هاوردەکردنی ناوەڕۆکی نموونەیی دەبێت وۆکامێرس چالاک بێت."
 
-#: inc/demo-import.php:365
+#: inc/demo-import.php:436
 msgid "Could not read demo data. The theme files may be incomplete."
 msgstr ""
 "خوێندنەوەی داتای نموونەیی نەکرا. لەوانەیە فایلەکانی ڕووکار ناتەواو بن."
 
-#: inc/demo-import.php:396
+#: inc/demo-import.php:486
 msgid "%d product categories created/updated"
 msgstr "%d هاوپۆلی بەرهەم دروست/نوێکرایەوە"
 
-#: inc/demo-import.php:452
-msgid "%d book authors with bios"
-msgstr "%d نووسەری کتێب لەگەڵ ژیاننامە"
-
-#: inc/demo-import.php:532
+#: inc/demo-import.php:614
 msgid "%d demo books created or updated"
 msgstr "%d کتێبی نموونەیی دروست یان نوێکرایەوە"
 
-#: inc/demo-import.php:534
+#: inc/demo-import.php:616
 msgid ""
 "%d existing products skipped because their SKUs were not marked as demo "
 "content"
@@ -653,22 +628,18 @@ msgstr ""
 "%d بەرهەمی هەبوو پشتگوێ خرا چونکە SKUەکانیان وەک ناوەڕۆکی نموونەیی نیشان "
 "نەکرابوون"
 
-#: inc/demo-import.php:585
+#: inc/demo-import.php:667
 msgid ""
 "Pages created (Home, Shop, My Account, About, Contact, Journal, Privacy)"
 msgstr ""
 "پەڕەکان دروست کران (ماڵەوە، فرۆشگا، هەژماری من، دەربارە، پەیوەندی، گۆڤار، "
 "تایبەتمەندی)"
 
-#: inc/demo-import.php:629
+#: inc/demo-import.php:739
 msgid "3 journal posts with covers"
 msgstr "٣ بابەتی گۆڤار لەگەڵ وێنەی بەرگ"
 
-#: inc/demo-import.php:681
-msgid "14 customer reviews with ratings"
-msgstr "١٤ هەڵسەنگاندنی کڕیار لەگەڵ نمرە"
-
-#: inc/demo-import.php:789
+#: inc/demo-import.php:900
 msgid ""
 "Complete demo-site setup skipped; existing menus, sidebars, currency and "
 "front-page settings were preserved"
@@ -676,38 +647,38 @@ msgstr ""
 "ڕێکخستنی تەواوی ماڵپەڕی نموونەیی جێبەجێ نەکرا؛ پێڕست، لاتەنیشت، دراو و "
 "ڕێکخستنەکانی پەڕەی سەرەکی پارێزران"
 
-#: inc/demo-import.php:737
+#: inc/demo-import.php:848
 msgid "Dedicated demo navigation menu with genre dropdown assigned"
 msgstr "پێڕستی ڕێنیشاندانی نموونەیی لەگەڵ لیستی ژێرەوەی ژانر دیاری کرا"
 
-#: inc/demo-import.php:741, inc/demo-localization.php:41,
+#: inc/demo-import.php:852, inc/demo-localization.php:41,
 #: template-parts/section-categories.php:50
 msgid "Genres"
 msgstr "ژانرەکان"
 
-#: inc/demo-import.php:742, inc/demo-localization.php:45
+#: inc/demo-import.php:853, inc/demo-localization.php:45
 msgid "Filter by price"
 msgstr "پاڵاوتن بە پێی نرخ"
 
-#: inc/demo-import.php:743, inc/demo-localization.php:46
+#: inc/demo-import.php:854, inc/demo-localization.php:46
 msgid "Top rated"
 msgstr "بەرزترین نمرە"
 
-#: inc/demo-import.php:746, inc/demo-localization.php:47
+#: inc/demo-import.php:857, inc/demo-localization.php:47
 msgid "Recent posts"
 msgstr "بابەتە تازەکان"
 
-#: inc/demo-import.php:747, inc/demo-localization.php:48
+#: inc/demo-import.php:858, inc/demo-localization.php:48
 msgid "Journal categories"
 msgstr "هاوپۆلەکانی گۆڤار"
 
-#: inc/demo-import.php:757
+#: inc/demo-import.php:868
 msgid ""
 "Empty shop and blog sidebars configured without replacing existing widgets"
 msgstr ""
 "لاتەنیشتە بەتاڵەکانی فرۆشگا و بلۆگ بەبێ گۆڕینی ویجێتە هەبووەکان ڕێکخران"
 
-#: inc/demo-import.php:787
+#: inc/demo-import.php:898
 msgid "Store settings, front page & theme options applied"
 msgstr "ڕێکخستنەکانی فرۆشگا، پەڕەی سەرەکی و هەڵبژاردەکانی ڕووکار جێبەجێ کران"
 
@@ -1415,3 +1386,59 @@ msgstr "گەڕان لە کۆمەڵەکەدا"
 #: template-parts/hero.php:68
 msgid "Search by title or author…"
 msgstr "گەڕان بە ناونیشان یان نووسەر…"
+
+#: inc/demo-import.php:94
+msgid ""
+"Seed it with the bundled fictional Kurdish catalog (33 books, 7 genres, 27 "
+"authors, reviews, menus and pages) in one click."
+msgstr ""
+"بە یەک کرتە کەتەلۆگی خەیاڵیی کوردیی هاوپێچ (٣٣ کتێب، ٧ ژانر، ٢٧ نووسەر، "
+"هەڵسەنگاندن، پێڕست و پەڕەکان) زیاد بکە."
+
+#: inc/demo-import.php:147
+msgid ""
+"fictional Sorani books with original covers, demo metadata, sale prices and "
+"featured flags"
+msgstr ""
+"کتێبی خەیاڵیی سۆرانی لەگەڵ بەرگی ڕەسەن، مێتاداتای نموونەیی، نرخی داشکاندن و "
+"نیشانی تایبەت"
+
+#: inc/demo-import.php:148
+msgid ""
+"(Kurdish fiction, science fiction and fantasy, mystery, non-fiction, "
+"history, children’s books and poetry)"
+msgstr ""
+"(چیرۆکی کوردی، زانستی-خەیاڵی و فانتازیا، نهێنی، ناچیرۆکی، مێژوو، کتێبی "
+"منداڵان و شیعر)"
+
+#: inc/demo-import.php:454
+msgid "%d retired demo products replaced with fictional Kurdish books"
+msgstr "%d بەرهەمی نموونەیی کۆن بە کتێبی خەیاڵیی کوردی گۆڕدرایەوە"
+
+#: inc/demo-import.php:533
+msgid "%d fictional Kurdish authors with bios"
+msgstr "%d نووسەری خەیاڵیی کورد لەگەڵ ژیاننامە"
+
+#: inc/demo-import.php:792
+msgid "14 fictional Kurdish demo reviews with ratings"
+msgstr "١٤ هەڵسەنگاندنی نموونەیی خەیاڵیی کوردی لەگەڵ نمرە"
+
+#: inc/demo-import.php:442
+msgid "The fictional Kurdish catalog is incomplete and was not imported."
+msgstr "کەتەلۆگی خەیاڵیی کوردی ناتەواوە و هاوردە نەکرا."
+
+#: inc/demo-import.php:78
+msgid "Inkwell: retired demo catalog detected."
+msgstr "ئینکوێڵ: کەتەلۆگی نموونەیی کۆن دۆزرایەوە."
+
+#: inc/demo-import.php:79
+msgid ""
+"Run the importer again to safely replace only the old demo products with "
+"fictional Kurdish books."
+msgstr ""
+"هاوردەکەرەکە دووبارە جێبەجێ بکە تا تەنها بەرهەمە نموونەییە کۆنەکان بە کتێبی "
+"خەیاڵیی کوردی بگۆڕدرێنەوە."
+
+#: inc/demo-import.php:80
+msgid "Replace demo catalog"
+msgstr "گۆڕینی کەتەلۆگی نموونەیی"

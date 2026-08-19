@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.0.8 — 2026-08-19
+
+### Changed
+
+- Replaced the retired real-book demo catalog with 33 entirely fictional Sorani Kurdish books by 27 fictional Kurdish authors.
+- Added original Kurdish descriptions, author bios, publishers, category copy, metadata and 14 explicitly fictional Kurdish reviews.
+- Regenerated every demo cover with correctly shaped Sorani typography using bundled OFL cover-generation fonts.
+- Added a guarded migration that deletes only products proven to belong to the retired Inkwell demo catalog.
+- Updated catalog tests, documentation, translation templates and release metadata to 2.0.8.
+
 ## 2.0.7 — 2026-08-17
 
 ### Changed
