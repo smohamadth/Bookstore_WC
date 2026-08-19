@@ -109,12 +109,19 @@ function inkwell_scripts() {
 		);
 	}
 
+	if ( is_rtl() || ( function_exists( 'inkwell_interface_is_rtl' ) && inkwell_interface_is_rtl() ) ) {
+		$rtl_dependencies = class_exists( 'WooCommerce' )
+			? array( 'inkwell-style', 'inkwell-woocommerce' )
+			: array( 'inkwell-style' );
+		wp_enqueue_style( 'inkwell-rtl', get_template_directory_uri() . '/rtl.css', $rtl_dependencies, $ver );
+	}
+
 	wp_enqueue_script(
 		'inkwell-main',
 		get_template_directory_uri() . '/js/main.js',
 		array(),
 		$ver,
-		array( 'in_footer' => true )
+		true
 	);
 
 	wp_localize_script(
@@ -126,6 +133,10 @@ function inkwell_scripts() {
 			'i18n'        => array(
 				'subscribed' => __( 'Thank you — you are on the list!', 'inkwell' ),
 				'error'      => __( 'Something went wrong. Please try again.', 'inkwell' ),
+				'invalidEmail' => __( 'Please enter a valid email address.', 'inkwell' ),
+				'consent'    => __( 'Please agree to receive the newsletter.', 'inkwell' ),
+				'menuOpen'   => __( 'Open menu', 'inkwell' ),
+				'menuClose'  => __( 'Close menu', 'inkwell' ),
 			),
 		)
 	);
@@ -140,8 +151,8 @@ add_action( 'wp_enqueue_scripts', 'inkwell_scripts' );
  * Accent color → CSS custom property.
  */
 function inkwell_color_vars() {
-	$accent      = sanitize_hex_color( get_theme_mod( 'inkwell_accent', '#b4532a' ) );
-	$accent_dark = sanitize_hex_color( get_theme_mod( 'inkwell_accent_dark', '#8f3d1e' ) );
+	$accent      = sanitize_hex_color( get_theme_mod( 'inkwell_accent', '#2e6b52' ) );
+	$accent_dark = sanitize_hex_color( get_theme_mod( 'inkwell_accent_dark', '#21503d' ) );
 	if ( ! $accent ) {
 		return;
 	}

@@ -39,9 +39,6 @@ function inkwell_category_choices() {
  * @param WP_Customize_Manager $wp_customize Customizer manager.
  */
 function inkwell_customize_register( $wp_customize ) {
-	$wp_customize->get_setting( 'blogname' )->transport        = 'postMessage';
-	$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
-
 	/* ------------------------------------------------------------------ *
 	 * Colors
 	 * ------------------------------------------------------------------ */
@@ -52,7 +49,7 @@ function inkwell_customize_register( $wp_customize ) {
 
 	$wp_customize->add_setting(
 		'inkwell_accent',
-		array( 'default' => '#b4532a', 'sanitize_callback' => 'sanitize_hex_color' )
+		array( 'default' => '#2e6b52', 'sanitize_callback' => 'sanitize_hex_color' )
 	);
 	$wp_customize->add_control(
 		new WP_Customize_Color_Control(
@@ -67,7 +64,7 @@ function inkwell_customize_register( $wp_customize ) {
 
 	$wp_customize->add_setting(
 		'inkwell_accent_dark',
-		array( 'default' => '#8f3d1e', 'sanitize_callback' => 'sanitize_hex_color' )
+		array( 'default' => '#21503d', 'sanitize_callback' => 'sanitize_hex_color' )
 	);
 	$wp_customize->add_control(
 		new WP_Customize_Color_Control(
@@ -115,6 +112,46 @@ function inkwell_customize_register( $wp_customize ) {
 		)
 	);
 
+	$wp_customize->add_setting(
+		'inkwell_language_switcher_hide',
+		array( 'default' => false, 'sanitize_callback' => 'inkwell_sanitize_checkbox' )
+	);
+	$wp_customize->add_control(
+		'inkwell_language_switcher_hide',
+		array(
+			'label'   => __( 'Hide storefront language switcher', 'inkwell' ),
+			'type'    => 'checkbox',
+			'section' => 'inkwell_header',
+		)
+	);
+
+	/* ------------------------------------------------------------------ *
+	 * Store policies
+	 * ------------------------------------------------------------------ */
+	$wp_customize->add_section(
+		'inkwell_store_policies',
+		array( 'title' => __( 'Store Benefits & Policies', 'inkwell' ), 'priority' => 29 )
+	);
+
+	$policy_fields = array(
+		'inkwell_shipping_message'    => __( 'Shipping benefit', 'inkwell' ),
+		'inkwell_fulfillment_message' => __( 'Fulfillment promise', 'inkwell' ),
+		'inkwell_returns_message'     => __( 'Returns policy summary', 'inkwell' ),
+		'inkwell_payment_methods'     => __( 'Accepted payment methods (comma-separated)', 'inkwell' ),
+	);
+	foreach ( $policy_fields as $id => $label ) {
+		$wp_customize->add_setting( $id, array( 'default' => '', 'sanitize_callback' => 'inkwell_sanitize_field' ) );
+		$wp_customize->add_control(
+			$id,
+			array(
+				'label'       => $label,
+				'description' => __( 'Leave blank to hide this claim. Only publish terms your store actually offers.', 'inkwell' ),
+				'type'        => 'text',
+				'section'     => 'inkwell_store_policies',
+			)
+		);
+	}
+
 	/* ------------------------------------------------------------------ *
 	 * Hero
 	 * ------------------------------------------------------------------ */
@@ -135,7 +172,12 @@ function inkwell_customize_register( $wp_customize ) {
 	);
 
 	foreach ( $hero_fields as $id => $cfg ) {
-		$sanitize = ( 'url' === $cfg[0] ) ? 'esc_url_raw' : 'inkwell_sanitize_field';
+		$sanitize = 'inkwell_sanitize_field';
+		if ( 'url' === $cfg[0] ) {
+			$sanitize = 'esc_url_raw';
+		} elseif ( 'checkbox' === $cfg[0] ) {
+			$sanitize = 'inkwell_sanitize_checkbox';
+		}
 		$wp_customize->add_setting( $id, array( 'default' => '', 'sanitize_callback' => $sanitize ) );
 		$wp_customize->add_control(
 			$id,
@@ -171,6 +213,7 @@ function inkwell_customize_register( $wp_customize ) {
 	);
 
 	$home_fields = array(
+		'inkwell_home_valueprops_hide' => array( 'checkbox', __( 'Hide the store benefits strip', 'inkwell' ) ),
 		'inkwell_home_categories_hide' => array( 'checkbox', __( 'Hide genre tiles', 'inkwell' ) ),
 		'inkwell_home_bestsellers_hide' => array( 'checkbox', __( 'Hide bestsellers row', 'inkwell' ) ),
 		'inkwell_home_new_hide'         => array( 'checkbox', __( 'Hide new arrivals row', 'inkwell' ) ),
@@ -184,7 +227,8 @@ function inkwell_customize_register( $wp_customize ) {
 		'inkwell_home_newsletter_text'  => array( 'textarea', __( 'Newsletter text', 'inkwell' ) ),
 	);
 	foreach ( $home_fields as $id => $cfg ) {
-		$wp_customize->add_setting( $id, array( 'default' => '', 'sanitize_callback' => 'inkwell_sanitize_field' ) );
+		$sanitize = ( 'checkbox' === $cfg[0] ) ? 'inkwell_sanitize_checkbox' : 'inkwell_sanitize_field';
+		$wp_customize->add_setting( $id, array( 'default' => '', 'sanitize_callback' => $sanitize ) );
 		$wp_customize->add_control(
 			$id,
 			array(
@@ -277,6 +321,23 @@ function inkwell_customize_register( $wp_customize ) {
 			'section' => 'inkwell_footer',
 		)
 	);
+
+	$social_fields = array(
+		'inkwell_social_facebook'  => __( 'Facebook URL', 'inkwell' ),
+		'inkwell_social_instagram' => __( 'Instagram URL', 'inkwell' ),
+		'inkwell_social_x'         => __( 'X / Twitter URL', 'inkwell' ),
+	);
+	foreach ( $social_fields as $id => $label ) {
+		$wp_customize->add_setting( $id, array( 'default' => '', 'sanitize_callback' => 'esc_url_raw' ) );
+		$wp_customize->add_control(
+			$id,
+			array(
+				'label'   => $label,
+				'type'    => 'url',
+				'section' => 'inkwell_footer',
+			)
+		);
+	}
 }
 
 /**
@@ -286,7 +347,7 @@ function inkwell_customize_register( $wp_customize ) {
  * @return bool
  */
 function inkwell_sanitize_checkbox( $checked ) {
-	return (bool) isset( $checked ) && true === $checked;
+	return isset( $checked ) && in_array( $checked, array( true, 1, '1', 'on' ), true );
 }
 
 /**

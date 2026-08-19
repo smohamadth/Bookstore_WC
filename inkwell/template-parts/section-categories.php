@@ -54,12 +54,15 @@ if ( is_wp_error( $terms ) || empty( $terms ) ) {
 		);
 		?>
 		<div class="genre-grid">
+			<?php $tile_number = 0; ?>
 			<?php foreach ( $terms as $term ) : ?>
 				<?php
+				$tile_number++;
 				$thumb_id = (int) get_term_meta( $term->term_id, 'thumbnail_id', true );
 				$count    = (int) $term->count;
 				?>
 				<a class="genre-tile" href="<?php echo esc_url( get_term_link( $term ) ); ?>" data-reveal>
+					<span class="genre-tile__number" aria-hidden="true"><?php echo esc_html( str_pad( (string) $tile_number, 2, '0', STR_PAD_LEFT ) ); ?></span>
 					<?php
 					if ( $thumb_id ) {
 						echo wp_get_attachment_image( $thumb_id, 'inkwell-tile' );

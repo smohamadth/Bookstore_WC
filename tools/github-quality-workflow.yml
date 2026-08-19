@@ -1,0 +1,47 @@
+name: Theme quality
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  php-and-release:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['7.4', '8.1', '8.4']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+      - name: Install release tooling
+        run: npm ci --ignore-scripts
+      - name: Install PHP quality tooling
+        run: composer install --no-interaction --prefer-dist
+      - name: PHP security and compatibility standards
+        run: composer phpcs
+      - name: PHP syntax
+        run: find inkwell inkwell-books -type f -name '*.php' -print0 | xargs -0 -n1 php -l
+      - name: JavaScript syntax, formatting and dependency audit
+        run: |
+          npm run lint:js
+          npm run format:check
+          npm audit --audit-level=high
+      - name: Shell and Python syntax
+        run: |
+          bash -n tools/build-release.sh tools/import-demo.sh
+          python3 -m py_compile tools/*.py tests/*.py
+      - name: Static regressions
+        run: |
+          npm run check:plugin
+          python3 tools/check-woocommerce-templates.py
+          python3 tests/static-audit.py
+      - name: Build and verify install archives
+        if: matrix.php == '8.4'
+        run: tools/build-release.sh

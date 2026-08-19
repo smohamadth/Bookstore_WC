@@ -1,0 +1,1444 @@
+# Sorani Kurdish translation for Inkwell.
+# Copyright (C) 2026 Inkwell Studio
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Inkwell 2.0.9\n"
+"Report-Msgid-Bugs-To: https://github.com/smohamadth/Bookstore_WC/issues\n"
+"POT-Creation-Date: 2026-08-17 00:00+0000\n"
+"PO-Revision-Date: 2026-08-17 00:00+0000\n"
+"Last-Translator: Inkwell Studio\n"
+"Language-Team: Sorani Kurdish\n"
+"Language: ckb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Inkwell translation build\n"
+"X-Inkwell-Template-SHA256: 727b8c339e3d11526c09c21ebef413f314007d55d510b694841d4293242b71d0\n"
+
+#: 404.php:11
+msgid "This page has been checked out"
+msgstr "ئەم پەڕەیە بە عاریەت براوە"
+
+#: 404.php:12
+msgid ""
+"The page you are looking for has moved, been borrowed, or never existed. Try"
+" a search, or start from the shop."
+msgstr ""
+"ئەو پەڕەیەی بەدوایدا دەگەڕێیت گوازراوەتەوە، بە عاریەت براوە یان هەرگیز بوونی"
+" نەبووە. گەڕان بکە یان لە فرۆشگاکەوە دەست پێ بکە."
+
+#: 404.php:17
+msgid "Back to home"
+msgstr "گەڕانەوە بۆ ماڵەوە"
+
+#: 404.php:19
+msgid "Browse the shop"
+msgstr "سەیری فرۆشگا بکە"
+
+#: archive.php:21
+msgid "Archive"
+msgstr "ئەرشیف"
+
+#. translators: %s: search query.
+#: archive.php:19, search.php:18
+msgid "Results for “%s”"
+msgstr "ئەنجامەکان بۆ «%s»"
+
+#: archive.php:15
+msgctxt "archive date format"
+msgid "F Y"
+msgstr "F Y"
+
+#: archive.php:27, index.php:12
+msgid "The journal"
+msgstr "گۆڤار"
+
+#. translators: %s: comment count.
+#: comments.php:19
+msgid "%s comment"
+msgid_plural "%s comments"
+msgstr[0] "%s بۆچوون"
+msgstr[1] "%s بۆچوون"
+
+#: footer.php:22, inc/demo-localization.php:54
+msgid ""
+"A hand-picked collection of books for curious minds — fiction, history, "
+"science and stories for every shelf."
+msgstr ""
+"کۆمەڵە کتێبێکی دەستنیشانکراو بۆ هزری کنجکاو — چیرۆک، مێژوو، زانست و گێڕانەوە"
+" بۆ هەموو ڕەفێک."
+
+#: footer.php:28
+msgid "Facebook"
+msgstr "فەیسبووک"
+
+#: footer.php:29
+msgid "Instagram"
+msgstr "ئینستاگرام"
+
+#: footer.php:30
+msgid "X (formerly Twitter)"
+msgstr "ئێکس (تویتەری پێشوو)"
+
+#: footer.php:49, inc/demo-localization.php:40, inc/woocommerce.php:376
+msgid "Shop"
+msgstr "فرۆشگا"
+
+#: footer.php:63, inc/woocommerce.php:395
+msgid "All books"
+msgstr "هەموو کتێبەکان"
+
+#: footer.php:64, header.php:103, inc/template-tags.php:99
+msgid "My account"
+msgstr "هەژماری من"
+
+#: footer.php:72
+msgid "Help"
+msgstr "یارمەتی"
+
+#: footer.php:89, inc/demo-localization.php:44
+msgid "Contact"
+msgstr "پەیوەندی"
+
+#: footer.php:92, inc/newsletter.php:226
+msgid "Privacy policy"
+msgstr "سیاسەتی تایبەتمەندی"
+
+#: footer.php:101
+msgid "The reading list"
+msgstr "لیستی خوێندنەوە"
+
+#: footer.php:102
+msgid "One thoughtful email a month. New arrivals, staff picks, no spam."
+msgstr "مانگانە ئیمەیڵێکی بەسوود؛ تازەکان، هەڵبژاردەکانی ستاف و بێ سپام."
+
+#. translators: 1: year, 2: site name.
+#: footer.php:117
+msgid "© %1$s %2$s. All rights reserved."
+msgstr "© %1$s %2$s. هەموو مافەکان پارێزراون."
+
+#: footer.php:129
+msgid "Accepted payment methods"
+msgstr "شێوازە پەسەندکراوەکانی پارەدان"
+
+#: footer.php:139
+msgid "Back to top"
+msgstr "گەڕانەوە بۆ سەرەوە"
+
+#: header.php:21
+msgid "Skip to content"
+msgstr "بازدان بۆ ناوەڕۆک"
+
+#: header.php:36, inc/setup.php:138
+msgid "Open menu"
+msgstr "کردنەوەی پێڕست"
+
+#: header.php:45
+msgid "Primary"
+msgstr "سەرەکی"
+
+#: header.php:61, search.php:14, searchform.php:16, template-parts/hero.php:69
+msgid "Search"
+msgstr "گەڕان"
+
+#: header.php:69
+msgid "Shopping cart"
+msgstr "سەبەتەی کڕین"
+
+#: header.php:88
+msgid "Mobile"
+msgstr "مۆبایل"
+
+#: index.php:13, single.php:14, inc/demo-localization.php:42
+msgid "Journal"
+msgstr "گۆڤار"
+
+#: index.php:14
+msgid "Reading lists, behind-the-shelves stories and bookish notes."
+msgstr "لیستی خوێندنەوە، چیرۆکەکانی پشت ڕەفەکان و تێبینییە کتێبییەکان."
+
+#: page.php:25, single.php:29
+msgid "Pages:"
+msgstr "پەڕەکان:"
+
+#: search.php:14
+msgid "Book search"
+msgstr "گەڕانی کتێب"
+
+#: searchform.php:13
+msgid "Search for:"
+msgstr "گەڕان بۆ:"
+
+#: searchform.php:14
+msgid "Search books, authors…"
+msgstr "گەڕان بەدوای کتێب و نووسەر…"
+
+#: sidebar.php:13
+msgid "Sidebar"
+msgstr "لاتەنیشت"
+
+#: style.css:2
+msgid "Inkwell"
+msgstr "ئینکوێڵ"
+
+#: style.css:3
+msgid "https://github.com/smohamadth/Bookstore_WC"
+msgstr "https://github.com/smohamadth/Bookstore_WC"
+
+#: style.css:4
+msgid "Inkwell Studio"
+msgstr "ستۆدیۆی ئینکوێڵ"
+
+#: style.css:5
+msgid "https://github.com/smohamadth"
+msgstr "https://github.com/smohamadth"
+
+#: style.css:6
+msgid ""
+"A boutique bookstore theme for WooCommerce — v2 \"modern library\" design. "
+"Parchment paper, deep ink and emerald; editorial Newsreader serif; book-"
+"spine product cards, ranked bestsellers, mini-cart, Book Details (ISBN, "
+"publisher, year, pages, format, language), author taxonomy, newsletter. "
+"Responsive, accessible, translation-ready."
+msgstr ""
+"ڕووکارێکی کتێبفرۆشی تایبەت بۆ وۆکامێرس — وەشانی ٢ی دیزاینی «کتێبخانەی "
+"مۆدێرن». کاغەزی کەرەمی، مەرەکەبی تۆخ و سەوزی زومڕودی؛ فۆنتی سێریف "
+"Newsreader؛ کارتی بەرهەم بە پشتی کتێب، پڕفرۆشە پلەبەندکراوەکان، سەبەتەی "
+"بچووک، وردەکاری کتێب (ISBN، بڵاوکەرەوە، ساڵ، پەڕە، جۆر و زمان)، پۆلێنی "
+"نووسەران و هەواڵنامە. وەڵامدەرەوە، دەستپێگەیشتوو و ئامادەی وەرگێڕان."
+
+#: taxonomy-book_author.php:13
+msgid "Book author"
+msgstr "نووسەری کتێب"
+
+#: taxonomy-book_author.php:39
+msgid "No books found for this author yet."
+msgstr "هێشتا هیچ کتێبێک بۆ ئەم نووسەرە نەدۆزرایەوە."
+
+#: inc/books.php:17
+msgid "Book Authors"
+msgstr "نووسەرانی کتێب"
+
+#: inc/books.php:18
+msgid "Book Author"
+msgstr "نووسەری کتێب"
+
+#: inc/books.php:19
+msgid "Search Authors"
+msgstr "گەڕان بەدوای نووسەران"
+
+#: inc/books.php:20
+msgid "All Authors"
+msgstr "هەموو نووسەران"
+
+#: inc/books.php:21
+msgid "Edit Author"
+msgstr "دەستکاریکردنی نووسەر"
+
+#: inc/books.php:22
+msgid "Update Author"
+msgstr "نوێکردنەوەی نووسەر"
+
+#: inc/books.php:23
+msgid "Add New Author"
+msgstr "زیادکردنی نووسەری نوێ"
+
+#: inc/books.php:24
+msgid "New Author Name"
+msgstr "ناوی نووسەری نوێ"
+
+#: inc/books.php:25
+msgid "Authors"
+msgstr "نووسەران"
+
+#: inc/books.php:52
+msgid "ISBN-13"
+msgstr "ISBN-13"
+
+#: inc/books.php:57
+msgid "Publisher"
+msgstr "بڵاوکەرەوە"
+
+#: inc/books.php:61
+msgid "Publication Year"
+msgstr "ساڵی بڵاوکردنەوە"
+
+#: inc/books.php:65
+msgid "Pages"
+msgstr "ژمارەی پەڕەکان"
+
+#: inc/books.php:69
+msgid "Format"
+msgstr "جۆری بەرگ"
+
+#: inc/books.php:72
+msgid "— Select —"
+msgstr "— هەڵبژێرە —"
+
+#: inc/books.php:73
+msgid "Paperback"
+msgstr "بەرگی نەرم"
+
+#: inc/books.php:74
+msgid "Hardcover"
+msgstr "بەرگی ڕەق"
+
+#: inc/books.php:75
+msgid "Ebook"
+msgstr "کتێبی ئەلیکترۆنی"
+
+#: inc/books.php:76
+msgid "Audiobook"
+msgstr "کتێبی دەنگی"
+
+#: inc/books.php:80, inc/languages.php:216, inc/languages.php:302
+msgid "Language"
+msgstr "زمان"
+
+#: inc/books.php:94, inc/woocommerce.php:90, inc/woocommerce.php:110
+msgid "Book Details"
+msgstr "وردەکارییەکانی کتێب"
+
+#: inc/books.php:138
+msgid ""
+"Bibliographic details shown on the product page and in the Book Details tab."
+" The Author field is managed from the Authors box."
+msgstr ""
+"زانیارییە کتێبناسییەکان لە پەڕەی بەرهەم و تابی «وردەکارییەکانی کتێب» پیشان "
+"دەدرێن. خانەی نووسەر لە بۆکسی نووسەران بەڕێوە دەبرێت."
+
+#: inc/books.php:186
+msgid "Author"
+msgstr "نووسەر"
+
+#: inc/books.php:187
+msgid "ISBN"
+msgstr "ISBN"
+
+#: inc/customizer.php:18
+msgid "— None —"
+msgstr "— هیچ —"
+
+#: inc/customizer.php:47
+msgid "Inkwell Colors"
+msgstr "ڕەنگەکانی ئینکوێڵ"
+
+#: inc/customizer.php:59
+msgid "Accent color"
+msgstr "ڕەنگی سەرەکی"
+
+#: inc/customizer.php:74
+msgid "Accent (hover / dark)"
+msgstr "ڕەنگی سەرەکی (لەسەرچوون/تۆخ)"
+
+#: inc/customizer.php:87
+msgid "Dark header & announcement bar"
+msgstr "سەرپەڕە و نواری ڕاگەیاندنی تۆخ"
+
+#: inc/customizer.php:98
+msgid "Header & Announcement Bar"
+msgstr "سەرپەڕە و نواری ڕاگەیاندن"
+
+#: inc/customizer.php:108
+msgid "Announcement bar text"
+msgstr "دەقی نواری ڕاگەیاندن"
+
+#: inc/customizer.php:109
+msgid "e.g. “Free shipping on orders over €25”. Leave empty to hide the bar."
+msgstr ""
+"بۆ نموونە: «گەیاندنی بەخۆڕایی بۆ داواکارییەکانی سەرووی ٢٥ یۆرۆ». بۆ "
+"شاردنەوەی نوارەکە بە بەتاڵی بهێڵەوە."
+
+#: inc/customizer.php:133
+msgid "Store Benefits & Policies"
+msgstr "سوود و سیاسەتەکانی فرۆشگا"
+
+#: inc/customizer.php:137
+msgid "Shipping benefit"
+msgstr "سوودی گەیاندن"
+
+#: inc/customizer.php:138
+msgid "Fulfillment promise"
+msgstr "بەڵێنی ئامادەکردنی داواکاری"
+
+#: inc/customizer.php:139
+msgid "Returns policy summary"
+msgstr "پوختەی سیاسەتی گەڕاندنەوە"
+
+#: inc/customizer.php:140
+msgid "Accepted payment methods (comma-separated)"
+msgstr "شێوازەکانی پارەدانی پەسەندکراو (بە کۆما جیابکەرەوە)"
+
+#: inc/customizer.php:148
+msgid ""
+"Leave blank to hide this claim. Only publish terms your store actually "
+"offers."
+msgstr ""
+"بۆ شاردنەوەی ئەم بانگەشەیە بە بەتاڵی بهێڵەوە. تەنها ئەو مەرجانە بڵاو بکەرەوە"
+" کە فرۆشگاکەت بەڕاستی پێشکەشیان دەکات."
+
+#: inc/customizer.php:160
+msgid "Hero Section"
+msgstr "بەشی سەرەکی"
+
+#: inc/customizer.php:164
+msgid "Hide the hero entirely"
+msgstr "شاردنەوەی تەواوی بەشی سەرەکی"
+
+#: inc/customizer.php:165
+msgid "Eyebrow text"
+msgstr "دەقی سەرەوەی ناونیشان"
+
+#: inc/customizer.php:166
+msgid "Headline"
+msgstr "ناونیشانی سەرەکی"
+
+#: inc/customizer.php:167
+msgid "Subheadline"
+msgstr "ژێرناونیشان"
+
+#: inc/customizer.php:168
+msgid "Primary button label"
+msgstr "ناوی دوگمەی سەرەکی"
+
+#: inc/customizer.php:169
+msgid "Primary button URL"
+msgstr "بەستەری دوگمەی سەرەکی"
+
+#: inc/customizer.php:170
+msgid "Secondary button label"
+msgstr "ناوی دوگمەی دووەم"
+
+#: inc/customizer.php:171
+msgid "Secondary button URL"
+msgstr "بەستەری دوگمەی دووەم"
+
+#: inc/customizer.php:201
+msgid "Hero background image"
+msgstr "وێنەی پاشبنەمای بەشی سەرەکی"
+
+#: inc/customizer.php:212
+msgid "Home Page Sections"
+msgstr "بەشەکانی پەڕەی ماڵەوە"
+
+#: inc/customizer.php:216
+msgid "Hide the store benefits strip"
+msgstr "شاردنەوەی نواری سوودەکانی فرۆشگا"
+
+#: inc/customizer.php:217
+msgid "Hide genre tiles"
+msgstr "شاردنەوەی کاشییەکانی ژانر"
+
+#: inc/customizer.php:218
+msgid "Hide bestsellers row"
+msgstr "شاردنەوەی ڕیزی پڕفرۆشەکان"
+
+#: inc/customizer.php:219
+msgid "Hide new arrivals row"
+msgstr "شاردنەوەی ڕیزی تازەهاتووەکان"
+
+#: inc/customizer.php:220
+msgid "Hide quote band"
+msgstr "شاردنەوەی نواری وتە"
+
+#: inc/customizer.php:221
+msgid "Quote text"
+msgstr "دەقی وتە"
+
+#: inc/customizer.php:222
+msgid "Quote attribution"
+msgstr "خاوەنی وتە"
+
+#: inc/customizer.php:223
+msgid "Hide testimonials"
+msgstr "شاردنەوەی بۆچوونی کڕیاران"
+
+#: inc/customizer.php:224
+msgid "Hide journal preview"
+msgstr "شاردنەوەی پێشبینینی گۆڤار"
+
+#: inc/customizer.php:225
+msgid "Hide newsletter band"
+msgstr "شاردنەوەی نواری هەواڵنامە"
+
+#: inc/customizer.php:226
+msgid "Newsletter title"
+msgstr "ناونیشانی هەواڵنامە"
+
+#: inc/customizer.php:227
+msgid "Newsletter text"
+msgstr "دەقی هەواڵنامە"
+
+#. translators: %d: tile number.
+#: inc/customizer.php:253
+msgid "Genre tile %d (product category)"
+msgstr "کاشی ژانری %d (هاوپۆلی بەرهەم)"
+
+#: inc/customizer.php:272
+msgid "Testimonial %d — quote"
+msgstr "بۆچوونی کڕیار %d — دەق"
+
+#: inc/customizer.php:284
+msgid "Testimonial %d — name"
+msgstr "بۆچوونی کڕیار %d — ناو"
+
+#: inc/customizer.php:296
+msgid "Footer"
+msgstr "پێپەڕە"
+
+#: inc/customizer.php:306
+msgid "About text (footer)"
+msgstr "دەقی دەربارە (پێپەڕە)"
+
+#: inc/customizer.php:319
+msgid "Copyright line"
+msgstr "هێڵی مافی لەبەرگرتنەوە"
+
+#: inc/customizer.php:326
+msgid "Facebook URL"
+msgstr "بەستەری فەیسبووک"
+
+#: inc/customizer.php:327
+msgid "Instagram URL"
+msgstr "بەستەری ئینستاگرام"
+
+#: inc/customizer.php:328
+msgid "X / Twitter URL"
+msgstr "بەستەری ئێکس / تویتەر"
+
+#: inc/demo-import.php:30, inc/demo-import.php:31
+msgid "Import Demo Content"
+msgstr "هاوردەکردنی ناوەڕۆکی نموونەیی"
+
+#: inc/demo-import.php:59
+msgid "Inkwell: WooCommerce is out of date."
+msgstr "ئینکوێڵ: وۆکامێرس کۆن بووە."
+
+#. translators: %s: installed WC version.
+#: inc/demo-import.php:63
+msgid ""
+"You are running WooCommerce %s — the theme requires 8.0 or newer. Please "
+"update WooCommerce for the shop and product pages to work correctly."
+msgstr ""
+"تۆ وۆکامێرس %s بەکاردەهێنیت — ڕووکارەکە پێویستی بە وەشانی ٨.٠ یان نوێتر "
+"هەیە. بۆ کارکردنی دروستی پەڕەکانی فرۆشگا و بەرهەم، وۆکامێرس نوێ بکەرەوە."
+
+#: inc/demo-import.php:93
+msgid "Inkwell: your shop is empty."
+msgstr "ئینکوێڵ: فرۆشگاکەت بەتاڵە."
+
+#: inc/demo-import.php:96
+msgid "Import demo content"
+msgstr "هاوردەکردنی ناوەڕۆکی نموونەیی"
+
+#: inc/demo-import.php:113, inc/demo-import.php:127
+msgid "Inkwell — Import Demo Content"
+msgstr "ئینکوێڵ — هاوردەکردنی ناوەڕۆکی نموونەیی"
+
+#: inc/demo-import.php:114
+msgid ""
+"WooCommerce must be installed and active before demo content can be "
+"imported."
+msgstr ""
+"پێش هاوردەکردنی ناوەڕۆکی نموونەیی دەبێت وۆکامێرس دامەزرابێت و چالاک بێت."
+
+#: inc/demo-import.php:133
+msgid "Demo content imported successfully!"
+msgstr "ناوەڕۆکی نموونەیی بە سەرکەوتوویی هاوردە کرا!"
+
+#: inc/demo-import.php:144
+msgid ""
+"This imports the bundled sample store into your site — perfect for testing "
+"the theme before adding your own books:"
+msgstr ""
+"ئەمە فرۆشگای نموونەیی هاوپێچ بۆ ماڵپەڕەکەت هاوردە دەکات — بۆ تاقیکردنەوەی "
+"ڕووکار پێش زیادکردنی کتێبەکانی خۆت گونجاوە:"
+
+#: inc/demo-import.php:149
+msgid "with bios → author archive pages"
+msgstr "لەگەڵ ژیاننامە ← پەڕەکانی ئەرشیفی نووسەر"
+
+#: inc/demo-import.php:150
+msgid "3 journal posts, menus, widgets, pages &amp; default settings"
+msgstr "٣ بابەتی گۆڤار، پێڕست، ویجێت، پەڕە و ڕێکخستنە بنەڕەتییەکان"
+
+#: inc/demo-import.php:153
+msgid ""
+"The catalog import is safe to run again: marked demo products and media are "
+"reused, while an unrelated product that happens to share a demo SKU is "
+"skipped."
+msgstr ""
+"دووبارە جێبەجێکردنی هاوردەکردنی کەتەلۆگ پارێزراوە: بەرهەم و میدیای نموونەیی "
+"نیشانکراو دووبارە بەکاردەهێنرێن و بەرهەمی ناپەیوەندیدار کە SKUی هاوبەش هەبێت"
+" پشتگوێ دەخرێت."
+
+#: inc/demo-import.php:173
+msgid "View the shop"
+msgstr "سەیری فرۆشگا بکە"
+
+#: inc/demo-import.php:176
+msgid "Import again"
+msgstr "دووبارە هاوردە بکە"
+
+#: inc/demo-import.php:162
+msgid "Also apply the complete demo-site setup"
+msgstr "ڕێکخستنی تەواوی ماڵپەڕی نموونەیی جێبەجێ بکە"
+
+#: inc/demo-import.php:164
+msgid ""
+"Optional: assigns a demo menu and sidebars, sets EUR currency, and selects "
+"the demo front page. Leave unchecked on an existing site."
+msgstr ""
+"ئارەزوومەندانە: پێڕست و لاتەنیشتە نموونەییەکان دیاری دەکات، دراو دەکات بە "
+"یۆرۆ و پەڕەی سەرەکی نموونەیی هەڵدەبژێرێت. لە ماڵپەڕێکی بەکارهاتوودا نیشانەی "
+"مەدە."
+
+#: inc/demo-import.php:167
+msgid "Import demo content now"
+msgstr "ئێستا ناوەڕۆکی نموونەیی هاوردە بکە"
+
+#: inc/demo-import.php:279
+msgid "My Account"
+msgstr "هەژماری من"
+
+#: inc/demo-import.php:429
+msgid "WooCommerce must be active before importing demo content."
+msgstr "پێش هاوردەکردنی ناوەڕۆکی نموونەیی دەبێت وۆکامێرس چالاک بێت."
+
+#: inc/demo-import.php:436
+msgid "Could not read demo data. The theme files may be incomplete."
+msgstr ""
+"خوێندنەوەی داتای نموونەیی نەکرا. لەوانەیە فایلەکانی ڕووکار ناتەواو بن."
+
+#: inc/demo-import.php:486
+msgid "%d product categories created/updated"
+msgstr "%d هاوپۆلی بەرهەم دروست/نوێکرایەوە"
+
+#: inc/demo-import.php:614
+msgid "%d demo books created or updated"
+msgstr "%d کتێبی نموونەیی دروست یان نوێکرایەوە"
+
+#: inc/demo-import.php:616
+msgid ""
+"%d existing products skipped because their SKUs were not marked as demo "
+"content"
+msgstr ""
+"%d بەرهەمی هەبوو پشتگوێ خرا چونکە SKUەکانیان وەک ناوەڕۆکی نموونەیی نیشان "
+"نەکرابوون"
+
+#: inc/demo-import.php:667
+msgid ""
+"Pages created (Home, Shop, My Account, About, Contact, Journal, Privacy)"
+msgstr ""
+"پەڕەکان دروست کران (ماڵەوە، فرۆشگا، هەژماری من، دەربارە، پەیوەندی، گۆڤار، "
+"تایبەتمەندی)"
+
+#: inc/demo-import.php:739
+msgid "3 journal posts with covers"
+msgstr "٣ بابەتی گۆڤار لەگەڵ وێنەی بەرگ"
+
+#: inc/demo-import.php:900
+msgid ""
+"Complete demo-site setup skipped; existing menus, sidebars, currency and "
+"front-page settings were preserved"
+msgstr ""
+"ڕێکخستنی تەواوی ماڵپەڕی نموونەیی جێبەجێ نەکرا؛ پێڕست، لاتەنیشت، دراو و "
+"ڕێکخستنەکانی پەڕەی سەرەکی پارێزران"
+
+#: inc/demo-import.php:848
+msgid "Dedicated demo navigation menu with genre dropdown assigned"
+msgstr "پێڕستی ڕێنیشاندانی نموونەیی لەگەڵ لیستی ژێرەوەی ژانر دیاری کرا"
+
+#: inc/demo-import.php:852, inc/demo-localization.php:41,
+#: template-parts/section-categories.php:50
+msgid "Genres"
+msgstr "ژانرەکان"
+
+#: inc/demo-import.php:853, inc/demo-localization.php:45
+msgid "Filter by price"
+msgstr "پاڵاوتن بە پێی نرخ"
+
+#: inc/demo-import.php:854, inc/demo-localization.php:46
+msgid "Top rated"
+msgstr "بەرزترین نمرە"
+
+#: inc/demo-import.php:857, inc/demo-localization.php:47
+msgid "Recent posts"
+msgstr "بابەتە تازەکان"
+
+#: inc/demo-import.php:858, inc/demo-localization.php:48
+msgid "Journal categories"
+msgstr "هاوپۆلەکانی گۆڤار"
+
+#: inc/demo-import.php:868
+msgid ""
+"Empty shop and blog sidebars configured without replacing existing widgets"
+msgstr ""
+"لاتەنیشتە بەتاڵەکانی فرۆشگا و بلۆگ بەبێ گۆڕینی ویجێتە هەبووەکان ڕێکخران"
+
+#: inc/demo-import.php:898
+msgid "Store settings, front page & theme options applied"
+msgstr "ڕێکخستنەکانی فرۆشگا، پەڕەی سەرەکی و هەڵبژاردەکانی ڕووکار جێبەجێ کران"
+
+#: inc/newsletter.php:41, inc/setup.php:136
+msgid "Please enter a valid email address."
+msgstr "تکایە ناونیشانی ئیمەیڵێکی دروست بنووسە."
+
+#: inc/newsletter.php:44, inc/setup.php:137
+msgid "Please agree to receive the newsletter."
+msgstr "تکایە بە وەرگرتنی هەواڵنامە ڕازی بە."
+
+#: inc/newsletter.php:54
+msgid "You are already subscribed — thank you!"
+msgstr "پێشتر ئەندام بوویت — سوپاس!"
+
+#: inc/newsletter.php:65
+msgid "The local reading list is full. Please contact the store owner."
+msgstr "لیستی خوێندنەوەی ناوخۆیی پڕە. تکایە پەیوەندی بە خاوەنی فرۆشگاوە بکە."
+
+#: inc/newsletter.php:82
+msgid "Welcome to the reading list!"
+msgstr "بەخێربێیت بۆ لیستی خوێندنەوە!"
+
+#: inc/newsletter.php:112
+msgid "Thank you!"
+msgstr "سوپاس!"
+
+#: inc/newsletter.php:115, inc/newsletter.php:191
+msgid "Too many attempts. Please try again later."
+msgstr "هەوڵی زۆر دراوە. تکایە دواتر دووبارە هەوڵ بدە."
+
+#: inc/newsletter.php:189, inc/setup.php:134
+msgid "Thank you — you are on the list!"
+msgstr "سوپاس — لە لیستەکەدایت!"
+
+#: inc/newsletter.php:190
+msgid "Please check your email and consent, then try again."
+msgstr "تکایە ئیمەیڵ و ڕەزامەندییەکەت بپشکنە و دووبارە هەوڵ بدە."
+
+#: inc/newsletter.php:192
+msgid ""
+"If that address was subscribed, it has been removed from the reading list."
+msgstr "ئەگەر ئەو ناونیشانە ئەندام بووبێت، لە لیستی خوێندنەوە سڕاوەتەوە."
+
+#: inc/newsletter.php:216
+msgid "Leave this field empty"
+msgstr "ئەم خانەیە بەتاڵ بهێڵەوە"
+
+#: inc/newsletter.php:218, inc/newsletter.php:247, inc/newsletter.php:296,
+#: inc/newsletter.php:366
+msgid "Email address"
+msgstr "ناونیشانی ئیمەیڵ"
+
+#: inc/newsletter.php:219
+msgid "you@example.com"
+msgstr "you@example.com"
+
+#: inc/newsletter.php:220
+msgid "Subscribe"
+msgstr "ئەندامبوون"
+
+#: inc/newsletter.php:224
+msgid ""
+"I agree to receive the reading-list newsletter and can unsubscribe at any "
+"time."
+msgstr ""
+"ڕازیم هەواڵنامەی لیستی خوێندنەوە وەربگرم و هەر کاتێک بمەوێت بتوانم ئەندامێتی"
+" هەڵبوەشێنمەوە."
+
+#: inc/newsletter.php:248
+msgid "Unsubscribe"
+msgstr "هەڵوەشاندنەوەی ئەندامێتی"
+
+#: inc/newsletter.php:271, inc/newsletter.php:272, inc/newsletter.php:292
+msgid "Reading List"
+msgstr "لیستی خوێندنەوە"
+
+#: inc/newsletter.php:293
+msgid "%d locally stored subscribers."
+msgstr "%d ئەندامی ناوخۆیی پاشەکەوت کراوە."
+
+#: inc/newsletter.php:294
+msgid "Export CSV"
+msgstr "هەناردەکردنی CSV"
+
+#: inc/newsletter.php:296
+msgid "Subscribed at (UTC)"
+msgstr "کاتی ئەندامبوون (UTC)"
+
+#: inc/newsletter.php:296
+msgid "Consent recorded"
+msgstr "ڕەزامەندی تۆمار کرا"
+
+#: inc/newsletter.php:305
+msgid "Yes"
+msgstr "بەڵێ"
+
+#: inc/newsletter.php:305
+msgid "Legacy record"
+msgstr "تۆماری کۆن"
+
+#: inc/newsletter.php:299
+msgid "No local subscribers."
+msgstr "هیچ ئەندامێکی ناوخۆیی نییە."
+
+#: inc/newsletter.php:320
+msgid "You are not allowed to export this data."
+msgstr "ڕێگەت پێنەدراوە ئەم داتایە هەناردە بکەیت."
+
+#: inc/newsletter.php:331
+msgid "Could not create the export."
+msgstr "دروستکردنی فایلە هەناردەکراوەکە نەکرا."
+
+#: inc/newsletter.php:363
+msgid "Reading-list newsletter"
+msgstr "هەواڵنامەی لیستی خوێندنەوە"
+
+#: inc/newsletter.php:367
+msgid "Subscribed at"
+msgstr "کاتی ئەندامبوون"
+
+#: inc/newsletter.php:398, inc/newsletter.php:408
+msgid "Inkwell newsletter"
+msgstr "هەواڵنامەی ئینکوێڵ"
+
+#: inc/setup.php:49
+msgid "Primary Menu"
+msgstr "پێڕستی سەرەکی"
+
+#: inc/setup.php:50
+msgid "Footer — Shop"
+msgstr "پێپەڕە — فرۆشگا"
+
+#: inc/setup.php:51
+msgid "Footer — Help"
+msgstr "پێپەڕە — یارمەتی"
+
+#: inc/setup.php:70
+msgid "Shop Sidebar"
+msgstr "لاتەنیشتی فرۆشگا"
+
+#: inc/setup.php:72
+msgid ""
+"Shown on the shop and product-category pages. Perfect for the Product "
+"Categories, Price Filter and On Sale widgets."
+msgstr ""
+"لە پەڕەکانی فرۆشگا و هاوپۆلی بەرهەم پیشان دەدرێت. بۆ ویجێتەکانی هاوپۆلی "
+"بەرهەم، پاڵاوتنی نرخ و داشکاندن گونجاوە."
+
+#: inc/setup.php:82
+msgid "Blog Sidebar"
+msgstr "لاتەنیشتی بلۆگ"
+
+#: inc/setup.php:84
+msgid "Shown on the journal archive and single posts."
+msgstr "لە ئەرشیفی گۆڤار و بابەتە تاکەکان پیشان دەدرێت."
+
+#: inc/setup.php:135
+msgid "Something went wrong. Please try again."
+msgstr "هەڵەیەک ڕوویدا. تکایە دووبارە هەوڵ بدە."
+
+#: inc/setup.php:139
+msgid "Close menu"
+msgstr "داخستنی پێڕست"
+
+#: inc/template-tags.php:116
+msgid "View cart"
+msgstr "سەیری سەبەتەی کڕین بکە"
+
+#. translators: %d: number of items in cart.
+#: inc/template-tags.php:135
+msgid "Cart — %d item"
+msgid_plural "Cart — %d items"
+msgstr[0] "سەبەتە — %d دانە"
+msgstr[1] "سەبەتە — %d دانە"
+
+#: inc/template-tags.php:159
+msgid "View all"
+msgstr "هەمووی ببینە"
+
+#: inc/template-tags.php:230
+msgid "by"
+msgstr "لە لایەن"
+
+#: inc/woocommerce.php:48
+msgid "Sale"
+msgstr "داشکاندن"
+
+#: inc/woocommerce.php:66
+msgid "Breadcrumb"
+msgstr "ڕێچکە"
+
+#: inc/demo-localization.php:39, inc/woocommerce.php:69
+msgid "Home"
+msgstr "ماڵەوە"
+
+#: inc/woocommerce.php:171
+msgid "About the author"
+msgstr "دەربارەی نووسەر"
+
+#: inc/woocommerce.php:176
+msgid "Browse all books by this author"
+msgstr "هەموو کتێبەکانی ئەم نووسەرە ببینە"
+
+#: inc/woocommerce.php:195
+msgid "More by this author"
+msgstr "زیاتر لەم نووسەرە"
+
+#: inc/woocommerce.php:239
+msgid "Cover coming soon"
+msgstr "بەرگ بەزوویی زیاد دەکرێت"
+
+#: inc/woocommerce.php:280
+msgid "No books found. Try widening your filters or search again."
+msgstr "هیچ کتێبێک نەدۆزرایەوە. پاڵاوتنەکان فراوانتر بکە یان دووبارە بگەڕێ."
+
+#: inc/woocommerce.php:378
+msgid "Bookshop"
+msgstr "کتێبفرۆشی"
+
+#: template-parts/content-none.php:9
+msgid "Nothing found"
+msgstr "هیچ نەدۆزرایەوە"
+
+#: template-parts/content-none.php:10
+msgid ""
+"There is no content here yet — check back soon, or try a different search."
+msgstr "هێشتا هیچ ناوەڕۆکێک لێرە نییە — دواتر سەردان بکە یان گەڕانێکی تر بکە."
+
+#: template-parts/content.php:22
+msgid "Read more"
+msgstr "زیاتر بخوێنەوە"
+
+#: template-parts/hero.php:21
+msgid "The modern library"
+msgstr "کتێبخانەی مۆدێرن"
+
+#: template-parts/hero.php:22
+msgid "Books worth <em>keeping</em>"
+msgstr "کتێبەکانی شایەنی <em>پاراستن</em>"
+
+#: template-parts/hero.php:23
+msgid ""
+"Hand-picked fiction, history, science and poetry — from modern classics to "
+"hidden gems, delivered with care."
+msgstr ""
+"چیرۆک، مێژوو، زانست و شیعری دەستنیشانکراو — لە کلاسیکە مۆدێرنەکان تا گەنجینە"
+" شاراوەکان، بە وریایی دەگەیەنرێت."
+
+#: template-parts/hero.php:24
+msgid "Shop bestsellers"
+msgstr "کڕینی پڕفرۆشەکان"
+
+#: inc/woocommerce.php:394, template-parts/hero.php:26
+msgid "Browse genres"
+msgstr "گەڕان بە ژانرەکاندا"
+
+#: template-parts/hero.php:105
+msgid "Staff picks"
+msgstr "هەڵبژاردەکانی ستاف"
+
+#: template-parts/section-bestsellers.php:20
+msgid "Reader favourites"
+msgstr "دڵخوازەکانی خوێنەران"
+
+#: template-parts/section-bestsellers.php:21
+msgid "Bestsellers"
+msgstr "پڕفرۆشەکان"
+
+#: template-parts/section-bestsellers.php:23,
+#: template-parts/section-categories.php:53, template-parts/section-new.php:23
+msgid "Shop all"
+msgstr "هەمووی بکڕە"
+
+#: template-parts/section-blog.php:26
+msgid "From the journal"
+msgstr "لە گۆڤارەوە"
+
+#: template-parts/section-blog.php:27
+msgid "Notes from the shelves"
+msgstr "تێبینی لە نێوان ڕەفەکان"
+
+#: template-parts/section-blog.php:29
+msgid "All journal posts"
+msgstr "هەموو بابەتەکانی گۆڤار"
+
+#: template-parts/section-categories.php:51
+msgid "Browse by genre"
+msgstr "گەڕان بە پێی ژانر"
+
+#. translators: %d: number of books.
+#: template-parts/section-categories.php:78
+msgid "%d book"
+msgid_plural "%d books"
+msgstr[0] "%d کتێب"
+msgstr[1] "%d کتێب"
+
+#: template-parts/section-new.php:20
+msgid "Fresh off the press"
+msgstr "تازە لە چاپ"
+
+#: template-parts/section-new.php:21
+msgid "New arrivals"
+msgstr "تازەهاتووەکان"
+
+#: template-parts/section-newsletter.php:14
+msgid "Join the reading list"
+msgstr "بەشداری لیستی خوێندنەوە بە"
+
+#: template-parts/section-newsletter.php:17
+msgid ""
+"One thoughtful email a month: new arrivals, staff picks and member-only "
+"offers. No spam, unsubscribe anytime."
+msgstr ""
+"مانگانە ئیمەیڵێکی بەسوود: تازەهاتووەکان، هەڵبژاردەکانی ستاف و پێشکەشکاری "
+"تایبەت بە ئەندامان. بێ سپام؛ هەر کاتێک بتەوێت ئەندامێتی هەڵبوەشێنەوە."
+
+#: template-parts/section-newsletter.php:22
+msgid "Newsletter"
+msgstr "هەواڵنامە"
+
+#: template-parts/section-quote.php:14
+msgid ""
+"A reader lives a thousand lives before he dies. The man who never reads "
+"lives only one."
+msgstr ""
+"خوێنەرێک پێش مردنی هەزار ژیان دەژی. ئەوەی هەرگیز ناخوێنێتەوە تەنها یەک ژیان "
+"دەژی."
+
+#: template-parts/section-quote.php:15
+msgid "George R.R. Martin"
+msgstr "جۆرج ڕ. ڕ. مارتن"
+
+#: template-parts/section-testimonials.php:25
+msgid "Word of mouth"
+msgstr "دەنگوباس"
+
+#: template-parts/section-testimonials.php:25
+msgid "What readers say"
+msgstr "خوێنەران چی دەڵێن"
+
+#: template-parts/section-testimonials.php:29
+msgid "Rated 5 out of 5"
+msgstr "نمرەی ٥ لە ٥"
+
+#: template-parts/section-testimonials.php:41
+msgid "Verified reader"
+msgstr "خوێنەری پشتڕاستکراو"
+
+#: template-parts/section-valueprops.php:14
+msgid "Hand-picked selection"
+msgstr "هەڵبژاردەی دەستنیشانکراو"
+
+#: template-parts/section-valueprops.php:15
+msgid "Curated titles and honest recommendations."
+msgstr "ناونیشانی هەڵبژێردراو و پێشنیاری ڕاستگۆیانە."
+
+#: template-parts/section-valueprops.php:19
+msgid "Discover your next read"
+msgstr "خوێندنەوەی داهاتووت بدۆزەوە"
+
+#: template-parts/section-valueprops.php:20
+msgid "Browse books by genre and author."
+msgstr "کتێبەکان بە پێی ژانر و نووسەر بگەڕێ."
+
+#: template-parts/section-valueprops.php:28
+msgid "See checkout for availability and terms."
+msgstr "بۆ بەردەستبوون و مەرجەکان سەیری تەواوکردنی کڕین بکە."
+
+#: template-parts/section-valueprops.php:31
+msgid "Order handling information from this store."
+msgstr "زانیاری ئامادەکردنی داواکاری لەم فرۆشگایە."
+
+#: template-parts/section-valueprops.php:34
+msgid "See the store policy for full details."
+msgstr "بۆ وردەکاری تەواو سەیری سیاسەتی فرۆشگا بکە."
+
+#: template-parts/section-valueprops.php:37
+msgid "Why shop with us"
+msgstr "بۆچی لە ئێمە بکڕیت"
+
+#: woocommerce/content-product.php:49
+msgid "New"
+msgstr "نوێ"
+
+#: woocommerce/content-product.php:47
+msgid "Number %d bestseller"
+msgstr "پڕفرۆشی ژمارە %d"
+
+#: woocommerce/global/quantity-input.php:17
+msgid "Decrease quantity"
+msgstr "کەمکردنەوەی بڕ"
+
+#: woocommerce/global/quantity-input.php:57
+msgid "Increase quantity"
+msgstr "زیادکردنی بڕ"
+
+#: woocommerce/single-product/meta.php:40
+msgid "Author:"
+msgstr "نووسەر:"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Ink"
+msgstr "مەرەکەب"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Paper"
+msgstr "کاغەز"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Card"
+msgstr "کارت"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Emerald"
+msgstr "زومڕودی"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Dark emerald"
+msgstr "زومڕودی تۆخ"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Gold"
+msgstr "زێڕین"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Display (Newsreader)"
+msgstr "پیشاندانی (Newsreader)"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Body (Inter)"
+msgstr "دەقی (Inter)"
+
+#: inc/customizer.php:122
+msgid "Hide storefront language switcher"
+msgstr "شاردنەوەی هەڵبژێری زمانی فرۆشگا"
+
+#: inc/languages.php:249, inc/languages.php:250, inc/languages.php:292
+msgid "Inkwell Languages"
+msgstr "زمانەکانی ئینکوێڵ"
+
+#: inc/languages.php:293
+msgid ""
+"Install the matching WordPress core pack, then activate a site-wide language"
+" or use the storefront switcher."
+msgstr ""
+"پاکێجی زمانی گونجاوی ناوکی وۆردپرێس دابمەزرێنە، پاشان زمانێکی گشتی ماڵپەڕ "
+"چالاک بکە یان هەڵبژێری زمانی فرۆشگا بەکاربهێنە."
+
+#: inc/languages.php:299
+msgid ""
+"The WordPress language pack could not be installed. Check filesystem "
+"permissions and outbound connections."
+msgstr ""
+"پاکێجی زمانی وۆردپرێس دانەمەزرا. مۆڵەتەکانی سیستەمی فایل و پەیوەندییە "
+"دەرەکییەکان بپشکنە."
+
+#: inc/languages.php:297
+msgid "Site language activated."
+msgstr "زمانی ماڵپەڕ چالاک کرا."
+
+#: inc/languages.php:295
+msgid "Language pack installed."
+msgstr "پاکێجی زمان دامەزرا."
+
+#: inc/languages.php:302
+msgid "Theme interface"
+msgstr "ڕووکاری بەکارهێنەری ڕووکار"
+
+#: inc/languages.php:302
+msgid "WordPress core pack"
+msgstr "پاکێجی ناوکی وۆردپرێس"
+
+#: inc/languages.php:302
+msgid "Actions"
+msgstr "کردارەکان"
+
+#: inc/languages.php:308
+msgid "Bundled"
+msgstr "هاوپێچکراو"
+
+#: inc/languages.php:309
+msgid "Installed"
+msgstr "دامەزراو"
+
+#: inc/languages.php:309
+msgid "Not installed"
+msgstr "دانەمەزراو"
+
+#: inc/languages.php:319
+msgid "Use as site language"
+msgstr "وەک زمانی ماڵپەڕ بەکاری بهێنە"
+
+#: inc/languages.php:312
+msgid "Active"
+msgstr "چالاک"
+
+#: inc/languages.php:328
+msgid "Install core language"
+msgstr "دامەزراندنی زمانی ناوک"
+
+#: inc/languages.php:336
+msgid ""
+"For translated products and pages with language-specific URLs, install "
+"Polylang, WPML, or TranslatePress."
+msgstr ""
+"بۆ بەرهەم و پەڕە وەرگێڕدراوەکان بە بەستەری تایبەت بە هەر زمانێک، Polylang، "
+"WPML یان TranslatePress دابمەزرێنە."
+
+#: inc/languages.php:346
+msgid "You are not allowed to install languages."
+msgstr "ڕێگەت پێنەدراوە زمان دابمەزرێنیت."
+
+#: inc/demo-localization.php:43
+msgid "About"
+msgstr "دەربارەی ئێمە"
+
+#: inc/demo-localization.php:49
+msgid "Free shipping on orders over €25 — every book, everywhere."
+msgstr ""
+"گەیاندنی بەخۆڕایی بۆ داواکارییەکانی سەرووی ٢٥ یۆرۆ — هەر کتێبێک، بۆ هەر "
+"شوێنێک."
+
+#: inc/demo-localization.php:50
+msgid "There is no friend as loyal as a book."
+msgstr "هیچ هاوڕێیەک بە ئەندازەی کتێب دڵسۆز نییە."
+
+#: inc/demo-localization.php:51
+msgid ""
+"Ordered on Monday, reading on Wednesday. Beautifully packed and the "
+"recommendation note was a lovely touch."
+msgstr ""
+"دووشەممە داوام کرد و چوارشەممە دەستم بە خوێندنەوە کرد. پاکەتەکە جوان بوو و "
+"تێبینی پێشنیاری کتێبەکە زۆر خۆش بوو."
+
+#: inc/demo-localization.php:52
+msgid ""
+"Inkwell found me a long-out-of-print edition I had hunted for years. "
+"Customers for life."
+msgstr ""
+"ئینکوێڵ وەشانێکی دەگمەنی بۆ دۆزیمەوە کە ساڵانێک بەدوایدا دەگەڕام. لەمەودوا "
+"کڕیاری هەمیشەییم."
+
+#: inc/demo-localization.php:53
+msgid ""
+"The genre tiles make browsing a joy, and the staff picks never miss. My book"
+" budget is not okay."
+msgstr ""
+"کاشییەکانی ژانر گەڕان بە کتێبەکاندا خۆش دەکەن و هەڵبژاردەکانی ستاف هەمیشە "
+"لەجێی خۆیانن؛ بەڵام بودجەی کتێبەکانم چیتر باش نییە!"
+
+#: inc/demo-localization.php:55
+msgid "Free shipping over €25"
+msgstr "گەیاندنی بەخۆڕایی بۆ کڕینی سەرووی ٢٥ یۆرۆ"
+
+#: inc/demo-localization.php:56
+msgid "In stock — usually ships within 24 hours"
+msgstr "بەردەستە — زۆرجار لە ماوەی ٢٤ کاتژمێردا دەنێردرێت"
+
+#: inc/demo-localization.php:57
+msgid "30-day returns"
+msgstr "گەڕاندنەوە تا ٣٠ ڕۆژ"
+
+#: inc/demo-localization.php:111
+msgid "Fiction"
+msgstr "چیرۆک"
+
+#: inc/demo-localization.php:111
+msgid "Novels, classics and contemporary literary fiction."
+msgstr "ڕۆمان، بەرهەمە کلاسیکەکان و ئەدەبی چیرۆکی هاوچەرخ."
+
+#: inc/demo-localization.php:112
+msgid "Science Fiction & Fantasy"
+msgstr "زانستی-خەیاڵی و فانتازیا"
+
+#: inc/demo-localization.php:112
+msgid "Other worlds, far futures and impossible magic."
+msgstr "جیهانی تر، داهاتووی دوور و جادوی ناممکن."
+
+#: inc/demo-localization.php:113
+msgid "Mystery & Thriller"
+msgstr "نهێنی و هەستبزوێن"
+
+#: inc/demo-localization.php:113
+msgid "Whodunits, suspense and page-turning thrillers."
+msgstr "نهێنییە تاوانکارییەکان، پەرۆشی و چیرۆکی هەستبزوێنی ڕاکێشەر."
+
+#: inc/demo-localization.php:114
+msgid "Non-Fiction"
+msgstr "ناچیرۆکی"
+
+#: inc/demo-localization.php:114
+msgid "Ideas, science, business and big questions."
+msgstr "بیرۆکە، زانست، بازرگانی و پرسیارە گەورەکان."
+
+#: inc/demo-localization.php:115
+msgid "History & Biography"
+msgstr "مێژوو و ژیاننامە"
+
+#: inc/demo-localization.php:115
+msgid "True stories and the lives behind them."
+msgstr "چیرۆکی ڕاستەقینە و ژیانی ئەو کەسانەی لە پشتیانەوەن."
+
+#: inc/demo-localization.php:116
+msgid "Children’s Books"
+msgstr "کتێبی منداڵان"
+
+#: inc/demo-localization.php:116
+msgid "Picture books and first reads for young bookworms."
+msgstr "کتێبی وێنەدار و یەکەم خوێندنەوەکان بۆ منداڵانی کتێبخۆش."
+
+#: inc/demo-localization.php:117
+msgid "Poetry"
+msgstr "شیعر"
+
+#: inc/demo-localization.php:117
+msgid "Verse, collections and poems to savour slowly."
+msgstr "دێڕە شیعرییەکان، کۆمەڵەکان و هۆنراوەکان بۆ خوێندنەوەی هێواش."
+
+#. translators: %s: Quantity.
+#: woocommerce/global/quantity-input.php:13
+msgid "%s quantity"
+msgstr "بڕی %s"
+
+#: woocommerce/global/quantity-input.php:13
+msgid "Quantity"
+msgstr "بڕ"
+
+#: woocommerce/global/quantity-input.php:34
+msgid "Product quantity"
+msgstr "بڕی بەرهەم"
+
+#: woocommerce/single-product/meta.php:19
+msgid "SKU:"
+msgstr "کۆدی بەرهەم:"
+
+#: woocommerce/single-product/meta.php:19
+msgid "N/A"
+msgstr "بەردەست نییە"
+
+#: woocommerce/single-product/meta.php:43
+msgid "Category:"
+msgid_plural "Categories:"
+msgstr[0] "هاوپۆل:"
+msgstr[1] "هاوپۆلەکان:"
+
+#: woocommerce/single-product/meta.php:45
+msgid "Tag:"
+msgid_plural "Tags:"
+msgstr[0] "نیشانە:"
+msgstr[1] "نیشانەکان:"
+
+#: inc/languages.php:272
+msgid "Inkwell language setup:"
+msgstr "ڕێکخستنی زمانی ئینکوێڵ:"
+
+#: inc/languages.php:273
+msgid ""
+"Install the Persian and Sorani WordPress packs to translate core and "
+"WooCommerce strings as well as the theme."
+msgstr ""
+"بۆ وەرگێڕانی دەقەکانی ناوک و وۆکامێرس لەگەڵ ڕووکار، پاکێجەکانی فارسی و "
+"کوردیی سۆرانیی وۆردپرێس دابمەزرێنە."
+
+#: inc/languages.php:274
+msgid "Manage languages"
+msgstr "بەڕێوەبردنی زمانەکان"
+
+#: sidebar.php:16
+msgid "Refine your shelf"
+msgstr "هەڵبژاردنت وردتر بکە"
+
+#: sidebar.php:17
+msgid "Close filters"
+msgstr "داخستنی پاڵاوتنەکان"
+
+#: inc/woocommerce.php:384
+msgid ""
+"Explore thoughtful books, timeless classics and your next unexpected "
+"favourite."
+msgstr ""
+"کتێبی بیرمەندانە، کلاسیکی هەمیشەیی و دڵخوازی داهاتووی چاوەڕواننەکراوت "
+"بدۆزەوە."
+
+#: inc/woocommerce.php:388
+msgid "Find a book"
+msgstr "کتێبێک بدۆزەوە"
+
+#: inc/woocommerce.php:421
+msgid "Filters"
+msgstr "پاڵاوتنەکان"
+
+#: template-parts/hero.php:67
+msgid "Search the collection"
+msgstr "گەڕان لە کۆمەڵەکەدا"
+
+#: template-parts/hero.php:68
+msgid "Search by title or author…"
+msgstr "گەڕان بە ناونیشان یان نووسەر…"
+
+#: inc/demo-import.php:94
+msgid ""
+"Seed it with the bundled fictional Kurdish catalog (33 books, 7 genres, 27 "
+"authors, reviews, menus and pages) in one click."
+msgstr ""
+"بە یەک کرتە کەتەلۆگی خەیاڵیی کوردیی هاوپێچ (٣٣ کتێب، ٧ ژانر، ٢٧ نووسەر، "
+"هەڵسەنگاندن، پێڕست و پەڕەکان) زیاد بکە."
+
+#: inc/demo-import.php:147
+msgid ""
+"fictional Sorani books with original covers, demo metadata, sale prices and "
+"featured flags"
+msgstr ""
+"کتێبی خەیاڵیی سۆرانی لەگەڵ بەرگی ڕەسەن، مێتاداتای نموونەیی، نرخی داشکاندن و "
+"نیشانی تایبەت"
+
+#: inc/demo-import.php:148
+msgid ""
+"(Kurdish fiction, science fiction and fantasy, mystery, non-fiction, "
+"history, children’s books and poetry)"
+msgstr ""
+"(چیرۆکی کوردی، زانستی-خەیاڵی و فانتازیا، نهێنی، ناچیرۆکی، مێژوو، کتێبی "
+"منداڵان و شیعر)"
+
+#: inc/demo-import.php:454
+msgid "%d retired demo products replaced with fictional Kurdish books"
+msgstr "%d بەرهەمی نموونەیی کۆن بە کتێبی خەیاڵیی کوردی گۆڕدرایەوە"
+
+#: inc/demo-import.php:533
+msgid "%d fictional Kurdish authors with bios"
+msgstr "%d نووسەری خەیاڵیی کورد لەگەڵ ژیاننامە"
+
+#: inc/demo-import.php:792
+msgid "14 fictional Kurdish demo reviews with ratings"
+msgstr "١٤ هەڵسەنگاندنی نموونەیی خەیاڵیی کوردی لەگەڵ نمرە"
+
+#: inc/demo-import.php:442
+msgid "The fictional Kurdish catalog is incomplete and was not imported."
+msgstr "کەتەلۆگی خەیاڵیی کوردی ناتەواوە و هاوردە نەکرا."
+
+#: inc/demo-import.php:78
+msgid "Inkwell: retired demo catalog detected."
+msgstr "ئینکوێڵ: کەتەلۆگی نموونەیی کۆن دۆزرایەوە."
+
+#: inc/demo-import.php:79
+msgid ""
+"Run the importer again to safely replace only the old demo products with "
+"fictional Kurdish books."
+msgstr ""
+"هاوردەکەرەکە دووبارە جێبەجێ بکە تا تەنها بەرهەمە نموونەییە کۆنەکان بە کتێبی "
+"خەیاڵیی کوردی بگۆڕدرێنەوە."
+
+#: inc/demo-import.php:80
+msgid "Replace demo catalog"
+msgstr "گۆڕینی کەتەلۆگی نموونەیی"

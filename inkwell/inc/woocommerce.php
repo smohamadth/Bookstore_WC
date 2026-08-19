@@ -110,7 +110,7 @@ function inkwell_book_details_tab( $key ) {
 	echo '<h2 class="tab-title">' . esc_html__( 'Book Details', 'inkwell' ) . '</h2>';
 	echo '<table class="book-details-table">';
 	foreach ( $details as $label => $value ) {
-		echo '<tr><th>' . esc_html( $label ) . '</th><td>' . esc_html( $value ) . '</td></tr>';
+		echo '<tr><th scope="row">' . esc_html( $label ) . '</th><td>' . esc_html( $value ) . '</td></tr>';
 	}
 	echo '</table>';
 }
@@ -123,7 +123,10 @@ function inkwell_stock_chip() {
 	if ( ! $product || ! $product->is_in_stock() ) {
 		return;
 	}
-	echo '<p class="stock in-stock">' . esc_html__( 'In stock — ships within 24 hours', 'inkwell' ) . '</p>';
+	$message = inkwell_mod( 'inkwell_fulfillment_message', '' );
+	if ( $message ) {
+		echo '<p class="stock in-stock">' . esc_html( $message ) . '</p>';
+	}
 }
 add_action( 'woocommerce_single_product_summary', 'inkwell_stock_chip', 15 );
 
@@ -131,10 +134,19 @@ add_action( 'woocommerce_single_product_summary', 'inkwell_stock_chip', 15 );
  * Trust chips under the product meta.
  */
 function inkwell_meta_trust_chips() {
+	$items = array_filter(
+		array(
+			'truck'  => inkwell_mod( 'inkwell_shipping_message', '' ),
+			'return' => inkwell_mod( 'inkwell_returns_message', '' ),
+		)
+	);
+	if ( ! $items ) {
+		return;
+	}
 	echo '<div class="meta-chips">';
-	echo '<span class="chip">' . inkwell_icon( 'truck' ) . esc_html__( 'Free shipping over €25', 'inkwell' ) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput
-	echo '<span class="chip">' . inkwell_icon( 'return' ) . esc_html__( '30-day returns', 'inkwell' ) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput
-	echo '<span class="chip">' . inkwell_icon( 'shield' ) . esc_html__( 'Secure checkout', 'inkwell' ) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput
+	foreach ( $items as $icon => $message ) {
+		echo '<span class="chip">' . inkwell_icon( $icon ) . esc_html( $message ) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput
+	}
 	echo '</div>';
 }
 add_action( 'woocommerce_product_meta_end', 'inkwell_meta_trust_chips' );
@@ -154,7 +166,7 @@ function inkwell_author_box() {
 		$url = get_term_link( $term );
 
 		echo '<div class="author-box-inner">';
-		echo '<div class="author-monogram">' . esc_html( mb_substr( $term->name, 0, 1 ) ) . '</div>';
+		echo '<div class="author-monogram">' . esc_html( inkwell_first_character( $term->name ) ) . '</div>';
 		echo '<div class="author-box-body">';
 		echo '<span class="eyebrow">' . esc_html__( 'About the author', 'inkwell' ) . '</span>';
 		echo '<h3 class="author-name"><a href="' . esc_url( $url ) . '">' . esc_html( $term->name ) . '</a></h3>';
@@ -196,7 +208,8 @@ function inkwell_author_box() {
 	}
 	echo '</section>';
 }
-add_action( 'woocommerce_after_single_product_summary', 'inkwell_author_box', 30 );
+// Place author context after the product tabs and before recommendations.
+add_action( 'woocommerce_after_single_product_summary', 'inkwell_author_box', 12 );
 
 /**
  * Cart fragments: live header count & mobile total.
@@ -209,11 +222,7 @@ function inkwell_cart_fragments( $fragments ) {
 
 	$fragments['.inkwell-cart-count'] = '<span class="cart-count inkwell-cart-count">' . (int) $count . '</span>';
 
-	$total = WC()->cart ? WC()->cart->get_cart_subtotal() : '';
-	$fragments['.inkwell-mobile-total'] = '<a class="button inkwell-mobile-total" href="' . esc_url( wc_get_cart_url() ) . '">' . esc_html(
-		/* translators: 1: item count, 2: cart subtotal. */
-		sprintf( __( 'Cart — %1$d · %2$s', 'inkwell' ), (int) $count, wp_strip_all_tags( $total ) )
-	) . '</a>';
+	$fragments['.inkwell-mobile-total'] = inkwell_mobile_cart_link_html();
 
 	return $fragments;
 }
@@ -235,10 +244,20 @@ add_filter( 'woocommerce_placeholder_img', 'inkwell_placeholder_img' );
  * Trust strip on the cart page.
  */
 function inkwell_cart_trust() {
+	$items = array_filter(
+		array(
+			'truck'  => inkwell_mod( 'inkwell_shipping_message', '' ),
+			'check'  => inkwell_mod( 'inkwell_fulfillment_message', '' ),
+			'return' => inkwell_mod( 'inkwell_returns_message', '' ),
+		)
+	);
+	if ( ! $items ) {
+		return;
+	}
 	echo '<div class="cart-trust">';
-	echo '<span>' . inkwell_icon( 'truck' ) . esc_html__( 'Free shipping on orders over €25', 'inkwell' ) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput
-	echo '<span>' . inkwell_icon( 'shield' ) . esc_html__( 'Secure checkout', 'inkwell' ) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput
-	echo '<span>' . inkwell_icon( 'return' ) . esc_html__( '30-day returns', 'inkwell' ) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput
+	foreach ( $items as $icon => $message ) {
+		echo '<span>' . inkwell_icon( $icon ) . esc_html( $message ) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput
+	}
 	echo '</div>';
 }
 add_action( 'woocommerce_before_cart', 'inkwell_cart_trust' );
@@ -247,32 +266,21 @@ add_action( 'woocommerce_before_cart', 'inkwell_cart_trust' );
  * Trust note on checkout.
  */
 function inkwell_checkout_trust() {
-	echo '<p class="checkout-note">' . inkwell_icon( 'shield' ) . esc_html__( 'Your payment details are processed securely. 30-day returns on every order.', 'inkwell' ) . '</p>'; // phpcs:ignore WordPress.Security.EscapeOutput
+	$returns = inkwell_mod( 'inkwell_returns_message', '' );
+	if ( $returns ) {
+		echo '<p class="checkout-note">' . inkwell_icon( 'return' ) . esc_html( $returns ) . '</p>'; // phpcs:ignore WordPress.Security.EscapeOutput
+	}
 }
 add_action( 'woocommerce_before_checkout_form', 'inkwell_checkout_trust', 5 );
 
 /**
- * Small accessibility + UX niceties.
+ * Friendly empty-state notice for product grids.
  */
-function inkwell_wc_accessibility() {
-	// Quantity inputs never below 1.
-	add_filter( 'woocommerce_quantity_input_args', function ( $args ) {
-		$args['min_value'] = 1;
-		if ( isset( $args['input_value'] ) && ! $args['readonly'] ) {
-			$args['input_value'] = max( 1, (int) $args['input_value'] );
-		}
-		return $args;
-	} );
+function inkwell_no_products_found() {
+	wc_print_notice( esc_html__( 'No books found. Try widening your filters or search again.', 'inkwell' ), 'notice' );
 }
-add_action( 'init', 'inkwell_wc_accessibility' );
-
-/**
- * Say hello on empty product grids.
- */
-function inkwell_no_products_found_text() {
-	return __( 'No books found. Try widening your filters or search again.', 'inkwell' );
-}
-add_filter( 'woocommerce_no_products_found', 'inkwell_no_products_found_text' );
+remove_action( 'woocommerce_no_products_found', 'wc_no_products_found', 10 );
+add_action( 'woocommerce_no_products_found', 'inkwell_no_products_found', 10 );
 
 /* ------------------------------------------------------------------ *
  * Layout strategy: we take full control of the WC page skeleton.
@@ -294,6 +302,13 @@ remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_ad
 // The card template renders the thumbnail inside the link itself —
 // drop WooCommerce's bare (unlinked) copy to avoid duplicate images.
 remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10 );
+remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
+
+// Category cards provide their own styled link. Keep the hooks available to
+// extensions, but remove WooCommerce's wrappers to avoid nested anchors.
+remove_action( 'woocommerce_before_subcategory', 'woocommerce_template_loop_category_link_open', 10 );
+remove_action( 'woocommerce_shop_loop_subcategory_title', 'woocommerce_template_loop_category_title', 10 );
+remove_action( 'woocommerce_after_subcategory', 'woocommerce_template_loop_category_link_close', 10 );
 
 /**
  * Use the tall book-cover crop on loop cards.
@@ -306,14 +321,34 @@ function inkwell_archive_thumbnail_size() {
 add_filter( 'single_product_archive_thumbnail_size', 'inkwell_archive_thumbnail_size' );
 
 /**
- * Shared layout for shop / genre / author-adjacent archives.
- * (Called from archive-product.php, taxonomy-product-cat.php,
- * taxonomy-product-attribute.php.)
+ * Add the theme's grid class without overriding WooCommerce's loop template.
+ *
+ * @param string $markup WooCommerce loop-start markup.
+ * @return string
+ */
+function inkwell_product_loop_start_markup( $markup ) {
+	if ( false !== strpos( $markup, 'inkwell-shop-grid' ) ) {
+		return $markup;
+	}
+	$updated = preg_replace(
+		'/(<ul\b[^>]*\bclass="[^"]*\bproducts\b)([^"]*)"/i',
+		'$1 inkwell-shop-grid$2"',
+		$markup,
+		1
+	);
+	return is_string( $updated ) ? $updated : $markup;
+}
+add_filter( 'woocommerce_product_loop_start', 'inkwell_product_loop_start_markup' );
+
+/**
+ * Shared layout for shop and product-taxonomy archives.
+ * WooCommerce's taxonomy templates delegate to the theme's archive-product.php.
  */
 function inkwell_shop_archive_layout() {
-	$is_tax    = is_product_taxonomy();
-	$term      = $is_tax ? get_queried_object() : null;
-	$subtitle  = '';
+	$is_tax      = is_product_taxonomy();
+	$is_category = is_product_category();
+	$term        = $is_tax ? get_queried_object() : null;
+	$subtitle    = '';
 
 	if ( $term && ! is_wp_error( $term ) ) {
 		$title    = $term->name;
@@ -322,24 +357,50 @@ function inkwell_shop_archive_layout() {
 		$title = woocommerce_page_title( false );
 	}
 
-	$shop_url = wc_get_page_permalink( 'shop' );
+	$shop_url   = wc_get_page_permalink( 'shop' );
+	$shop_terms = get_terms(
+		array(
+			'taxonomy'   => 'product_cat',
+			'hide_empty' => true,
+			'parent'     => 0,
+			'number'     => 8,
+			'orderby'    => 'count',
+			'order'      => 'DESC',
+		)
+	);
 	?>
 	<div class="container">
+		<header class="shop-archive-header">
+			<div class="shop-archive-header__copy">
+				<?php if ( $is_tax && $shop_url ) : ?>
+					<a class="eyebrow" href="<?php echo esc_url( $shop_url ); ?>"><?php esc_html_e( 'Shop', 'inkwell' ); ?></a>
+				<?php else : ?>
+					<span class="eyebrow"><?php esc_html_e( 'Bookshop', 'inkwell' ); ?></span>
+				<?php endif; ?>
+				<h1><?php echo esc_html( $title ); ?></h1>
+				<?php if ( $subtitle ) : ?>
+					<div class="page-sub"><?php echo wp_kses_post( wpautop( $subtitle ) ); ?></div>
+				<?php else : ?>
+					<p class="page-sub"><?php esc_html_e( 'Explore thoughtful books, timeless classics and your next unexpected favourite.', 'inkwell' ); ?></p>
+				<?php endif; ?>
+			</div>
+			<div class="shop-archive-header__search">
+				<span class="eyebrow"><?php esc_html_e( 'Find a book', 'inkwell' ); ?></span>
+				<?php get_search_form(); ?>
+			</div>
+		</header>
+
+		<?php if ( ! is_wp_error( $shop_terms ) && $shop_terms ) : ?>
+			<nav class="shop-category-chips" aria-label="<?php esc_attr_e( 'Browse genres', 'inkwell' ); ?>">
+				<a class="shop-category-chip<?php echo $is_tax ? '' : ' is-active'; ?>" href="<?php echo esc_url( $shop_url ); ?>"><?php esc_html_e( 'All books', 'inkwell' ); ?></a>
+				<?php foreach ( $shop_terms as $shop_term ) : ?>
+					<a class="shop-category-chip<?php echo $is_category && $term && (int) $term->term_id === (int) $shop_term->term_id ? ' is-active' : ''; ?>" href="<?php echo esc_url( get_term_link( $shop_term ) ); ?>"><?php echo esc_html( $shop_term->name ); ?><span><?php echo esc_html( number_format_i18n( $shop_term->count ) ); ?></span></a>
+				<?php endforeach; ?>
+			</nav>
+		<?php endif; ?>
+
 		<div class="two-col shop-layout">
 			<div class="shop-main">
-
-				<header class="page-header">
-					<?php if ( $is_tax && $shop_url ) : ?>
-						<a class="eyebrow" href="<?php echo esc_url( $shop_url ); ?>"><?php esc_html_e( 'Shop', 'inkwell' ); ?></a>
-					<?php else : ?>
-						<span class="eyebrow"><?php esc_html_e( 'Bookshop', 'inkwell' ); ?></span>
-					<?php endif; ?>
-					<h1><?php echo esc_html( $title ); ?></h1>
-					<?php if ( $subtitle ) : ?>
-						<div class="page-sub"><?php echo wp_kses_post( wpautop( $subtitle ) ); ?></div>
-					<?php endif; ?>
-				</header>
-
 				<?php
 				/**
 				 * Hook: woocommerce_before_shop_loop.
@@ -354,6 +415,12 @@ function inkwell_shop_archive_layout() {
 				 */
 				?>
 				<div class="woocommerce-before-shop-loop">
+					<?php if ( is_active_sidebar( 'sidebar-shop' ) ) : ?>
+						<button class="shop-filter-toggle" type="button" data-shop-filter-toggle aria-expanded="false" aria-controls="secondary">
+							<?php echo inkwell_icon( 'filter' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+							<span><?php esc_html_e( 'Filters', 'inkwell' ); ?></span>
+						</button>
+					<?php endif; ?>
 					<?php do_action( 'woocommerce_before_shop_loop' ); ?>
 				</div>
 				<?php
@@ -388,6 +455,9 @@ function inkwell_shop_archive_layout() {
 			</div>
 
 			<?php get_sidebar(); ?>
+			<?php if ( is_active_sidebar( 'sidebar-shop' ) ) : ?>
+				<button class="shop-filter-backdrop" type="button" data-shop-filter-close tabindex="-1" aria-hidden="true"></button>
+			<?php endif; ?>
 		</div>
 	</div>
 	<?php

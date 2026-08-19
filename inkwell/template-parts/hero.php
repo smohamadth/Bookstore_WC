@@ -38,8 +38,19 @@ if ( class_exists( 'WooCommerce' ) ) {
 	}
 	$hero_products = array_slice( $hero_products, 0, 3 );
 }
+
+$trust_items = array_filter(
+	array(
+		'truck'  => inkwell_mod( 'inkwell_shipping_message', '' ),
+		'check'  => inkwell_mod( 'inkwell_fulfillment_message', '' ),
+		'return' => inkwell_mod( 'inkwell_returns_message', '' ),
+	)
+);
 ?>
-<section class="hero" data-reveal>
+<section class="hero<?php echo $image ? ' has-custom-background' : ''; ?>" data-reveal>
+	<?php if ( $image ) : ?>
+		<div class="hero-background" style="<?php echo esc_attr( "background-image: url('" . esc_url_raw( $image ) . "');" ); ?>" aria-hidden="true"></div>
+	<?php endif; ?>
 	<div class="container hero-inner">
 
 		<div class="hero-copy">
@@ -49,6 +60,14 @@ if ( class_exists( 'WooCommerce' ) ) {
 			<h1><?php echo wp_kses_post( $title ); ?></h1>
 			<?php if ( $sub ) : ?>
 				<p class="hero-sub"><?php echo esc_html( $sub ); ?></p>
+			<?php endif; ?>
+			<?php if ( class_exists( 'WooCommerce' ) ) : ?>
+				<form class="hero-search" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+					<input type="hidden" name="post_type" value="product" />
+					<label class="screen-reader-text" for="inkwell-hero-search"><?php esc_html_e( 'Search the collection', 'inkwell' ); ?></label>
+					<input id="inkwell-hero-search" type="search" name="s" placeholder="<?php esc_attr_e( 'Search by title or author…', 'inkwell' ); ?>" autocomplete="off" />
+					<button type="submit" aria-label="<?php esc_attr_e( 'Search', 'inkwell' ); ?>"><?php echo inkwell_icon( 'search' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></button>
+				</form>
 			<?php endif; ?>
 			<?php if ( $btn1 || $btn2 ) : ?>
 				<div class="hero-ctas">
@@ -60,18 +79,23 @@ if ( class_exists( 'WooCommerce' ) ) {
 					<?php endif; ?>
 				</div>
 			<?php endif; ?>
-			<div class="hero-trust">
-				<span><?php echo inkwell_icon( 'truck' ); // phpcs:ignore WordPress.Security.EscapeOutput ?><?php esc_html_e( 'Free shipping over €25', 'inkwell' ); ?></span>
-				<span><?php echo inkwell_icon( 'return' ); // phpcs:ignore WordPress.Security.EscapeOutput ?><?php esc_html_e( '30-day returns', 'inkwell' ); ?></span>
-				<span><?php echo inkwell_icon( 'shield' ); // phpcs:ignore WordPress.Security.EscapeOutput ?><?php esc_html_e( 'Secure checkout', 'inkwell' ); ?></span>
-			</div>
+			<?php if ( $trust_items ) : ?>
+				<div class="hero-trust">
+					<?php foreach ( $trust_items as $icon => $message ) : ?>
+						<span><?php echo inkwell_icon( $icon ); // phpcs:ignore WordPress.Security.EscapeOutput ?><?php echo esc_html( $message ); ?></span>
+					<?php endforeach; ?>
+				</div>
+			<?php endif; ?>
 		</div>
 
 		<?php if ( ! empty( $hero_products ) ) : ?>
 			<div class="hero-covers" aria-hidden="true">
 				<?php
-				foreach ( $hero_products as $i => $hp ) :
-					$img = $hp->get_image( 'inkwell-card', array( 'loading' => 'eager' ) );
+			foreach ( $hero_products as $i => $hp ) :
+				$image_attributes = 0 === $i
+					? array( 'loading' => 'eager', 'fetchpriority' => 'high' )
+					: array( 'loading' => 'lazy' );
+				$img = $hp->get_image( 'inkwell-card', $image_attributes );
 					if ( ! $img ) {
 						continue;
 					}

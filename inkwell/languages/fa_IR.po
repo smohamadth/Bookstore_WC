@@ -1,0 +1,1441 @@
+# Persian translation for Inkwell.
+# Copyright (C) 2026 Inkwell Studio
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Inkwell 2.0.9\n"
+"Report-Msgid-Bugs-To: https://github.com/smohamadth/Bookstore_WC/issues\n"
+"POT-Creation-Date: 2026-08-17 00:00+0000\n"
+"PO-Revision-Date: 2026-08-17 00:00+0000\n"
+"Last-Translator: Inkwell Studio\n"
+"Language-Team: Persian\n"
+"Language: fa_IR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Inkwell translation build\n"
+"X-Inkwell-Template-SHA256: 727b8c339e3d11526c09c21ebef413f314007d55d510b694841d4293242b71d0\n"
+
+#: 404.php:11
+msgid "This page has been checked out"
+msgstr "این صفحه به امانت رفته است"
+
+#: 404.php:12
+msgid ""
+"The page you are looking for has moved, been borrowed, or never existed. Try"
+" a search, or start from the shop."
+msgstr ""
+"صفحه‌ای که به دنبال آن هستید جابه‌جا شده، به امانت رفته یا هرگز وجود نداشته "
+"است. جستجو کنید یا از فروشگاه شروع کنید."
+
+#: 404.php:17
+msgid "Back to home"
+msgstr "بازگشت به خانه"
+
+#: 404.php:19
+msgid "Browse the shop"
+msgstr "مشاهده فروشگاه"
+
+#: archive.php:21
+msgid "Archive"
+msgstr "بایگانی"
+
+#. translators: %s: search query.
+#: archive.php:19, search.php:18
+msgid "Results for “%s”"
+msgstr "نتایج برای «%s»"
+
+#: archive.php:15
+msgctxt "archive date format"
+msgid "F Y"
+msgstr "F Y"
+
+#: archive.php:27, index.php:12
+msgid "The journal"
+msgstr "مجله"
+
+#. translators: %s: comment count.
+#: comments.php:19
+msgid "%s comment"
+msgid_plural "%s comments"
+msgstr[0] "%s دیدگاه"
+msgstr[1] "%s دیدگاه"
+
+#: footer.php:22, inc/demo-localization.php:54
+msgid ""
+"A hand-picked collection of books for curious minds — fiction, history, "
+"science and stories for every shelf."
+msgstr ""
+"مجموعه‌ای دست‌چین از کتاب‌ها برای ذهن‌های کنجکاو — داستان، تاریخ، علم و "
+"روایت‌هایی برای هر قفسه."
+
+#: footer.php:28
+msgid "Facebook"
+msgstr "فیسبوک"
+
+#: footer.php:29
+msgid "Instagram"
+msgstr "اینستاگرام"
+
+#: footer.php:30
+msgid "X (formerly Twitter)"
+msgstr "ایکس (توییتر سابق)"
+
+#: footer.php:49, inc/demo-localization.php:40, inc/woocommerce.php:376
+msgid "Shop"
+msgstr "فروشگاه"
+
+#: footer.php:63, inc/woocommerce.php:395
+msgid "All books"
+msgstr "همه کتاب‌ها"
+
+#: footer.php:64, header.php:103, inc/template-tags.php:99
+msgid "My account"
+msgstr "حساب کاربری من"
+
+#: footer.php:72
+msgid "Help"
+msgstr "راهنما"
+
+#: footer.php:89, inc/demo-localization.php:44
+msgid "Contact"
+msgstr "تماس"
+
+#: footer.php:92, inc/newsletter.php:226
+msgid "Privacy policy"
+msgstr "سیاست حفظ حریم خصوصی"
+
+#: footer.php:101
+msgid "The reading list"
+msgstr "فهرست مطالعه"
+
+#: footer.php:102
+msgid "One thoughtful email a month. New arrivals, staff picks, no spam."
+msgstr "ماهی یک ایمیل خواندنی؛ تازه‌ها، انتخاب‌های کارکنان و بدون هرزنامه."
+
+#. translators: 1: year, 2: site name.
+#: footer.php:117
+msgid "© %1$s %2$s. All rights reserved."
+msgstr "© %1$s %2$s. همه حقوق محفوظ است."
+
+#: footer.php:129
+msgid "Accepted payment methods"
+msgstr "روش‌های پرداخت پذیرفته‌شده"
+
+#: footer.php:139
+msgid "Back to top"
+msgstr "بازگشت به بالا"
+
+#: header.php:21
+msgid "Skip to content"
+msgstr "رفتن به محتوای اصلی"
+
+#: header.php:36, inc/setup.php:138
+msgid "Open menu"
+msgstr "باز کردن فهرست"
+
+#: header.php:45
+msgid "Primary"
+msgstr "اصلی"
+
+#: header.php:61, search.php:14, searchform.php:16, template-parts/hero.php:69
+msgid "Search"
+msgstr "جستجو"
+
+#: header.php:69
+msgid "Shopping cart"
+msgstr "سبد خرید"
+
+#: header.php:88
+msgid "Mobile"
+msgstr "موبایل"
+
+#: index.php:13, single.php:14, inc/demo-localization.php:42
+msgid "Journal"
+msgstr "مجله"
+
+#: index.php:14
+msgid "Reading lists, behind-the-shelves stories and bookish notes."
+msgstr "فهرست‌های مطالعه، روایت‌هایی از پشت قفسه‌ها و یادداشت‌های کتاب‌خوانی."
+
+#: page.php:25, single.php:29
+msgid "Pages:"
+msgstr "صفحه‌ها:"
+
+#: search.php:14
+msgid "Book search"
+msgstr "جستجوی کتاب"
+
+#: searchform.php:13
+msgid "Search for:"
+msgstr "جستجو برای:"
+
+#: searchform.php:14
+msgid "Search books, authors…"
+msgstr "جستجوی کتاب‌ها و نویسندگان…"
+
+#: sidebar.php:13
+msgid "Sidebar"
+msgstr "نوار کناری"
+
+#: style.css:2
+msgid "Inkwell"
+msgstr "اینک‌ول"
+
+#: style.css:3
+msgid "https://github.com/smohamadth/Bookstore_WC"
+msgstr "https://github.com/smohamadth/Bookstore_WC"
+
+#: style.css:4
+msgid "Inkwell Studio"
+msgstr "استودیوی اینک‌ول"
+
+#: style.css:5
+msgid "https://github.com/smohamadth"
+msgstr "https://github.com/smohamadth"
+
+#: style.css:6
+msgid ""
+"A boutique bookstore theme for WooCommerce — v2 \"modern library\" design. "
+"Parchment paper, deep ink and emerald; editorial Newsreader serif; book-"
+"spine product cards, ranked bestsellers, mini-cart, Book Details (ISBN, "
+"publisher, year, pages, format, language), author taxonomy, newsletter. "
+"Responsive, accessible, translation-ready."
+msgstr ""
+"پوسته‌ای برای کتاب‌فروشی بوتیک بر پایه ووکامرس — طراحی «کتابخانه مدرن» نسخه "
+"۲. کاغذ نخودی، جوهر تیره و سبز زمردی؛ قلم سریف تحریریه‌ای Newsreader؛ "
+"کارت‌های محصول با نمای عطف کتاب، پرفروش‌های رتبه‌بندی‌شده، سبد خرید کوچک، "
+"مشخصات کتاب (شابک، ناشر، سال، تعداد صفحه، قالب و زبان)، رده‌بندی نویسندگان و"
+" خبرنامه. واکنش‌گرا، دسترس‌پذیر و آماده ترجمه."
+
+#: taxonomy-book_author.php:13
+msgid "Book author"
+msgstr "نویسنده کتاب"
+
+#: taxonomy-book_author.php:39
+msgid "No books found for this author yet."
+msgstr "هنوز کتابی از این نویسنده پیدا نشد."
+
+#: inc/books.php:17
+msgid "Book Authors"
+msgstr "نویسندگان کتاب"
+
+#: inc/books.php:18
+msgid "Book Author"
+msgstr "نویسنده کتاب"
+
+#: inc/books.php:19
+msgid "Search Authors"
+msgstr "جستجوی نویسندگان"
+
+#: inc/books.php:20
+msgid "All Authors"
+msgstr "همه نویسندگان"
+
+#: inc/books.php:21
+msgid "Edit Author"
+msgstr "ویرایش نویسنده"
+
+#: inc/books.php:22
+msgid "Update Author"
+msgstr "به‌روزرسانی نویسنده"
+
+#: inc/books.php:23
+msgid "Add New Author"
+msgstr "افزودن نویسنده جدید"
+
+#: inc/books.php:24
+msgid "New Author Name"
+msgstr "نام نویسنده جدید"
+
+#: inc/books.php:25
+msgid "Authors"
+msgstr "نویسندگان"
+
+#: inc/books.php:52
+msgid "ISBN-13"
+msgstr "شابک ۱۳ رقمی"
+
+#: inc/books.php:57
+msgid "Publisher"
+msgstr "ناشر"
+
+#: inc/books.php:61
+msgid "Publication Year"
+msgstr "سال انتشار"
+
+#: inc/books.php:65
+msgid "Pages"
+msgstr "تعداد صفحه"
+
+#: inc/books.php:69
+msgid "Format"
+msgstr "قالب"
+
+#: inc/books.php:72
+msgid "— Select —"
+msgstr "— انتخاب کنید —"
+
+#: inc/books.php:73
+msgid "Paperback"
+msgstr "جلد نرم"
+
+#: inc/books.php:74
+msgid "Hardcover"
+msgstr "جلد سخت"
+
+#: inc/books.php:75
+msgid "Ebook"
+msgstr "کتاب الکترونیکی"
+
+#: inc/books.php:76
+msgid "Audiobook"
+msgstr "کتاب صوتی"
+
+#: inc/books.php:80, inc/languages.php:216, inc/languages.php:302
+msgid "Language"
+msgstr "زبان"
+
+#: inc/books.php:94, inc/woocommerce.php:90, inc/woocommerce.php:110
+msgid "Book Details"
+msgstr "مشخصات کتاب"
+
+#: inc/books.php:138
+msgid ""
+"Bibliographic details shown on the product page and in the Book Details tab."
+" The Author field is managed from the Authors box."
+msgstr ""
+"اطلاعات کتاب‌شناختی نمایش‌داده‌شده در صفحه محصول و زبانه «مشخصات کتاب». فیلد"
+" نویسنده از بخش «نویسندگان» مدیریت می‌شود."
+
+#: inc/books.php:186
+msgid "Author"
+msgstr "نویسنده"
+
+#: inc/books.php:187
+msgid "ISBN"
+msgstr "شابک"
+
+#: inc/customizer.php:18
+msgid "— None —"
+msgstr "— هیچ‌کدام —"
+
+#: inc/customizer.php:47
+msgid "Inkwell Colors"
+msgstr "رنگ‌های اینک‌ول"
+
+#: inc/customizer.php:59
+msgid "Accent color"
+msgstr "رنگ اصلی"
+
+#: inc/customizer.php:74
+msgid "Accent (hover / dark)"
+msgstr "رنگ اصلی (حالت اشاره/تیره)"
+
+#: inc/customizer.php:87
+msgid "Dark header & announcement bar"
+msgstr "سربرگ و نوار اعلان تیره"
+
+#: inc/customizer.php:98
+msgid "Header & Announcement Bar"
+msgstr "سربرگ و نوار اعلان"
+
+#: inc/customizer.php:108
+msgid "Announcement bar text"
+msgstr "متن نوار اعلان"
+
+#: inc/customizer.php:109
+msgid "e.g. “Free shipping on orders over €25”. Leave empty to hide the bar."
+msgstr ""
+"برای نمونه: «ارسال رایگان برای سفارش‌های بالای ۲۵ یورو». برای پنهان کردن "
+"نوار، خالی بگذارید."
+
+#: inc/customizer.php:133
+msgid "Store Benefits & Policies"
+msgstr "مزایا و سیاست‌های فروشگاه"
+
+#: inc/customizer.php:137
+msgid "Shipping benefit"
+msgstr "مزیت ارسال"
+
+#: inc/customizer.php:138
+msgid "Fulfillment promise"
+msgstr "تعهد آماده‌سازی سفارش"
+
+#: inc/customizer.php:139
+msgid "Returns policy summary"
+msgstr "خلاصه سیاست بازگشت کالا"
+
+#: inc/customizer.php:140
+msgid "Accepted payment methods (comma-separated)"
+msgstr "روش‌های پرداخت پذیرفته‌شده (با ویرگول جدا کنید)"
+
+#: inc/customizer.php:148
+msgid ""
+"Leave blank to hide this claim. Only publish terms your store actually "
+"offers."
+msgstr ""
+"برای پنهان کردن این ادعا، خالی بگذارید. فقط شرایطی را منتشر کنید که فروشگاه "
+"واقعاً ارائه می‌دهد."
+
+#: inc/customizer.php:160
+msgid "Hero Section"
+msgstr "بخش قهرمان"
+
+#: inc/customizer.php:164
+msgid "Hide the hero entirely"
+msgstr "پنهان کردن کامل بخش قهرمان"
+
+#: inc/customizer.php:165
+msgid "Eyebrow text"
+msgstr "متن بالای عنوان"
+
+#: inc/customizer.php:166
+msgid "Headline"
+msgstr "عنوان اصلی"
+
+#: inc/customizer.php:167
+msgid "Subheadline"
+msgstr "زیرعنوان"
+
+#: inc/customizer.php:168
+msgid "Primary button label"
+msgstr "برچسب دکمه اصلی"
+
+#: inc/customizer.php:169
+msgid "Primary button URL"
+msgstr "نشانی دکمه اصلی"
+
+#: inc/customizer.php:170
+msgid "Secondary button label"
+msgstr "برچسب دکمه دوم"
+
+#: inc/customizer.php:171
+msgid "Secondary button URL"
+msgstr "نشانی دکمه دوم"
+
+#: inc/customizer.php:201
+msgid "Hero background image"
+msgstr "تصویر پس‌زمینه بخش قهرمان"
+
+#: inc/customizer.php:212
+msgid "Home Page Sections"
+msgstr "بخش‌های صفحه خانه"
+
+#: inc/customizer.php:216
+msgid "Hide the store benefits strip"
+msgstr "پنهان کردن نوار مزایای فروشگاه"
+
+#: inc/customizer.php:217
+msgid "Hide genre tiles"
+msgstr "پنهان کردن کاشی‌های ژانر"
+
+#: inc/customizer.php:218
+msgid "Hide bestsellers row"
+msgstr "پنهان کردن ردیف پرفروش‌ها"
+
+#: inc/customizer.php:219
+msgid "Hide new arrivals row"
+msgstr "پنهان کردن ردیف تازه‌ها"
+
+#: inc/customizer.php:220
+msgid "Hide quote band"
+msgstr "پنهان کردن نوار نقل‌قول"
+
+#: inc/customizer.php:221
+msgid "Quote text"
+msgstr "متن نقل‌قول"
+
+#: inc/customizer.php:222
+msgid "Quote attribution"
+msgstr "نام گوینده نقل‌قول"
+
+#: inc/customizer.php:223
+msgid "Hide testimonials"
+msgstr "پنهان کردن نظرهای مشتریان"
+
+#: inc/customizer.php:224
+msgid "Hide journal preview"
+msgstr "پنهان کردن پیش‌نمایش مجله"
+
+#: inc/customizer.php:225
+msgid "Hide newsletter band"
+msgstr "پنهان کردن نوار خبرنامه"
+
+#: inc/customizer.php:226
+msgid "Newsletter title"
+msgstr "عنوان خبرنامه"
+
+#: inc/customizer.php:227
+msgid "Newsletter text"
+msgstr "متن خبرنامه"
+
+#. translators: %d: tile number.
+#: inc/customizer.php:253
+msgid "Genre tile %d (product category)"
+msgstr "کاشی ژانر %d (دسته محصول)"
+
+#: inc/customizer.php:272
+msgid "Testimonial %d — quote"
+msgstr "نظر مشتری %d — متن"
+
+#: inc/customizer.php:284
+msgid "Testimonial %d — name"
+msgstr "نظر مشتری %d — نام"
+
+#: inc/customizer.php:296
+msgid "Footer"
+msgstr "پابرگ"
+
+#: inc/customizer.php:306
+msgid "About text (footer)"
+msgstr "متن درباره ما (پابرگ)"
+
+#: inc/customizer.php:319
+msgid "Copyright line"
+msgstr "متن حق نشر"
+
+#: inc/customizer.php:326
+msgid "Facebook URL"
+msgstr "نشانی فیسبوک"
+
+#: inc/customizer.php:327
+msgid "Instagram URL"
+msgstr "نشانی اینستاگرام"
+
+#: inc/customizer.php:328
+msgid "X / Twitter URL"
+msgstr "نشانی ایکس / توییتر"
+
+#: inc/demo-import.php:30, inc/demo-import.php:31
+msgid "Import Demo Content"
+msgstr "درون‌ریزی محتوای نمایشی"
+
+#: inc/demo-import.php:59
+msgid "Inkwell: WooCommerce is out of date."
+msgstr "اینک‌ول: ووکامرس قدیمی است."
+
+#. translators: %s: installed WC version.
+#: inc/demo-import.php:63
+msgid ""
+"You are running WooCommerce %s — the theme requires 8.0 or newer. Please "
+"update WooCommerce for the shop and product pages to work correctly."
+msgstr ""
+"نسخه ووکامرس شما %s است — این پوسته به نسخه ۸٫۰ یا جدیدتر نیاز دارد. برای "
+"کارکرد درست صفحه‌های فروشگاه و محصول، ووکامرس را به‌روزرسانی کنید."
+
+#: inc/demo-import.php:93
+msgid "Inkwell: your shop is empty."
+msgstr "اینک‌ول: فروشگاه شما خالی است."
+
+#: inc/demo-import.php:96
+msgid "Import demo content"
+msgstr "درون‌ریزی محتوای نمایشی"
+
+#: inc/demo-import.php:113, inc/demo-import.php:127
+msgid "Inkwell — Import Demo Content"
+msgstr "اینک‌ول — درون‌ریزی محتوای نمایشی"
+
+#: inc/demo-import.php:114
+msgid ""
+"WooCommerce must be installed and active before demo content can be "
+"imported."
+msgstr "پیش از درون‌ریزی محتوای نمایشی باید ووکامرس نصب و فعال باشد."
+
+#: inc/demo-import.php:133
+msgid "Demo content imported successfully!"
+msgstr "محتوای نمایشی با موفقیت درون‌ریزی شد!"
+
+#: inc/demo-import.php:144
+msgid ""
+"This imports the bundled sample store into your site — perfect for testing "
+"the theme before adding your own books:"
+msgstr ""
+"این کار فروشگاه نمونه همراه را به سایت شما می‌افزاید و برای آزمایش پوسته پیش"
+" از افزودن کتاب‌های خودتان مناسب است:"
+
+#: inc/demo-import.php:149
+msgid "with bios → author archive pages"
+msgstr "همراه با زندگی‌نامه ← صفحه‌های بایگانی نویسندگان"
+
+#: inc/demo-import.php:150
+msgid "3 journal posts, menus, widgets, pages &amp; default settings"
+msgstr "۳ نوشته مجله، فهرست‌ها، ابزارک‌ها، صفحه‌ها و تنظیمات پیش‌فرض"
+
+#: inc/demo-import.php:153
+msgid ""
+"The catalog import is safe to run again: marked demo products and media are "
+"reused, while an unrelated product that happens to share a demo SKU is "
+"skipped."
+msgstr ""
+"اجرای دوباره درون‌ریزی کاتالوگ امن است: محصولات و رسانه‌های نمایشی "
+"علامت‌گذاری‌شده دوباره استفاده می‌شوند و محصول نامرتبطی که شناسه SKU یکسان "
+"داشته باشد نادیده گرفته می‌شود."
+
+#: inc/demo-import.php:173
+msgid "View the shop"
+msgstr "مشاهده فروشگاه"
+
+#: inc/demo-import.php:176
+msgid "Import again"
+msgstr "درون‌ریزی دوباره"
+
+#: inc/demo-import.php:162
+msgid "Also apply the complete demo-site setup"
+msgstr "راه‌اندازی کامل سایت نمایشی نیز اعمال شود"
+
+#: inc/demo-import.php:164
+msgid ""
+"Optional: assigns a demo menu and sidebars, sets EUR currency, and selects "
+"the demo front page. Leave unchecked on an existing site."
+msgstr ""
+"اختیاری: فهرست و نوارهای کناری نمایشی را اختصاص می‌دهد، واحد پول را یورو "
+"می‌گذارد و صفحه نخست نمایشی را انتخاب می‌کند. در سایت موجود این گزینه را "
+"علامت نزنید."
+
+#: inc/demo-import.php:167
+msgid "Import demo content now"
+msgstr "همین حالا محتوای نمایشی را درون‌ریزی کنید"
+
+#: inc/demo-import.php:279
+msgid "My Account"
+msgstr "حساب کاربری من"
+
+#: inc/demo-import.php:429
+msgid "WooCommerce must be active before importing demo content."
+msgstr "پیش از درون‌ریزی محتوای نمایشی باید ووکامرس فعال باشد."
+
+#: inc/demo-import.php:436
+msgid "Could not read demo data. The theme files may be incomplete."
+msgstr "خواندن داده‌های نمایشی ممکن نشد. شاید فایل‌های پوسته ناقص باشند."
+
+#: inc/demo-import.php:486
+msgid "%d product categories created/updated"
+msgstr "%d دسته محصول ایجاد/به‌روزرسانی شد"
+
+#: inc/demo-import.php:614
+msgid "%d demo books created or updated"
+msgstr "%d کتاب نمایشی ایجاد یا به‌روزرسانی شد"
+
+#: inc/demo-import.php:616
+msgid ""
+"%d existing products skipped because their SKUs were not marked as demo "
+"content"
+msgstr ""
+"%d محصول موجود به‌دلیل علامت‌گذاری نشدن SKU آن‌ها به‌عنوان محتوای نمایشی "
+"نادیده گرفته شد"
+
+#: inc/demo-import.php:667
+msgid ""
+"Pages created (Home, Shop, My Account, About, Contact, Journal, Privacy)"
+msgstr ""
+"صفحه‌ها ایجاد شدند (خانه، فروشگاه، حساب کاربری من، درباره ما، تماس، مجله، "
+"حریم خصوصی)"
+
+#: inc/demo-import.php:739
+msgid "3 journal posts with covers"
+msgstr "۳ نوشته مجله همراه با تصویر جلد"
+
+#: inc/demo-import.php:900
+msgid ""
+"Complete demo-site setup skipped; existing menus, sidebars, currency and "
+"front-page settings were preserved"
+msgstr ""
+"راه‌اندازی کامل سایت نمایشی انجام نشد؛ فهرست‌ها، نوارهای کناری، واحد پول و "
+"تنظیمات صفحه نخست موجود حفظ شدند"
+
+#: inc/demo-import.php:848
+msgid "Dedicated demo navigation menu with genre dropdown assigned"
+msgstr "فهرست ناوبری ویژه نسخه نمایشی همراه با زیرمنوی ژانر اختصاص یافت"
+
+#: inc/demo-import.php:852, inc/demo-localization.php:41,
+#: template-parts/section-categories.php:50
+msgid "Genres"
+msgstr "ژانرها"
+
+#: inc/demo-import.php:853, inc/demo-localization.php:45
+msgid "Filter by price"
+msgstr "فیلتر بر اساس قیمت"
+
+#: inc/demo-import.php:854, inc/demo-localization.php:46
+msgid "Top rated"
+msgstr "بالاترین امتیاز"
+
+#: inc/demo-import.php:857, inc/demo-localization.php:47
+msgid "Recent posts"
+msgstr "نوشته‌های تازه"
+
+#: inc/demo-import.php:858, inc/demo-localization.php:48
+msgid "Journal categories"
+msgstr "دسته‌های مجله"
+
+#: inc/demo-import.php:868
+msgid ""
+"Empty shop and blog sidebars configured without replacing existing widgets"
+msgstr ""
+"نوارهای کناری خالی فروشگاه و وبلاگ بدون جایگزینی ابزارک‌های موجود پیکربندی "
+"شدند"
+
+#: inc/demo-import.php:898
+msgid "Store settings, front page & theme options applied"
+msgstr "تنظیمات فروشگاه، صفحه نخست و گزینه‌های پوسته اعمال شدند"
+
+#: inc/newsletter.php:41, inc/setup.php:136
+msgid "Please enter a valid email address."
+msgstr "لطفاً یک نشانی ایمیل معتبر وارد کنید."
+
+#: inc/newsletter.php:44, inc/setup.php:137
+msgid "Please agree to receive the newsletter."
+msgstr "لطفاً با دریافت خبرنامه موافقت کنید."
+
+#: inc/newsletter.php:54
+msgid "You are already subscribed — thank you!"
+msgstr "شما از قبل عضو هستید — سپاس!"
+
+#: inc/newsletter.php:65
+msgid "The local reading list is full. Please contact the store owner."
+msgstr "فهرست مطالعه محلی پر است. لطفاً با مدیر فروشگاه تماس بگیرید."
+
+#: inc/newsletter.php:82
+msgid "Welcome to the reading list!"
+msgstr "به فهرست مطالعه خوش آمدید!"
+
+#: inc/newsletter.php:112
+msgid "Thank you!"
+msgstr "سپاس!"
+
+#: inc/newsletter.php:115, inc/newsletter.php:191
+msgid "Too many attempts. Please try again later."
+msgstr "تلاش‌های بیش از حد. لطفاً بعداً دوباره امتحان کنید."
+
+#: inc/newsletter.php:189, inc/setup.php:134
+msgid "Thank you — you are on the list!"
+msgstr "سپاس — شما در فهرست هستید!"
+
+#: inc/newsletter.php:190
+msgid "Please check your email and consent, then try again."
+msgstr "لطفاً ایمیل و رضایت خود را بررسی کنید و دوباره تلاش کنید."
+
+#: inc/newsletter.php:192
+msgid ""
+"If that address was subscribed, it has been removed from the reading list."
+msgstr "اگر آن نشانی عضو بوده، از فهرست مطالعه حذف شده است."
+
+#: inc/newsletter.php:216
+msgid "Leave this field empty"
+msgstr "این فیلد را خالی بگذارید"
+
+#: inc/newsletter.php:218, inc/newsletter.php:247, inc/newsletter.php:296,
+#: inc/newsletter.php:366
+msgid "Email address"
+msgstr "نشانی ایمیل"
+
+#: inc/newsletter.php:219
+msgid "you@example.com"
+msgstr "you@example.com"
+
+#: inc/newsletter.php:220
+msgid "Subscribe"
+msgstr "عضویت"
+
+#: inc/newsletter.php:224
+msgid ""
+"I agree to receive the reading-list newsletter and can unsubscribe at any "
+"time."
+msgstr ""
+"موافقم خبرنامه فهرست مطالعه را دریافت کنم و هر زمان بخواهم می‌توانم لغو "
+"عضویت کنم."
+
+#: inc/newsletter.php:248
+msgid "Unsubscribe"
+msgstr "لغو عضویت"
+
+#: inc/newsletter.php:271, inc/newsletter.php:272, inc/newsletter.php:292
+msgid "Reading List"
+msgstr "فهرست مطالعه"
+
+#: inc/newsletter.php:293
+msgid "%d locally stored subscribers."
+msgstr "%d عضو به‌صورت محلی ذخیره شده است."
+
+#: inc/newsletter.php:294
+msgid "Export CSV"
+msgstr "برون‌بری CSV"
+
+#: inc/newsletter.php:296
+msgid "Subscribed at (UTC)"
+msgstr "زمان عضویت (UTC)"
+
+#: inc/newsletter.php:296
+msgid "Consent recorded"
+msgstr "رضایت ثبت شد"
+
+#: inc/newsletter.php:305
+msgid "Yes"
+msgstr "بله"
+
+#: inc/newsletter.php:305
+msgid "Legacy record"
+msgstr "رکورد قدیمی"
+
+#: inc/newsletter.php:299
+msgid "No local subscribers."
+msgstr "عضو محلی وجود ندارد."
+
+#: inc/newsletter.php:320
+msgid "You are not allowed to export this data."
+msgstr "اجازه برون‌بری این داده‌ها را ندارید."
+
+#: inc/newsletter.php:331
+msgid "Could not create the export."
+msgstr "ساخت فایل برون‌بری ممکن نشد."
+
+#: inc/newsletter.php:363
+msgid "Reading-list newsletter"
+msgstr "خبرنامه فهرست مطالعه"
+
+#: inc/newsletter.php:367
+msgid "Subscribed at"
+msgstr "زمان عضویت"
+
+#: inc/newsletter.php:398, inc/newsletter.php:408
+msgid "Inkwell newsletter"
+msgstr "خبرنامه اینک‌ول"
+
+#: inc/setup.php:49
+msgid "Primary Menu"
+msgstr "فهرست اصلی"
+
+#: inc/setup.php:50
+msgid "Footer — Shop"
+msgstr "پابرگ — فروشگاه"
+
+#: inc/setup.php:51
+msgid "Footer — Help"
+msgstr "پابرگ — راهنما"
+
+#: inc/setup.php:70
+msgid "Shop Sidebar"
+msgstr "نوار کناری فروشگاه"
+
+#: inc/setup.php:72
+msgid ""
+"Shown on the shop and product-category pages. Perfect for the Product "
+"Categories, Price Filter and On Sale widgets."
+msgstr ""
+"در صفحه‌های فروشگاه و دسته محصول نمایش داده می‌شود. مناسب ابزارک‌های "
+"دسته‌های محصول، فیلتر قیمت و فروش ویژه."
+
+#: inc/setup.php:82
+msgid "Blog Sidebar"
+msgstr "نوار کناری وبلاگ"
+
+#: inc/setup.php:84
+msgid "Shown on the journal archive and single posts."
+msgstr "در بایگانی مجله و نوشته‌های تکی نمایش داده می‌شود."
+
+#: inc/setup.php:135
+msgid "Something went wrong. Please try again."
+msgstr "مشکلی پیش آمد. لطفاً دوباره تلاش کنید."
+
+#: inc/setup.php:139
+msgid "Close menu"
+msgstr "بستن فهرست"
+
+#: inc/template-tags.php:116
+msgid "View cart"
+msgstr "مشاهده سبد خرید"
+
+#. translators: %d: number of items in cart.
+#: inc/template-tags.php:135
+msgid "Cart — %d item"
+msgid_plural "Cart — %d items"
+msgstr[0] "سبد خرید — %d مورد"
+msgstr[1] "سبد خرید — %d مورد"
+
+#: inc/template-tags.php:159
+msgid "View all"
+msgstr "مشاهده همه"
+
+#: inc/template-tags.php:230
+msgid "by"
+msgstr "نوشتهٔ"
+
+#: inc/woocommerce.php:48
+msgid "Sale"
+msgstr "فروش ویژه"
+
+#: inc/woocommerce.php:66
+msgid "Breadcrumb"
+msgstr "مسیر راهنما"
+
+#: inc/demo-localization.php:39, inc/woocommerce.php:69
+msgid "Home"
+msgstr "خانه"
+
+#: inc/woocommerce.php:171
+msgid "About the author"
+msgstr "درباره نویسنده"
+
+#: inc/woocommerce.php:176
+msgid "Browse all books by this author"
+msgstr "مشاهده همه کتاب‌های این نویسنده"
+
+#: inc/woocommerce.php:195
+msgid "More by this author"
+msgstr "کتاب‌های بیشتر از این نویسنده"
+
+#: inc/woocommerce.php:239
+msgid "Cover coming soon"
+msgstr "جلد به‌زودی افزوده می‌شود"
+
+#: inc/woocommerce.php:280
+msgid "No books found. Try widening your filters or search again."
+msgstr "کتابی پیدا نشد. فیلترها را گسترده‌تر کنید یا دوباره جستجو کنید."
+
+#: inc/woocommerce.php:378
+msgid "Bookshop"
+msgstr "کتاب‌فروشی"
+
+#: template-parts/content-none.php:9
+msgid "Nothing found"
+msgstr "چیزی پیدا نشد"
+
+#: template-parts/content-none.php:10
+msgid ""
+"There is no content here yet — check back soon, or try a different search."
+msgstr "هنوز محتوایی اینجا نیست — بعداً سر بزنید یا جستجوی دیگری انجام دهید."
+
+#: template-parts/content.php:22
+msgid "Read more"
+msgstr "بیشتر بخوانید"
+
+#: template-parts/hero.php:21
+msgid "The modern library"
+msgstr "کتابخانه مدرن"
+
+#: template-parts/hero.php:22
+msgid "Books worth <em>keeping</em>"
+msgstr "کتاب‌هایی که ارزش <em>نگه‌داشتن</em> دارند"
+
+#: template-parts/hero.php:23
+msgid ""
+"Hand-picked fiction, history, science and poetry — from modern classics to "
+"hidden gems, delivered with care."
+msgstr ""
+"داستان، تاریخ، علم و شعر دست‌چین — از کلاسیک‌های مدرن تا گوهرهای پنهان، با "
+"ارسال دقیق."
+
+#: template-parts/hero.php:24
+msgid "Shop bestsellers"
+msgstr "خرید پرفروش‌ها"
+
+#: inc/woocommerce.php:394, template-parts/hero.php:26
+msgid "Browse genres"
+msgstr "مرور ژانرها"
+
+#: template-parts/hero.php:105
+msgid "Staff picks"
+msgstr "انتخاب کارکنان"
+
+#: template-parts/section-bestsellers.php:20
+msgid "Reader favourites"
+msgstr "محبوب خوانندگان"
+
+#: template-parts/section-bestsellers.php:21
+msgid "Bestsellers"
+msgstr "پرفروش‌ها"
+
+#: template-parts/section-bestsellers.php:23,
+#: template-parts/section-categories.php:53, template-parts/section-new.php:23
+msgid "Shop all"
+msgstr "مشاهده همه کتاب‌ها"
+
+#: template-parts/section-blog.php:26
+msgid "From the journal"
+msgstr "از مجله"
+
+#: template-parts/section-blog.php:27
+msgid "Notes from the shelves"
+msgstr "یادداشت‌هایی از میان قفسه‌ها"
+
+#: template-parts/section-blog.php:29
+msgid "All journal posts"
+msgstr "همه نوشته‌های مجله"
+
+#: template-parts/section-categories.php:51
+msgid "Browse by genre"
+msgstr "مرور بر اساس ژانر"
+
+#. translators: %d: number of books.
+#: template-parts/section-categories.php:78
+msgid "%d book"
+msgid_plural "%d books"
+msgstr[0] "%d کتاب"
+msgstr[1] "%d کتاب"
+
+#: template-parts/section-new.php:20
+msgid "Fresh off the press"
+msgstr "تازه از چاپ رسیده"
+
+#: template-parts/section-new.php:21
+msgid "New arrivals"
+msgstr "تازه‌ها"
+
+#: template-parts/section-newsletter.php:14
+msgid "Join the reading list"
+msgstr "به فهرست مطالعه بپیوندید"
+
+#: template-parts/section-newsletter.php:17
+msgid ""
+"One thoughtful email a month: new arrivals, staff picks and member-only "
+"offers. No spam, unsubscribe anytime."
+msgstr ""
+"ماهی یک ایمیل خواندنی: تازه‌ها، انتخاب‌های کارکنان و پیشنهادهای ویژه اعضا. "
+"بدون هرزنامه؛ هر زمان خواستید لغو عضویت کنید."
+
+#: template-parts/section-newsletter.php:22
+msgid "Newsletter"
+msgstr "خبرنامه"
+
+#: template-parts/section-quote.php:14
+msgid ""
+"A reader lives a thousand lives before he dies. The man who never reads "
+"lives only one."
+msgstr ""
+"خواننده پیش از مرگ هزار زندگی را تجربه می‌کند. کسی که هرگز نمی‌خواند، تنها "
+"یک زندگی دارد."
+
+#: template-parts/section-quote.php:15
+msgid "George R.R. Martin"
+msgstr "جرج آر. آر. مارتین"
+
+#: template-parts/section-testimonials.php:25
+msgid "Word of mouth"
+msgstr "نقل دهان‌به‌دهان"
+
+#: template-parts/section-testimonials.php:25
+msgid "What readers say"
+msgstr "نظر خوانندگان"
+
+#: template-parts/section-testimonials.php:29
+msgid "Rated 5 out of 5"
+msgstr "امتیاز ۵ از ۵"
+
+#: template-parts/section-testimonials.php:41
+msgid "Verified reader"
+msgstr "خواننده تأییدشده"
+
+#: template-parts/section-valueprops.php:14
+msgid "Hand-picked selection"
+msgstr "گزینش دست‌چین"
+
+#: template-parts/section-valueprops.php:15
+msgid "Curated titles and honest recommendations."
+msgstr "عنوان‌های برگزیده و پیشنهادهای صادقانه."
+
+#: template-parts/section-valueprops.php:19
+msgid "Discover your next read"
+msgstr "کتاب بعدی خود را پیدا کنید"
+
+#: template-parts/section-valueprops.php:20
+msgid "Browse books by genre and author."
+msgstr "کتاب‌ها را بر اساس ژانر و نویسنده مرور کنید."
+
+#: template-parts/section-valueprops.php:28
+msgid "See checkout for availability and terms."
+msgstr "برای موجودی و شرایط، مرحله پرداخت را ببینید."
+
+#: template-parts/section-valueprops.php:31
+msgid "Order handling information from this store."
+msgstr "اطلاعات آماده‌سازی سفارش این فروشگاه."
+
+#: template-parts/section-valueprops.php:34
+msgid "See the store policy for full details."
+msgstr "برای جزئیات کامل، سیاست فروشگاه را ببینید."
+
+#: template-parts/section-valueprops.php:37
+msgid "Why shop with us"
+msgstr "چرا از ما خرید کنید"
+
+#: woocommerce/content-product.php:49
+msgid "New"
+msgstr "جدید"
+
+#: woocommerce/content-product.php:47
+msgid "Number %d bestseller"
+msgstr "پرفروش شماره %d"
+
+#: woocommerce/global/quantity-input.php:17
+msgid "Decrease quantity"
+msgstr "کاهش تعداد"
+
+#: woocommerce/global/quantity-input.php:57
+msgid "Increase quantity"
+msgstr "افزایش تعداد"
+
+#: woocommerce/single-product/meta.php:40
+msgid "Author:"
+msgstr "نویسنده:"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Ink"
+msgstr "جوهر"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Paper"
+msgstr "کاغذ"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Card"
+msgstr "کارت"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Emerald"
+msgstr "زمردی"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Dark emerald"
+msgstr "زمردی تیره"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Gold"
+msgstr "طلایی"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Display (Newsreader)"
+msgstr "نمایشی (Newsreader)"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Body (Inter)"
+msgstr "متن (Inter)"
+
+#: inc/customizer.php:122
+msgid "Hide storefront language switcher"
+msgstr "پنهان کردن انتخابگر زبان فروشگاه"
+
+#: inc/languages.php:249, inc/languages.php:250, inc/languages.php:292
+msgid "Inkwell Languages"
+msgstr "زبان‌های اینک‌ول"
+
+#: inc/languages.php:293
+msgid ""
+"Install the matching WordPress core pack, then activate a site-wide language"
+" or use the storefront switcher."
+msgstr ""
+"بسته زبان هسته وردپرس مربوط را نصب کنید، سپس زبان سراسری سایت را فعال کنید "
+"یا از انتخابگر زبان فروشگاه استفاده کنید."
+
+#: inc/languages.php:299
+msgid ""
+"The WordPress language pack could not be installed. Check filesystem "
+"permissions and outbound connections."
+msgstr ""
+"بسته زبان وردپرس نصب نشد. دسترسی‌های سامانه پرونده و اتصال‌های خروجی را "
+"بررسی کنید."
+
+#: inc/languages.php:297
+msgid "Site language activated."
+msgstr "زبان سایت فعال شد."
+
+#: inc/languages.php:295
+msgid "Language pack installed."
+msgstr "بسته زبان نصب شد."
+
+#: inc/languages.php:302
+msgid "Theme interface"
+msgstr "رابط پوسته"
+
+#: inc/languages.php:302
+msgid "WordPress core pack"
+msgstr "بسته هسته وردپرس"
+
+#: inc/languages.php:302
+msgid "Actions"
+msgstr "عملیات"
+
+#: inc/languages.php:308
+msgid "Bundled"
+msgstr "همراه"
+
+#: inc/languages.php:309
+msgid "Installed"
+msgstr "نصب‌شده"
+
+#: inc/languages.php:309
+msgid "Not installed"
+msgstr "نصب‌نشده"
+
+#: inc/languages.php:319
+msgid "Use as site language"
+msgstr "استفاده به‌عنوان زبان سایت"
+
+#: inc/languages.php:312
+msgid "Active"
+msgstr "فعال"
+
+#: inc/languages.php:328
+msgid "Install core language"
+msgstr "نصب زبان هسته"
+
+#: inc/languages.php:336
+msgid ""
+"For translated products and pages with language-specific URLs, install "
+"Polylang, WPML, or TranslatePress."
+msgstr ""
+"برای محصولات و صفحه‌های ترجمه‌شده با نشانی‌های ویژه هر زبان، Polylang، WPML "
+"یا TranslatePress را نصب کنید."
+
+#: inc/languages.php:346
+msgid "You are not allowed to install languages."
+msgstr "اجازه نصب زبان‌ها را ندارید."
+
+#: inc/demo-localization.php:43
+msgid "About"
+msgstr "درباره ما"
+
+#: inc/demo-localization.php:49
+msgid "Free shipping on orders over €25 — every book, everywhere."
+msgstr "ارسال رایگان برای سفارش‌های بالای ۲۵ یورو — هر کتاب، به هر کجا."
+
+#: inc/demo-localization.php:50
+msgid "There is no friend as loyal as a book."
+msgstr "هیچ دوستی وفادارتر از کتاب نیست."
+
+#: inc/demo-localization.php:51
+msgid ""
+"Ordered on Monday, reading on Wednesday. Beautifully packed and the "
+"recommendation note was a lovely touch."
+msgstr ""
+"دوشنبه سفارش دادم و چهارشنبه مشغول خواندن بودم. بسته‌بندی زیبا بود و یادداشت"
+" پیشنهاد کتاب حس دلنشینی داشت."
+
+#: inc/demo-localization.php:52
+msgid ""
+"Inkwell found me a long-out-of-print edition I had hunted for years. "
+"Customers for life."
+msgstr ""
+"اینک‌ول نسخه‌ای نایاب را که سال‌ها دنبالش بودم پیدا کرد. از این پس مشتری "
+"همیشگی‌ام."
+
+#: inc/demo-localization.php:53
+msgid ""
+"The genre tiles make browsing a joy, and the staff picks never miss. My book"
+" budget is not okay."
+msgstr ""
+"کاشی‌های ژانر مرور کتاب‌ها را لذت‌بخش کرده‌اند و انتخاب‌های کارکنان همیشه "
+"دقیق‌اند؛ البته بودجه کتابم دیگر حال خوبی ندارد!"
+
+#: inc/demo-localization.php:55
+msgid "Free shipping over €25"
+msgstr "ارسال رایگان برای خرید بالای ۲۵ یورو"
+
+#: inc/demo-localization.php:56
+msgid "In stock — usually ships within 24 hours"
+msgstr "موجود — معمولاً ظرف ۲۴ ساعت ارسال می‌شود"
+
+#: inc/demo-localization.php:57
+msgid "30-day returns"
+msgstr "امکان بازگشت تا ۳۰ روز"
+
+#: inc/demo-localization.php:111
+msgid "Fiction"
+msgstr "داستانی"
+
+#: inc/demo-localization.php:111
+msgid "Novels, classics and contemporary literary fiction."
+msgstr "رمان‌ها، آثار کلاسیک و ادبیات داستانی معاصر."
+
+#: inc/demo-localization.php:112
+msgid "Science Fiction & Fantasy"
+msgstr "علمی‌تخیلی و فانتزی"
+
+#: inc/demo-localization.php:112
+msgid "Other worlds, far futures and impossible magic."
+msgstr "جهان‌های دیگر، آینده‌های دور و جادوی ناممکن."
+
+#: inc/demo-localization.php:113
+msgid "Mystery & Thriller"
+msgstr "معمایی و دلهره‌آور"
+
+#: inc/demo-localization.php:113
+msgid "Whodunits, suspense and page-turning thrillers."
+msgstr "معماهای جنایی، تعلیق و داستان‌های نفس‌گیر."
+
+#: inc/demo-localization.php:114
+msgid "Non-Fiction"
+msgstr "غیرداستانی"
+
+#: inc/demo-localization.php:114
+msgid "Ideas, science, business and big questions."
+msgstr "اندیشه، علم، کسب‌وکار و پرسش‌های بزرگ."
+
+#: inc/demo-localization.php:115
+msgid "History & Biography"
+msgstr "تاریخ و زندگی‌نامه"
+
+#: inc/demo-localization.php:115
+msgid "True stories and the lives behind them."
+msgstr "روایت‌های واقعی و زندگی آدم‌های پشت آن‌ها."
+
+#: inc/demo-localization.php:116
+msgid "Children’s Books"
+msgstr "کتاب کودک"
+
+#: inc/demo-localization.php:116
+msgid "Picture books and first reads for young bookworms."
+msgstr "کتاب‌های تصویری و نخستین خواندنی‌ها برای کتاب‌خوان‌های کوچک."
+
+#: inc/demo-localization.php:117
+msgid "Poetry"
+msgstr "شعر"
+
+#: inc/demo-localization.php:117
+msgid "Verse, collections and poems to savour slowly."
+msgstr "شعر، مجموعه‌ها و سروده‌هایی برای خواندن آرام و باحوصله."
+
+#. translators: %s: Quantity.
+#: woocommerce/global/quantity-input.php:13
+msgid "%s quantity"
+msgstr "تعداد %s"
+
+#: woocommerce/global/quantity-input.php:13
+msgid "Quantity"
+msgstr "تعداد"
+
+#: woocommerce/global/quantity-input.php:34
+msgid "Product quantity"
+msgstr "تعداد محصول"
+
+#: woocommerce/single-product/meta.php:19
+msgid "SKU:"
+msgstr "شناسه محصول:"
+
+#: woocommerce/single-product/meta.php:19
+msgid "N/A"
+msgstr "موجود نیست"
+
+#: woocommerce/single-product/meta.php:43
+msgid "Category:"
+msgid_plural "Categories:"
+msgstr[0] "دسته:"
+msgstr[1] "دسته‌ها:"
+
+#: woocommerce/single-product/meta.php:45
+msgid "Tag:"
+msgid_plural "Tags:"
+msgstr[0] "برچسب:"
+msgstr[1] "برچسب‌ها:"
+
+#: inc/languages.php:272
+msgid "Inkwell language setup:"
+msgstr "راه‌اندازی زبان اینک‌ول:"
+
+#: inc/languages.php:273
+msgid ""
+"Install the Persian and Sorani WordPress packs to translate core and "
+"WooCommerce strings as well as the theme."
+msgstr ""
+"برای ترجمه متن‌های هسته و ووکامرس همراه پوسته، بسته‌های وردپرس فارسی و "
+"سورانی را نصب کنید."
+
+#: inc/languages.php:274
+msgid "Manage languages"
+msgstr "مدیریت زبان‌ها"
+
+#: sidebar.php:16
+msgid "Refine your shelf"
+msgstr "انتخابتان را دقیق‌تر کنید"
+
+#: sidebar.php:17
+msgid "Close filters"
+msgstr "بستن فیلترها"
+
+#: inc/woocommerce.php:384
+msgid ""
+"Explore thoughtful books, timeless classics and your next unexpected "
+"favourite."
+msgstr ""
+"کتاب‌های اندیشمندانه، آثار کلاسیک ماندگار و محبوب غیرمنتظره بعدی‌تان را کشف "
+"کنید."
+
+#: inc/woocommerce.php:388
+msgid "Find a book"
+msgstr "کتابی پیدا کنید"
+
+#: inc/woocommerce.php:421
+msgid "Filters"
+msgstr "فیلترها"
+
+#: template-parts/hero.php:67
+msgid "Search the collection"
+msgstr "جستجو در مجموعه"
+
+#: template-parts/hero.php:68
+msgid "Search by title or author…"
+msgstr "جستجو بر اساس عنوان یا نویسنده…"
+
+#: inc/demo-import.php:94
+msgid ""
+"Seed it with the bundled fictional Kurdish catalog (33 books, 7 genres, 27 "
+"authors, reviews, menus and pages) in one click."
+msgstr ""
+"با یک کلیک فروشگاه را با کاتالوگ ساختگی کردی همراه (۳۳ کتاب، ۷ ژانر، ۲۷ "
+"نویسنده، نقدها، فهرست‌ها و صفحه‌ها) پر کنید."
+
+#: inc/demo-import.php:147
+msgid ""
+"fictional Sorani books with original covers, demo metadata, sale prices and "
+"featured flags"
+msgstr ""
+"کتاب‌های ساختگی سورانی با جلدهای اصیل، فراداده نمایشی، قیمت فروش ویژه و "
+"نشان‌های برگزیده"
+
+#: inc/demo-import.php:148
+msgid ""
+"(Kurdish fiction, science fiction and fantasy, mystery, non-fiction, "
+"history, children’s books and poetry)"
+msgstr ""
+"(داستان کردی، علمی‌تخیلی و فانتزی، معمایی، غیرداستانی، تاریخ، کتاب کودک و "
+"شعر)"
+
+#: inc/demo-import.php:454
+msgid "%d retired demo products replaced with fictional Kurdish books"
+msgstr "%d محصول نمایشی قدیمی با کتاب‌های ساختگی کردی جایگزین شد"
+
+#: inc/demo-import.php:533
+msgid "%d fictional Kurdish authors with bios"
+msgstr "%d نویسنده ساختگی کردی همراه با زندگی‌نامه"
+
+#: inc/demo-import.php:792
+msgid "14 fictional Kurdish demo reviews with ratings"
+msgstr "۱۴ نقد نمایشی ساختگی کردی همراه با امتیاز"
+
+#: inc/demo-import.php:442
+msgid "The fictional Kurdish catalog is incomplete and was not imported."
+msgstr "کاتالوگ ساختگی کردی ناقص است و درون‌ریزی نشد."
+
+#: inc/demo-import.php:78
+msgid "Inkwell: retired demo catalog detected."
+msgstr "اینک‌ول: کاتالوگ نمایشی قدیمی شناسایی شد."
+
+#: inc/demo-import.php:79
+msgid ""
+"Run the importer again to safely replace only the old demo products with "
+"fictional Kurdish books."
+msgstr ""
+"درون‌ریز را دوباره اجرا کنید تا فقط محصولات نمایشی قدیمی با کتاب‌های ساختگی "
+"کردی جایگزین شوند."
+
+#: inc/demo-import.php:80
+msgid "Replace demo catalog"
+msgstr "جایگزینی کاتالوگ نمایشی"

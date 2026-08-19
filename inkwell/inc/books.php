@@ -237,8 +237,8 @@ function inkwell_search_by_author( $search, $query ) {
 	$term = $wpdb->esc_like( $query->get( 's' ) );
 	$like = '%' . $term . '%';
 
-	$search .= $wpdb->prepare(
-		" OR EXISTS (
+	$author_clause = $wpdb->prepare(
+		"EXISTS (
 			SELECT 1 FROM {$wpdb->term_relationships} tr
 			INNER JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
 			INNER JOIN {$wpdb->terms} t ON tt.term_id = t.term_id
@@ -249,7 +249,26 @@ function inkwell_search_by_author( $search, $query ) {
 		$like
 	);
 
-	return $search;
+	/*
+	 * WP_Query returns a search fragment beginning with AND and, for logged-out
+	 * visitors, ending with a password condition. Put the author match inside
+	 * the same parenthesized search expression so the OR cannot escape later
+	 * post-type or post-status constraints.
+	 */
+	$password_clause = "AND ({$wpdb->posts}.post_password = '')";
+	$expression      = trim( $search );
+	$password        = '';
+	if ( strlen( $expression ) >= strlen( $password_clause ) && $password_clause === substr( $expression, -strlen( $password_clause ) ) ) {
+		$expression = trim( substr( $expression, 0, -strlen( $password_clause ) ) );
+		$password   = ' ' . $password_clause;
+	}
+	$expression = preg_replace( '/^AND\s+/i', '', $expression );
+
+	if ( ! $expression ) {
+		return $search;
+	}
+
+	return ' AND ( (' . $expression . ') OR ' . $author_clause . ' )' . $password . ' ';
 }
 add_filter( 'posts_search', 'inkwell_search_by_author', 10, 2 );
 

@@ -34,6 +34,13 @@ defined( 'ABSPATH' ) || exit;
 	echo '</span>';
 
 	/**
+	 * Hook: woocommerce_shop_loop_subcategory_title.
+	 *
+	 * The core title is rendered above; extension callbacks still run here.
+	 */
+	do_action( 'woocommerce_shop_loop_subcategory_title', $category );
+
+	/**
 	 * Hook: woocommerce_after_subcategory_title.
 	 */
 	do_action( 'woocommerce_after_subcategory_title', $category );

@@ -15,8 +15,8 @@
 </head>
 
 <body <?php body_class(); ?>>
-<script>document.documentElement.classList.add('inkwell-js');</script>
 <?php wp_body_open(); ?>
+<script>document.documentElement.classList.add('inkwell-js');</script>
 
 <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'inkwell' ); ?></a>
 
@@ -32,8 +32,8 @@
 	<header id="masthead" class="site-header" data-header>
 		<div class="container header-inner">
 
-			<button class="menu-toggle" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu">
-				<span class="screen-reader-text"><?php esc_html_e( 'Open menu', 'inkwell' ); ?></span>
+				<button class="menu-toggle" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu">
+					<span class="screen-reader-text" data-menu-label><?php esc_html_e( 'Open menu', 'inkwell' ); ?></span>
 				<span data-icon-open><?php echo inkwell_icon( 'menu' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
 				<span data-icon-close style="display:none"><?php echo inkwell_icon( 'close' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
 			</button>
@@ -56,6 +56,7 @@
 			</nav>
 
 			<div class="header-actions">
+				<?php inkwell_language_switcher(); ?>
 				<button class="header-action" data-search-toggle aria-expanded="false" aria-controls="search-panel">
 					<span class="screen-reader-text"><?php esc_html_e( 'Search', 'inkwell' ); ?></span>
 					<?php echo inkwell_icon( 'search' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
@@ -65,7 +66,7 @@
 				<?php if ( function_exists( 'WC' ) && function_exists( 'woocommerce_mini_cart' ) ) : ?>
 					<div class="cart-toggle-wrap" data-cart-wrap>
 						<?php inkwell_cart_link(); ?>
-						<div class="mini-cart-panel" role="dialog" aria-label="<?php esc_attr_e( 'Shopping cart', 'inkwell' ); ?>">
+						<div id="inkwell-mini-cart" class="mini-cart-panel" role="region" aria-label="<?php esc_attr_e( 'Shopping cart', 'inkwell' ); ?>">
 							<div class="widget_shopping_cart_content">
 								<?php woocommerce_mini_cart(); ?>
 							</div>
@@ -95,6 +96,7 @@
 				)
 			);
 			?>
+			<div class="mobile-language-switcher"><?php inkwell_language_switcher(); ?></div>
 			<div class="mobile-menu-actions">
 				<?php inkwell_cart_total(); ?>
 				<a class="button button--ghost" href="<?php echo esc_url( function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'myaccount' ) : wp_login_url() ); ?>">

@@ -1,0 +1,275 @@
+# Sorani Kurdish translation for Inkwell.
+# Copyright (C) 2026 Inkwell Studio
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Inkwell Books 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/smohamadth/Bookstore_WC/issues\n"
+"POT-Creation-Date: 2026-08-17 00:00+0000\n"
+"PO-Revision-Date: 2026-08-17 00:00+0000\n"
+"Last-Translator: Inkwell Studio\n"
+"Language-Team: Sorani Kurdish\n"
+"Language: ckb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Inkwell translation build\n"
+"X-Inkwell-Template-SHA256: 4e24e980c3906e2b68b565c902a740c9d82ea7238283a2d59313d50d5f3d50fd\n"
+
+#: inkwell-books.php:3
+msgid "Inkwell Books"
+msgstr "کتێبەکانی ئینکوێڵ"
+
+#: inkwell-books.php:4
+msgid "https://github.com/smohamadth/Bookstore_WC"
+msgstr "https://github.com/smohamadth/Bookstore_WC"
+
+#: inkwell-books.php:5
+msgid ""
+"Portable book-author metadata and privacy-aware reading-list features for "
+"the Inkwell WooCommerce theme."
+msgstr ""
+"مێتاداتای گواستنەوەی نووسەری کتێب و تایبەتمەندییەکانی لیستی خوێندنەوە بە "
+"پاراستنی تایبەتمەندی بۆ ڕووکاری وۆکامێرسی ئینکوێڵ."
+
+#: inkwell-books.php:10
+msgid "Inkwell Studio"
+msgstr "ستۆدیۆی ئینکوێڵ"
+
+#: inkwell-books.php:11
+msgid "https://github.com/smohamadth"
+msgstr "https://github.com/smohamadth"
+
+#: inkwell-books.php:42
+msgid "Inkwell Books requires WooCommerce to manage book products."
+msgstr ""
+"کتێبەکانی ئینکوێڵ بۆ بەڕێوەبردنی بەرهەمە کتێبییەکان پێویستی بە وۆکامێرس "
+"هەیە."
+
+#: includes/books.php:17
+msgid "Book Authors"
+msgstr "نووسەرانی کتێب"
+
+#: includes/books.php:18
+msgid "Book Author"
+msgstr "نووسەری کتێب"
+
+#: includes/books.php:19
+msgid "Search Authors"
+msgstr "گەڕان بەدوای نووسەران"
+
+#: includes/books.php:20
+msgid "All Authors"
+msgstr "هەموو نووسەران"
+
+#: includes/books.php:21
+msgid "Edit Author"
+msgstr "دەستکاریکردنی نووسەر"
+
+#: includes/books.php:22
+msgid "Update Author"
+msgstr "نوێکردنەوەی نووسەر"
+
+#: includes/books.php:23
+msgid "Add New Author"
+msgstr "زیادکردنی نووسەری نوێ"
+
+#: includes/books.php:24
+msgid "New Author Name"
+msgstr "ناوی نووسەری نوێ"
+
+#: includes/books.php:25
+msgid "Authors"
+msgstr "نووسەران"
+
+#: includes/books.php:52
+msgid "ISBN-13"
+msgstr "ISBN-13"
+
+#: includes/books.php:57
+msgid "Publisher"
+msgstr "بڵاوکەرەوە"
+
+#: includes/books.php:61
+msgid "Publication Year"
+msgstr "ساڵی بڵاوکردنەوە"
+
+#: includes/books.php:65
+msgid "Pages"
+msgstr "ژمارەی پەڕەکان"
+
+#: includes/books.php:69
+msgid "Format"
+msgstr "جۆری بەرگ"
+
+#: includes/books.php:72
+msgid "— Select —"
+msgstr "— هەڵبژێرە —"
+
+#: includes/books.php:73
+msgid "Paperback"
+msgstr "بەرگی نەرم"
+
+#: includes/books.php:74
+msgid "Hardcover"
+msgstr "بەرگی ڕەق"
+
+#: includes/books.php:75
+msgid "Ebook"
+msgstr "کتێبی ئەلیکترۆنی"
+
+#: includes/books.php:76
+msgid "Audiobook"
+msgstr "کتێبی دەنگی"
+
+#: includes/books.php:80
+msgid "Language"
+msgstr "زمان"
+
+#: includes/books.php:94
+msgid "Book Details"
+msgstr "وردەکارییەکانی کتێب"
+
+#: includes/books.php:138
+msgid ""
+"Bibliographic details shown on the product page and in the Book Details tab."
+" The Author field is managed from the Authors box."
+msgstr ""
+"زانیارییە کتێبناسییەکان لە پەڕەی بەرهەم و تابی «وردەکارییەکانی کتێب» پیشان "
+"دەدرێن. خانەی نووسەر لە بۆکسی نووسەران بەڕێوە دەبرێت."
+
+#: includes/books.php:186
+msgid "Author"
+msgstr "نووسەر"
+
+#: includes/books.php:187
+msgid "ISBN"
+msgstr "ISBN"
+
+#: includes/newsletter.php:41
+msgid "Please enter a valid email address."
+msgstr "تکایە ناونیشانی ئیمەیڵێکی دروست بنووسە."
+
+#: includes/newsletter.php:44
+msgid "Please agree to receive the newsletter."
+msgstr "تکایە بە وەرگرتنی هەواڵنامە ڕازی بە."
+
+#: includes/newsletter.php:54
+msgid "You are already subscribed — thank you!"
+msgstr "پێشتر ئەندام بوویت — سوپاس!"
+
+#: includes/newsletter.php:65
+msgid "The local reading list is full. Please contact the store owner."
+msgstr "لیستی خوێندنەوەی ناوخۆیی پڕە. تکایە پەیوەندی بە خاوەنی فرۆشگاوە بکە."
+
+#: includes/newsletter.php:82
+msgid "Welcome to the reading list!"
+msgstr "بەخێربێیت بۆ لیستی خوێندنەوە!"
+
+#: includes/newsletter.php:112
+msgid "Thank you!"
+msgstr "سوپاس!"
+
+#: includes/newsletter.php:115, includes/newsletter.php:191
+msgid "Too many attempts. Please try again later."
+msgstr "هەوڵی زۆر دراوە. تکایە دواتر دووبارە هەوڵ بدە."
+
+#: includes/newsletter.php:189
+msgid "Thank you — you are on the list!"
+msgstr "سوپاس — لە لیستەکەدایت!"
+
+#: includes/newsletter.php:190
+msgid "Please check your email and consent, then try again."
+msgstr "تکایە ئیمەیڵ و ڕەزامەندییەکەت بپشکنە و دووبارە هەوڵ بدە."
+
+#: includes/newsletter.php:192
+msgid ""
+"If that address was subscribed, it has been removed from the reading list."
+msgstr "ئەگەر ئەو ناونیشانە ئەندام بووبێت، لە لیستی خوێندنەوە سڕاوەتەوە."
+
+#: includes/newsletter.php:216
+msgid "Leave this field empty"
+msgstr "ئەم خانەیە بەتاڵ بهێڵەوە"
+
+#: includes/newsletter.php:218, includes/newsletter.php:247,
+#: includes/newsletter.php:296, includes/newsletter.php:366
+msgid "Email address"
+msgstr "ناونیشانی ئیمەیڵ"
+
+#: includes/newsletter.php:219
+msgid "you@example.com"
+msgstr "you@example.com"
+
+#: includes/newsletter.php:220
+msgid "Subscribe"
+msgstr "ئەندامبوون"
+
+#: includes/newsletter.php:224
+msgid ""
+"I agree to receive the reading-list newsletter and can unsubscribe at any "
+"time."
+msgstr ""
+"ڕازیم هەواڵنامەی لیستی خوێندنەوە وەربگرم و هەر کاتێک بمەوێت بتوانم ئەندامێتی"
+" هەڵبوەشێنمەوە."
+
+#: includes/newsletter.php:226
+msgid "Privacy policy"
+msgstr "سیاسەتی تایبەتمەندی"
+
+#: includes/newsletter.php:248
+msgid "Unsubscribe"
+msgstr "هەڵوەشاندنەوەی ئەندامێتی"
+
+#: includes/newsletter.php:271, includes/newsletter.php:272,
+#: includes/newsletter.php:292
+msgid "Reading List"
+msgstr "لیستی خوێندنەوە"
+
+#: includes/newsletter.php:293
+msgid "%d locally stored subscribers."
+msgstr "%d ئەندامی ناوخۆیی پاشەکەوت کراوە."
+
+#: includes/newsletter.php:294
+msgid "Export CSV"
+msgstr "هەناردەکردنی CSV"
+
+#: includes/newsletter.php:296
+msgid "Subscribed at (UTC)"
+msgstr "کاتی ئەندامبوون (UTC)"
+
+#: includes/newsletter.php:296
+msgid "Consent recorded"
+msgstr "ڕەزامەندی تۆمار کرا"
+
+#: includes/newsletter.php:305
+msgid "Yes"
+msgstr "بەڵێ"
+
+#: includes/newsletter.php:305
+msgid "Legacy record"
+msgstr "تۆماری کۆن"
+
+#: includes/newsletter.php:299
+msgid "No local subscribers."
+msgstr "هیچ ئەندامێکی ناوخۆیی نییە."
+
+#: includes/newsletter.php:320
+msgid "You are not allowed to export this data."
+msgstr "ڕێگەت پێنەدراوە ئەم داتایە هەناردە بکەیت."
+
+#: includes/newsletter.php:331
+msgid "Could not create the export."
+msgstr "دروستکردنی فایلە هەناردەکراوەکە نەکرا."
+
+#: includes/newsletter.php:363
+msgid "Reading-list newsletter"
+msgstr "هەواڵنامەی لیستی خوێندنەوە"
+
+#: includes/newsletter.php:367
+msgid "Subscribed at"
+msgstr "کاتی ئەندامبوون"
+
+#: includes/newsletter.php:398, includes/newsletter.php:408
+msgid "Inkwell newsletter"
+msgstr "هەواڵنامەی ئینکوێڵ"

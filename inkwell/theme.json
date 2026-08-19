@@ -9,20 +9,20 @@
 		},
 		"color": {
 			"palette": [
-				{ "slug": "ink", "name": "Ink", "color": "#23272f" },
-				{ "slug": "paper", "name": "Paper", "color": "#faf7f0" },
-				{ "slug": "card", "name": "Card", "color": "#ffffff" },
-				{ "slug": "accent", "name": "Accent", "color": "#b4532a" },
-				{ "slug": "accent-dark", "name": "Accent dark", "color": "#8f3d1e" },
-				{ "slug": "gold", "name": "Gold", "color": "#d9a441" }
+				{ "slug": "ink", "name": "Ink", "color": "#20242c" },
+				{ "slug": "paper", "name": "Paper", "color": "#f6f1e6" },
+				{ "slug": "card", "name": "Card", "color": "#fffdf8" },
+				{ "slug": "accent", "name": "Emerald", "color": "#2e6b52" },
+				{ "slug": "accent-dark", "name": "Dark emerald", "color": "#21503d" },
+				{ "slug": "gold", "name": "Gold", "color": "#c9972e" }
 			]
 		},
 		"typography": {
 			"fontFamilies": [
 				{
-					"fontFamily": "'Fraunces', Georgia, 'Times New Roman', serif",
+					"fontFamily": "'Newsreader', Georgia, 'Times New Roman', serif",
 					"slug": "display",
-					"name": "Display (Fraunces)"
+					"name": "Display (Newsreader)"
 				},
 				{
 					"fontFamily": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
@@ -34,8 +34,8 @@
 	},
 	"styles": {
 		"color": {
-			"background": "#faf7f0",
-			"text": "#23272f"
+			"background": "#f6f1e6",
+			"text": "#20242c"
 		}
 	}
 }

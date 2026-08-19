@@ -47,7 +47,8 @@ humanist sans (Inter). Quiet, premium, readable.
 1. **Classic PHP theme** (not block theme): maximum WooCommerce compatibility,
    works on every host, familiar to customize, no site-editor dependency.
 2. **WooCommerce template overrides** copied from the exact installed WC version
-   (11.0.1) and modified — guarantees zero "outdated template" warnings.
+   (11.0.1) and modified — upstream template versions are retained so future
+   WooCommerce status checks remain meaningful.
 3. **Book domain modeled the WooCommerce way:**
    - `book_author` — custom *taxonomy* → author archive pages with bio (term description).
    - **Book Details** product-data panel — meta fields: ISBN, Publisher, Year, Pages, Format, Language.
@@ -100,7 +101,7 @@ humanist sans (Inter). Quiet, premium, readable.
 - [x] 404 page with search, SEO-ready markup, `theme.json`, print styles
 - [x] `inkwell.pot` translation template (text domain `inkwell`)
 
-### Demo content (demo-content/ + tools/)
+### Demo content (inkwell/demo/ + tools/)
 - [x] 6 genres, 14 books with real meta, sale prices, featured flags
 - [x] Typographic cover art generated locally (no copyrighted imagery)
 - [x] Pages (Home/Shop/About/Contact/Journal), menus, blog posts, reviews
@@ -127,7 +128,7 @@ inkwell/                        ← the theme (installable as inkwell.zip)
 ├── taxonomy-book_author.php comments.php 404.php woocommerce.php
 ├── template-parts/             content, hero, 8 front-page sections
 ├── woocommerce/                overrides cloned from WC 11.0.1 + edits
-├── assets/logo.svg, hero.jpg, screenshot.png
+├── screenshot.png + assets/fonts/ and cover-fallback.png
 ├── theme.json  languages/inkwell.pot
 ```
 
@@ -149,7 +150,7 @@ inkwell/                        ← the theme (installable as inkwell.zip)
 ## 7. Deliverables
 
 1. `inkwell/` theme source + `inkwell.zip` (ready for Appearance → Themes → Upload)
-2. `demo-content/` — covers, posts, one-command import script
+2. `inkwell/demo/` — catalog data and generated covers
 3. `README.md` — overview, quick start, structure
 4. `SETUP.md` — full install, customizer tour, translation, troubleshooting
 5. This plan document
@@ -169,7 +170,7 @@ Executed 2026-08-14:
 - **Single product:** sticky summary, in-stock chip, trust chips, "More by this author"
   strip (same-taxonomy query).
 - **Checkout:** two-column layout via CSS (billing | order review), cart 2-col grid.
-- **Catalog:** 17 → **33 books**, new **Poetry** genre, 19 authors, 14 reviews;
+- **Catalog:** 17 → **33 books**, new **Poetry** genre, 27 fictional Kurdish authors, 14 reviews;
   staggered post dates (9-day gaps, newest last); band-style covers for variety;
   reviews dedupe + deterministic dates → importer fully idempotent.
 

@@ -29,6 +29,9 @@ function inkwell_icon( $name ) {
 		'shield' => '<path d="M12 2l8 3v6c0 5-3.5 9.5-8 11-4.5-1.5-8-6-8-11V5z"/><path d="M9 12l2 2 4-4"/>',
 		'return'=> '<path d="M4 10h13a5 5 0 010 10h-6"/><path d="M8 6L4 10l4 4"/>',
 		'check' => '<path d="M4 12.5l5 5L20 6.5"/>',
+		'globe' => '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/>',
+		'chevron-down' => '<path d="M6 9l6 6 6-6"/>',
+		'filter' => '<path d="M4 6h16M7 12h10M10 18h4"/>',
 		'quote' => '<path d="M9 6c-3 1-5 3.5-5 7v5h6v-6H6.5C6.5 9.5 8 8 10 7.5zM20 6c-3 1-5 3.5-5 7v5h6v-6h-3.5c0-2.5 1.5-4 3.5-4.5z"/>',
 		'star'  => '<path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z"/>',
 		'facebook' => '<path d="M14 8h2.5V4.8H14c-2.2 0-3.6 1.5-3.6 3.8V11H8v3.2h2.4V21h3.2v-6.8h2.6l.4-3.2h-3v-1.7c0-.9.2-1.3 1.4-1.3z" fill="currentColor" stroke="none"/>',
@@ -42,6 +45,23 @@ function inkwell_icon( $name ) {
 }
 
 /**
+ * Return the first character without requiring the optional mbstring extension.
+ *
+ * @param string $text Input text.
+ * @return string
+ */
+function inkwell_first_character( $text ) {
+	$text = wp_strip_all_tags( (string) $text );
+	if ( function_exists( 'mb_substr' ) ) {
+		return mb_substr( $text, 0, 1 );
+	}
+	if ( preg_match( '/^./us', $text, $match ) ) {
+		return $match[0];
+	}
+	return substr( $text, 0, 1 );
+}
+
+/**
  * Site logo: custom logo if set, else the inline wordmark.
  */
 function inkwell_logo() {
@@ -51,12 +71,12 @@ function inkwell_logo() {
 	}
 	?>
 	<a class="site-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
-		<svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-			<path d="M10 6h22a4 4 0 014 4v30H14a4 4 0 01-4-4z" fill="#b4532a" opacity="0.16"/>
-			<path d="M10 6h22a4 4 0 014 4v30H14a4 4 0 01-4-4z" stroke="#b4532a" stroke-width="2.4" stroke-linejoin="round"/>
-			<path d="M10 40a4 4 0 014-4h26" stroke="#b4532a" stroke-width="2.4" stroke-linecap="round"/>
-			<path d="M18 14h12M18 20h12M18 26h7" stroke="#23272f" stroke-width="2.4" stroke-linecap="round"/>
-		</svg>
+			<svg class="site-logo-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+				<path d="M10 6h22a4 4 0 014 4v30H14a4 4 0 01-4-4z" fill="currentColor" opacity="0.16"/>
+				<path d="M10 6h22a4 4 0 014 4v30H14a4 4 0 01-4-4z" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+				<path d="M10 40a4 4 0 014-4h26" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+				<path class="site-logo-lines" d="M18 14h12M18 20h12M18 26h7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+			</svg>
 		<span class="site-title">
 			<?php bloginfo( 'name' ); ?>
 			<small><?php echo esc_html( get_bloginfo( 'description' ) ); ?></small>
@@ -89,10 +109,9 @@ function inkwell_cart_link() {
 		return;
 	}
 	$count = WC()->cart ? WC()->cart->get_cart_contents_count() : 0;
-	$total = WC()->cart ? WC()->cart->get_cart_subtotal() : '';
 
 	printf(
-		'<a class="header-action" href="%s" aria-label="%s">%s<span class="cart-count inkwell-cart-count">%d</span></a>',
+		'<a class="header-action" href="%s" aria-label="%s" aria-controls="inkwell-mini-cart" aria-expanded="false">%s<span class="cart-count inkwell-cart-count">%d</span></a>',
 		esc_url( wc_get_cart_url() ),
 		esc_attr__( 'View cart', 'inkwell' ),
 		inkwell_icon( 'cart' ), // phpcs:ignore WordPress.Security.EscapeOutput
@@ -101,20 +120,30 @@ function inkwell_cart_link() {
 }
 
 /**
+ * Mobile cart link markup. The element is always present so WooCommerce cart
+ * fragments can replace it when the first item is added.
+ *
+ * @return string
+ */
+function inkwell_mobile_cart_link_html() {
+	if ( ! function_exists( 'WC' ) || ! WC()->cart ) {
+		return '';
+	}
+	$count = WC()->cart->get_cart_contents_count();
+	$label = sprintf(
+		/* translators: %d: number of items in cart. */
+		_n( 'Cart — %d item', 'Cart — %d items', $count, 'inkwell' ),
+		$count
+	);
+
+	return '<a class="button inkwell-mobile-total" href="' . esc_url( wc_get_cart_url() ) . '">' . esc_html( $label ) . '</a>';
+}
+
+/**
  * Mini "cart total" chip shown in the mobile menu.
  */
 function inkwell_cart_total() {
-	if ( ! function_exists( 'WC' ) || ! WC()->cart ) {
-		return;
-	}
-	$count = WC()->cart->get_cart_contents_count();
-	if ( 0 === $count ) {
-		return;
-	}
-	echo '<a class="button" href="' . esc_url( wc_get_cart_url() ) . '">' . esc_html(
-		/* translators: %d: number of items in cart. */
-		sprintf( _n( 'Cart — %d item', 'Cart — %d items', $count, 'inkwell' ), $count )
-	) . '</a>';
+	echo inkwell_mobile_cart_link_html(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
 
 /**
@@ -130,10 +159,12 @@ function inkwell_section_header( $eyebrow, $title, $link = '', $link_label = '' 
 		$link_label = __( 'View all', 'inkwell' );
 	}
 	echo '<div class="section-head" data-reveal>';
+	echo '<div class="section-head__copy">';
 	if ( $eyebrow ) {
 		echo '<span class="eyebrow">' . esc_html( $eyebrow ) . '</span>';
 	}
 	echo '<h2>' . esc_html( $title ) . '</h2>';
+	echo '</div>';
 	if ( $link ) {
 		echo '<a class="section-link" href="' . esc_url( $link ) . '">' . esc_html( $link_label ) . ' ' . inkwell_icon( 'arrow' ) . '</a>'; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
@@ -214,7 +245,10 @@ function inkwell_mod( $key, $default = '' ) {
  * Menu fallback when no menu is assigned.
  */
 function inkwell_menu_fallback() {
-	echo '<ul id="primary-menu" class="menu">';
+	static $instance = 0;
+	$instance++;
+	$id = 1 === $instance ? 'primary-menu-fallback' : 'mobile-menu-fallback';
+	echo '<ul id="' . esc_attr( $id ) . '" class="menu">';
 	wp_list_pages(
 		array(
 			'title_li' => '',
@@ -242,7 +276,7 @@ function inkwell_render_products_row( $products, $limit = 8, $ranked = false ) {
 		return;
 	}
 
-	echo '<div class="products-row">';
+	echo '<ul class="products products-row">';
 
 	$old_post = $GLOBALS['post'] ?? null;
 	$old      = $GLOBALS['product'] ?? null;
@@ -270,7 +304,7 @@ function inkwell_render_products_row( $products, $limit = 8, $ranked = false ) {
 	unset( $GLOBALS['inkwell_loop_rank'] );
 	woocommerce_reset_loop();
 
-	echo '</div>';
+	echo '</ul>';
 }
 
 /**
@@ -279,6 +313,11 @@ function inkwell_render_products_row( $products, $limit = 8, $ranked = false ) {
  * @return array
  */
 function inkwell_get_bestsellers() {
+	static $products = null;
+	if ( null !== $products ) {
+		return $products;
+	}
+
 	$products = wc_get_products(
 		array(
 			'status'   => 'publish',
@@ -307,12 +346,16 @@ function inkwell_get_bestsellers() {
  * @return array
  */
 function inkwell_get_new_arrivals() {
-	return wc_get_products(
-		array(
-			'status'  => 'publish',
-			'limit'   => 8,
-			'orderby' => 'date',
-			'order'   => 'DESC',
-		)
-	);
+	static $products = null;
+	if ( null === $products ) {
+		$products = wc_get_products(
+			array(
+				'status'  => 'publish',
+				'limit'   => 8,
+				'orderby' => 'date',
+				'order'   => 'DESC',
+			)
+		);
+	}
+	return $products;
 }
