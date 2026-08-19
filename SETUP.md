@@ -5,7 +5,7 @@
 | Component | Requirement |
 |---|---|
 | WordPress | 6.0+ (theme metadata tested through 6.8) |
-| WooCommerce | 8.0+ (theme metadata tested through 11.0) |
+| WooCommerce | 8.0+ (theme metadata tested through 11.0.1) |
 | PHP | 7.4+ |
 | Browser | Current evergreen browser; JavaScript enhances but is not required for core forms |
 
@@ -199,6 +199,7 @@ The build produces deterministic, validated `inkwell.zip` and
 | No store-benefit messages appear | Configure truthful messages under Store Benefits & Policies |
 | Mini-cart does not update | Confirm WooCommerce frontend scripts are not disabled by an optimization plugin |
 | Gallery lacks zoom/slider | Add more than one product image and ensure gallery scripts are enabled |
+| WooCommerce reports outdated templates after updating | Confirm Inkwell 2.0.9 is active, clear WooCommerce transients/status caches, then re-open WooCommerce → Status; the release manifest targets WooCommerce 11.0.1 |
 | Author fields disappear after changing themes | Install and activate the Inkwell Books companion plugin |
 | My Account shows login but no registration form | Enable “Allow customers to create an account on the My account page” under WooCommerce → Settings → Accounts & Privacy; complete demo setup enables it automatically |
 | Need block cart/checkout | Keep the existing blocks; the importer will not overwrite them |

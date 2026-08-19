@@ -5,9 +5,9 @@ editorial Newsreader + Inter design, book-cover product cards, author browsing,
 bibliographic product fields, curated home-page sections, and styled classic
 WooCommerce shopping flows without a page builder.
 
-- **Theme version:** 2.0.8
+- **Theme version:** 2.0.9
 - **Requires:** WordPress 6.0+, WooCommerce 8.0+, PHP 7.4+
-- **Tested metadata:** WordPress 6.8, WooCommerce 11.0
+- **Tested metadata:** WordPress 6.8, WooCommerce 11.0.1
 - **License:** GPL-2.0-or-later · **Text domain:** `inkwell`
 
 ## Highlights
@@ -126,6 +126,7 @@ use the multilingual plugin’s cache integration.
 npm ci
 npm test
 npm run lint:js
+python3 tools/check-woocommerce-templates.py
 python3 tools/sync-plugin-modules.py
 npm run make-pot
 ./tools/build-release.sh
@@ -136,6 +137,13 @@ regressions, checks JavaScript, verifies the generated companion-plugin
 modules, builds both ZIP files with normalized metadata, proves a second build
 is byte-identical, tests archive integrity, and compares every packaged file
 byte-for-byte with its source.
+
+To compare against an installed WooCommerce copy directly:
+
+```bash
+python3 tools/check-woocommerce-templates.py \
+  --woocommerce-templates=/path/to/wp-content/plugins/woocommerce/templates
+```
 
 `tools/github-quality-workflow.yml` is a ready-to-install GitHub Actions workflow
 that lints every PHP file on PHP 7.4, 8.1 and 8.4. Copy it to

@@ -41,7 +41,7 @@ js = text(THEME / "js/main.js")
 theme_json = json.loads(text(THEME / "theme.json"))
 
 # Release and original grid/menu regressions.
-release_version = "2.0.8"
+release_version = "2.0.9"
 check(re.search(rf"^Version:\s*{re.escape(release_version)}\s*$", style, re.M) is not None, "Theme header version mismatch")
 check(f"define( 'INKWELL_VERSION', '{release_version}' );" in functions, "Runtime version mismatch")
 check(json.loads(text(ROOT / "package.json"))["version"] == release_version, "Package version mismatch")
@@ -145,13 +145,18 @@ check(len({hashlib.sha256(path.read_bytes()).digest() for path in fonts}) == 9, 
 for junk in (ROOT / ".wp-cli", ROOT / ".sudo_as_admin_successful", ROOT / "uploads", ROOT / "demo-content"):
     check(not junk.exists(), f"Repository junk/duplicate remains: {junk.name}")
 
-versions = {
-    "single-product.php": "1.6.4",
-    "taxonomy-product-attribute.php": "7.3.0",
-    "taxonomy-product-cat.php": "4.7.0",
+wc_manifest = json.loads(text(ROOT / "tests/woocommerce-template-versions.json"))
+check(wc_manifest["woocommerce"] == "11.0.1", "WooCommerce compatibility target mismatch")
+check("WC tested up to: 11.0.1" in style, "Theme WooCommerce tested-up-to header mismatch")
+actual_overrides = {
+    path.relative_to(THEME / "woocommerce").as_posix()
+    for path in (THEME / "woocommerce").rglob("*.php")
 }
-for relative, expected in versions.items():
+expected_overrides = set(wc_manifest["templates"])
+check(actual_overrides == expected_overrides, f"Unexpected WooCommerce overrides: {sorted(actual_overrides ^ expected_overrides)}")
+for relative, expected in wc_manifest["templates"].items():
     check(f"@version {expected} (adapted)" in text(THEME / "woocommerce" / relative), f"Incorrect upstream version for {relative}")
+check("woocommerce_product_loop_start" in wc and "inkwell_product_loop_start_markup" in wc, "Loop grid class is not applied through the WooCommerce filter")
 
 # Companion plugin remains independently installable and synchronized.
 plugin_header = text(PLUGIN / "inkwell-books.php")

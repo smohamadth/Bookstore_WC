@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.0.9 — 2026-08-19
+
+### Fixed
+
+- Rebased the maintained WooCommerce overrides against WooCommerce 11.0.1 and verified every upstream template version.
+- Removed redundant taxonomy and loop template copies; WooCommerce now owns those files while Inkwell adds its grid class through the official loop-start filter.
+- Added a complete override manifest and installed-template audit tool so template-version drift fails release checks.
+- Updated WooCommerce compatibility metadata, documentation, translations and release assets to 2.0.9.
+
 ## 2.0.8 — 2026-08-19
 
 ### Changed

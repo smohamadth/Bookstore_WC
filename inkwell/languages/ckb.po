@@ -3,7 +3,7 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Inkwell 2.0.8\n"
+"Project-Id-Version: Inkwell 2.0.9\n"
 "Report-Msgid-Bugs-To: https://github.com/smohamadth/Bookstore_WC/issues\n"
 "POT-Creation-Date: 2026-08-17 00:00+0000\n"
 "PO-Revision-Date: 2026-08-17 00:00+0000\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Inkwell translation build\n"
-"X-Inkwell-Template-SHA256: a1472ca984e6f376018f5a4d248ae830f060c54a06e75223bb2983e37192a599\n"
+"X-Inkwell-Template-SHA256: 727b8c339e3d11526c09c21ebef413f314007d55d510b694841d4293242b71d0\n"
 
 #: 404.php:11
 msgid "This page has been checked out"
@@ -82,11 +82,11 @@ msgstr "ئینستاگرام"
 msgid "X (formerly Twitter)"
 msgstr "ئێکس (تویتەری پێشوو)"
 
-#: footer.php:49, inc/demo-localization.php:40, inc/woocommerce.php:357
+#: footer.php:49, inc/demo-localization.php:40, inc/woocommerce.php:376
 msgid "Shop"
 msgstr "فرۆشگا"
 
-#: footer.php:63, inc/woocommerce.php:376
+#: footer.php:63, inc/woocommerce.php:395
 msgid "All books"
 msgstr "هەموو کتێبەکان"
 
@@ -895,7 +895,7 @@ msgstr "بەرگ بەزوویی زیاد دەکرێت"
 msgid "No books found. Try widening your filters or search again."
 msgstr "هیچ کتێبێک نەدۆزرایەوە. پاڵاوتنەکان فراوانتر بکە یان دووبارە بگەڕێ."
 
-#: inc/woocommerce.php:359
+#: inc/woocommerce.php:378
 msgid "Bookshop"
 msgstr "کتێبفرۆشی"
 
@@ -932,7 +932,7 @@ msgstr ""
 msgid "Shop bestsellers"
 msgstr "کڕینی پڕفرۆشەکان"
 
-#: inc/woocommerce.php:375, template-parts/hero.php:26
+#: inc/woocommerce.php:394, template-parts/hero.php:26
 msgid "Browse genres"
 msgstr "گەڕان بە ژانرەکاندا"
 
@@ -1363,7 +1363,7 @@ msgstr "هەڵبژاردنت وردتر بکە"
 msgid "Close filters"
 msgstr "داخستنی پاڵاوتنەکان"
 
-#: inc/woocommerce.php:365
+#: inc/woocommerce.php:384
 msgid ""
 "Explore thoughtful books, timeless classics and your next unexpected "
 "favourite."
@@ -1371,11 +1371,11 @@ msgstr ""
 "کتێبی بیرمەندانە، کلاسیکی هەمیشەیی و دڵخوازی داهاتووی چاوەڕواننەکراوت "
 "بدۆزەوە."
 
-#: inc/woocommerce.php:369
+#: inc/woocommerce.php:388
 msgid "Find a book"
 msgstr "کتێبێک بدۆزەوە"
 
-#: inc/woocommerce.php:402
+#: inc/woocommerce.php:421
 msgid "Filters"
 msgstr "پاڵاوتنەکان"
 

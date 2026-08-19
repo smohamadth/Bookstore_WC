@@ -7,6 +7,7 @@ cd "$ROOT"
 
 npm run make-pot --silent
 python3 tools/sync-plugin-modules.py --check
+python3 tools/check-woocommerce-templates.py
 python3 tests/static-audit.py
 npm run lint:js --silent
 npm run format:check --silent

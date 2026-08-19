@@ -321,9 +321,28 @@ function inkwell_archive_thumbnail_size() {
 add_filter( 'single_product_archive_thumbnail_size', 'inkwell_archive_thumbnail_size' );
 
 /**
- * Shared layout for shop / genre / author-adjacent archives.
- * (Called from archive-product.php, taxonomy-product-cat.php,
- * taxonomy-product-attribute.php.)
+ * Add the theme's grid class without overriding WooCommerce's loop template.
+ *
+ * @param string $markup WooCommerce loop-start markup.
+ * @return string
+ */
+function inkwell_product_loop_start_markup( $markup ) {
+	if ( false !== strpos( $markup, 'inkwell-shop-grid' ) ) {
+		return $markup;
+	}
+	$updated = preg_replace(
+		'/(<ul\b[^>]*\bclass="[^"]*\bproducts\b)([^"]*)"/i',
+		'$1 inkwell-shop-grid$2"',
+		$markup,
+		1
+	);
+	return is_string( $updated ) ? $updated : $markup;
+}
+add_filter( 'woocommerce_product_loop_start', 'inkwell_product_loop_start_markup' );
+
+/**
+ * Shared layout for shop and product-taxonomy archives.
+ * WooCommerce's taxonomy templates delegate to the theme's archive-product.php.
  */
 function inkwell_shop_archive_layout() {
 	$is_tax      = is_product_taxonomy();

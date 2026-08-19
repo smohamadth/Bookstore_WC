@@ -40,6 +40,7 @@ jobs:
       - name: Static regressions
         run: |
           npm run check:plugin
+          python3 tools/check-woocommerce-templates.py
           python3 tests/static-audit.py
       - name: Build and verify install archives
         if: matrix.php == '8.4'

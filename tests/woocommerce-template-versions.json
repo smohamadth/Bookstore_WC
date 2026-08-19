@@ -1,0 +1,12 @@
+{
+  "woocommerce": "11.0.1",
+  "templates": {
+    "archive-product.php": "8.6.0",
+    "content-product-cat.php": "4.7.0",
+    "content-product.php": "9.4.0",
+    "content-single-product.php": "3.6.0",
+    "global/quantity-input.php": "10.1.0",
+    "single-product.php": "1.6.4",
+    "single-product/meta.php": "9.7.0"
+  }
+}
