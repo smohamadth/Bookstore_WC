@@ -101,10 +101,16 @@ function inkwell_scripts() {
 	wp_enqueue_style( 'inkwell-style', get_stylesheet_uri(), array(), $ver );
 
 	if ( class_exists( 'WooCommerce' ) ) {
+		$wc_deps = array( 'inkwell-style' );
+		foreach ( array( 'woocommerce-general', 'woocommerce-layout' ) as $handle ) {
+			if ( wp_style_is( $handle, 'registered' ) ) {
+				$wc_deps[] = $handle;
+			}
+		}
 		wp_enqueue_style(
 			'inkwell-woocommerce',
 			get_template_directory_uri() . '/css/woocommerce.css',
-			array( 'inkwell-style' ),
+			$wc_deps,
 			$ver
 		);
 	}
@@ -134,7 +140,7 @@ function inkwell_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'inkwell_scripts' );
+add_action( 'wp_enqueue_scripts', 'inkwell_scripts', 20 );
 
 /**
  * Accent color → CSS custom property.
