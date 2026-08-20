@@ -40,6 +40,7 @@
 .woocommerce-before-shop-loop {
 	display: flex; justify-content: space-between; align-items: center;
 	gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;
+	width: 100%;
 }
 .woocommerce-before-shop-loop .woocommerce-notices-wrapper { flex: 0 0 100%; }
 .woocommerce-before-shop-loop .woocommerce-result-count,
@@ -60,9 +61,17 @@ ul.products.inkwell-shop-grid {
 /* WooCommerce's legacy clearfix pseudo-elements become real grid items and
  * consume the first/last cells unless they are explicitly removed. */
 .woocommerce ul.products::before,
-.woocommerce ul.products::after {
+.woocommerce ul.products::after,
+.woocommerce-page ul.products::before,
+.woocommerce-page ul.products::after,
+ul.products::before,
+ul.products::after {
 	content: none !important;
 	display: none !important;
+	width: 0 !important;
+	height: 0 !important;
+	margin: 0 !important;
+	padding: 0 !important;
 }
 .woocommerce ul.products.columns-1 { grid-template-columns: repeat(1, 1fr); }
 .woocommerce ul.products.columns-2 { grid-template-columns: repeat(2, 1fr); }
@@ -491,19 +500,72 @@ ul.products li.product-category .cat-tile-title .count { color: var(--ink-faint)
 .woocommerce ul.order_details li strong { font-family: var(--font-display); font-size: 1.05rem; display: block; margin-top: 0.2em; }
 
 /* ==========================================================================
-   7. My account
+   7. My account (dashboard)
    ========================================================================== */
-.woocommerce-MyAccount-navigation {
-	background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
-	padding: 0.6rem; margin-bottom: 2rem; box-shadow: var(--shadow);
+/*
+ * WooCommerce core floats the navigation at 30% and the content at 68%,
+ * leaving a 2% hole between the sidebar and the dashboard. The theme also
+ * laid the nav items out as a wrapping horizontal row, so the last “quick
+ * action” never reached the sidebar edge. Collapse both into one panel.
+ */
+.woocommerce-account .woocommerce:has(.woocommerce-MyAccount-navigation) {
+	display: grid;
+	grid-template-columns: 240px minmax(0, 1fr);
+	gap: 0;
+	align-items: stretch;
+	background: var(--card);
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+	overflow: hidden;
 }
-.woocommerce-MyAccount-navigation ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 0.2rem; flex-wrap: wrap; }
+.woocommerce-account .woocommerce:has(.woocommerce-MyAccount-navigation)::before,
+.woocommerce-account .woocommerce:has(.woocommerce-MyAccount-navigation)::after {
+	content: none !important;
+	display: none !important;
+}
+.woocommerce-account .woocommerce:has(.woocommerce-MyAccount-navigation) > .woocommerce-notices-wrapper,
+.woocommerce-account .woocommerce:has(.woocommerce-MyAccount-navigation) > .woocommerce-message,
+.woocommerce-account .woocommerce:has(.woocommerce-MyAccount-navigation) > .woocommerce-info,
+.woocommerce-account .woocommerce:has(.woocommerce-MyAccount-navigation) > .woocommerce-error {
+	grid-column: 1 / -1;
+	margin: 0;
+	border-radius: 0;
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation {
+	float: none !important;
+	width: auto !important;
+	margin: 0 !important;
+	background: var(--paper-2);
+	border: 0;
+	border-right: 1px solid var(--line);
+	border-radius: 0;
+	box-shadow: none;
+	padding: 0.85rem 0.7rem;
+}
+.woocommerce-MyAccount-navigation ul {
+	list-style: none; margin: 0; padding: 0;
+	display: flex; flex-direction: column; gap: 0.15rem;
+}
+.woocommerce-MyAccount-navigation li { margin: 0; }
 .woocommerce-MyAccount-navigation li a {
-	display: block; padding: 0.6em 1.15em; border-radius: var(--radius-sm);
+	display: block; padding: 0.7em 1em; border-radius: var(--radius-sm);
 	color: var(--ink-soft); font-weight: 600; font-size: 0.92rem;
 }
-.woocommerce-MyAccount-navigation li.is-active a, .woocommerce-MyAccount-navigation li a:hover { background: var(--accent-soft); color: var(--accent-dark); }
-.woocommerce-MyAccount-content { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.9rem; box-shadow: var(--shadow); }
+.woocommerce-MyAccount-navigation li.is-active a,
+.woocommerce-MyAccount-navigation li a:hover { background: var(--accent-soft); color: var(--accent-dark); }
+
+.woocommerce-account .woocommerce-MyAccount-content {
+	float: none !important;
+	width: auto !important;
+	margin: 0 !important;
+	background: transparent;
+	border: 0;
+	border-radius: 0;
+	box-shadow: none;
+	padding: 1.9rem;
+}
 .woocommerce-Address { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; }
 
 .woocommerce form.login, .woocommerce form.register {
@@ -522,6 +584,14 @@ ul.products li.product-category .cat-tile-title .count { color: var(--ink-faint)
 .woocommerce a.button.loading { opacity: 0.7; }
 .woocommerce a.button.added::after, .woocommerce button.button.added::after { content: "✓"; margin-left: 0.5em; }
 
+/* Sit the catalog flush against the sidebar — the 3rem two-col gap left a
+ * hole between the toolbar (result count + ordering) and the widget column. */
+.two-col.shop-layout {
+	gap: 1.25rem;
+	grid-template-columns: minmax(0, 1fr) 300px;
+}
+.shop-layout .shop-main,
+.shop-layout ul.products { min-width: 0; width: 100%; }
 .shop-layout .widget-area { position: sticky; top: calc(var(--header-h) + 24px); }
 
 /* ==========================================================================
@@ -552,6 +622,17 @@ ul.products li.product-category .cat-tile-title .count { color: var(--ink-faint)
 	.woocommerce div.product div.summary { margin: 0; position: static !important; }
 	.shop-layout .widget-area { position: static; }
 	.woocommerce-checkout #customer_details, .woocommerce-checkout #order_review_heading, .woocommerce-checkout #order_review { width: 100%; float: none; }
+	.woocommerce-account .woocommerce:has(.woocommerce-MyAccount-navigation) {
+		grid-template-columns: 1fr;
+	}
+	.woocommerce-account .woocommerce-MyAccount-navigation {
+		border-right: 0;
+		border-bottom: 1px solid var(--line);
+	}
+	.woocommerce-MyAccount-navigation ul {
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
 }
 @media (max-width: 560px) {
 	ul.products.inkwell-shop-grid { grid-template-columns: repeat(2, 1fr); gap: 1.1rem; }
